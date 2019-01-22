@@ -13,6 +13,8 @@
 		35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD521F6F3CB00F30416 /* Assets.xcassets */; };
 		35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD721F6F3CB00F30416 /* LaunchScreen.storyboard */; };
 		35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */; };
+		35DC0E0321F70AB700F30416 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */; };
+		35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */; };
 		45A74A72C78EC54DD12F5CA6 /* Pods_tree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0163F8362378789ACC30D4 /* Pods_tree.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		35DC0DD821F6F3CB00F30416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35DC0DDA21F6F3CB00F30416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleDetail.storyboard; sourceTree = "<group>"; };
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +76,8 @@
 		35DC0DCD21F6F3C700F30416 /* tree */ = {
 			isa = PBXGroup;
 			children = (
+				35DC0E0521F70B3100F30416 /* View */,
+				35DC0E0021F70A4800F30416 /* Controller */,
 				35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */,
 				35DC0DD021F6F3C700F30416 /* ViewController.swift */,
 				35DC0DD221F6F3C700F30416 /* Main.storyboard */,
@@ -81,6 +87,38 @@
 				35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */,
 			);
 			path = tree;
+			sourceTree = "<group>";
+		};
+		35DC0E0021F70A4800F30416 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35DC0E0121F70A6400F30416 /* Search */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		35DC0E0121F70A6400F30416 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		35DC0E0521F70B3100F30416 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35DC0E0621F70B4000F30416 /* Search */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35DC0E0621F70B4000F30416 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		968D39AD37EEED1A9F7CF6F0 /* Frameworks */ = {
@@ -153,6 +191,7 @@
 			files = (
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
+				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
 			);
@@ -209,6 +248,7 @@
 			files = (
 				35DC0DD121F6F3C700F30416 /* ViewController.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
+				35DC0E0321F70AB700F30416 /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
