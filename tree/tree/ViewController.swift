@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  tree
 //
-//  Created by Hyeontae on 22/01/2019.
-//  Copyright © 2019 Gardener. All rights reserved.
+//  Created by hyerikim on 22/01/2019.
+//  Copyright © 2019 gardener. All rights reserved.
 //
 
 import UIKit
