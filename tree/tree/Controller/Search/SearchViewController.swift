@@ -13,21 +13,23 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var uiSearchBar: UISearchBar!
     @IBOutlet weak var uiTableView: UITableView!
     @IBOutlet weak var navigationFilterItem: UIBarItem!
-
-    let cellIdentifier: String = "ArticleTableViewCell"
+    
+    private let cellIdentifier: String = "ArticleTableViewCell"
     
     private var lastContentOffset: CGFloat = -64
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        uiSearchBar.delegate = self
-        uiTableView.delegate = self
-        uiTableView.dataSource = self
-        
+        delegateSetting()
         searchBarSetting()
         tableViewSetting()
         navigationBarSetting()
+    }
+    
+    func delegateSetting() {
+        uiSearchBar.delegate = self
+        uiTableView.delegate = self
+        uiTableView.dataSource = self
     }
     
     func searchBarSetting() {

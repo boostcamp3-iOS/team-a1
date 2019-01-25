@@ -13,10 +13,10 @@
 		35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD721F6F3CB00F30416 /* LaunchScreen.storyboard */; };
 		35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */; };
 		45A74A72C78EC54DD12F5CA6 /* Pods_tree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0163F8362378789ACC30D4 /* Pods_tree.framework */; };
-		D9C6AB3B21FA9B3E001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3321FA9B3E001C0AB8 /* SearchViewController.swift */; };
-		D9C6AB3C21FA9B3E001C0AB8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3521FA9B3E001C0AB8 /* MainViewController.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
+		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
+		D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,10 @@
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9C6AB3321FA9B3E001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		D9C6AB3521FA9B3E001C0AB8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C6AB3F21FA9CB4001C0AB8 /* View */,
-				D9C6AB3121FA9B3E001C0AB8 /* Controller */,
+				D9C6AB4821FAAD09001C0AB8 /* Controller */,
 				D9C6AB3621FA9B3E001C0AB8 /* Extension */,
 				35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */,
 				35DC0DD221F6F3C700F30416 /* Main.storyboard */,
@@ -97,32 +97,6 @@
 				BF0163F8362378789ACC30D4 /* Pods_tree.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D9C6AB3121FA9B3E001C0AB8 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D9C6AB3221FA9B3E001C0AB8 /* Search */,
-				D9C6AB3421FA9B3E001C0AB8 /* Main */,
-			);
-			name = Controller;
-			path = ../../../tree/Controller;
-			sourceTree = "<group>";
-		};
-		D9C6AB3221FA9B3E001C0AB8 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				D9C6AB3321FA9B3E001C0AB8 /* SearchViewController.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		D9C6AB3421FA9B3E001C0AB8 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				D9C6AB3521FA9B3E001C0AB8 /* MainViewController.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
@@ -147,6 +121,31 @@
 				D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		D9C6AB4821FAAD09001C0AB8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D9C6AB4921FAAD09001C0AB8 /* Search */,
+				D9C6AB4B21FAAD09001C0AB8 /* Main */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D9C6AB4921FAAD09001C0AB8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D9C6AB4B21FAAD09001C0AB8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,10 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9C6AB3B21FA9B3E001C0AB8 /* SearchViewController.swift in Sources */,
+				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
-				D9C6AB3C21FA9B3E001C0AB8 /* MainViewController.swift in Sources */,
+				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
