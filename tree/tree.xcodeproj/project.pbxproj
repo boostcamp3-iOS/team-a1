@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */; };
 		35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */; };
 		35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD221F6F3C700F30416 /* Main.storyboard */; };
 		35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD521F6F3CB00F30416 /* Assets.xcassets */; };
 		35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD721F6F3CB00F30416 /* LaunchScreen.storyboard */; };
 		35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */; };
+		35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */; };
 		45A74A72C78EC54DD12F5CA6 /* Pods_tree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0163F8362378789ACC30D4 /* Pods_tree.framework */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
@@ -27,6 +29,8 @@
 		35DC0DD821F6F3CB00F30416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35DC0DDA21F6F3CB00F30416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleDetail.storyboard; sourceTree = "<group>"; };
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +122,7 @@
 		D9C6AB4021FA9CBB001C0AB8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
 				D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */,
 			);
 			path = Search;
@@ -135,6 +140,7 @@
 		D9C6AB4921FAAD09001C0AB8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */,
 				D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */,
 			);
 			path = Search;
@@ -210,6 +216,7 @@
 			files = (
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
+				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
@@ -269,6 +276,7 @@
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
+				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

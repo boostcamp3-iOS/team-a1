@@ -64,6 +64,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+        let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
+        self.navigationController?.pushViewController(articleView, animated: true)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
