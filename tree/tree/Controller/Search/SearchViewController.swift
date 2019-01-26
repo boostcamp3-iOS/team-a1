@@ -53,7 +53,8 @@ class SearchViewController: UIViewController {
     }
     
     func registerArticleCell() {
-        uiTableView.register(UINib(nibName: "ArticleFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleFeedTableViewCell")
+        let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
+        uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
 }
 
