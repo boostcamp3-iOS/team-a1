@@ -27,10 +27,11 @@ struct Article: Codable {
     let body: String
     let source: Source
     let author: [Author]?
+    let image: String?
     
     private enum CodingKeys: String, CodingKey {
         case uri, lang, date, time
-        case sim, url, title, body, source
+        case sim, url, title, body, source, image
         case author = "authors"
     }
 }
