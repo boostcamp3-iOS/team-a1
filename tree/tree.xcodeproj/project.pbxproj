@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */; };
+		35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */; };
+		35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */; };
+		35CB482121FB6306000D96CF /* ArticleFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */; };
 		35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */; };
 		35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD221F6F3C700F30416 /* Main.storyboard */; };
 		35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DD521F6F3CB00F30416 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageViewController.swift; sourceTree = "<group>"; };
+		35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFeedTableViewCell.swift; sourceTree = "<group>"; };
+		35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleFeedTableViewCell.xib; sourceTree = "<group>"; };
 		35DC0DCB21F6F3C700F30416 /* tree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35DC0DD321F6F3C700F30416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 			children = (
 				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
 				D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */,
+				35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */,
+				35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -142,6 +150,7 @@
 			children = (
 				35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */,
 				D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */,
+				35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 			files = (
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
+				35CB482121FB6306000D96CF /* ArticleFeedTableViewCell.xib in Resources */,
 				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
@@ -272,10 +282,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
+				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
