@@ -16,9 +16,38 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     
+    private var floatingButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerGestureRecognizer()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        createFloatingButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeFloatingButton()
+    }
+    
+    private func registerGestureRecognizer() {
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+    }
+    
+    private func createFloatingButton() {
+        floatingButton = UIButton(type: .custom)
+        floatingButton.backgroundColor = .black
+        floatingButton.translatesAutoresizingMaskIntoConstraints = false
+        floatingButton.addTarget(self, action: #selector(translateButtonOnClick), for: .touchUpInside)
+    }
+    
+    private func removeFloatingButton() {
+      
+    }
+    
+    @objc private func translateButtonOnClick() {
+        
     }
     
     @objc private func imageTapped() {
@@ -27,9 +56,4 @@ class ArticleDetailViewController: UIViewController {
         articleViewer.articleImage = articleImage
         self.present(articleViewer, animated: true, completion: nil)
     }
-    
-    private func registerGestureRecognizer() {
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
-    }
-    
 }
