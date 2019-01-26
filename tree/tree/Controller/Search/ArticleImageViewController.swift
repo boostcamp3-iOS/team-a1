@@ -13,7 +13,7 @@ class ArticleImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var myImage: UIImage?
+    var articleImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class ArticleImageViewController: UIViewController {
     }
     
     private func setArticleImage() {
-        imageView.image = myImage
+        imageView.image = articleImage
     }
     
     private func registerDelegate() {

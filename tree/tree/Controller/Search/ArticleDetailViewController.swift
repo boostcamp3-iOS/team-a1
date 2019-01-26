@@ -24,7 +24,7 @@ class ArticleDetailViewController: UIViewController {
     @objc private func imageTapped() {
         guard let articleImage = imageView.image else { return }
         guard let articleViewer = self.storyboard?.instantiateViewController(withIdentifier: "ArticleImageViewController") as? ArticleImageViewController else { return }
-        articleViewer.myImage = articleImage
+        articleViewer.articleImage = articleImage
         self.present(articleViewer, animated: true, completion: nil)
     }
     
