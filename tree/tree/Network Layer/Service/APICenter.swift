@@ -14,34 +14,32 @@ class APICenter<Service: APIService> {
         completion: @escaping (
                     _ data: Data?,
                     _ response: URLResponse?,
-                    _ error: Error?
+                    _ error: NetworkError?
     ) -> Void) {
         do {
             let urlRequest = try makeURLRequest(from: service)
             let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                guard error == nil else {
-                    return completion(nil, nil, error)
-                }
                 guard let data = data else {
-                    return completion(nil, nil, NetworkError.noData)
+                    return completion(nil, response, NetworkError.noData)
                 }
                 guard let response = response as? HTTPURLResponse else {
-                    return completion(nil, nil, NetworkError.noResponse)
+                    return completion(data, nil, NetworkError.noResponse)
                 }
+                let statusCode = response.statusCode
                 switch NetworkResponse().result(response) {
                 case .success:
-                    completion(data, response, error)
+                    completion(data, response, nil)
                 case .failure:
-                    completion(nil, nil, error)
+                    completion(data, response, NetworkError.networkFail)
                 case .clientError:
-                    completion(nil, nil, NetworkError.clientError)
+                    completion(data, response, NetworkError.clientError(statusCode: statusCode))
                 case .serverError:
-                    completion(nil, nil, NetworkError.serverError)
+                    completion(data, response, NetworkError.serverError(statusCode: statusCode))
                 }
             }
             task.resume()
         } catch {
-            completion(nil, nil, NetworkError.makeBuildRequestFail)
+            completion(nil, nil, NetworkError.makeURLRequestFail)
         }
     }
     
