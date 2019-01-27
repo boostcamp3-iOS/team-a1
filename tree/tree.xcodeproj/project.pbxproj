@@ -22,6 +22,7 @@
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
 		D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */; };
+		D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScrollEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				D9C6AB3F21FA9CB4001C0AB8 /* View */,
 				D9C6AB4821FAAD09001C0AB8 /* Controller */,
 				D9C6AB3621FA9B3E001C0AB8 /* Extension */,
+				D9C6AB5B21FC151C001C0AB8 /* Helper */,
 				35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */,
 				35DC0DD221F6F3C700F30416 /* Main.storyboard */,
 				35DC0DD521F6F3CB00F30416 /* Assets.xcassets */,
@@ -161,6 +164,14 @@
 				D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D9C6AB5B21FC151C001C0AB8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 			files = (
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
+				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
