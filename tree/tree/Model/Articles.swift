@@ -14,6 +14,10 @@ struct Articles: Codable {
 
 struct Results: Codable {
     let results: [Article]
+    let page: Int // Current page number
+    let pages: Int // Total pages count
+    let totalResults: Int // Total articles count
+    let count: Int // Current articles count
 }
 
 struct Article: Codable {
