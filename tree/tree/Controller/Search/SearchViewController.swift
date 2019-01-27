@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var uiTableView: UITableView!
     @IBOutlet weak var navigationFilterItem: UIBarItem!
     
-    private let cellIdentifier: String = "ArticleTableViewCell"
+    private let cellIdentifier: String = "ArticleFeedTableViewCell"
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
@@ -28,6 +28,7 @@ class SearchViewController: UIViewController {
         searchBarSetting()
         tableViewSetting()
         navigationBarSetting()
+        registerArticleCell()
     }
     
     func delegateSetting() {
@@ -54,6 +55,11 @@ class SearchViewController: UIViewController {
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navigationBar.shadowImage = UIImage()
     }
+    
+    func registerArticleCell() {
+        let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
+        uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
+    }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -63,7 +69,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UITableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
             return UITableViewCell()
         }
         return cell
