@@ -18,6 +18,16 @@
 		35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0DFE21F6FB3200F30416 /* .swiftlint.yml */; };
 		35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */; };
 		45A74A72C78EC54DD12F5CA6 /* Pods_tree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0163F8362378789ACC30D4 /* Pods_tree.framework */; };
+		BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
+		BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */; };
+		BC2656BE21FD94EE00003413 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B521FD94EE00003413 /* APIService.swift */; };
+		BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B621FD94EE00003413 /* APIManager.swift */; };
+		BC2656C021FD94EE00003413 /* APICenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B721FD94EE00003413 /* APICenter.swift */; };
+		BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B921FD94EE00003413 /* NetworkResponse.swift */; };
+		BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BA21FD94EE00003413 /* ParametersEncoder.swift */; };
+		BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
+		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
+		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -40,6 +50,16 @@
 		35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleDetail.storyboard; sourceTree = "<group>"; };
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
+		BC2656AF21FD94E000003413 /* Extension+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
+		BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRegistryAPI.swift; sourceTree = "<group>"; };
+		BC2656B521FD94EE00003413 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		BC2656B621FD94EE00003413 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		BC2656B721FD94EE00003413 /* APICenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICenter.swift; sourceTree = "<group>"; };
+		BC2656B921FD94EE00003413 /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		BC2656BA21FD94EE00003413 /* ParametersEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParametersEncoder.swift; sourceTree = "<group>"; };
+		BC2656BB21FD94EE00003413 /* NetworkResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -90,9 +110,11 @@
 		35DC0DCD21F6F3C700F30416 /* tree */ = {
 			isa = PBXGroup;
 			children = (
+				BC2656C521FD950900003413 /* Model */,
 				D9C6AB3F21FA9CB4001C0AB8 /* View */,
 				D9C6AB4821FAAD09001C0AB8 /* Controller */,
 				D9C6AB3621FA9B3E001C0AB8 /* Extension */,
+				BC2656B121FD94EE00003413 /* Network Layer */,
 				D9C6AB5B21FC151C001C0AB8 /* Helper */,
 				35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */,
 				35DC0DD221F6F3C700F30416 /* Main.storyboard */,
@@ -112,9 +134,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BC2656B121FD94EE00003413 /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+				BC2656B221FD94EE00003413 /* API */,
+				BC2656B421FD94EE00003413 /* Service */,
+				BC2656B821FD94EE00003413 /* NetworkHelper */,
+			);
+			path = "Network Layer";
+			sourceTree = "<group>";
+		};
+		BC2656B221FD94EE00003413 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		BC2656B421FD94EE00003413 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BC2656B521FD94EE00003413 /* APIService.swift */,
+				BC2656B621FD94EE00003413 /* APIManager.swift */,
+				BC2656B721FD94EE00003413 /* APICenter.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BC2656B821FD94EE00003413 /* NetworkHelper */ = {
+			isa = PBXGroup;
+			children = (
+				BC2656B921FD94EE00003413 /* NetworkResponse.swift */,
+				BC2656BA21FD94EE00003413 /* ParametersEncoder.swift */,
+				BC2656BB21FD94EE00003413 /* NetworkResult.swift */,
+				BC2656BC21FD94EE00003413 /* NetworkError.swift */,
+			);
+			path = NetworkHelper;
+			sourceTree = "<group>";
+		};
+		BC2656C521FD950900003413 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC2656C621FD950900003413 /* Articles.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BC2656AF21FD94E000003413 /* Extension+URL.swift */,
 				D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */,
 			);
 			path = Extension;
@@ -293,10 +363,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
+				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
+				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
+				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
+				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
+				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
+				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
+				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
+				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
+				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
