@@ -70,6 +70,6 @@ class ArticleDetailViewController: UIViewController {
         guard let articleImage = imageView.image else { return }
         guard let articleViewer = self.storyboard?.instantiateViewController(withIdentifier: "ArticleImageViewController") as? ArticleImageViewController else { return }
         articleViewer.articleImage = articleImage
-        self.present(articleViewer, animated: true, completion: nil)
+        self.present(articleViewer, animated: false, completion: nil)
     }
 }

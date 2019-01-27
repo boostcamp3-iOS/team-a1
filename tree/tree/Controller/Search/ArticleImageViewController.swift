@@ -22,6 +22,16 @@ class ArticleImageViewController: UIViewController {
         addPanGestureRecognizer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.setStatusBarHidden(false, with: UIStatusBarAnimation.none)
+    }
+
     private func setArticleImage() {
         imageView.image = articleImage
     }
@@ -30,10 +40,6 @@ class ArticleImageViewController: UIViewController {
         let panGuestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dismissPanGesture))
         self.view.addGestureRecognizer(panGuestureRecognizer)
         panGuestureRecognizer.delegate = self
-    }
-    
-    @IBAction func exitButtonClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func dismissPanGesture(_ sender: UIPanGestureRecognizer) {
