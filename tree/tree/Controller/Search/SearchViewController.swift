@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
     private var tableViewContentOffsetY: CGFloat = 0
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
-    private var searchBarPresented: Bool = true
+    private var searchBarIsPresented: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,43 +71,44 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if tableViewContentOffsetY < scrollView.contentOffset.y {
-            tableViewScrollCount.down += 1
-            tableViewScrollCount.up = 0
-            if tableViewScrollCount.down > 15 {
-                scrollSettingFunction(.down)
-            }
+            scrollViewCheckCount(.down)
         } else {
-            tableViewScrollCount.down = 0
-            tableViewScrollCount.up += 1
-            if tableViewScrollCount.up > 15 {
-                scrollSettingFunction(.up)
-            }
+            scrollViewCheckCount(.up)
         }
         tableViewContentOffsetY = scrollView.contentOffset.y
     }
     
+    func scrollViewCheckCount(_ scrollDirection: ScrollDirection) {
+        let directionIsDown: Bool = scrollDirection == .down ? true : false
+        tableViewScrollCount.down += directionIsDown == true ? 1 : 0
+        tableViewScrollCount.up += directionIsDown == true ? 0 : 1
+        if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 15 {
+            scrollSettingFunction(directionIsDown ? .down : .up)
+        }
+    }
+    
     func scrollSettingFunction(_ direction: ScrollDirection) {
         switch direction {
-        case .up where !searchBarPresented:
-            searchBarPresented = true
-            UIView.animate(withDuration: 0.5) { [weak self] in
-                guard let self = self else { return }
-                self.uiSearchBarOuterView.center.y += self.topOffset
-                self.uiTableView.contentInset.top = self.topOffset
-                self.uiSearchBarOuterView.alpha = 1.0
-            }
-        case .down where searchBarPresented:
-            searchBarPresented = false
-            UIView.animate(withDuration: 0.5) { [weak self] in
-                guard let self = self else { return }
-                self.uiSearchBarOuterView.center.y -= self.topOffset
-                self.uiTableView.contentInset.top = 0
-                self.uiSearchBarOuterView.alpha = 0
-            }
+        case .up where !searchBarIsPresented:
+            searchBarIsPresented = true
+            searchBarShowAndHideAnimation(.up)
+        case .down where searchBarIsPresented:
+            searchBarIsPresented = false
+            searchBarShowAndHideAnimation(.down)
         default:
             break
         }
-        tableViewScrollCount = (0,0)
+        tableViewScrollCount = (0, 0)
+    }
+    
+    func searchBarShowAndHideAnimation(_ direction: ScrollDirection) {
+        let directionIsDown = direction == .down ? true : false
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
+            self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
+            self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
+        }
     }
 }
 
@@ -117,7 +118,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.navigationItem.title = searchBar.text!
+        self.navigationItem.title = searchBar.text ?? "Search"
         searchBarHideAndSetting()
     }
     
