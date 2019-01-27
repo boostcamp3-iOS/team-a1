@@ -75,6 +75,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+        let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
+        self.navigationController?.pushViewController(articleView, animated: true)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if tableViewContentOffsetY < scrollView.contentOffset.y {
             scrollViewCheckCount(.down)
