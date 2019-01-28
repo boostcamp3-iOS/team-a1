@@ -82,9 +82,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if searchBarIsPresented && tableViewContentOffsetY < scrollView.contentOffset.y {
+        if tableViewContentOffsetY < scrollView.contentOffset.y {
             scrollViewCheckCount(.down)
-        } else if !searchBarIsPresented && tableViewContentOffsetY > scrollView.contentOffset.y {
+        } else {
             scrollViewCheckCount(.up)
         }
         tableViewContentOffsetY = scrollView.contentOffset.y
@@ -94,17 +94,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let directionIsDown: Bool = scrollDirection == .down ? true : false
         tableViewScrollCount.down += directionIsDown == true ? 1 : 0
         tableViewScrollCount.up += directionIsDown == true ? 0 : 1
-        if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 5 {
+        if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 15 {
             scrollSettingFunction(directionIsDown ? .down : .up)
         }
     }
     
     func scrollSettingFunction(_ direction: ScrollDirection) {
         switch direction {
-        case .up:
+        case .up where !searchBarIsPresented:
             searchBarIsPresented = true
             searchBarShowAndHideAnimation(.up)
-        case .down:
+        case .down where searchBarIsPresented:
             searchBarIsPresented = false
             searchBarShowAndHideAnimation(.down)
         default:
