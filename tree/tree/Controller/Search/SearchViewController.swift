@@ -21,7 +21,8 @@ class SearchViewController: UIViewController {
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    
+    private var articles: [Article]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -29,55 +30,88 @@ class SearchViewController: UIViewController {
         tableViewSetting()
         navigationBarSetting()
         registerArticleCell()
+        getArticlesFromServer()
     }
     
-    func delegateSetting() {
+    private func delegateSetting() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
     }
     
-    func searchBarSetting() {
+    private func searchBarSetting() {
         uiSearchBar.backgroundImage = UIImage()
         guard let searchBarTextfield: UITextField = uiSearchBar.value(forKey: "searchField") as? UITextField else { return }
         searchBarTextfield.backgroundColor = UIColor.lightGray
         searchBarTextfield.textColor = UIColor.black
     }
     
-    func tableViewSetting() {
+    private func tableViewSetting() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
     }
     
-    func navigationBarSetting() {
+    private func navigationBarSetting() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.backgroundColor = UIColor.white
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navigationBar.shadowImage = UIImage()
     }
     
-    func registerArticleCell() {
+    private func registerArticleCell() {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    private func getArticlesFromServer() {
+        APIManager.getArticles(keyword: "Apple", keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return articles?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
             return UITableViewCell()
         }
+        guard let article = articles?[indexPath.row] else { return UITableViewCell() }
+        cell.settingData(article: article)
+        
+        DispatchQueue.global().async {
+            if let articleImage = article.image {
+                guard let imageURL = URL(string: articleImage) else { return }
+                guard let imageData = try? Data(contentsOf: imageURL) else { return }
+                DispatchQueue.main.async {
+                    cell.settingImage(image: imageData)
+                }
+            }
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return }
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-        let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
+        guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
+        
+        articleView.articleDetail = articles?[indexPath.row]
+        articleView.articleImage = cell.articleImageView.image
+        
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     

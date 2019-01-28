@@ -17,10 +17,13 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     
     private var floatingButton = UIButton()
+    var articleDetail: Article?
+    var articleImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerGestureRecognizer()
+        setArticleData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +38,13 @@ class ArticleDetailViewController: UIViewController {
     
     private func registerGestureRecognizer() {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+    }
+    
+    private func setArticleData() {
+        titleLabel.text = articleDetail?.title
+        dateLabel.text = articleDetail?.date
+        contentLabel.text = articleDetail?.body
+        imageView.image = articleImage
     }
     
     private func createFloatingButton() {

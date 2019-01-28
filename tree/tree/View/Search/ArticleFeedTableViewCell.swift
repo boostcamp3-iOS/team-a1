@@ -26,8 +26,20 @@ class ArticleFeedTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     private func settingArticleOuterView() {
         articleOuterView.layer.cornerRadius = 10
     }
+    
+    func settingData(article: Article) {
+        self.titleLabel.text = article.title
+        self.descriptionLabel.text = article.body
+        self.dateLabel.text = article.date
+        self.companyLabel.text = article.source.title
+    }
+    
+    func settingImage(image: Data) {
+        self.articleImageView.image = UIImage(data: image)
+    }
+    
 }
