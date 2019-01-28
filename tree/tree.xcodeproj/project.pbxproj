@@ -250,9 +250,17 @@
 		D9C6AB5B21FC151C001C0AB8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				D9C6AB7E21FED67A001C0AB8 /* PresentationManager */,
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		D9C6AB7E21FED67A001C0AB8 /* PresentationManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PresentationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
