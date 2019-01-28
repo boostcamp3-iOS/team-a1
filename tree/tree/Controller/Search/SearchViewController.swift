@@ -88,12 +88,19 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
             return UITableViewCell()
         }
+        guard let article = articles?[indexPath.row] else { return UITableViewCell() }
+        cell.settingData(article: article)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return }
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-        let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
+        guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
+        
+        articleView.articleDetail = articles?[indexPath.row]
+        articleView.articleImage = cell.articleImageView.image
+        
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
