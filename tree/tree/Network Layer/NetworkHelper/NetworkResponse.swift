@@ -18,7 +18,7 @@ enum ResponseTypes {
 struct NetworkResponse {
     func result(_ response: HTTPURLResponse) -> ResponseTypes {
         switch response.statusCode {
-        case 200: return .success
+        case 200..<300: return .success
         case 400..<500: return .clientError
         case 500..<600: return .serverError
         default: return .failure
