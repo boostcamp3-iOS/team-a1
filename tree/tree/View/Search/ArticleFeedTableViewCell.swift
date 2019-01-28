@@ -31,6 +31,7 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.titleLabel.text = article.title
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
+        self.companyLabel.text = article.source.title
         
         DispatchQueue.global().async {
             if let articleImage = article.image {
