@@ -34,6 +34,9 @@
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
 		D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */; };
 		D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */; };
+		D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB7F21FED9F7001C0AB8 /* PresentationController.swift */; };
+		D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */; };
+		D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D9C6AB4C21FAAD09001C0AB8 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScrollEnum.swift; sourceTree = "<group>"; };
+		D9C6AB7F21FED9F7001C0AB8 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
+		D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +240,7 @@
 			children = (
 				35DC0E0221F70AB700F30416 /* ArticleDetailViewController.swift */,
 				D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */,
+				D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */,
 				35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */,
 			);
 			path = Search;
@@ -259,6 +266,8 @@
 		D9C6AB7E21FED67A001C0AB8 /* PresentationManager */ = {
 			isa = PBXGroup;
 			children = (
+				D9C6AB7F21FED9F7001C0AB8 /* PresentationController.swift */,
+				D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */,
 			);
 			path = PresentationManager;
 			sourceTree = "<group>";
@@ -382,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
@@ -392,6 +402,7 @@
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
 				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
+				D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */,
 				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
@@ -401,6 +412,7 @@
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
+				D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
