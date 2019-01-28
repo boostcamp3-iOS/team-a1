@@ -9,7 +9,6 @@
 import Foundation
 
 private enum DefaultParameter {
-    case apiKey
     case articleBodyLen
     case includeArticleImage
     case articlesCount
@@ -20,7 +19,6 @@ private enum DefaultParameter {
 extension DefaultParameter {
     var value: Any {
         switch self {
-        case .apiKey: return "553fab57-e89f-4a1c-8941-3dcb37cf7e30"
         case .articleBodyLen: return -1
         case .includeArticleImage: return true
         case .articlesCount: return 20
@@ -80,7 +78,7 @@ extension EventRegistryAPI: APIService {
                 "articlesCount": DefaultParameter.articlesCount.value,
                 "includeArticleImage": DefaultParameter.includeArticleImage.value,
                 "articleBodyLen": DefaultParameter.articleBodyLen.value,
-                "apiKey": DefaultParameter.apiKey.value
+                "apiKey": APIConstant.eventRegistryKey
             ]
         }
     }
