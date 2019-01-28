@@ -31,32 +31,32 @@ class SearchViewController: UIViewController {
         registerArticleCell()
     }
     
-    func delegateSetting() {
+    private func delegateSetting() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
     }
     
-    func searchBarSetting() {
+    private func searchBarSetting() {
         uiSearchBar.backgroundImage = UIImage()
         guard let searchBarTextfield: UITextField = uiSearchBar.value(forKey: "searchField") as? UITextField else { return }
         searchBarTextfield.backgroundColor = UIColor.lightGray
         searchBarTextfield.textColor = UIColor.black
     }
     
-    func tableViewSetting() {
+    private func tableViewSetting() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
     }
     
-    func navigationBarSetting() {
+    private func navigationBarSetting() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.backgroundColor = UIColor.white
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         navigationBar.shadowImage = UIImage()
     }
     
-    func registerArticleCell() {
+    private func registerArticleCell() {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
