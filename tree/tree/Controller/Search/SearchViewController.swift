@@ -21,7 +21,8 @@ class SearchViewController: UIViewController {
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    
+    private var articles: [Article]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -29,6 +30,7 @@ class SearchViewController: UIViewController {
         tableViewSetting()
         navigationBarSetting()
         registerArticleCell()
+        getArticlesFromServer()
     }
     
     private func delegateSetting() {
@@ -60,12 +62,26 @@ class SearchViewController: UIViewController {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
+    
+    private func getArticlesFromServer() {
+        APIManager.getArticles(keyword: "Apple", keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return articles?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
