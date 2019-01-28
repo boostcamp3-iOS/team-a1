@@ -122,6 +122,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
         }
     }
+    
+    @objc private func buttonTapAction(_ sender: UIBarItem) {
+
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
