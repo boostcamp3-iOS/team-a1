@@ -187,7 +187,7 @@
 		BC2656C921FE97D200003413 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				6A55AFFF21FEB39600369750 /* Config.swift */,
+				BC79697F21FEA0A90003F520 /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
