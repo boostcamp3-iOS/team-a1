@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var uiSearchBarOuterView: UIView!
     @IBOutlet weak var uiSearchBar: UISearchBar!
     @IBOutlet weak var uiTableView: UITableView!
-    @IBOutlet weak var navigationFilterItem: UIBarItem!
+    @IBOutlet weak var navigationFilterItem: UIButton!
     
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
@@ -21,7 +21,8 @@ class SearchViewController: UIViewController {
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    
+    private lazy var transitionDelegate = PresentationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -29,6 +30,7 @@ class SearchViewController: UIViewController {
         tableViewSetting()
         navigationBarSetting()
         registerArticleCell()
+        filterItemSetting()
     }
     
     func delegateSetting() {
@@ -59,6 +61,17 @@ class SearchViewController: UIViewController {
     func registerArticleCell() {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    private func filterItemSetting() {
+        navigationFilterItem.addTarget(self, action: #selector(filterItemTapAtion), for: .touchUpInside)
+    }
+    
+    @objc private func filterItemTapAtion() {
+        guard let filterViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
+        filterViewController.transitioningDelegate = transitionDelegate
+        filterViewController.modalPresentationStyle = .custom
+        present(filterViewController, animated: true)
     }
 }
 
