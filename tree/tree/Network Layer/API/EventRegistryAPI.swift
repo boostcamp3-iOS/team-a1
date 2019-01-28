@@ -8,6 +8,28 @@
 
 import Foundation
 
+private enum DefaultParameter {
+    case apiKey
+    case articleBodyLen
+    case includeArticleImage
+    case articlesCount
+    case resultType
+    case action
+}
+
+extension DefaultParameter {
+    var value: Any {
+        switch self {
+        case .apiKey: return "553fab57-e89f-4a1c-8941-3dcb37cf7e30"
+        case .articleBodyLen: return -1
+        case .includeArticleImage: return true
+        case .articlesCount: return 20
+        case .resultType: return "articles"
+        case .action: return "getArticles"
+        }
+    }
+}
+
 enum EventRegistryAPI {
     case getArticles(
         keyword: String,
@@ -45,19 +67,20 @@ extension EventRegistryAPI: APIService {
             let keywordLoc,
             let lang,
             let articlesSortBy,
-            let articlesPage):
+            let articlesPage
+            ):
             return [
                 "keyword": keyword,
                 "keywordLoc": keywordLoc,
                 "lang": lang,
                 "articlesSortBy": articlesSortBy,
                 "articlesPage": articlesPage,
-                "action": "getArticles",
-                "resultType": "articles",
-                "articlesCount": 20,
-                "includeArticleImage": true,
-                "articleBodyLen": -1,
-                "apiKey": "553fab57-e89f-4a1c-8941-3dcb37cf7e30"
+                "action": DefaultParameter.action.value,
+                "resultType": DefaultParameter.resultType.value,
+                "articlesCount": DefaultParameter.articlesCount.value,
+                "includeArticleImage": DefaultParameter.includeArticleImage.value,
+                "articleBodyLen": DefaultParameter.articleBodyLen.value,
+                "apiKey": DefaultParameter.apiKey.value
             ]
         }
     }
