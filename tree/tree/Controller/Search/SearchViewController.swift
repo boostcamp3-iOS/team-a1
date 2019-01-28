@@ -86,7 +86,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             scrollViewCheckCount(.down)
         } else if !searchBarIsPresented && tableViewContentOffsetY > scrollView.contentOffset.y {
             scrollViewCheckCount(.up)
-        } else { }
+        }
         tableViewContentOffsetY = scrollView.contentOffset.y
     }
     
