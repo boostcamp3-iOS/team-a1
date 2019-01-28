@@ -70,12 +70,18 @@
                         <viewLayoutGuide key="safeArea" id="UDe-SN-OiD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="2oZ-lp-sJK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="filter3X" id="h2I-gk-WvB">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="FFt-gj-dqX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZjM-oZ-dUV">
+                                <rect key="frame" x="339" y="11" width="20" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="filter3X">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="navigationFilterItem" destination="h2I-gk-WvB" id="gZo-i5-ZQ5"/>
+                        <outlet property="navigationFilterItem" destination="ZjM-oZ-dUV" id="Gv5-FR-llg"/>
                         <outlet property="uiSearchBar" destination="NAd-j2-jaV" id="T08-xm-axl"/>
                         <outlet property="uiSearchBarOuterView" destination="DPz-k7-vHE" id="BN6-iH-0iT"/>
                         <outlet property="uiTableView" destination="RV4-kz-pba" id="FpM-V1-3CD"/>
@@ -85,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="1465" y="59"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Filter View Controller-->
         <scene sceneID="vPT-ib-wBd">
             <objects>
-                <viewController id="cnb-IK-fgW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchFilterViewController" id="cnb-IK-fgW" customClass="SearchFilterViewController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gJL-1e-fjb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
