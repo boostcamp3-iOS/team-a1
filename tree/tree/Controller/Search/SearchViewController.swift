@@ -94,7 +94,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let directionIsDown: Bool = scrollDirection == .down ? true : false
         tableViewScrollCount.down += directionIsDown == true ? 1 : 0
         tableViewScrollCount.up += directionIsDown == true ? 0 : 1
-        if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 15 {
+        if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 5 {
             scrollSettingFunction(directionIsDown ? .down : .up)
         }
     }
