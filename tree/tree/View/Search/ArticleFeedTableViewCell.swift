@@ -27,25 +27,19 @@ class ArticleFeedTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func settingData(article: Article ) {
+    private func settingArticleOuterView() {
+        articleOuterView.layer.cornerRadius = 10
+    }
+    
+    func settingData(article: Article) {
         self.titleLabel.text = article.title
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
-        
-        DispatchQueue.global().async {
-            if let articleImage = article.image {
-                guard let imageURL = URL(string: articleImage) else { return }
-                guard let imageData = try? Data(contentsOf: imageURL) else { return }
-                
-                DispatchQueue.main.async {
-                    self.articleImageView.image = UIImage(data: imageData)
-                }
-            }
-        }
     }
     
-    private func settingArticleOuterView() {
-        articleOuterView.layer.cornerRadius = 10
+    func settingImage(image: Data) {
+        self.articleImageView.image = UIImage(data: image)
     }
+    
 }
