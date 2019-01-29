@@ -44,7 +44,9 @@ class ArticleDetailViewController: UIViewController {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
-        imageView.image = articleImage
+        if articleImage != nil {
+            imageView.image = articleImage
+        }
     }
     
     private func createFloatingButton() {
