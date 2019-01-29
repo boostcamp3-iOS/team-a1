@@ -10,6 +10,7 @@ import UIKit
 
 class ArticleFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var outerStackView: UIStackView!
     @IBOutlet weak var articleOuterView: UIView!
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -36,6 +37,11 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
+        if article.author != nil && article.author?.isEmpty == false {
+            if let author = article.author?[0].name {
+                self.authorLabel.text = author
+            }
+        }
     }
     
     func settingImage(image: Data) {

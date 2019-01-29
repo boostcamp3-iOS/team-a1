@@ -23,17 +23,14 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzW-7t-AY4">
                         <rect key="frame" x="16" y="16" width="288" height="266.5"/>
                         <subviews>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4zC-LI-oKs">
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4zC-LI-oKs">
                                 <rect key="frame" x="8" y="8" width="272" height="250.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIe-0C-fkN">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="136"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="TIe-0C-fkN" secondAttribute="height" multiplier="2:1" id="Vdd-YC-yAQ"/>
-                                        </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-4z-hhG">
-                                        <rect key="frame" x="1" y="144" width="270.5" height="106.5"/>
+                                        <rect key="frame" x="1" y="152" width="270.5" height="98.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반도체 파운드리 ‘투톱’ 체제 원년…삼성 vs TSMC ‘7나노’ 수주전 가열" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPT-tI-AB2">
                                                 <rect key="frame" x="0.0" y="0.0" width="270.5" height="41"/>
@@ -48,22 +45,22 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3o-fKE">
-                                                <rect key="frame" x="0.0" y="86" width="270.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="86" width="270.5" height="12.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="중앙일보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-Ok-i2u">
-                                                        <rect key="frame" x="0.0" y="4.5" width="35" height="12"/>
+                                                        <rect key="frame" x="0.0" y="0.5" width="35" height="12"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by 박성준" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-vk-zDw">
-                                                        <rect key="frame" x="107.5" y="4.5" width="39" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-vk-zDw">
+                                                        <rect key="frame" x="102" y="0.0" width="50" height="12.5"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="2019년 1월 23일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ4-dJ-Xar">
-                                                        <rect key="frame" x="204" y="4.5" width="66.5" height="12"/>
+                                                        <rect key="frame" x="204" y="0.5" width="66.5" height="12"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -73,6 +70,10 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Adw-4z-hhG" firstAttribute="top" secondItem="TIe-0C-fkN" secondAttribute="bottom" constant="16" id="V6j-JC-nk3"/>
+                                    <constraint firstItem="TIe-0C-fkN" firstAttribute="top" secondItem="4zC-LI-oKs" secondAttribute="top" id="ZAS-Gg-h7K"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95717586799999999" green="0.95703697369999996" blue="0.96467731999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,6 +101,7 @@
                 <outlet property="companyLabel" destination="2Uo-Ok-i2u" id="WEH-WE-JFe"/>
                 <outlet property="dateLabel" destination="NQ4-dJ-Xar" id="YdG-ay-Ajb"/>
                 <outlet property="descriptionLabel" destination="Ttn-G2-uDt" id="fIb-NL-ydJ"/>
+                <outlet property="outerStackView" destination="4zC-LI-oKs" id="MqF-2Y-2CB"/>
                 <outlet property="titleLabel" destination="KPT-tI-AB2" id="j4G-OM-ACh"/>
             </connections>
             <point key="canvasLocation" x="132.80000000000001" y="88.605697151424295"/>
