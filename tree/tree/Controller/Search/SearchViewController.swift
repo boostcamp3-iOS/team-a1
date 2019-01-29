@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    private lazy var transitionDelegate = PresentationManager()
+    private var transitionDelegate = PresentationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()

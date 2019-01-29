@@ -23,7 +23,7 @@ class PresentationController: UIPresentationController {
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController,
                    presenting: presentingViewController)
-        DimmingViewSetting()
+        dimmingViewSetting()
     }
     
     override func presentationTransitionWillBegin() {
@@ -66,7 +66,7 @@ class PresentationController: UIPresentationController {
 
 private extension PresentationController {
     
-    func DimmingViewSetting() {
+    func dimmingViewSetting() {
         dimmingView = UIView()
         dimmingView.translatesAutoresizingMaskIntoConstraints = false
         dimmingView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
