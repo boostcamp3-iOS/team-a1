@@ -70,12 +70,18 @@
                         <viewLayoutGuide key="safeArea" id="UDe-SN-OiD"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="2oZ-lp-sJK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="filter3X" id="h2I-gk-WvB">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="FFt-gj-dqX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZjM-oZ-dUV">
+                                <rect key="frame" x="339" y="11" width="20" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="filter3X">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="navigationFilterItem" destination="h2I-gk-WvB" id="gZo-i5-ZQ5"/>
+                        <outlet property="navigationFilterItem" destination="ZjM-oZ-dUV" id="Gv5-FR-llg"/>
                         <outlet property="uiSearchBar" destination="NAd-j2-jaV" id="T08-xm-axl"/>
                         <outlet property="uiSearchBarOuterView" destination="DPz-k7-vHE" id="BN6-iH-0iT"/>
                         <outlet property="uiTableView" destination="RV4-kz-pba" id="FpM-V1-3CD"/>
@@ -85,31 +91,31 @@
             </objects>
             <point key="canvasLocation" x="1465" y="59"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Filter View Controller-->
         <scene sceneID="vPT-ib-wBd">
             <objects>
-                <viewController id="cnb-IK-fgW" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchFilterViewController" id="cnb-IK-fgW" customClass="SearchFilterViewController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gJL-1e-fjb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEb-un-mxx">
-                                <rect key="frame" x="-1" y="147" width="375" height="372"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEb-un-mxx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="355"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ICs-sO-HZu">
-                                        <rect key="frame" x="20" y="24" width="232.5" height="138"/>
+                                        <rect key="frame" x="20" y="24" width="335" height="138"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NfE-c7-mLU">
-                                                <rect key="frame" x="0.0" y="0.0" width="232.5" height="55.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="55.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keyword" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqh-4l-t5Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="232.5" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KMT-Ke-jHx">
-                                                        <rect key="frame" x="0.0" y="27.5" width="232.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="27.5" width="335" height="29"/>
                                                         <segments>
                                                             <segment title="Title"/>
                                                             <segment title="Body"/>
@@ -118,16 +124,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="L4n-po-aFu">
-                                                <rect key="frame" x="0.0" y="85.5" width="232.5" height="52.5"/>
+                                                <rect key="frame" x="0.0" y="85.5" width="335" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZp-zo-g6c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="232.5" height="19.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BqQ-Hw-IXp">
-                                                        <rect key="frame" x="0.0" y="24.5" width="232.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="335" height="29"/>
                                                         <segments>
                                                             <segment title="Date"/>
                                                             <segment title="Relevance"/>
@@ -136,9 +142,15 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="NfE-c7-mLU" firstAttribute="leading" secondItem="ICs-sO-HZu" secondAttribute="leading" id="IOZ-jk-iY0"/>
+                                            <constraint firstItem="L4n-po-aFu" firstAttribute="top" secondItem="NfE-c7-mLU" secondAttribute="bottom" constant="30" id="Qpc-JO-5lH"/>
+                                            <constraint firstItem="NfE-c7-mLU" firstAttribute="top" secondItem="ICs-sO-HZu" secondAttribute="top" id="Z5v-2g-hWn"/>
+                                            <constraint firstAttribute="trailing" secondItem="NfE-c7-mLU" secondAttribute="trailing" id="rRW-hl-knp"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nrU-su-D5j">
-                                        <rect key="frame" x="20" y="192" width="64.5" height="55.5"/>
+                                        <rect key="frame" x="20" y="192.5" width="64.5" height="55.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-lS-anD">
                                                 <rect key="frame" x="0.0" y="0.0" width="64.5" height="19.5"/>
@@ -165,19 +177,8 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTK-rc-Ljs">
-                                        <rect key="frame" x="20" y="295" width="232.5" height="49"/>
-                                        <color key="backgroundColor" red="0.20556968449999999" green="0.46900236610000001" blue="0.96475535629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="PTK-rc-Ljs" secondAttribute="height" multiplier="335:49" id="S08-3P-0Ob"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2S3-X8-Ojq">
-                                        <rect key="frame" x="184" y="192" width="68.5" height="55.5"/>
+                                        <rect key="frame" x="286.5" y="192.5" width="68.5" height="55.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVf-M0-mPF">
                                                 <rect key="frame" x="0.0" y="0.0" width="68.5" height="19.5"/>
@@ -207,32 +208,49 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTK-rc-Ljs">
+                                        <rect key="frame" x="20" y="278" width="335" height="49"/>
+                                        <color key="backgroundColor" red="0.20556968449999999" green="0.46900236610000001" blue="0.96475535629999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PTK-rc-Ljs" secondAttribute="height" multiplier="335:49" id="S08-3P-0Ob"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ICs-sO-HZu" firstAttribute="top" secondItem="kEb-un-mxx" secondAttribute="top" constant="24" id="01J-ic-RzB"/>
                                     <constraint firstItem="2S3-X8-Ojq" firstAttribute="top" secondItem="nrU-su-D5j" secondAttribute="top" id="ACt-no-YQV"/>
+                                    <constraint firstAttribute="height" constant="355" id="Hua-B3-qz4"/>
                                     <constraint firstItem="nrU-su-D5j" firstAttribute="leading" secondItem="ICs-sO-HZu" secondAttribute="leading" id="MqZ-4J-Ag3"/>
                                     <constraint firstItem="ICs-sO-HZu" firstAttribute="leading" secondItem="kEb-un-mxx" secondAttribute="leading" constant="20" id="PS1-jV-N7A"/>
-                                    <constraint firstItem="nrU-su-D5j" firstAttribute="top" secondItem="L4n-po-aFu" secondAttribute="bottom" constant="30" id="Sdt-GE-YZG"/>
+                                    <constraint firstItem="nrU-su-D5j" firstAttribute="top" secondItem="L4n-po-aFu" secondAttribute="bottom" constant="30.5" id="Sdt-GE-YZG"/>
                                     <constraint firstItem="2S3-X8-Ojq" firstAttribute="trailing" secondItem="ICs-sO-HZu" secondAttribute="trailing" id="VGk-kG-SG2"/>
                                     <constraint firstItem="PTK-rc-Ljs" firstAttribute="trailing" secondItem="ICs-sO-HZu" secondAttribute="trailing" id="gCP-vd-nSc"/>
-                                    <constraint firstItem="PTK-rc-Ljs" firstAttribute="top" relation="lessThanOrEqual" secondItem="nrU-su-D5j" secondAttribute="bottom" constant="47.5" id="gpv-gc-6fe"/>
                                     <constraint firstItem="2S3-X8-Ojq" firstAttribute="bottom" secondItem="nrU-su-D5j" secondAttribute="bottom" id="ly1-4A-vlA"/>
                                     <constraint firstAttribute="bottom" secondItem="PTK-rc-Ljs" secondAttribute="bottom" constant="28" id="noS-ul-NoH"/>
                                     <constraint firstItem="ICs-sO-HZu" firstAttribute="centerX" secondItem="kEb-un-mxx" secondAttribute="centerX" id="oKs-RC-UnC"/>
+                                    <constraint firstItem="PTK-rc-Ljs" firstAttribute="top" secondItem="nrU-su-D5j" secondAttribute="bottom" constant="30" id="sKO-R2-BT2"/>
                                     <constraint firstItem="2S3-X8-Ojq" firstAttribute="centerY" secondItem="nrU-su-D5j" secondAttribute="centerY" id="sLT-Jy-oV4"/>
                                     <constraint firstItem="PTK-rc-Ljs" firstAttribute="leading" secondItem="ICs-sO-HZu" secondAttribute="leading" id="uqX-Hb-Ph5"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kEb-un-mxx" firstAttribute="leading" secondItem="gJL-1e-fjb" secondAttribute="leading" id="Pmv-2G-D5d"/>
+                            <constraint firstItem="kEb-un-mxx" firstAttribute="top" secondItem="Jkh-hv-2hH" secondAttribute="top" id="WHo-jt-rXX"/>
+                            <constraint firstItem="Jkh-hv-2hH" firstAttribute="trailing" secondItem="kEb-un-mxx" secondAttribute="trailing" id="XBr-el-p7m"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jkh-hv-2hH"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbR-eQ-jNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2143" y="59"/>
+            <point key="canvasLocation" x="2716" y="70"/>
         </scene>
         <!--Item-->
         <scene sceneID="FEh-bw-Wsd">
