@@ -120,8 +120,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         case .down:
             searchBarIsPresented = false
             searchBarShowAndHideAnimation(.down)
-        default:
-            break
         }
         tableViewScrollCount = (0, 0)
     }
