@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
     private var articles: [Article]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
         tableViewSetting()
         navigationBarSetting()
         registerArticleCell()
-        getArticlesFromServer()
     }
     
     private func delegateSetting() {
@@ -63,8 +62,8 @@ class SearchViewController: UIViewController {
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
     
-    private func getArticlesFromServer() {
-        APIManager.getArticles(keyword: "Apple", keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
+    private func getArticlesFromServer(keyword: String) {
+        APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
             switch result {
             case .success(let articleData):
                 self.articles = articleData.articles.results
@@ -85,9 +84,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
         
@@ -110,8 +107,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
         
         articleView.articleDetail = articles?[indexPath.row]
-        articleView.articleImage = cell.articleImageView.image
-        
+        if let articleImage = cell.articleImageView.image {
+            articleView.imageView.image = articleImage
+        }
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -169,6 +167,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
+        getArticlesFromServer(keyword: searchBar.text ?? "")
         searchBarHideAndSetting()
     }
     
