@@ -42,7 +42,7 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.companyLabel.text = article.source.title
         if article.author != nil && article.author?.isEmpty == false {
             if let author = article.author?[0].name {
-                self.authorLabel.text = author
+                self.authorLabel.text = " / \(author)"
             }
         }
         if article.image == nil {
