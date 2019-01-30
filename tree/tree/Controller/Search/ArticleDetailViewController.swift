@@ -13,7 +13,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
     
     private var floatingButton = UIButton()
@@ -35,11 +35,15 @@ class ArticleDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    private func getImageFromCache(articleUrl: String) {
-        if let imageFromCache = imageChache.object(forKey: articleUrl as AnyObject) as? UIImage {
+    private func getImageFromCache(articleUrl: String?) {
+        guard let imageUrl = articleUrl else { 
+            imageView.isHidden = true
+            return 
+        }
+        if let imageFromCache = imageChache.object(forKey: imageUrl as AnyObject) as? UIImage {
             self.imageView.image = imageFromCache
         } else {
-            self.imageView.isHidden = true
+            self.imageView.loadImageUrl(articleUrl: articleUrl!)
         }
     }
     
@@ -51,7 +55,7 @@ class ArticleDetailViewController: UIViewController {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
-        getImageFromCache(articleUrl: articleDetail?.image ?? "")
+        getImageFromCache(articleUrl: articleDetail?.image ?? nil)
         if articleDetail?.author != nil && articleDetail?.author?.isEmpty == false {
             if let author = articleDetail?.author?[0].name {
                 self.authorLabel.text = author
