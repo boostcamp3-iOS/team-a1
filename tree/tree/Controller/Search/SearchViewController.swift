@@ -105,16 +105,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return }
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
         
         articleView.articleDetail = articles?[indexPath.row]
-        
-        if let articleImage = cell.articleImageView.image {
-            articleView.articleImage = articleImage
-        }
-        
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     

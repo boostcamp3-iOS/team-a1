@@ -18,7 +18,6 @@ class ArticleDetailViewController: UIViewController {
     
     private var floatingButton = UIButton()
     var articleDetail: Article?
-    var articleImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,14 @@ class ArticleDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    private func getImageFromCache(articleUrl: String) {
+        if let imageFromCache = imageChache.object(forKey: articleUrl as AnyObject) as? UIImage {
+            self.imageView.image = imageFromCache
+        } else {
+            self.imageView.isHidden = true
+        }
+    }
+    
     private func registerGestureRecognizer() {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
     }
@@ -44,8 +51,11 @@ class ArticleDetailViewController: UIViewController {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
-        if articleImage != nil {
-            imageView.image = articleImage
+        getImageFromCache(articleUrl: articleDetail?.image ?? "")
+        if articleDetail?.author != nil && articleDetail?.author?.isEmpty == false {
+            if let author = articleDetail?.author?[0].name {
+                self.authorLabel.text = author
+            }
         }
     }
     
