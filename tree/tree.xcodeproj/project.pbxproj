@@ -29,6 +29,8 @@
 		BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		D9178DFC22015475000C4A7F /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9178DFB22015475000C4A7F /* ScrapViewController.swift */; };
+		D9178DFF220154A4000C4A7F /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9178DFE220154A4000C4A7F /* Scrap.storyboard */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -66,6 +68,8 @@
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9178DFB22015475000C4A7F /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
+		D9178DFE220154A4000C4A7F /* Scrap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +202,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D9178DFA22015437000C4A7F /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				D9178DFB22015475000C4A7F /* ScrapViewController.swift */,
+			);
+			path = Scrap;
+			sourceTree = "<group>";
+		};
+		D9178DFD22015485000C4A7F /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				D9178DFE220154A4000C4A7F /* Scrap.storyboard */,
+			);
+			path = Scrap;
+			sourceTree = "<group>";
+		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C6AB4021FA9CBB001C0AB8 /* Search */,
+				D9178DFD22015485000C4A7F /* Scrap */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -230,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C6AB4921FAAD09001C0AB8 /* Search */,
+				D9178DFA22015437000C4A7F /* Scrap */,
 				D9C6AB4B21FAAD09001C0AB8 /* Main */,
 			);
 			path = Controller;
@@ -332,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9178DFF220154A4000C4A7F /* Scrap.storyboard in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
 				35CB482121FB6306000D96CF /* ArticleFeedTableViewCell.xib in Resources */,
@@ -413,6 +436,7 @@
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */,
+				D9178DFC22015475000C4A7F /* ScrapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
