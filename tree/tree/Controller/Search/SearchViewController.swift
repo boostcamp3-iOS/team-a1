@@ -101,21 +101,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
-        cell.articleImageView.image = nil
-        cell.position = indexPath.row
-        
-        DispatchQueue.global().async {
-            if let articleImage = article.image {
-                guard let imageURL = URL(string: articleImage) else { return }
-                guard let imageData = try? Data(contentsOf: imageURL) else { return }
-                DispatchQueue.main.async {
-                    if cell.position == indexPath.row {
-                        cell.settingImage(image: imageData)
-                    }
-                }
-            }
-        }
-        
         return cell
     }
     

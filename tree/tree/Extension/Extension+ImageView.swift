@@ -8,7 +8,7 @@
 
 import UIKit
 
-var imageChache = NSCache<AnyObject, AnyObject>()
+let imageChache = NSCache<AnyObject, AnyObject>()
 
 class ArticleImage: UIImageView {
     var imageUrl: String?
