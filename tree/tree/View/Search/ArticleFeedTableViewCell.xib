@@ -114,7 +114,7 @@
                 <outlet property="outerStackView" destination="4zC-LI-oKs" id="MqF-2Y-2CB"/>
                 <outlet property="titleLabel" destination="KPT-tI-AB2" id="j4G-OM-ACh"/>
             </connections>
-            <point key="canvasLocation" x="132.80000000000001" y="78.260869565217391"/>
+            <point key="canvasLocation" x="132.80000000000001" y="77.361319340329842"/>
         </tableViewCell>
     </objects>
 </document>
