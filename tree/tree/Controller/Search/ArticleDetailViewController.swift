@@ -13,12 +13,14 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
     
     private var floatingButton = UIButton()
+    private var floatingCheckAnimation: Bool = true 
+    private lazy var papagoButton = UIButton(type: .custom)
+
     var articleDetail: Article?
-    var articleImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,18 @@ class ArticleDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    private func getImageFromCache(from articleUrl: String?) {
+        guard let imageUrl = articleUrl else { 
+            imageView.isHidden = true
+            return 
+        }
+        if let imageFromCache = imageCache.object(forKey: imageUrl as AnyObject) as? UIImage {
+            self.imageView.image = imageFromCache
+        } else {
+            self.imageView.loadImageUrl(articleUrl: articleUrl!)
+        }
+    }
+    
     private func registerGestureRecognizer() {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
     }
@@ -44,14 +58,18 @@ class ArticleDetailViewController: UIViewController {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
-        imageView.image = articleImage
+        getImageFromCache(from: articleDetail?.image ?? nil)
+        if articleDetail?.author != nil && articleDetail?.author?.isEmpty == false {
+            if let author = articleDetail?.author?[0].name {
+                self.authorLabel.text = author
+            }
+        }
     }
     
     private func createFloatingButton() {
-        floatingButton = UIButton(type: .custom)
         floatingButton.backgroundColor = .black
         floatingButton.translatesAutoresizingMaskIntoConstraints = false
-        floatingButton.addTarget(self, action: #selector(translateButtonOnClick), for: .touchUpInside)
+        floatingButton.addTarget(self, action: #selector(floatingButtonClick), for: .touchUpInside)
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.addSubview(self.floatingButton)
@@ -65,15 +83,44 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func removeFloatingButton() {
-        if floatingButton.superview != nil {
+        if floatingButton.superview != nil || papagoButton.superview != nil {
             DispatchQueue.main.async {
                 self.floatingButton.removeFromSuperview()
+                self.papagoButton.removeFromSuperview()
             }
         }
     }
-    
-    @objc private func translateButtonOnClick() {
-        //reload view
+
+    @objc private func floatingButtonClick() {
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.floatingButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }) { (_) in
+            if self.floatingCheckAnimation {
+                UIView.animate(withDuration: 0.2, animations: { 
+                    self.floatingButton.transform = CGAffineTransform.identity
+                    self.papagoButton.backgroundColor = .black
+                    self.papagoButton.translatesAutoresizingMaskIntoConstraints = false
+                    self.papagoButton.addTarget(self, action: #selector(self.papagoTranslate), for: .touchUpInside)
+                    DispatchQueue.main.async {
+                        if let keyWindow = UIApplication.shared.keyWindow {
+                            keyWindow.addSubview(self.papagoButton)
+                            NSLayoutConstraint.activate([
+                                keyWindow.trailingAnchor.constraint(equalTo: self.papagoButton.trailingAnchor, constant: 25),
+                                self.floatingButton.topAnchor.constraint(equalTo: self.papagoButton.bottomAnchor, constant: 16),
+                                self.papagoButton.widthAnchor.constraint(equalToConstant: 30),
+                                self.papagoButton.heightAnchor.constraint(equalToConstant: 30)])
+                        }
+                        self.papagoButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                    }  
+                })
+            } else {
+                UIView.animate(withDuration: 0.2, animations: { 
+                    self.floatingButton.transform = CGAffineTransform.identity
+                })
+                self.papagoButton.removeFromSuperview()
+            }
+            self.floatingCheckAnimation.toggle()
+        }
     }
     
     @objc private func imageTapped() {
@@ -82,4 +129,9 @@ class ArticleDetailViewController: UIViewController {
         articleViewer.articleImage = articleImage
         self.present(articleViewer, animated: false, completion: nil)
     }
+    
+    @objc private func papagoTranslate() {
+        
+    }
+    
 }

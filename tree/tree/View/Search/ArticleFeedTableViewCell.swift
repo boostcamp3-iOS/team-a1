@@ -10,8 +10,11 @@ import UIKit
 
 class ArticleFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var betweenLabel: UILabel!
+    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var outerStackView: UIStackView!
     @IBOutlet weak var articleOuterView: UIView!
-    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var articleImageView: ArticleImage!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -36,10 +39,19 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
-    }
-    
-    func settingImage(image: Data) {
-        self.articleImageView.image = UIImage(data: image)
+        betweenLabel.isHidden = true
+        if article.author != nil && article.author?.isEmpty == false {
+            if let author = article.author?[0].name {
+                betweenLabel.isHidden = false
+                self.authorLabel.text = author
+            }
+        } 
+        if article.image == nil {
+            self.imageStackView.isHidden = true
+        } else {
+            self.imageStackView.isHidden = false
+            self.articleImageView.loadImageUrl(articleUrl: article.image ?? "")
+        }
     }
     
 }

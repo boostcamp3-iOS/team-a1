@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
     private var searchBarIsPresented: Bool = true
     private var transitionDelegate = PresentationManager()
     private var articles: [Article]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -32,7 +32,6 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
-        getArticlesFromServer()
     }
     
     private func delegateSetting() {
@@ -64,30 +63,32 @@ class SearchViewController: UIViewController {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
-  
-      private func filterItemSetting() {
+    
+    private func getArticlesFromServer(keyword: String) {
+        APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func filterItemSetting() {
         navigationFilterItem.addTarget(self, action: #selector(filterItemTapAtion), for: .touchUpInside)
-      }
-  
+    }
+    
     @objc private func filterItemTapAtion() {
         guard let filterViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
         filterViewController.transitioningDelegate = transitionDelegate
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
     }
-  
-    private func getArticlesFromServer() {
-      APIManager.getArticles(keyword: "Apple", keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
-          switch result {
-          case .success(let articleData):
-              self.articles = articleData.articles.results
-              DispatchQueue.main.async {
-                  self.uiTableView.reloadData()
-              }
-          case .failure(let error):
-              print(error.localizedDescription)
-          }
-      }
+    
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -97,33 +98,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
-        
-        DispatchQueue.global().async {
-            if let articleImage = article.image {
-                guard let imageURL = URL(string: articleImage) else { return }
-                guard let imageData = try? Data(contentsOf: imageURL) else { return }
-                DispatchQueue.main.async {
-                    cell.settingImage(image: imageData)
-                }
-            }
-        }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return }
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
         
         articleView.articleDetail = articles?[indexPath.row]
-        articleView.articleImage = cell.articleImageView.image
-        
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -166,10 +151,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
         }
     }
-    
-    @objc private func buttonTapAction(_ sender: UIBarItem) {
-
-    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -179,6 +160,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
+        if let searchKeyword = searchBar.text {
+            getArticlesFromServer(keyword: searchKeyword)
+        }
         searchBarHideAndSetting()
     }
     
