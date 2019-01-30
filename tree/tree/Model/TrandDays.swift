@@ -34,7 +34,7 @@ struct TrendingSearchesDay: Codable {
 
 struct TrendingSearch: Codable {
     let title: Title
-    let formattedTraffic: FormattedTraffic
+    let formattedTraffic: String
     let relatedQueries: [Title]
     let image: Image
     let articles: [Articlea]
@@ -63,13 +63,6 @@ struct Image: Codable {
         case source
         case imageURL = "imageUrl"
     }
-}
-
-enum FormattedTraffic: String, Codable {
-    case the10만 = "10만+"
-    case the20만 = "20만+"
-    case the2만 = "2만+"
-    case the50만 = "50만+"
 }
 
 struct Title: Codable {
