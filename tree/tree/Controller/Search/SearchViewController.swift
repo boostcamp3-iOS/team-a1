@@ -32,7 +32,6 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
-        getArticlesFromServer()
     }
     
     private func delegateSetting() {
@@ -77,18 +76,19 @@ class SearchViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-  
-      private func filterItemSetting() {
+    }
+    
+    private func filterItemSetting() {
         navigationFilterItem.addTarget(self, action: #selector(filterItemTapAtion), for: .touchUpInside)
-      }
-  
+    }
+    
     @objc private func filterItemTapAtion() {
         guard let filterViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
         filterViewController.transitioningDelegate = transitionDelegate
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
     }
-        
+    
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -103,7 +103,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.settingData(article: article)
         cell.articleImageView.image = nil
         cell.position = indexPath.row
-
+        
         DispatchQueue.global().async {
             if let articleImage = article.image {
                 guard let imageURL = URL(string: articleImage) else { return }
@@ -125,7 +125,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
         
         articleView.articleDetail = articles?[indexPath.row]
-
+        
         if let articleImage = cell.articleImageView.image {
             articleView.articleImage = articleImage
         }
@@ -171,10 +171,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
             self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
         }
-    }
-    
-    @objc private func buttonTapAction(_ sender: UIBarItem) {
-
     }
 }
 
