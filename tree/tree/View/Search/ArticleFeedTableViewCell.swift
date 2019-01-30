@@ -10,6 +10,7 @@ import UIKit
 
 class ArticleFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var betweenLabel: UILabel!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var outerStackView: UIStackView!
     @IBOutlet weak var articleOuterView: UIView!
@@ -40,11 +41,13 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
+        betweenLabel.isHidden = true
         if article.author != nil && article.author?.isEmpty == false {
             if let author = article.author?[0].name {
-                self.authorLabel.text = " / \(author)"
+                betweenLabel.isHidden = false
+                self.authorLabel.text = author
             }
-        }
+        } 
         if article.image == nil {
             self.imageStackView.isHidden = true
         } else {

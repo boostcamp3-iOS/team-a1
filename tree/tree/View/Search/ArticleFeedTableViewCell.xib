@@ -57,11 +57,11 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3o-fKE">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3o-fKE">
                                                 <rect key="frame" x="8" y="89" width="272" height="12"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-NN-7mD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="38" height="12"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-NN-7mD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="12"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="중앙일보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Uo-Ok-i2u">
                                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="12"/>
@@ -69,8 +69,14 @@
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-vk-zDw">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="|" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KF7-U5-rMe">
                                                                 <rect key="frame" x="35" y="0.0" width="3" height="12"/>
+                                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="10"/>
+                                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bd-vk-zDw">
+                                                                <rect key="frame" x="38" y="0.0" width="3" height="12"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -113,6 +119,7 @@
                 <outlet property="articleImageView" destination="TIe-0C-fkN" id="Yln-Jy-VKz"/>
                 <outlet property="articleOuterView" destination="bzW-7t-AY4" id="sRK-58-AzJ"/>
                 <outlet property="authorLabel" destination="1bd-vk-zDw" id="dHr-tb-O91"/>
+                <outlet property="betweenLabel" destination="KF7-U5-rMe" id="jLY-UR-QHO"/>
                 <outlet property="companyLabel" destination="2Uo-Ok-i2u" id="WEH-WE-JFe"/>
                 <outlet property="dateLabel" destination="NQ4-dJ-Xar" id="YdG-ay-Ajb"/>
                 <outlet property="descriptionLabel" destination="Ttn-G2-uDt" id="fIb-NL-ydJ"/>
