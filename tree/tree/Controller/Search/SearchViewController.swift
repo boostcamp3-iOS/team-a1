@@ -160,7 +160,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
-        getArticlesFromServer(keyword: searchBar.text ?? "")
+        if let searchKeyword = searchBar.text {
+            getArticlesFromServer(keyword: searchKeyword)
+        }
         searchBarHideAndSetting()
     }
     

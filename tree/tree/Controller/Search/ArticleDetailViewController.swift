@@ -17,7 +17,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     
     private var floatingButton = UIButton()
-    private var checkAnimation: Bool = true 
+    private var floatingCheckAnimation: Bool = true 
     private lazy var papagoButton = UIButton(type: .custom)
 
     var articleDetail: Article?
@@ -38,12 +38,12 @@ class ArticleDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    private func getImageFromCache(articleUrl: String?) {
+    private func getImageFromCache(from articleUrl: String?) {
         guard let imageUrl = articleUrl else { 
             imageView.isHidden = true
             return 
         }
-        if let imageFromCache = imageChache.object(forKey: imageUrl as AnyObject) as? UIImage {
+        if let imageFromCache = imageCache.object(forKey: imageUrl as AnyObject) as? UIImage {
             self.imageView.image = imageFromCache
         } else {
             self.imageView.loadImageUrl(articleUrl: articleUrl!)
@@ -58,7 +58,7 @@ class ArticleDetailViewController: UIViewController {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
-        getImageFromCache(articleUrl: articleDetail?.image ?? nil)
+        getImageFromCache(from: articleDetail?.image ?? nil)
         if articleDetail?.author != nil && articleDetail?.author?.isEmpty == false {
             if let author = articleDetail?.author?[0].name {
                 self.authorLabel.text = author
@@ -95,7 +95,7 @@ class ArticleDetailViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: { 
             self.floatingButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { (_) in
-            if self.checkAnimation {
+            if self.floatingCheckAnimation {
                 UIView.animate(withDuration: 0.2, animations: { 
                     self.floatingButton.transform = CGAffineTransform.identity
                     self.papagoButton.backgroundColor = .black
@@ -119,7 +119,7 @@ class ArticleDetailViewController: UIViewController {
                 })
                 self.papagoButton.removeFromSuperview()
             }
-            self.checkAnimation.toggle()
+            self.floatingCheckAnimation.toggle()
         }
     }
     

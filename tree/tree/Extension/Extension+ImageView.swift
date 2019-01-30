@@ -8,7 +8,7 @@
 
 import UIKit
 
-let imageChache = NSCache<AnyObject, AnyObject>()
+let imageCache = NSCache<AnyObject, AnyObject>()
 
 class ArticleImage: UIImageView {
     var imageUrl: String?
@@ -17,7 +17,7 @@ class ArticleImage: UIImageView {
         imageUrl = articleUrl
                 
         image = nil
-        if let imageFromCache = imageChache.object(forKey: articleUrl as AnyObject) as? UIImage {
+        if let imageFromCache = imageCache.object(forKey: articleUrl as AnyObject) as? UIImage {
             self.image = imageFromCache
         }
         
@@ -32,7 +32,7 @@ class ArticleImage: UIImageView {
                 }
 
                 if imageToCache != nil {
-                    imageChache.setObject(imageToCache!, forKey: articleUrl as AnyObject)
+                    imageCache.setObject(imageToCache!, forKey: articleUrl as AnyObject)
                 }
             }
         }

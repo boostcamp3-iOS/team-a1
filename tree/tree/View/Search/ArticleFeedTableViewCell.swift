@@ -21,8 +21,6 @@ class ArticleFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var position = 0
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         settingArticleOuterView()
