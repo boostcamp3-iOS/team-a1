@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D38a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="TreeData">
+    <entity name="ScrappedArticle" representedClassName="ScrappedArticle" syncable="YES">
+        <attribute name="articleAuthor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleUri" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scrappedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ScrappedArticle" positionX="-18" positionY="27" width="128" height="195"/>
+    </elements>
+</model>
