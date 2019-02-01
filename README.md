@@ -1,6 +1,13 @@
 # TREE
 > 전 세계 이슈(급상승 검색어, 뉴스 기사)를 실시간으로 제공하는 애플리케이션
 
+## Team Gardener
+> BoostCamp 3th A-1 Team
+
+- [박성준](https://github.com/godpp) 
+- [김혜리](https://github.com/kimhyeri) 
+- [김현태](https://github.com/onemoongit)
+
 ## GROUND RULE
 
 * 공통된 코드 컨벤션을 사용합니다.
