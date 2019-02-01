@@ -35,11 +35,11 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
-        defaultMessage()
+        defaultMessage(message: "🌴Search Please🌴")
     }
-
-    private func defaultMessage() {        
-        defaultLabel.text = "🌴Search Please🌴"
+    
+    private func defaultMessage(message: String) {        
+        defaultLabel.text = message
         defaultLabel.frame.size = CGSize(width: 200, height: 50)
         defaultLabel.center = self.view.center
         defaultLabel.textAlignment = .center
@@ -49,8 +49,9 @@ class SearchViewController: UIViewController {
     private func setLoadingView() {
         let loadingViewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
         loadingView = LoadingView(frame: loadingViewFrame)
-        loadingView?.center = self.view.center
-        self.view.addSubview(loadingView!)
+        guard let loadView = loadingView else { return } 
+        loadView.center = self.view.center
+        self.view.addSubview(loadView)        
     }
     
     private func delegateSetting() {

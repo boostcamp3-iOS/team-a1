@@ -19,7 +19,6 @@ class LoadingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         initXIB()
         setRadius()
         startAnimation()
@@ -27,7 +26,6 @@ class LoadingView: UIView {
         
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         initXIB()
         setRadius()
         startAnimation()
@@ -51,22 +49,17 @@ class LoadingView: UIView {
     }
   
     private func startAnimation() {
-        
         dot1.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         dot2.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         dot3.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        
         UIView.animate(withDuration: 0.6, delay: 0.0, options: [.repeat, .autoreverse], animations: {
             self.dot1.transform = CGAffineTransform.identity
         }, completion: nil)
-        
         UIView.animate(withDuration: 0.6, delay: 0.2, options: [.repeat, .autoreverse], animations: {
             self.dot2.transform = CGAffineTransform.identity
         }, completion: nil)
-        
         UIView.animate(withDuration: 0.6, delay: 0.4, options: [.repeat, .autoreverse], animations: {
             self.dot3.transform = CGAffineTransform.identity
         }, completion: nil)
     }
-
 }
