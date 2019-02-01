@@ -48,22 +48,22 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     private func createPages() -> [TrandPageView] {
-        guard let page1: TrandPageView = Bundle.main.loadNibNamed(
+        guard let pageByDays: TrandPageView = Bundle.main.loadNibNamed(
             "TrandPageView",
             owner: self,
             options: nil
             )?.first as? TrandPageView else {
                 return []
         }
-        page1.googleTrendData = googleTrendData
-        guard let page2: TrandPageView = Bundle.main.loadNibNamed(
+        pageByDays.googleTrendData = googleTrendData
+        guard let pageByRealTime: TrandPageView = Bundle.main.loadNibNamed(
             "TrandPageView",
             owner: self,
             options: nil
             )?.first as? TrandPageView else {
                 return []
         }
-        return [page1, page2]
+        return [pageByDays, pageByRealTime]
     }
     
     private func setPageScrollView(pages : [TrandPageView]) {
