@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var navigationFilterItem: UIButton!
     
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
+
+    private var loadingView: LoadingView?
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
@@ -23,6 +25,7 @@ class SearchViewController: UIViewController {
     private var searchBarIsPresented: Bool = true
     private var transitionDelegate = PresentationManager()
     private var articles: [Article]?
+    private var defaultLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,23 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
+        setMessageBySearchState(to: "🌴Search Please🌴")
+    }
+    
+    private func setMessageBySearchState(to message: String) {        
+        defaultLabel.text = message
+        defaultLabel.frame.size = CGSize(width: 200, height: 50)
+        defaultLabel.center = self.view.center
+        defaultLabel.textAlignment = .center
+        view.addSubview(defaultLabel)
+    }
+    
+    private func setLoadingView() {
+        let loadingViewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        loadingView = LoadingView(frame: loadingViewFrame)
+        guard let loadView = loadingView else { return } 
+        loadView.center = self.view.center
+        self.view.addSubview(loadView)        
     }
     
     private func delegateSetting() {
@@ -65,12 +85,14 @@ class SearchViewController: UIViewController {
     }
     
     private func getArticlesFromServer(keyword: String) {
+        self.setLoadingView()
         APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
             switch result {
             case .success(let articleData):
                 self.articles = articleData.articles.results
                 DispatchQueue.main.async {
                     self.uiTableView.reloadData()
+                    self.loadingView?.removeFromSuperview()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -162,6 +184,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.navigationItem.title = searchBar.text ?? "Search"
         if let searchKeyword = searchBar.text {
             getArticlesFromServer(keyword: searchKeyword)
+            defaultLabel.removeFromSuperview()
         }
         searchBarHideAndSetting()
     }
