@@ -16,10 +16,9 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
     
+    private lazy var papagoButton = UIButton(type: .custom)
     private var floatingButton = UIButton()
     private var floatingCheckAnimation: Bool = true 
-    private lazy var papagoButton = UIButton(type: .custom)
-
     var articleDetail: Article?
     
     override func viewDidLoad() {
@@ -46,12 +45,13 @@ class ArticleDetailViewController: UIViewController {
         if let imageFromCache = imageCache.object(forKey: imageUrl as AnyObject) as? UIImage {
             self.imageView.image = imageFromCache
         } else {
-            self.imageView.loadImageUrl(articleUrl: articleUrl!)
+            self.imageView.loadImageUrl(articleUrl: imageUrl)
         }
     }
     
     private func registerGestureRecognizer() {
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(tapGesture)
     }
     
     private func setArticleData() {
@@ -59,7 +59,7 @@ class ArticleDetailViewController: UIViewController {
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
         getImageFromCache(from: articleDetail?.image ?? nil)
-        if articleDetail?.author != nil && articleDetail?.author?.isEmpty == false {
+        if articleDetail?.author?.isEmpty == false {
             if let author = articleDetail?.author?[0].name {
                 self.authorLabel.text = author
             }
