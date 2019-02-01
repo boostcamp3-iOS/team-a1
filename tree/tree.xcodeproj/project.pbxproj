@@ -29,6 +29,22 @@
 		BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		BC7969B922002E620003F520 /* TrandDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrandDays.swift */; };
+		BC7969BC22002EB20003F520 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7969BB22002EB20003F520 /* Live.storyboard */; };
+		BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969BE22002EC30003F520 /* LiveViewController.swift */; };
+		BC7969C122002F440003F520 /* GoogleTrendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C022002F440003F520 /* GoogleTrendAPI.swift */; };
+		BC7969C52200AD0E0003F520 /* TrandPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C42200AD0E0003F520 /* TrandPageView.swift */; };
+		BC7969C72200AD190003F520 /* TrandPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969C62200AD190003F520 /* TrandPageView.xib */; };
+		BC7969C922015AF30003F520 /* TrandHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C822015AF30003F520 /* TrandHeaderView.swift */; };
+		BC7969CB22015B010003F520 /* TrandHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969CA22015B010003F520 /* TrandHeaderView.xib */; };
+		BC7969CF2201749F0003F520 /* TrandHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969CD2201749E0003F520 /* TrandHeaderTableViewCell.swift */; };
+		BC7969D02201749F0003F520 /* TrandHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969CE2201749E0003F520 /* TrandHeaderTableViewCell.xib */; };
+		BC7969D3220174B40003F520 /* TrandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969D1220174B40003F520 /* TrandTableViewCell.swift */; };
+		BC7969D4220174B40003F520 /* TrandTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969D2220174B40003F520 /* TrandTableViewCell.xib */; };
+		BC9E02A52202E02600ADD1D5 /* TrandListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A42202E02600ADD1D5 /* TrandListView.xib */; };
+		BC9E02A72202E03A00ADD1D5 /* TrandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */; };
+		BC9E02AA2202EBFD00ADD1D5 /* TrandDateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */; };
+		BC9E02AB2202EBFD00ADD1D5 /* TrandDateHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -62,6 +78,22 @@
 		BC2656BB21FD94EE00003413 /* NetworkResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
+		BC7969B822002E620003F520 /* TrandDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDays.swift; sourceTree = "<group>"; };
+		BC7969BB22002EB20003F520 /* Live.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Live.storyboard; sourceTree = "<group>"; };
+		BC7969BE22002EC30003F520 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
+		BC7969C022002F440003F520 /* GoogleTrendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTrendAPI.swift; sourceTree = "<group>"; };
+		BC7969C42200AD0E0003F520 /* TrandPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandPageView.swift; sourceTree = "<group>"; };
+		BC7969C62200AD190003F520 /* TrandPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandPageView.xib; sourceTree = "<group>"; };
+		BC7969C822015AF30003F520 /* TrandHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandHeaderView.swift; sourceTree = "<group>"; };
+		BC7969CA22015B010003F520 /* TrandHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandHeaderView.xib; sourceTree = "<group>"; };
+		BC7969CD2201749E0003F520 /* TrandHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		BC7969CE2201749E0003F520 /* TrandHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		BC7969D1220174B40003F520 /* TrandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandTableViewCell.swift; sourceTree = "<group>"; };
+		BC7969D2220174B40003F520 /* TrandTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandTableViewCell.xib; sourceTree = "<group>"; };
+		BC9E02A42202E02600ADD1D5 /* TrandListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandListView.xib; sourceTree = "<group>"; };
+		BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandListView.swift; sourceTree = "<group>"; };
+		BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDateHeaderCell.swift; sourceTree = "<group>"; };
+		BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandDateHeaderCell.xib; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -114,10 +146,10 @@
 			children = (
 				6AE2D7AC21FEF30D00444622 /* Config */,
 				BC2656C521FD950900003413 /* Model */,
+				BC2656B121FD94EE00003413 /* Network Layer */,
 				D9C6AB3F21FA9CB4001C0AB8 /* View */,
 				D9C6AB4821FAAD09001C0AB8 /* Controller */,
 				D9C6AB3621FA9B3E001C0AB8 /* Extension */,
-				BC2656B121FD94EE00003413 /* Network Layer */,
 				D9C6AB5B21FC151C001C0AB8 /* Helper */,
 				35DC0DCE21F6F3C700F30416 /* AppDelegate.swift */,
 				35DC0DD221F6F3C700F30416 /* Main.storyboard */,
@@ -159,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */,
+				BC7969C022002F440003F520 /* GoogleTrendAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -167,8 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				BC2656B521FD94EE00003413 /* APIService.swift */,
-				BC2656B621FD94EE00003413 /* APIManager.swift */,
 				BC2656B721FD94EE00003413 /* APICenter.swift */,
+				BC2656B621FD94EE00003413 /* APIManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -188,8 +221,37 @@
 			isa = PBXGroup;
 			children = (
 				BC2656C621FD950900003413 /* Articles.swift */,
+				BC7969B822002E620003F520 /* TrandDays.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC7969BA22002EA60003F520 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				BC7969BB22002EB20003F520 /* Live.storyboard */,
+				BC7969C42200AD0E0003F520 /* TrandPageView.swift */,
+				BC7969C62200AD190003F520 /* TrandPageView.xib */,
+				BC7969C822015AF30003F520 /* TrandHeaderView.swift */,
+				BC7969CA22015B010003F520 /* TrandHeaderView.xib */,
+				BC7969CD2201749E0003F520 /* TrandHeaderTableViewCell.swift */,
+				BC7969CE2201749E0003F520 /* TrandHeaderTableViewCell.xib */,
+				BC7969D1220174B40003F520 /* TrandTableViewCell.swift */,
+				BC7969D2220174B40003F520 /* TrandTableViewCell.xib */,
+				BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */,
+				BC9E02A42202E02600ADD1D5 /* TrandListView.xib */,
+				BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */,
+				BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		BC7969BD22002EB70003F520 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				BC7969BE22002EC30003F520 /* LiveViewController.swift */,
+			);
+			path = Live;
 			sourceTree = "<group>";
 		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
@@ -204,6 +266,7 @@
 		D9C6AB3F21FA9CB4001C0AB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC7969BA22002EA60003F520 /* Live */,
 				D9C6AB4021FA9CBB001C0AB8 /* Search */,
 			);
 			path = View;
@@ -223,6 +286,7 @@
 		D9C6AB4821FAAD09001C0AB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC7969BD22002EB70003F520 /* Live */,
 				D9C6AB4921FAAD09001C0AB8 /* Search */,
 				D9C6AB4B21FAAD09001C0AB8 /* Main */,
 			);
@@ -317,11 +381,18 @@
 			files = (
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
+				BC9E02AB2202EBFD00ADD1D5 /* TrandDateHeaderCell.xib in Resources */,
+				BC9E02A52202E02600ADD1D5 /* TrandListView.xib in Resources */,
 				35CB482121FB6306000D96CF /* ArticleFeedTableViewCell.xib in Resources */,
 				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
+				BC7969C72200AD190003F520 /* TrandPageView.xib in Resources */,
+				BC7969D02201749F0003F520 /* TrandHeaderTableViewCell.xib in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
+				BC7969BC22002EB20003F520 /* Live.storyboard in Resources */,
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
+				BC7969CB22015B010003F520 /* TrandHeaderView.xib in Resources */,
+				BC7969D4220174B40003F520 /* TrandTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,21 +449,30 @@
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
+				BC7969B922002E620003F520 /* TrandDays.swift in Sources */,
+				BC7969C922015AF30003F520 /* TrandHeaderView.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
+				BC9E02A72202E03A00ADD1D5 /* TrandListView.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
+				BC7969D3220174B40003F520 /* TrandTableViewCell.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
+				BC9E02AA2202EBFD00ADD1D5 /* TrandDateHeaderCell.swift in Sources */,
 				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
+				BC7969CF2201749F0003F520 /* TrandHeaderTableViewCell.swift in Sources */,
+				BC7969C52200AD0E0003F520 /* TrandPageView.swift in Sources */,
 				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
+				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
+				BC7969C122002F440003F520 /* GoogleTrendAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,9 +620,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = tree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -560,9 +640,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = tree/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
