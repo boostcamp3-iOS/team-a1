@@ -85,6 +85,8 @@ class SearchViewController: UIViewController {
     }
     
     private func getArticlesFromServer(keyword: String) {
+        articles = nil
+        self.uiTableView.reloadData()
         self.setLoadingView()
         APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
             switch result {
@@ -93,6 +95,9 @@ class SearchViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
+                    if self.articles?.count == 0 {
+                        self.setMessageBySearchState(to: "🌱No results🌱")
+                    }
                 }
             case .failure(let error):
                 print(error.localizedDescription)
