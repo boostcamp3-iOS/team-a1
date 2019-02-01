@@ -26,6 +26,10 @@ class SearchViewController: UIViewController {
     private var transitionDelegate = PresentationManager()
     private var articles: [Article]?
     private var defaultLabel = UILabel()
+    private var keyword = ""
+    private var page = 1
+    private var totalPage = 0
+    private var isMoreLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +96,8 @@ class SearchViewController: UIViewController {
             switch result {
             case .success(let articleData):
                 self.articles = articleData.articles.results
+                self.totalPage = articleData.articles.pages
+                print(self.totalPage)
                 DispatchQueue.main.async {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
@@ -101,6 +107,24 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func loadMoreAriticlesFromServer() {
+        if page < totalPage {
+            page += 1
+            APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: page) { (result) in
+                switch result {
+                case .success(let articleData):
+                    self.articles?.append(contentsOf: articleData.articles.results)
+                    DispatchQueue.main.async {
+                        self.uiTableView.reloadData()
+                        self.isMoreLoading = false
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
     }
@@ -134,12 +158,18 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
-        
         articleView.articleDetail = articles?[indexPath.row]
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreLoading {
+            let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
+            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.2 {
+                loadMoreAriticlesFromServer()
+                isMoreLoading.toggle()
+            }
+        }        
         if searchBarIsPresented && tableViewContentOffsetY < scrollView.contentOffset.y {
             scrollViewCheckCount(.down)
         } else if !searchBarIsPresented && tableViewContentOffsetY > scrollView.contentOffset.y {
@@ -188,6 +218,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
         if let searchKeyword = searchBar.text {
+            keyword = searchKeyword
             getArticlesFromServer(keyword: searchKeyword)
             defaultLabel.removeFromSuperview()
         }
