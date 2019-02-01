@@ -50,8 +50,8 @@ class APICenter<Service: APIService> {
         _ error: NetworkError?
         ) -> Void) {
         do {
-            let urlRequest = try? makeURLRequest(from: service)
-            let task = URLSession.shared.downloadTask(with: urlRequest!) { (localURL, response, _) in
+            let urlRequest = try makeURLRequest(from: service)
+            let task = URLSession.shared.downloadTask(with: urlRequest) { (localURL, response, _) in
                 guard let localURL = localURL else {
                     return completion(nil, NetworkError.invalidURL)
                 }
@@ -77,6 +77,8 @@ class APICenter<Service: APIService> {
                 }
             }
             task.resume()
+        } catch {
+            completion(nil, NetworkError.makeURLRequestFail)
         }
     }
     
@@ -95,7 +97,6 @@ class APICenter<Service: APIService> {
                 throw error
             }
         }
-        print(urlRequest.url)
         return urlRequest
     }
     
