@@ -10,7 +10,6 @@ import UIKit
 
 class TrandPageView: UIView {
 
-    
     @IBOutlet weak var tableView: UITableView!
 
     private let headerCellIdentifier = "TrandHeaderTableViewCell"
