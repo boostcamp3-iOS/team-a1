@@ -18,7 +18,7 @@ class APICenter<Service: APIService> {
     ) -> Void) {
         do {
             let urlRequest = try makeURLRequest(from: service)
-            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, _) in
                 guard let data = data else {
                     return completion(nil, response, NetworkError.noData)
                 }
@@ -40,6 +40,45 @@ class APICenter<Service: APIService> {
             task.resume()
         } catch {
             completion(nil, nil, NetworkError.makeURLRequestFail)
+        }
+    }
+    
+    func requestDownload(
+        _ service: Service,
+        completion: @escaping (
+        _ pureJSON: String?,
+        _ error: NetworkError?
+        ) -> Void) {
+        do {
+            let urlRequest = try makeURLRequest(from: service)
+            let task = URLSession.shared.downloadTask(with: urlRequest) { (localURL, response, _) in
+                guard let localURL = localURL else {
+                    return completion(nil, NetworkError.invalidURL)
+                }
+                do {
+                    let rawJSON = try String(contentsOf: localURL)
+                    guard let pureJSON = rawJSON.components(separatedBy: "\n").last else { return }
+                    guard let response = response as? HTTPURLResponse else {
+                        return completion(pureJSON, NetworkError.noResponse)
+                    }
+                    let statusCode = response.statusCode
+                    switch NetworkResponse().result(response) {
+                    case .success:
+                        completion(pureJSON, nil)
+                    case .failure:
+                        completion(pureJSON, NetworkError.networkFail)
+                    case .clientError:
+                        completion(pureJSON, NetworkError.clientError(statusCode: statusCode))
+                    case .serverError:
+                        completion(pureJSON, NetworkError.serverError(statusCode: statusCode))
+                    }
+                } catch {
+                    completion(nil, NetworkError.decodingFail)
+                }
+            }
+            task.resume()
+        } catch {
+            completion(nil, NetworkError.makeURLRequestFail)
         }
     }
     
