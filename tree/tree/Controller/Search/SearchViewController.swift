@@ -201,8 +201,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func searchBarShowAndHideAnimation(_ direction: ScrollDirection) {
         let directionIsDown = direction == .down ? true : false
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            guard let self = self else { return }
+        UIView.animate(withDuration: 0.5) { 
             self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
             self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
             self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
