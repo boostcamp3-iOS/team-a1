@@ -45,6 +45,8 @@
 		BC9E02A72202E03A00ADD1D5 /* TrandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */; };
 		BC9E02AA2202EBFD00ADD1D5 /* TrandDateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */; };
 		BC9E02AB2202EBFD00ADD1D5 /* TrandDateHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */; };
+		BC9E02B1220411CC00ADD1D5 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02AF220411CB00ADD1D5 /* PresentationController.swift */; };
+		BC9E02B2220411CC00ADD1D5 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02B0220411CB00ADD1D5 /* PresentationManager.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -94,6 +96,8 @@
 		BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandListView.swift; sourceTree = "<group>"; };
 		BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDateHeaderCell.swift; sourceTree = "<group>"; };
 		BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandDateHeaderCell.xib; sourceTree = "<group>"; };
+		BC9E02AF220411CB00ADD1D5 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		BC9E02B0220411CB00ADD1D5 /* PresentationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -254,6 +258,15 @@
 			path = Live;
 			sourceTree = "<group>";
 		};
+		BC9E02AE220411BD00ADD1D5 /* PresentationManager */ = {
+			isa = PBXGroup;
+			children = (
+				BC9E02AF220411CB00ADD1D5 /* PresentationController.swift */,
+				BC9E02B0220411CB00ADD1D5 /* PresentationManager.swift */,
+			);
+			path = PresentationManager;
+			sourceTree = "<group>";
+		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +327,7 @@
 		D9C6AB5B21FC151C001C0AB8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BC9E02AE220411BD00ADD1D5 /* PresentationManager */,
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 			);
 			path = Helper;
@@ -458,6 +472,7 @@
 				BC7969D3220174B40003F520 /* TrandTableViewCell.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
 				BC9E02AA2202EBFD00ADD1D5 /* TrandDateHeaderCell.swift in Sources */,
+				BC9E02B2220411CC00ADD1D5 /* PresentationManager.swift in Sources */,
 				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
 				BC7969CF2201749F0003F520 /* TrandHeaderTableViewCell.swift in Sources */,
 				BC7969C52200AD0E0003F520 /* TrandPageView.swift in Sources */,
@@ -473,6 +488,7 @@
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				BC7969C122002F440003F520 /* GoogleTrendAPI.swift in Sources */,
+				BC9E02B1220411CC00ADD1D5 /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
