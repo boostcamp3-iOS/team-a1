@@ -15,8 +15,8 @@ class TrandHeaderView: UIView {
     @IBOutlet weak var countryLabel: UILabel!
     
     private let xibName = "TrandHeaderView"
-    private weak var shadowView: UIView?
     private let innerMargin: CGFloat = 20.0
+    private weak var shadowView: UIView?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
