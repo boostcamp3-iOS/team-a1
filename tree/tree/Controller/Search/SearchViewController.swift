@@ -35,10 +35,10 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
-        defaultMessage(message: "🌴Search Please🌴")
+        setMessageBySearchState(to: "🌴Search Please🌴")
     }
     
-    private func defaultMessage(message: String) {        
+    private func setMessageBySearchState(to message: String) {        
         defaultLabel.text = message
         defaultLabel.frame.size = CGSize(width: 200, height: 50)
         defaultLabel.center = self.view.center
