@@ -49,9 +49,10 @@ class LoadingView: UIView {
     }
   
     private func startAnimation() {
-        dot1.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        dot2.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-        dot3.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        let reduceSize = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        dot1.transform = reduceSize
+        dot2.transform = reduceSize
+        dot3.transform = reduceSize
         UIView.animate(withDuration: 0.6, delay: 0.0, options: [.repeat, .autoreverse], animations: {
             self.dot1.transform = CGAffineTransform.identity
         }, completion: nil)
