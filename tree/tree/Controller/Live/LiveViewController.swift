@@ -13,8 +13,8 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
-    var pages: [TrandPageView] = []
-    var trandData: TrandDays? {
+    private var pages: [TrandPageView] = []
+    private var googleTrendData: TrendDays? {
         didSet {
             DispatchQueue.main.async {
                 self.setTrandPages()
@@ -40,7 +40,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             guard let self = self else { return }
             switch result {
             case .success(let trandData):
-                self.trandData = trandData
+                self.googleTrendData = trandData
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -55,7 +55,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             )?.first as? TrandPageView else {
                 return []
         }
-        page1.trandData = trandData
+        page1.googleTrendData = googleTrendData
         guard let page2: TrandPageView = Bundle.main.loadNibNamed(
             "TrandPageView",
             owner: self,
@@ -78,7 +78,6 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             height: view.frame.height
         )
         scrollView.isPagingEnabled = true
-        
         for index in 0 ..< pages.count {
             pages[index].frame = CGRect(
                 x: view.frame.width * CGFloat(index),
@@ -88,23 +87,5 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             )
             scrollView.addSubview(pages[index])
         }
-    }
-}
-
-extension LiveViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-        ) -> Int {
-        return 9
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-        ) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        cell.backgroundColor = UIColor.blue
-        return cell
     }
 }

@@ -39,13 +39,13 @@ final class APIManager {
     static func getDailyTrends(
         hl: String,
         geo: String,
-        completion: @escaping (Result<TrandDays>
+        completion: @escaping (Result<TrendDays>
         ) -> Void) {
         APICenter<GoogleTrendAPI>().requestDownload(.getDailyTrends(hl: hl, geo: geo)) { (pureJSON, error)  in
             guard let pureJSON = pureJSON else { return }
             guard let jsonData = pureJSON.data(using: .utf8) else { return }
             do {
-                let decodeJSON = try JSONDecoder().decode(TrandDays.self, from: jsonData)
+                let decodeJSON = try JSONDecoder().decode(TrendDays.self, from: jsonData)
                 completion(Result.success(decodeJSON))
             } catch {
                 completion(Result.failure(NetworkError.decodingFail))

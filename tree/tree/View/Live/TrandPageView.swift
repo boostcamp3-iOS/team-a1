@@ -17,7 +17,7 @@ class TrandPageView: UIView {
     private let listCellIdentifier = "TrandTableViewCell"
     private let dateHeaderCellIdentifier = "TrandDateHeaderCell"
     
-    var trandData: TrandDays?
+    var googleTrendData: TrendDays?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +50,7 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard
-            let sectionCount = trandData?.trandDaysDefault.trendingSearchesDays.count else {
+            let sectionCount = googleTrendData?.trend.searchesByDays.count else {
                 return 1
         }
         return sectionCount + 1
@@ -62,7 +62,7 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
             return 1
         default:
             guard
-                let listBySection = trandData?.trandDaysDefault.trendingSearchesDays[section-1].trendingSearches else {
+                let listBySection = googleTrendData?.trend.searchesByDays[section-1].keywordList else {
                     return 0
             }
             return listBySection.count
@@ -81,7 +81,7 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
                         return UIView()
             }
             headerCell.backgroundColor = UIColor.white
-            headerCell.dateLabel.text = trandData?.trandDaysDefault.trendingSearchesDays[section-1].formattedDate
+            headerCell.dateLabel.text = googleTrendData?.trend.searchesByDays[section-1].formattedDate
             return headerCell.contentView
         }
     }
@@ -104,7 +104,7 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
                     ) as? TrandTableViewCell else {
                         return UITableViewCell()
             }
-            let row = trandData?.trandDaysDefault.trendingSearchesDays[indexPath.section-1].trendingSearches[indexPath.row]
+            let row = googleTrendData?.trend.searchesByDays[indexPath.section-1].keywordList[indexPath.row]
             cell.listView.titleLabel.text = row?.title.query
             cell.listView.rankLabel.text = "\(indexPath.row + 1)"
             cell.listView.subscriptLabel.text = row?.articles[0].title

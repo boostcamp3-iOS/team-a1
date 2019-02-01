@@ -8,28 +8,31 @@
 
 import Foundation
 
-struct TrandDays: Codable {
-    let trandDaysDefault: Default
-    
+struct TrendDays: Codable {
+    let trend: Default
     private enum CodingKeys: String, CodingKey {
-        case trandDaysDefault = "default"
+        case trend = "default"
     }
 }
 
 struct Default: Codable {
-    let trendingSearchesDays: [TrendingSearchesDay]
+    let searchesByDays: [TrendingSearchesDay]
     let endDateForNextRequest: String
     let rssFeedPageURL: String
-    
     private enum CodingKeys: String, CodingKey {
-        case trendingSearchesDays, endDateForNextRequest
+        case endDateForNextRequest
         case rssFeedPageURL = "rssFeedPageUrl"
+        case searchesByDays = "trendingSearchesDays"
     }
 }
 
 struct TrendingSearchesDay: Codable {
     let date, formattedDate: String
-    let trendingSearches: [TrendingSearch]
+    let keywordList: [TrendingSearch]
+    private enum CodingKeys: String, CodingKey {
+        case date, formattedDate
+        case keywordList = "trendingSearches"
+    }
 }
 
 struct TrendingSearch: Codable {
@@ -37,16 +40,15 @@ struct TrendingSearch: Codable {
     let formattedTraffic: String
     let relatedQueries: [Title]
     let image: Image
-    let articles: [Articlea]
+    let articles: [KeywordArticles]
     let shareURL: String
-    
     private enum CodingKeys: String, CodingKey {
         case title, formattedTraffic, relatedQueries, image, articles
         case shareURL = "shareUrl"
     }
 }
 
-struct Articlea: Codable {
+struct KeywordArticles: Codable {
     let title, timeAgo, source: String
     let image: Image?
     let url: String
@@ -57,7 +59,6 @@ struct Image: Codable {
     let newsURL: String
     let source: String
     let imageURL: String
-    
     private enum CodingKeys: String, CodingKey {
         case newsURL = "newsUrl"
         case source
