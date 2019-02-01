@@ -18,4 +18,4 @@
 
 > Search
 
-![](./image/Search.png)
+![](./image/search.png)
