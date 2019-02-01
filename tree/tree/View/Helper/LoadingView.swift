@@ -44,10 +44,10 @@ class LoadingView: UIView {
     }
 
     private func setRadius() {
-        let circle: CGFloat = 5 
-        dot1.layer.cornerRadius = circle
-        dot2.layer.cornerRadius = circle
-        dot3.layer.cornerRadius = circle
+        let radius: CGFloat = 5 
+        dot1.layer.cornerRadius = radius
+        dot2.layer.cornerRadius = radius
+        dot3.layer.cornerRadius = radius
     }
   
     private func startAnimation() {
