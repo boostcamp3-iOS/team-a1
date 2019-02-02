@@ -16,7 +16,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var navigationFilterItem: UIButton!
     
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
-
     private var loadingView: LoadingView?
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
@@ -25,11 +24,11 @@ class SearchViewController: UIViewController {
     private var searchBarIsPresented: Bool = true
     private var transitionDelegate = PresentationManager()
     private var articles: [Article]?
-    private var defaultLabel = UILabel()
-    private var keyword = ""
-    private var page = 1
-    private var totalPage = 0
-    private var isMoreLoading = false
+    private var defaultLabel: UILabel = UILabel()
+    private var keyword: String = ""
+    private var page: Int = 1
+    private var totalPage: Int = 0
+    private var isMoreLoading: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +39,6 @@ class SearchViewController: UIViewController {
         registerArticleCell()
         filterItemSetting()
         setMessageBySearchState(to: "🌴Search Please🌴")
-    }
-    
-    private func setMessageBySearchState(to message: String) {        
-        defaultLabel.text = message
-        defaultLabel.frame.size = CGSize(width: 200, height: 50)
-        defaultLabel.center = self.view.center
-        defaultLabel.textAlignment = .center
-        view.addSubview(defaultLabel)
     }
     
     private func setLoadingView() {
@@ -86,6 +77,14 @@ class SearchViewController: UIViewController {
     private func registerArticleCell() {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
+    }
+    
+    private func setMessageBySearchState(to message: String) {        
+        defaultLabel.text = message
+        defaultLabel.frame.size = CGSize(width: 200, height: 50)
+        defaultLabel.center = self.view.center
+        defaultLabel.textAlignment = .center
+        view.addSubview(defaultLabel)
     }
     
     private func getArticlesFromServer(keyword: String) {
@@ -134,7 +133,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func filterItemTapAtion() {
-        guard let filterViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
+        guard let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
         filterViewController.transitioningDelegate = transitionDelegate
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
@@ -142,6 +141,7 @@ class SearchViewController: UIViewController {
     
 }
 
+// MARK: TableView
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,7 +161,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         articleView.articleDetail = articles?[indexPath.row]
         self.navigationController?.pushViewController(articleView, animated: true)
     }
-    
+}
+
+// MARK: ScrollView
+extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
@@ -209,6 +212,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: SearchBar
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         uiSearchBar.setShowsCancelButton(true, animated: true)
