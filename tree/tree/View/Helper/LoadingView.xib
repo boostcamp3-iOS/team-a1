@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,10 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingView" customModule="tree" customModuleProvider="target">
             <connections>
-                <outlet property="dot1" destination="glM-hE-MxF" id="F2c-5S-lrb"/>
-                <outlet property="dot2" destination="NNO-G2-dDd" id="6FZ-qU-bnZ"/>
-                <outlet property="dot3" destination="gi6-Gm-Pgi" id="mAJ-SD-5pl"/>
                 <outlet property="loadingView" destination="iN0-l3-epB" id="JWI-az-0gg"/>
+                <outletCollection property="dots" destination="glM-hE-MxF" collectionClass="NSMutableArray" id="ENz-bU-djO"/>
+                <outletCollection property="dots" destination="NNO-G2-dDd" collectionClass="NSMutableArray" id="dMl-RP-Q6h"/>
+                <outletCollection property="dots" destination="gi6-Gm-Pgi" collectionClass="NSMutableArray" id="hzz-IJ-gYn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
