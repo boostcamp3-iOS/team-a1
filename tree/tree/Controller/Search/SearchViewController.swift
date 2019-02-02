@@ -29,7 +29,8 @@ class SearchViewController: UIViewController {
     private var page: Int = 1
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
-    
+    private var isPresentedCheck: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -39,6 +40,10 @@ class SearchViewController: UIViewController {
         registerArticleCell()
         filterItemSetting()
         setMessageBySearchState(to: "🌴Search Please🌴")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        isPresentedCheck = searchBarIsPresented
     }
     
     private func setLoadingView() {
@@ -172,17 +177,17 @@ extension SearchViewController {
                 loadMoreAriticlesFromServer()
                 isMoreLoading.toggle()
             }
-        }        
+        }
         if searchBarIsPresented && tableViewContentOffsetY < scrollView.contentOffset.y {
             scrollViewCheckCount(.down)
         } else if !searchBarIsPresented && tableViewContentOffsetY > scrollView.contentOffset.y {
             scrollViewCheckCount(.up)
-        }
+        } 
         tableViewContentOffsetY = scrollView.contentOffset.y
     }
     
     func scrollViewCheckCount(_ scrollDirection: ScrollDirection) {
-        let directionIsDown: Bool = scrollDirection == .down ? true : false
+        let directionIsDown = scrollDirection == .down ? true : false
         tableViewScrollCount.down += directionIsDown == true ? 1 : 0
         tableViewScrollCount.up += directionIsDown == true ? 0 : 1
         if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 5 {
@@ -204,10 +209,18 @@ extension SearchViewController {
     
     func searchBarShowAndHideAnimation(_ direction: ScrollDirection) {
         let directionIsDown = direction == .down ? true : false
-        UIView.animate(withDuration: 0.5) { 
-            self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
+        if !isPresentedCheck {
             self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
-            self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
+            UIView.animate(withDuration: 0.3) { 
+                self.uiSearchBarOuterView.alpha = 1
+                self.isPresentedCheck.toggle()
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) { 
+                self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
+                self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
+                self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
+            }
         }
     }
 }
