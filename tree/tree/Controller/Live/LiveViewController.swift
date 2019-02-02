@@ -13,7 +13,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
-    private var pages: [TrandPageView] = []
+    private var pages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
             DispatchQueue.main.async {
@@ -47,26 +47,26 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    private func createPages() -> [TrandPageView] {
-        guard let pageByDays: TrandPageView = Bundle.main.loadNibNamed(
-            "TrandPageView",
+    private func createPages() -> [TrendPageView] {
+        guard let pageByDays: TrendPageView = Bundle.main.loadNibNamed(
+            "TrendPageView",
             owner: self,
             options: nil
-            )?.first as? TrandPageView else {
+            )?.first as? TrendPageView else {
                 return []
         }
         pageByDays.googleTrendData = googleTrendData
-        guard let pageByRealTime: TrandPageView = Bundle.main.loadNibNamed(
-            "TrandPageView",
+        guard let pageByRealTime: TrendPageView = Bundle.main.loadNibNamed(
+            "TrendPageView",
             owner: self,
             options: nil
-            )?.first as? TrandPageView else {
+            )?.first as? TrendPageView else {
                 return []
         }
         return [pageByDays, pageByRealTime]
     }
     
-    private func setPageScrollView(pages: [TrandPageView]) {
+    private func setPageScrollView(pages: [TrendPageView]) {
         scrollView.frame = CGRect(
             x: 0,
             y: 0,

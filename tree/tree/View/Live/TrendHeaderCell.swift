@@ -1,42 +1,24 @@
 //
-//  TrandHeaderView.swift
+//  TrendHeaderCell.swift
 //  tree
 //
-//  Created by ParkSungJoon on 30/01/2019.
+//  Created by ParkSungJoon on 02/02/2019.
 //  Copyright © 2019 gardener. All rights reserved.
 //
 
 import UIKit
 
-class TrandHeaderView: UIView {
-
-    @IBOutlet weak var backgroundContainerView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
+class TrendHeaderCell: UITableViewCell {
     
-    private let xibName = "TrandHeaderView"
+    @IBOutlet weak var backgroundContainerView: UIView!
+    
     private let innerMargin: CGFloat = 20.0
     private weak var shadowView: UIView?
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initXIB()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         backgroundContainerView.layer.cornerRadius = 14
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         configureShadow()
-    }
-    
-    private func initXIB(){
-        guard let view = Bundle.main.loadNibNamed(
-            xibName,
-            owner: self,
-            options: nil
-            )?.first as? UIView else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
     }
     
     private func configureShadow() {
@@ -66,3 +48,4 @@ class TrandHeaderView: UIView {
         shadowView.layer.shadowPath = shadowPath.cgPath
     }
 }
+

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TrandPageView: UIView {
+class TrendPageView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let headerCellIdentifier = "TrandHeaderTableViewCell"
-    private let listCellIdentifier = "TrandTableViewCell"
-    private let dateHeaderCellIdentifier = "TrandDateHeaderCell"
+    private let headerCellIdentifier = "TrendHeaderCell"
+    private let listCellIdentifier = "TrendListCell"
+    private let listHeaderCellIdentifier = "TrendListHeaderCell"
     
     var googleTrendData: TrendDays?
     
@@ -29,8 +29,8 @@ class TrandPageView: UIView {
         tableView.register(headerNib, forCellReuseIdentifier: headerCellIdentifier)
         let listNib = UINib(nibName: listCellIdentifier, bundle: nil)
         tableView.register(listNib, forCellReuseIdentifier: listCellIdentifier)
-        let dateHeaderNib = UINib(nibName: dateHeaderCellIdentifier, bundle: nil)
-        tableView.register(dateHeaderNib, forCellReuseIdentifier: dateHeaderCellIdentifier)
+        let dateHeaderNib = UINib(nibName: listHeaderCellIdentifier, bundle: nil)
+        tableView.register(dateHeaderNib, forCellReuseIdentifier: listHeaderCellIdentifier)
     }
     
     private func setTableView() {
@@ -45,7 +45,7 @@ class TrandPageView: UIView {
     }
 }
 
-extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
+extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard
@@ -75,8 +75,8 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             guard
                 let headerCell = tableView.dequeueReusableCell(
-                    withIdentifier: "TrandDateHeaderCell"
-                    ) as? TrandDateHeaderCell else {
+                    withIdentifier: listHeaderCellIdentifier
+                    ) as? TrendListHeaderCell else {
                         return UIView()
             }
             headerCell.backgroundColor = UIColor.white
@@ -91,7 +91,7 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: headerCellIdentifier,
                 for: indexPath
-                ) as? TrandHeaderTableViewCell else {
+                ) as? TrendHeaderCell else {
                     return UITableViewCell()
             }
             return cell
@@ -100,14 +100,14 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: listCellIdentifier,
                     for: indexPath
-                    ) as? TrandTableViewCell else {
+                    ) as? TrendListCell else {
                         return UITableViewCell()
             }
             let row = googleTrendData?.trend.searchesByDays[indexPath.section-1].keywordList[indexPath.row]
-            cell.listView.titleLabel.text = row?.title.query
-            cell.listView.rankLabel.text = "\(indexPath.row + 1)"
-            cell.listView.subscriptLabel.text = row?.articles[0].title
-            cell.listView.hitsLabel.text = row?.formattedTraffic
+            cell.titleLabel.text = row?.title.query
+            cell.rankLabel.text = "\(indexPath.row + 1)"
+            cell.subscriptLabel.text = row?.articles[0].title
+            cell.hitsLabel.text = row?.formattedTraffic
             return cell
         }
     }
