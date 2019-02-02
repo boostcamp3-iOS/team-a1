@@ -49,6 +49,7 @@
 		BC9E02A72202E03A00ADD1D5 /* TrandListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */; };
 		BC9E02AA2202EBFD00ADD1D5 /* TrandDateHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */; };
 		BC9E02AB2202EBFD00ADD1D5 /* TrandDateHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */; };
+		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -105,6 +106,7 @@
 		BC9E02A62202E03A00ADD1D5 /* TrandListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandListView.swift; sourceTree = "<group>"; };
 		BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDateHeaderCell.swift; sourceTree = "<group>"; };
 		BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrandDateHeaderCell.xib; sourceTree = "<group>"; };
+		BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Animator.swift"; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				BC9E02A42202E02600ADD1D5 /* TrandListView.xib */,
 				BC9E02A82202EBFD00ADD1D5 /* TrandDateHeaderCell.swift */,
 				BC9E02A92202EBFD00ADD1D5 /* TrandDateHeaderCell.xib */,
+				BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */,
+				BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
@@ -664,7 +668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -684,7 +688,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

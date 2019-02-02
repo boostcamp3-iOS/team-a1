@@ -115,4 +115,18 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: break
+        default:
+            let animation = AnimationFactory.makeMoveUpWithFade(
+                rowHeight: cell.frame.height,
+                duration: 0.2,
+                delayFactor: 0.03
+            )
+            let animator = Animator(animation: animation)
+            animator.animate(to: cell, at: indexPath, in: tableView)
+        }
+    }
 }

@@ -66,7 +66,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         return [pageByDays, pageByRealTime]
     }
     
-    private func setPageScrollView(pages : [TrandPageView]) {
+    private func setPageScrollView(pages: [TrandPageView]) {
         scrollView.frame = CGRect(
             x: 0,
             y: 0,
