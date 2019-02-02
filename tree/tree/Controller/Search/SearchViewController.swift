@@ -58,6 +58,7 @@ class SearchViewController: UIViewController {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
+        uiTableView.prefetchDataSource = self
     }
     
     private func searchBarSetting() {
@@ -249,5 +250,11 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarHideAndSetting() {
         uiSearchBar.setShowsCancelButton(false, animated: true)
         uiSearchBar.resignFirstResponder()
+    }
+}
+
+extension SearchViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+       
     }
 }
