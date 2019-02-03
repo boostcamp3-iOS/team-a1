@@ -12,7 +12,7 @@ enum Country: Int {
     case jpn = 2
     case fra = 3
     case rus = 4
-    case spa = 5
+    case uk = 5
     case ita = 6
     case ger = 7
     
@@ -23,7 +23,7 @@ enum Country: Int {
         case .jpn: return ("일본", "JP")
         case .fra: return ("프랑스", "FR")
         case .rus: return ("러시아", "RU")
-        case .spa: return ("스페인", "ES")
+        case .uk: return ("영국", "GB")
         case .ita: return ("이탈리아", "IT")
         case .ger: return ("독일", "DE")
         }
