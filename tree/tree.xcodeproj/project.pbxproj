@@ -33,6 +33,7 @@
 		BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
 		BC7969B922002E620003F520 /* TrandDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrandDays.swift */; };
 		BC7969BC22002EB20003F520 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7969BB22002EB20003F520 /* Live.storyboard */; };
 		BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969BE22002EC30003F520 /* LiveViewController.swift */; };
@@ -86,6 +87,7 @@
 		BC2656BB21FD94EE00003413 /* NetworkResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
+		BC63852B2206CBF200074CF3 /* Enum+Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Countries.swift"; sourceTree = "<group>"; };
 		BC7969B822002E620003F520 /* TrandDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDays.swift; sourceTree = "<group>"; };
 		BC7969BB22002EB20003F520 /* Live.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Live.storyboard; sourceTree = "<group>"; };
 		BC7969BE22002EC30003F520 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			children = (
 				D9C6AB7E21FED67A001C0AB8 /* PresentationManager */,
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
+				BC63852B2206CBF200074CF3 /* Enum+Countries.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */,
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
+				BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */,
 				BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */,

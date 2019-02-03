@@ -185,17 +185,17 @@
                 <outlet property="expandingStackView" destination="9RA-Zg-gor" id="3Wf-M3-0Ou"/>
                 <outlet property="grayLineView" destination="F9B-PV-XFP" id="K4s-dg-JPp"/>
                 <outlet property="titleLabel" destination="QZ4-7Z-hJ2" id="NNM-wz-5BG"/>
-                <outletCollection property="countries" destination="8Ww-hM-nfX" collectionClass="NSMutableArray" id="96F-K0-HWk"/>
-                <outletCollection property="countries" destination="58L-8n-fQe" collectionClass="NSMutableArray" id="bY7-Jr-Bp5"/>
-                <outletCollection property="countries" destination="01R-Nf-7zd" collectionClass="NSMutableArray" id="EXy-3g-yQ8"/>
-                <outletCollection property="countries" destination="zhu-20-5sV" collectionClass="NSMutableArray" id="f8n-Qw-SUb"/>
-                <outletCollection property="countries" destination="Zp0-uQ-l6q" collectionClass="NSMutableArray" id="Edb-oG-Mcp"/>
-                <outletCollection property="countries" destination="fcY-Be-54p" collectionClass="NSMutableArray" id="nKU-pQ-9eT"/>
-                <outletCollection property="countries" destination="Qlr-fz-1Gd" collectionClass="NSMutableArray" id="kAa-g0-dGk"/>
-                <outletCollection property="countries" destination="gU7-qV-Coh" collectionClass="NSMutableArray" id="ezP-2A-fwW"/>
                 <outletCollection property="switchableConstraints" destination="4LO-Ka-8x8" collectionClass="NSMutableArray" id="jAg-Uc-M14"/>
                 <outletCollection property="switchableConstraints" destination="hvf-aE-0uT" collectionClass="NSMutableArray" id="V1q-sC-Q80"/>
                 <outletCollection property="switchableConstraints" destination="BBH-Gg-pj5" collectionClass="NSMutableArray" id="Tze-ND-eRh"/>
+                <outletCollection property="countryButtons" destination="58L-8n-fQe" collectionClass="NSMutableArray" id="rAe-Sp-BVh"/>
+                <outletCollection property="countryButtons" destination="zhu-20-5sV" collectionClass="NSMutableArray" id="CLI-ft-oJt"/>
+                <outletCollection property="countryButtons" destination="Qlr-fz-1Gd" collectionClass="NSMutableArray" id="XX9-Dp-0ak"/>
+                <outletCollection property="countryButtons" destination="gU7-qV-Coh" collectionClass="NSMutableArray" id="i3w-tA-D33"/>
+                <outletCollection property="countryButtons" destination="01R-Nf-7zd" collectionClass="NSMutableArray" id="OHB-03-l0T"/>
+                <outletCollection property="countryButtons" destination="8Ww-hM-nfX" collectionClass="NSMutableArray" id="Ztp-vD-g0y"/>
+                <outletCollection property="countryButtons" destination="Zp0-uQ-l6q" collectionClass="NSMutableArray" id="KD0-Zl-i48"/>
+                <outletCollection property="countryButtons" destination="fcY-Be-54p" collectionClass="NSMutableArray" id="eac-Dr-35m"/>
             </connections>
             <point key="canvasLocation" x="39.200000000000003" y="46.776611694152926"/>
         </tableViewCell>

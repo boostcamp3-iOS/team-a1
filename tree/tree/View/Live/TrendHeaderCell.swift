@@ -20,6 +20,10 @@ class HeaderCellContent {
     }
 }
 
+protocol SelectedDelegate: class {
+    func passSelectedCountryInfo(_ name: String, _ code: String)
+}
+
 class TrendHeaderCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
@@ -27,19 +31,28 @@ class TrendHeaderCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var grayLineView: UIView!
-    @IBOutlet var countries: [UIButton]!
-    
+    @IBOutlet var countryButtons: [UIButton]!
     @IBOutlet var switchableConstraints: [NSLayoutConstraint]!
     
-    private let innerMargin: CGFloat = 20.0
-    private weak var shadowView: UIView?
     private var zeroHeightConstraint: NSLayoutConstraint?
+    private weak var shadowView: UIView?
+    private let innerMargin: CGFloat = 20.0
+    weak var delegate: SelectedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundContainerView.layer.cornerRadius = 14
-        makeRoundButtonWithBorder(for: countries)
         zeroHeightConstraint = expandingStackView.heightAnchor.constraint(equalToConstant: 0)
+        setButtonTagAndAction(at: countryButtons)
+        makeRoundView(for: backgroundContainerView)
+        countryButtons.forEach { (button) in
+            makeCountryButtonUI(
+                for: button,
+                radius: 20,
+                borderWidth: 1.0,
+                borderColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1),
+                textColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+            )
+        }
     }
     
     override func layoutSubviews() {
@@ -50,22 +63,16 @@ class TrendHeaderCell: UITableViewCell {
     func configure(by content: HeaderCellContent) {
         titleLabel.text = content.title
         countryLabel.text = content.country
-        if content.expanded {
-            expandingStackView.isHidden = false
-            grayLineView.isHidden = false
-            zeroHeightConstraint?.isActive = false
-            expandingStackView.spacing = 20
-            for constraint in switchableConstraints {
-                constraint.isActive = true
-            }
-        } else {
-            expandingStackView.isHidden = true
-            grayLineView.isHidden = true
-            zeroHeightConstraint?.isActive = true
-            expandingStackView.spacing = 0
-            for constraint in switchableConstraints {
-                constraint.isActive = false
-            }
+        when(content.expanded)
+    }
+    
+    private func when(_ expanded: Bool) {
+        expandingStackView.isHidden = !expanded
+        grayLineView.isHidden = !expanded
+        zeroHeightConstraint?.isActive = !expanded
+        expandingStackView.spacing = expanded ? 20 : 0
+        for constraint in switchableConstraints {
+            constraint.isActive = expanded
         }
     }
     
@@ -96,11 +103,62 @@ class TrendHeaderCell: UITableViewCell {
         shadowView.layer.shadowPath = shadowPath.cgPath
     }
     
-    private func makeRoundButtonWithBorder(for buttons: [UIButton]) {
-        for button in buttons {
-            button.layer.cornerRadius = 20
-            button.layer.borderWidth = 1.0
-            button.layer.borderColor = #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 0.8045269692)
+    private func makeRoundView(for view: UIView) {
+        view.layer.cornerRadius = 14
+    }
+    
+    private func makeCountryButtonUI(
+        for button: UIButton,
+        radius: CGFloat,
+        borderWidth: CGFloat,
+        borderColor: CGColor,
+        textColor: UIColor
+    ) {
+        button.layer.cornerRadius = radius
+        button.layer.borderWidth = borderWidth
+        button.layer.borderColor = borderColor
+        button.setTitleColor(textColor, for: .normal)
+    }
+    
+    private func setButtonTagAndAction(at buttons: [UIButton]) {
+        for index in 0..<buttons.count {
+            buttons[index].tag = index
+            buttons[index].addTarget(
+                self,
+                action: #selector(didSelectCountry(_:)),
+                for: .touchUpInside
+            )
         }
+    }
+    
+    private func whenPressedButtonUISetting(_ button: UIButton) {
+        countryButtons.forEach {
+            if $0.tag == button.tag {
+                makeCountryButtonUI(
+                    for: $0,
+                    radius: 20,
+                    borderWidth: 2.0,
+                    borderColor: UIColor.brightBlue.cgColor,
+                    textColor: UIColor.brightBlue
+                )
+            } else {
+                makeCountryButtonUI(
+                    for: $0,
+                    radius: 20,
+                    borderWidth: 1.0,
+                    borderColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1),
+                    textColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+                )
+            }
+        }
+    }
+    
+    @objc private func didSelectCountry(_ button: UIButton) {
+        guard
+            let name = Country(rawValue: button.tag)?.info.name,
+            let code = Country(rawValue: button.tag)?.info.code
+            else { return }
+        whenPressedButtonUISetting(button)
+        delegate?.passSelectedCountryInfo(name, code)
     }
 }

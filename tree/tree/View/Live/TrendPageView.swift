@@ -96,6 +96,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                     return UITableViewCell()
             }
             cell.configure(by: daysKeywordChart)
+            cell.delegate = self
             return cell
         default:
             guard
@@ -140,5 +141,14 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+    }
+}
+
+extension TrendPageView: SelectedDelegate {
+    func passSelectedCountryInfo(_ name: String, _ code: String) {
+        print(name, code)
+        daysKeywordChart.expanded = !daysKeywordChart.expanded
+        daysKeywordChart.country = name
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }
