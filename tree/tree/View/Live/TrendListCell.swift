@@ -25,6 +25,13 @@ class TrendListCell: UITableViewCell {
         configureShadow()
     }
     
+    func configure(by content: Default, with section: Int, _ row: Int) {
+        titleLabel.text = content.searchesByDays[section].keywordList[row].title.query
+        rankLabel.text = "\(row + 1)"
+        subscriptLabel.text = content.searchesByDays[section].keywordList[row].articles[0].title
+        hitsLabel.text = content.searchesByDays[section].keywordList[row].formattedTraffic
+    }
+    
     private func configureShadow() {
         let shadowView = UIView(frame: CGRect(x: innerMargin,
                                               y: innerMargin,
@@ -33,20 +40,10 @@ class TrendListCell: UITableViewCell {
         ))
         insertSubview(shadowView, at: 0)
         self.shadowView = shadowView
-        self.applyShadow(
+        applyShadow(
             shadowView: shadowView,
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
-    }
-    
-    private func applyShadow(shadowView: UIView, width: CGFloat, height: CGFloat) {
-        let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
-        shadowView.layer.masksToBounds = false
-        shadowView.layer.shadowRadius = 14.0
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: width, height: height)
-        shadowView.layer.shadowOpacity = 0.15
-        shadowView.layer.shadowPath = shadowPath.cgPath
     }
 }

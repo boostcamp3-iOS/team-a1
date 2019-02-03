@@ -13,6 +13,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
+    private let pageNibName = "TrendPageView"
     private var pages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
@@ -21,10 +22,25 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             }
         }
     }
+    private var countryName: String = "미국"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkWithServer()
+        networkWithServer("US")
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(receiveCountryInfo(_:)),
+            name: .observeCountryChanging,
+            object: nil
+        )
+    }
+    
+    @objc func receiveCountryInfo(_ notification: Notification) {
+        guard let countryInfo = notification.userInfo as? [String: String] else { return }
+        guard let countryCode = countryInfo["code"] else { return }
+        guard let countryName = countryInfo["name"] else { return }
+        networkWithServer(countryCode)
+        self.countryName = countryName
     }
     
     private func setTrandPages() {
@@ -35,8 +51,9 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         view.bringSubviewToFront(pageControl)
     }
     
-    private func networkWithServer() {
-        APIManager.getDailyTrends(hl: "ko", geo: "US") { [weak self] (result) in
+    private func networkWithServer(_ geo: String) {
+        print(geo)
+        APIManager.getDailyTrends(hl: "ko", geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trandData):
@@ -49,15 +66,19 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private func createPages() -> [TrendPageView] {
         guard let pageByDays: TrendPageView = Bundle.main.loadNibNamed(
-            "TrendPageView",
+            pageNibName,
             owner: self,
             options: nil
             )?.first as? TrendPageView else {
                 return []
         }
+        pageByDays.daysKeywordChart = HeaderCellContent(
+            title: "일별 급상승 검색어",
+            country: countryName
+        )
         pageByDays.googleTrendData = googleTrendData
         guard let pageByRealTime: TrendPageView = Bundle.main.loadNibNamed(
-            "TrendPageView",
+            pageNibName,
             owner: self,
             options: nil
             )?.first as? TrendPageView else {

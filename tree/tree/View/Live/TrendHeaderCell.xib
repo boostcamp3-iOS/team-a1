@@ -114,7 +114,7 @@
                                                 <rect key="frame" x="146.5" y="0.0" width="118.5" height="43"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <state key="normal" title="스페인">
+                                                <state key="normal" title="영국">
                                                     <color key="titleColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>

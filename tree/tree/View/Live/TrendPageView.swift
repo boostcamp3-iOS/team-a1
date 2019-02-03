@@ -15,9 +15,8 @@ class TrendPageView: UIView {
     private let headerCellIdentifier = "TrendHeaderCell"
     private let listCellIdentifier = "TrendListCell"
     private let listHeaderCellIdentifier = "TrendListHeaderCell"
-    
     var googleTrendData: TrendDays?
-    var daysKeywordChart = HeaderCellContent(title: "일별 급상승 검색어", country: "미국")
+    var daysKeywordChart: HeaderCellContent?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -95,8 +94,10 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                 ) as? TrendHeaderCell else {
                     return UITableViewCell()
             }
-            cell.configure(by: daysKeywordChart)
-            cell.delegate = self
+            guard let headerData = daysKeywordChart else {
+                return UITableViewCell()
+            }
+            cell.configure(by: headerData)
             return cell
         default:
             guard
@@ -106,11 +107,12 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                     ) as? TrendListCell else {
                         return UITableViewCell()
             }
-            let row = googleTrendData?.trend.searchesByDays[indexPath.section-1].keywordList[indexPath.row]
-            cell.titleLabel.text = row?.title.query
-            cell.rankLabel.text = "\(indexPath.row + 1)"
-            cell.subscriptLabel.text = row?.articles[0].title
-            cell.hitsLabel.text = row?.formattedTraffic
+            guard let keywordData = googleTrendData?.trend else {
+                return UITableViewCell()
+            }
+            let section = indexPath.section - 1
+            let row = indexPath.row
+            cell.configure(by: keywordData, with: section, row)
             return cell
         }
     }
@@ -125,8 +127,8 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             let animation = AnimationFactory.makeMoveUpWithFade(
                 rowHeight: cell.frame.height,
-                duration: 0.2,
-                delayFactor: 0.03
+                duration: 0.3,
+                delayFactor: 0.05
             )
             let animator = Animator(animation: animation)
             animator.animate(to: cell, at: indexPath, in: tableView)
@@ -136,19 +138,11 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            daysKeywordChart.expanded = !daysKeywordChart.expanded
+            guard let headerData = daysKeywordChart else { return }
+            headerData.expanded = !headerData.expanded
             tableView.reloadRows(at: [indexPath], with: .automatic)
         default:
             break
         }
-    }
-}
-
-extension TrendPageView: SelectedDelegate {
-    func passSelectedCountryInfo(_ name: String, _ code: String) {
-        print(name, code)
-        daysKeywordChart.expanded = !daysKeywordChart.expanded
-        daysKeywordChart.country = name
-        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
 }

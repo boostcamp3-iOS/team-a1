@@ -34,6 +34,7 @@
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
 		BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
+		BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852D2207442B00074CF3 /* Extension+Notification.swift */; };
 		BC7969B922002E620003F520 /* TrandDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrandDays.swift */; };
 		BC7969BC22002EB20003F520 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7969BB22002EB20003F520 /* Live.storyboard */; };
 		BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969BE22002EC30003F520 /* LiveViewController.swift */; };
@@ -88,6 +89,7 @@
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BC63852B2206CBF200074CF3 /* Enum+Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Countries.swift"; sourceTree = "<group>"; };
+		BC63852D2207442B00074CF3 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		BC7969B822002E620003F520 /* TrandDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDays.swift; sourceTree = "<group>"; };
 		BC7969BB22002EB20003F520 /* Live.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Live.storyboard; sourceTree = "<group>"; };
 		BC7969BE22002EC30003F520 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */,
 				6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */,
 				6A5D282B220187F8009EC8ED /* Extension+UIView.swift */,
+				BC63852D2207442B00074CF3 /* Extension+Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */,
 				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
+				BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,

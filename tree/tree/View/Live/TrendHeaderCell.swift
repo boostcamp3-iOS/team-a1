@@ -20,10 +20,6 @@ class HeaderCellContent {
     }
 }
 
-protocol SelectedDelegate: class {
-    func passSelectedCountryInfo(_ name: String, _ code: String)
-}
-
 class TrendHeaderCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
@@ -37,7 +33,6 @@ class TrendHeaderCell: UITableViewCell {
     private var zeroHeightConstraint: NSLayoutConstraint?
     private weak var shadowView: UIView?
     private let innerMargin: CGFloat = 20.0
-    weak var delegate: SelectedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -91,16 +86,6 @@ class TrendHeaderCell: UITableViewCell {
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
-    }
-    
-    private func applyShadow(shadowView: UIView, width: CGFloat, height: CGFloat) {
-        let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
-        shadowView.layer.masksToBounds = false
-        shadowView.layer.shadowRadius = 14.0
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: width, height: height)
-        shadowView.layer.shadowOpacity = 0.15
-        shadowView.layer.shadowPath = shadowPath.cgPath
     }
     
     private func makeRoundView(for view: UIView) {
@@ -159,6 +144,10 @@ class TrendHeaderCell: UITableViewCell {
             let code = Country(rawValue: button.tag)?.info.code
             else { return }
         whenPressedButtonUISetting(button)
-        delegate?.passSelectedCountryInfo(name, code)
+        NotificationCenter.default.post(
+            name: .observeCountryChanging,
+            object: nil,
+            userInfo: ["name": name, "code": code]
+        )
     }
 }
