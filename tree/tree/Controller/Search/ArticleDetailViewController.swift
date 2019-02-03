@@ -42,11 +42,7 @@ class ArticleDetailViewController: UIViewController {
             imageView.isHidden = true
             return 
         }
-        if let imageFromCache = imageCache.object(forKey: imageUrl as AnyObject) as? UIImage {
-            self.imageView.image = imageFromCache
-        } else {
-            self.imageView.loadImageUrl(articleUrl: imageUrl)
-        }
+        self.imageView.loadImageUrl(articleUrl: imageUrl)
     }
     
     private func registerGestureRecognizer() {
