@@ -22,6 +22,8 @@
 		6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282B220187F8009EC8ED /* Extension+UIView.swift */; };
 		6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A65DA422203D22B005EB2BC /* LoadingView.xib */; };
 		6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA442203D242005EB2BC /* LoadingView.swift */; };
+		6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA492206190C005EB2BC /* ImageCache.swift */; };
+		6A65DA4D2206D556005EB2BC /* ImagePrefetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA4C2206D556005EB2BC /* ImagePrefetch.swift */; };
 		6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
 		BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
 		BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */; };
@@ -76,6 +78,8 @@
 		6A5D282B220187F8009EC8ED /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		6A65DA442203D242005EB2BC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		6A65DA492206190C005EB2BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		6A65DA4C2206D556005EB2BC /* ImagePrefetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePrefetch.swift; sourceTree = "<group>"; };
 		6AE2D7AD21FEF30D00444622 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,15 @@
 				6A65DA442203D242005EB2BC /* LoadingView.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		6A65DA4B2206D533005EB2BC /* ImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				6A65DA492206190C005EB2BC /* ImageCache.swift */,
+				6A65DA4C2206D556005EB2BC /* ImagePrefetch.swift */,
+			);
+			path = ImageHelper;
 			sourceTree = "<group>";
 		};
 		6AE2D7AC21FEF30D00444622 /* Config */ = {
@@ -341,6 +354,7 @@
 		D9C6AB5B21FC151C001C0AB8 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				6A65DA4B2206D533005EB2BC /* ImageHelper */,
 				D9C6AB7E21FED67A001C0AB8 /* PresentationManager */,
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 			);
@@ -485,9 +499,11 @@
 			files = (
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
+				6A65DA4D2206D556005EB2BC /* ImagePrefetch.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
+				6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
 				BC7969B922002E620003F520 /* TrandDays.swift in Sources */,
 				BC7969C922015AF30003F520 /* TrandHeaderView.swift in Sources */,
@@ -664,7 +680,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -684,7 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

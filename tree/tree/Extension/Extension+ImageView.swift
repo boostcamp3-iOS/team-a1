@@ -8,31 +8,43 @@
 
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
-
 class ArticleImage: UIImageView {
-    var imageUrl: String?
-    
+    private let imageCache = ImageCache()
+    private let ioQueue = DispatchQueue(label: "diskCache")
+    private var imageUrl: String?
+
     func loadImageUrl(articleUrl: String) {
         imageUrl = articleUrl
-                
         image = nil
-        if let imageFromCache = imageCache.object(forKey: articleUrl as AnyObject) as? UIImage {
+        let extract = self.imageUrl?.components(separatedBy: "/").last
+
+        if let imageFromCache = imageCache.memoryCache.object(forKey: articleUrl as AnyObject) as? UIImage {
             self.image = imageFromCache
+            return
+        } else {
+            if let imagePath = imageCache.path(for: extract ?? "") {
+                if let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
+                    self.image = imageToDisk
+                    self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)
+                    return
+                }
+            }
         }
-        
+     
         DispatchQueue.global().async {
             guard let imageURL = URL(string: articleUrl) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             
             DispatchQueue.main.async {
-                let imageToCache = UIImage(data: imageData)
+                guard let imageToCache = UIImage(data: imageData) else { return }
                 if self.imageUrl == articleUrl {
                     self.image = imageToCache
                 }
-
-                if imageToCache != nil {
-                    imageCache.setObject(imageToCache!, forKey: articleUrl as AnyObject)
+                self.imageCache.memoryCache.setObject(imageToCache, forKey: articleUrl as AnyObject)
+                self.ioQueue.async {
+                    if let path = extract {
+                        try?self.imageCache.store(image: imageToCache, name: path)                        
+                    }
                 }
             }
         }
