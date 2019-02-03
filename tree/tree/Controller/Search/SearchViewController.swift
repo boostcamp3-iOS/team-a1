@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var navigationFilterItem: UIButton!
     
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
+    private let imagePrefetch = ImagePrefetch()
     private var loadingView: LoadingView?
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
@@ -254,7 +255,18 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UITableViewDataSourcePrefetching {
+    
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-       
+        indexPaths.forEach({
+            guard let articleUrl = articles?[$0.row].image else { return }
+            imagePrefetch.loadingImage(articleUrl)
+        })
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach({
+            guard let articleUrl = articles?[$0.row].image else { return }
+            imagePrefetch.cancleLoadingImage(articleUrl)
+        })    
     }
 }
