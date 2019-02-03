@@ -17,6 +17,7 @@ class TrendPageView: UIView {
     private let listHeaderCellIdentifier = "TrendListHeaderCell"
     
     var googleTrendData: TrendDays?
+    var daysKeywordChart = HeaderCellContent(title: "일별 급상승 검색어", country: "미국")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -94,6 +95,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                 ) as? TrendHeaderCell else {
                     return UITableViewCell()
             }
+            cell.configure(by: daysKeywordChart)
             return cell
         default:
             guard
@@ -127,6 +129,16 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             )
             let animator = Animator(animation: animation)
             animator.animate(to: cell, at: indexPath, in: tableView)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            daysKeywordChart.expanded = !daysKeywordChart.expanded
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        default:
+            break
         }
     }
 }
