@@ -30,25 +30,13 @@ class SearchFilterViewController: UIViewController {
         sortSegmentedControl.backgroundColor = .clear
         keywordSegmentedControl.tintColor = .clear
         sortSegmentedControl.tintColor = .clear
-        
         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-        
-        keywordSegmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font: font as Any,
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray
-            ], for: .normal)
-        keywordSegmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font: font as Any,
-            NSAttributedString.Key.foregroundColor: UIColor.black
-            ], for: .selected)
-        sortSegmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font: font as Any,
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray
-            ], for: .normal)
-        sortSegmentedControl.setTitleTextAttributes([
-            NSAttributedString.Key.font: font as Any,
-            NSAttributedString.Key.foregroundColor: UIColor.black
-            ], for: .selected)
+        let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.lightGray ]
+        let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.black ]
+        keywordSegmentedControl.setTitleTextAttributes(normalAttributedString, for: .normal)
+        keywordSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
+        sortSegmentedControl.setTitleTextAttributes(normalAttributedString, for: .normal)
+        sortSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
     }
     
     private func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
@@ -63,5 +51,9 @@ class SearchFilterViewController: UIViewController {
             self.keywordSortStackView.isHidden = !self.selectViewIsPresented
             self.pickerView.isHidden = self.selectViewIsPresented
         }
+    }
+    
+    @IBAction func saveButtonClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
