@@ -20,12 +20,12 @@ class SearchFilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingSegment()
-        pickerView.isHidden = true
+        roundCorners(layer: saveButton.layer, radius: CGFloat(5))
         roundCorners(layer: self.view.layer, radius: CGFloat(15.0))
     }
     
     private func settingSegment() {
+        pickerView.isHidden = true
         keywordSegmentedControl.backgroundColor = .clear
         sortSegmentedControl.backgroundColor = .clear
         keywordSegmentedControl.tintColor = .clear
@@ -42,7 +42,6 @@ class SearchFilterViewController: UIViewController {
     private func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
         targetLayer.cornerRadius = withRaidus
         targetLayer.masksToBounds = true
-        saveButton.layer.cornerRadius = 5
     }
     
     @IBAction func selectButtonClick(_ sender: Any) {
