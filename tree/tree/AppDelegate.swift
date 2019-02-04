@@ -15,13 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        guard let tabBarController = window?.rootViewController as? ScrapTabBarController else {
-            return false
-        }
-        guard let scrapViewContoller = tabBarController.flowToViewController(itemIdx: 0) as? ScrapViewController else {
-            return false
-        }
-        scrapViewContoller.managedContext = persistentContainer.viewContext
+//        guard let tabBarController = window?.rootViewController as? ScrapTabBarController else {
+//            return false
+//        }
+//        guard let scrapViewContoller = tabBarController.flowToViewController(itemIdx: 0) as? ScrapViewController else {
+//            return false
+//        }
+//        scrapViewContoller.managedContext = persistentContainer.viewContext
         
         return true
     }
