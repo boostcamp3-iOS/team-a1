@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="1844" y="216.34182908545728"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Scrap Tab Bar Controller-->
         <scene sceneID="ByJ-HL-y8Q">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zr8-X7-0HT" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zr8-X7-0HT" customClass="ScrapTabBarController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HMA-tm-uhf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

@@ -44,7 +44,6 @@
 		D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */; };
 		D9D1459822069F0800CC58DA /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459722069F0800CC58DA /* ScrapService.swift */; };
 		D9D1459A2206A05C00CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145992206A05C00CC58DA /* ScrapManager.swift */; };
-		D9D1459C2206A21200CC58DA /* ScrapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459B2206A21200CC58DA /* ScrapCenter.swift */; };
 		D9D1459E2207E39000CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459D2207E39000CC58DA /* ScrapTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +89,6 @@
 		D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		D9D1459722069F0800CC58DA /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D9D145992206A05C00CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
-		D9D1459B2206A21200CC58DA /* ScrapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCenter.swift; sourceTree = "<group>"; };
 		D9D1459D2207E39000CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -326,7 +324,6 @@
 			children = (
 				D9D1459722069F0800CC58DA /* ScrapService.swift */,
 				D9D145992206A05C00CC58DA /* ScrapManager.swift */,
-				D9D1459B2206A21200CC58DA /* ScrapCenter.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -477,7 +474,6 @@
 				6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */,
 				D9D1459822069F0800CC58DA /* ScrapService.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
-				D9D1459C2206A21200CC58DA /* ScrapCenter.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */,
 				D9178DFC22015475000C4A7F /* ScrapViewController.swift in Sources */,

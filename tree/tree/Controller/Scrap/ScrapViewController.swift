@@ -11,24 +11,32 @@ import CoreData
 
 class ScrapViewController: UIViewController {
     
-    var managedContext: NSManagedObjectContext {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return NSManagedObjectContext()
-        }
-        return appDelegate.persistentContainer.viewContext
-    }
-//    var managedContext: NSManagedObjectContext!
+    var managedContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        saveData()
+        
+        let testArticle = Article.init(
+            uri: "1",
+            lang: "en",
+            date: "2019-2-3",
+            time: "00:00",
+            sim: 02.07,
+            url: "hello.world",
+            title: "one",
+            body: "test\nbody",
+            source: Source.init(uri: "1", dataType: "2", title: "3"),
+            author: nil,
+            image: nil
+        )
+        
+//        ScrapManager.scrapArticle(article: testArticle)
         fetchData()
     }
     
     private func saveData() {
         let entity = NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext)!
         let article = ScrappedArticle(entity: entity, insertInto: managedContext)
-//        article.scrappedDate = NSDate()
         do {
             try managedContext.save()
         } catch {
@@ -38,7 +46,6 @@ class ScrapViewController: UIViewController {
     
     private func fetchData() {
         let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
-
         var objs: [ScrappedArticle] = []
         do {
             objs = try managedContext.fetch(request)
@@ -47,6 +54,9 @@ class ScrapViewController: UIViewController {
         }
         
         print(objs.count)
-        print(objs[0].scrappedDate)
+    }
+    
+    private func deleteAll() {
+        
     }
 }
