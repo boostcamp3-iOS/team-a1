@@ -22,12 +22,10 @@ class ArticleImage: UIImageView {
             self.image = imageFromCache
             return
         } else {
-            if let imagePath = imageCache.path(for: extract ?? "") {
-                if let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
-                    self.image = imageToDisk
-                    self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)
-                    return
-                }
+            if let imagePath = imageCache.path(for: extract ?? ""), let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
+                self.image = imageToDisk
+                self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)
+                return
             }
         }
      
