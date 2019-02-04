@@ -21,4 +21,3 @@ extension PresentationManager: UIViewControllerTransitioningDelegate {
         return presentationController
     }
 }
-

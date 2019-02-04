@@ -16,7 +16,7 @@ class SearchFilterViewController: UIViewController {
         roundCorners(layer: self.view.layer, radius: CGFloat(15.0))
     }
     
-    func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
+    private func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
         targetLayer.cornerRadius = withRaidus
         targetLayer.masksToBounds = true
     }

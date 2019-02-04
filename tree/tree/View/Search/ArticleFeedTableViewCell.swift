@@ -40,17 +40,17 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
         betweenLabel.isHidden = true
-        if article.author != nil && article.author?.isEmpty == false {
+        if article.author?.isEmpty == false {
             if let author = article.author?[0].name {
                 betweenLabel.isHidden = false
                 self.authorLabel.text = author
             }
         } 
-        if article.image == nil {
-            self.imageStackView.isHidden = true
-        } else {
+        if let articleImage = article.image { 
             self.imageStackView.isHidden = false
-            self.articleImageView.loadImageUrl(articleUrl: article.image ?? "")
+            self.articleImageView.loadImageUrl(articleUrl: articleImage)
+        } else {
+            self.imageStackView.isHidden = true
         }
     }
     

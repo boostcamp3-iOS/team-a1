@@ -13,8 +13,8 @@ class ArticleImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var articleImage: UIImage?
     private var initTouchPosition: CGPoint = CGPoint(x: 0, y: 0)
+    var articleImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
