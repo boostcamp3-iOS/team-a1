@@ -34,7 +34,6 @@
 		D9178E122201885F000C4A7F /* TreeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9178E102201885F000C4A7F /* TreeData.xcdatamodeld */; };
 		D9178E1522018954000C4A7F /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9178E1322018953000C4A7F /* ScrappedArticle+CoreDataProperties.swift */; };
 		D9178E1622018954000C4A7F /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9178E1422018953000C4A7F /* ScrappedArticle+CoreDataClass.swift */; };
-		D9178E2722030C8D000C4A7F /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9178E2622030C8D000C4A7F /* ScrapTabBarController.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -46,6 +45,7 @@
 		D9D1459822069F0800CC58DA /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459722069F0800CC58DA /* ScrapService.swift */; };
 		D9D1459A2206A05C00CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145992206A05C00CC58DA /* ScrapManager.swift */; };
 		D9D1459C2206A21200CC58DA /* ScrapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459B2206A21200CC58DA /* ScrapCenter.swift */; };
+		D9D1459E2207E39000CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D1459D2207E39000CC58DA /* ScrapTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +80,6 @@
 		D9178E112201885F000C4A7F /* TreeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeData.xcdatamodel; sourceTree = "<group>"; };
 		D9178E1322018953000C4A7F /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D9178E1422018953000C4A7F /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D9178E2622030C8D000C4A7F /* ScrapTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +91,7 @@
 		D9D1459722069F0800CC58DA /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D9D145992206A05C00CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
 		D9D1459B2206A21200CC58DA /* ScrapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapCenter.swift; sourceTree = "<group>"; };
+		D9D1459D2207E39000CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				D9178DFB22015475000C4A7F /* ScrapViewController.swift */,
-				D9178E2622030C8D000C4A7F /* ScrapTabBarController.swift */,
+				D9D1459D2207E39000CC58DA /* ScrapTabBarController.swift */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -456,7 +456,6 @@
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
-				D9178E2722030C8D000C4A7F /* ScrapTabBarController.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
@@ -469,6 +468,7 @@
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
+				D9D1459E2207E39000CC58DA /* ScrapTabBarController.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
