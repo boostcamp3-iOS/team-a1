@@ -239,6 +239,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oUo-6W-JOZ"/>
                     </view>
+                    <connections>
+                        <outlet property="keywordSegmentedControl" destination="onr-x1-VqZ" id="ei7-cB-4Mi"/>
+                        <outlet property="sortSegmentedControl" destination="3jR-wy-24A" id="nCU-Yy-OT5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8M-ha-ZUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
