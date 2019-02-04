@@ -11,8 +11,17 @@ import UIKit
 class ArticleImage: UIImageView {
     private let imageCache = ImageCache()
     private let ioQueue = DispatchQueue(label: "diskCache")
+    private var task = [URLSessionTask]()
     private var imageUrl: String?
-
+    
+    func cancleLoadingImage(_ articleUrl: String) {
+        guard let imageURL = URL(string: articleUrl) else { return }
+        guard let taskIndex = task.index(where: { $0.originalRequest?.url == imageURL}) else { return }
+        let myTask = task[taskIndex]
+        myTask.cancel()
+        task.remove(at: taskIndex)
+    }
+    
     func loadImageUrl(articleUrl: String) {
         imageUrl = articleUrl
         image = nil
@@ -28,23 +37,24 @@ class ArticleImage: UIImageView {
                 return
             }
         }
-     
-        DispatchQueue.global().async {
-            guard let imageURL = URL(string: articleUrl) else { return }
-            guard let imageData = try? Data(contentsOf: imageURL) else { return }
-            
+        guard let imageURL = URL(string: articleUrl) else { return }
+        guard task.index(where: {$0.originalRequest?.url == imageURL }) == nil else { return }
+        let myTask = URLSession.shared.dataTask(with: imageURL) { [weak self] (data, _, _) in
             DispatchQueue.main.async {
-                guard let imageToCache = UIImage(data: imageData) else { return }
+                guard let self = self else { return }
+                guard let data = data else { return }
+                guard let imageToCache = UIImage(data: data) else { return }
                 if self.imageUrl == articleUrl {
                     self.image = imageToCache
                 }
-                self.imageCache.memoryCache.setObject(imageToCache, forKey: articleUrl as AnyObject)
                 self.ioQueue.async {
                     if let path = extract {
-                        try?self.imageCache.store(image: imageToCache, name: path)                        
+                        try? self.imageCache.store(image: imageToCache, name: path) 
                     }
                 }
             }
         }
+        myTask.resume()
+        task.append(myTask)
     }
 }
