@@ -35,7 +35,7 @@
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
 		BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
 		BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852D2207442B00074CF3 /* Extension+Notification.swift */; };
-		BC7969B922002E620003F520 /* TrandDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrandDays.swift */; };
+		BC7969B922002E620003F520 /* TrendDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrendDays.swift */; };
 		BC7969BC22002EB20003F520 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7969BB22002EB20003F520 /* Live.storyboard */; };
 		BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969BE22002EC30003F520 /* LiveViewController.swift */; };
 		BC7969C122002F440003F520 /* GoogleTrendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C022002F440003F520 /* GoogleTrendAPI.swift */; };
@@ -90,7 +90,7 @@
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BC63852B2206CBF200074CF3 /* Enum+Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Countries.swift"; sourceTree = "<group>"; };
 		BC63852D2207442B00074CF3 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
-		BC7969B822002E620003F520 /* TrandDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandDays.swift; sourceTree = "<group>"; };
+		BC7969B822002E620003F520 /* TrendDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDays.swift; sourceTree = "<group>"; };
 		BC7969BB22002EB20003F520 /* Live.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Live.storyboard; sourceTree = "<group>"; };
 		BC7969BE22002EC30003F520 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		BC7969C022002F440003F520 /* GoogleTrendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTrendAPI.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				BC2656C621FD950900003413 /* Articles.swift */,
-				BC7969B822002E620003F520 /* TrandDays.swift */,
+				BC7969B822002E620003F520 /* TrendDays.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,7 +484,7 @@
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
-				BC7969B922002E620003F520 /* TrandDays.swift in Sources */,
+				BC7969B922002E620003F520 /* TrendDays.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
