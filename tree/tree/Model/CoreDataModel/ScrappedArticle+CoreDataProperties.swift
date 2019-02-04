@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension ScrappedArticle {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ScrappedArticle> {
@@ -26,5 +25,6 @@ extension ScrappedArticle {
     @NSManaged public var scrappedDate: NSDate?
     @NSManaged public var articleTitle: String?
     @NSManaged public var articleUri: String?
+    @NSManaged public var category: String?
 
 }
