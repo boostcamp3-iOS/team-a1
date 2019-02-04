@@ -94,7 +94,7 @@ class SearchViewController: UIViewController {
         view.addSubview(defaultLabel)
     }
     
-    private func getArticlesFromServer(keyword: String) {
+    private func getArticles(keyword: String) {
         articles = nil
         self.uiTableView.reloadData()
         self.setLoadingView()
@@ -103,7 +103,6 @@ class SearchViewController: UIViewController {
             case .success(let articleData):
                 self.articles = articleData.articles.results
                 self.totalPage = articleData.articles.pages
-                print(self.totalPage)
                 DispatchQueue.main.async {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
@@ -117,7 +116,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func loadMoreAriticlesFromServer() {
+    private func loadMoreArticles() {
         if page < totalPage {
             page += 1
             APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: page) { (result) in
@@ -176,7 +175,7 @@ extension SearchViewController {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
             if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
-                loadMoreAriticlesFromServer()
+                loadMoreArticles()
                 isMoreLoading.toggle()
             }
         }
@@ -237,7 +236,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.navigationItem.title = searchBar.text ?? "Search"
         if let searchKeyword = searchBar.text {
             keyword = searchKeyword
-            getArticlesFromServer(keyword: searchKeyword)
+            getArticles(keyword: searchKeyword)
             defaultLabel.removeFromSuperview()
         }
         searchBarHideAndSetting()
