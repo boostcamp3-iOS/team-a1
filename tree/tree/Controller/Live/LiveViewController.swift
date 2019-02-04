@@ -13,7 +13,8 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
-    private var pages: [TrandPageView] = []
+    private let pageNibName = "TrendPageView"
+    private var livePagerPages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
             DispatchQueue.main.async {
@@ -21,22 +22,37 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             }
         }
     }
+    private var countryName: String = Country.usa.info.name
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkWithServer()
+        networkWithServer(Country.usa.info.code)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(receiveCountryInfo(_:)),
+            name: .observeCountryChanging,
+            object: nil
+        )
+    }
+    
+    @objc func receiveCountryInfo(_ notification: Notification) {
+        guard let countryInfo = notification.userInfo as? [String: String] else { return }
+        guard let countryCode = countryInfo["code"] else { return }
+        guard let countryName = countryInfo["name"] else { return }
+        networkWithServer(countryCode)
+        self.countryName = countryName
     }
     
     private func setTrandPages() {
-        pages = createPages()
-        setPageScrollView(pages: pages)
-        pageControl.numberOfPages = pages.count
+        livePagerPages = createPages()
+        setPageScrollView(pages: livePagerPages)
+        pageControl.numberOfPages = livePagerPages.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
     }
     
-    private func networkWithServer() {
-        APIManager.getDailyTrends(hl: "ko", geo: "US") { [weak self] (result) in
+    private func networkWithServer(_ geo: String) {
+        APIManager.getDailyTrends(hl: "ko", geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trandData):
@@ -47,26 +63,30 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    private func createPages() -> [TrandPageView] {
-        guard let pageByDays: TrandPageView = Bundle.main.loadNibNamed(
-            "TrandPageView",
+    private func createPages() -> [TrendPageView] {
+        guard let pageByDays: TrendPageView = Bundle.main.loadNibNamed(
+            pageNibName,
             owner: self,
             options: nil
-            )?.first as? TrandPageView else {
+            )?.first as? TrendPageView else {
                 return []
         }
+        pageByDays.daysKeywordChart = HeaderCellContent(
+            title: "일별 급상승 검색어",
+            country: countryName
+        )
         pageByDays.googleTrendData = googleTrendData
-        guard let pageByRealTime: TrandPageView = Bundle.main.loadNibNamed(
-            "TrandPageView",
+        guard let pageByRealTime: TrendPageView = Bundle.main.loadNibNamed(
+            pageNibName,
             owner: self,
             options: nil
-            )?.first as? TrandPageView else {
+            )?.first as? TrendPageView else {
                 return []
         }
         return [pageByDays, pageByRealTime]
     }
     
-    private func setPageScrollView(pages : [TrandPageView]) {
+    private func setPageScrollView(pages: [TrendPageView]) {
         scrollView.frame = CGRect(
             x: 0,
             y: 0,
