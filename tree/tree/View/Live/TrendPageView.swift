@@ -8,15 +8,15 @@
 
 import UIKit
 
-class TrandPageView: UIView {
+class TrendPageView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let headerCellIdentifier = "TrandHeaderTableViewCell"
-    private let listCellIdentifier = "TrandTableViewCell"
-    private let dateHeaderCellIdentifier = "TrandDateHeaderCell"
-    
+    private let headerCellIdentifier = "TrendHeaderCell"
+    private let listCellIdentifier = "TrendListCell"
+    private let listHeaderCellIdentifier = "TrendListHeaderCell"
     var googleTrendData: TrendDays?
+    var daysKeywordChart: HeaderCellContent?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,8 +29,8 @@ class TrandPageView: UIView {
         tableView.register(headerNib, forCellReuseIdentifier: headerCellIdentifier)
         let listNib = UINib(nibName: listCellIdentifier, bundle: nil)
         tableView.register(listNib, forCellReuseIdentifier: listCellIdentifier)
-        let dateHeaderNib = UINib(nibName: dateHeaderCellIdentifier, bundle: nil)
-        tableView.register(dateHeaderNib, forCellReuseIdentifier: dateHeaderCellIdentifier)
+        let dateHeaderNib = UINib(nibName: listHeaderCellIdentifier, bundle: nil)
+        tableView.register(dateHeaderNib, forCellReuseIdentifier: listHeaderCellIdentifier)
     }
     
     private func setTableView() {
@@ -45,7 +45,7 @@ class TrandPageView: UIView {
     }
 }
 
-extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
+extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         guard
@@ -75,8 +75,8 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             guard
                 let headerCell = tableView.dequeueReusableCell(
-                    withIdentifier: "TrandDateHeaderCell"
-                    ) as? TrandDateHeaderCell else {
+                    withIdentifier: listHeaderCellIdentifier
+                    ) as? TrendListHeaderCell else {
                         return UIView()
             }
             headerCell.backgroundColor = UIColor.white
@@ -91,28 +91,58 @@ extension TrandPageView: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: headerCellIdentifier,
                 for: indexPath
-                ) as? TrandHeaderTableViewCell else {
+                ) as? TrendHeaderCell else {
                     return UITableViewCell()
             }
+            guard let headerData = daysKeywordChart else {
+                return UITableViewCell()
+            }
+            cell.configure(by: headerData)
             return cell
         default:
             guard
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: listCellIdentifier,
                     for: indexPath
-                    ) as? TrandTableViewCell else {
+                    ) as? TrendListCell else {
                         return UITableViewCell()
             }
-            let row = googleTrendData?.trend.searchesByDays[indexPath.section-1].keywordList[indexPath.row]
-            cell.listView.titleLabel.text = row?.title.query
-            cell.listView.rankLabel.text = "\(indexPath.row + 1)"
-            cell.listView.subscriptLabel.text = row?.articles[0].title
-            cell.listView.hitsLabel.text = row?.formattedTraffic
+            guard let keywordData = googleTrendData?.trend else {
+                return UITableViewCell()
+            }
+            let section = indexPath.section - 1
+            let row = indexPath.row
+            cell.configure(by: keywordData, with: section, row)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0: break
+        default:
+            let animation = AnimationFactory.makeMoveUpWithFade(
+                rowHeight: cell.frame.height,
+                duration: 0.3,
+                delayFactor: 0.05
+            )
+            let animator = Animator(animation: animation)
+            animator.animate(to: cell, at: indexPath, in: tableView)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            guard let headerData = daysKeywordChart else { return }
+            headerData.expanded = !headerData.expanded
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        default:
+            break
+        }
     }
 }

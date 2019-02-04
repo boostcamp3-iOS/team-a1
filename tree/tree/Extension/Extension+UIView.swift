@@ -9,7 +9,13 @@
 import UIKit
 
 extension UIView {
-    func defaultMessage(message: String) {
-        
+    func applyShadow(shadowView: UIView, width: CGFloat, height: CGFloat) {
+        let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowRadius = 14.0
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: width, height: height)
+        shadowView.layer.shadowOpacity = 0.15
+        shadowView.layer.shadowPath = shadowPath.cgPath
     }
 }

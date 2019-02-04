@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrandDateHeaderCell: UITableViewCell {
+class TrendListHeaderCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     
