@@ -14,7 +14,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var pageControl: UIPageControl!
 
     private let pageNibName = "TrendPageView"
-    private var pages: [TrendPageView] = []
+    private var livePagerPages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
             DispatchQueue.main.async {
@@ -22,11 +22,11 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             }
         }
     }
-    private var countryName: String = "미국"
+    private var countryName: String = Country.usa.info.name
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkWithServer("US")
+        networkWithServer(Country.usa.info.code)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(receiveCountryInfo(_:)),
@@ -44,15 +44,14 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     private func setTrandPages() {
-        pages = createPages()
-        setPageScrollView(pages: pages)
-        pageControl.numberOfPages = pages.count
+        livePagerPages = createPages()
+        setPageScrollView(pages: livePagerPages)
+        pageControl.numberOfPages = livePagerPages.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
     }
     
     private func networkWithServer(_ geo: String) {
-        print(geo)
         APIManager.getDailyTrends(hl: "ko", geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {

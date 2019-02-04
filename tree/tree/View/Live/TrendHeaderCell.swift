@@ -58,10 +58,10 @@ class TrendHeaderCell: UITableViewCell {
     func configure(by content: HeaderCellContent) {
         titleLabel.text = content.title
         countryLabel.text = content.country
-        when(content.expanded)
+        hideExpandedViewIf(content.expanded)
     }
     
-    private func when(_ expanded: Bool) {
+    private func hideExpandedViewIf(_ expanded: Bool) {
         expandingStackView.isHidden = !expanded
         grayLineView.isHidden = !expanded
         zeroHeightConstraint?.isActive = !expanded
