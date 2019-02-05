@@ -120,12 +120,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xf2-nT-xZl">
-                                <rect key="frame" x="0.0" y="20" width="375" height="350"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="MCt-eH-h5B">
-                                        <rect key="frame" x="8" y="8" width="359" height="334"/>
+                                        <rect key="frame" x="8" y="8" width="359" height="284"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jMt-yG-76o">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jMt-yG-76o">
                                                 <rect key="frame" x="0.0" y="0.0" width="359" height="119"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NS0-4y-iic">
@@ -230,15 +230,15 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Huy-jd-zI4">
-                                                <rect key="frame" x="0.0" y="171" width="359" height="113"/>
+                                                <rect key="frame" x="0.0" y="171" width="359" height="63"/>
                                                 <subviews>
                                                     <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="tqh-hP-l7x" customClass="PickerView" customModule="tree" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="113"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="63"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Hbo-Yi-z4Y">
-                                                <rect key="frame" x="0.0" y="284" width="359" height="50"/>
+                                                <rect key="frame" x="0.0" y="234" width="359" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibs-nC-XkP">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="50"/>
@@ -261,7 +261,7 @@
                                 <constraints>
                                     <constraint firstItem="MCt-eH-h5B" firstAttribute="top" secondItem="Xf2-nT-xZl" secondAttribute="top" constant="8" id="5I3-Ya-7dp"/>
                                     <constraint firstItem="MCt-eH-h5B" firstAttribute="leading" secondItem="Xf2-nT-xZl" secondAttribute="leading" constant="8" id="Dg5-w0-Ett"/>
-                                    <constraint firstAttribute="height" constant="350" id="ESm-lc-XdX"/>
+                                    <constraint firstAttribute="height" constant="300" id="ESm-lc-XdX"/>
                                     <constraint firstAttribute="bottom" secondItem="MCt-eH-h5B" secondAttribute="bottom" constant="8" id="YRV-Ue-KcK"/>
                                     <constraint firstAttribute="trailing" secondItem="MCt-eH-h5B" secondAttribute="trailing" constant="8" id="qeC-kF-9hd"/>
                                 </constraints>

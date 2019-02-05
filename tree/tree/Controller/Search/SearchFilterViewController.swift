@@ -61,10 +61,10 @@ class SearchFilterViewController: UIViewController {
         pickerView.isHidden = true
         keywordSegmentedControl.backgroundColor = .clear
         sortSegmentedControl.backgroundColor = .clear
-        keywordSegmentedControl.tintColor = .clear
-        sortSegmentedControl.tintColor = .clear
+        keywordSegmentedControl.tintColor = .lightGray
+        sortSegmentedControl.tintColor = .lightGray
         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
-        let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.lightGray ]
+        let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.gray ]
         let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.black ]
         keywordSegmentedControl.setTitleTextAttributes(normalAttributedString, for: .normal)
         keywordSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
