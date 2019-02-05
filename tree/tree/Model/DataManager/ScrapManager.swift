@@ -46,7 +46,7 @@ final class ScrapManager {
         }
     }
     
-    static func fetchAll() -> [ScrappedArticle] {
+    static func fetchArticles() -> [ScrappedArticle] {
         let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
         let sortDescriptor: NSSortDescriptor =
             NSSortDescriptor(
@@ -59,7 +59,7 @@ final class ScrapManager {
         return result
     }
     
-    static func fetchCategory(_ category: ArticleCategory) -> [ScrappedArticle] {
+    static func fetchArticles(_ category: ArticleCategory) -> [ScrappedArticle] {
         var request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
         var result: [ScrappedArticle] = []
         request.predicate =
@@ -69,6 +69,47 @@ final class ScrapManager {
                 category.toString()
         )
         result = fetchRequest(request)
+        return result
+    }
+    
+    static func unreadArticlesCount() -> Int {
+        var result = 0
+        let request: NSFetchRequest<NSNumber> = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
+        let predicate = NSPredicate(format: "isRead == %@", NSNumber(value: false))
+        request.predicate = predicate
+        request.resultType = .countResultType
+        do {
+            let countResult = try managedContext.fetch(request)
+            guard let resultCount = countResult.first?.intValue else {
+                return 0
+            }
+            result = resultCount
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return result
+    }
+    
+    static func unreadArticlesCount(category: ArticleCategory) -> Int {
+        var result = 0
+        let request: NSFetchRequest<NSNumber> = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
+        let predicate = NSPredicate(
+            format: "isRead == %@ AND %K == %@",
+            NSNumber(value: false),
+            #keyPath(ScrappedArticle.category),
+            category.toString()
+        )
+        request.predicate = predicate
+        request.resultType = .countResultType
+        do {
+            let countResult = try managedContext.fetch(request)
+            guard let resultCount = countResult.first?.intValue else {
+                return 0
+            }
+            result = resultCount
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         return result
     }
     
@@ -97,6 +138,8 @@ final class ScrapManager {
         }
         return result
     }
+    
+//    static func fetchRequest()
     
 }
 
