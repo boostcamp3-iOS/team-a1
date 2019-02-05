@@ -31,7 +31,8 @@ class SearchViewController: UIViewController {
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
-
+    private lazy var searchFilter = [String: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -40,6 +41,7 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
+        getUserFilter()
         setMessageBySearchState(to: "🌴Search Please🌴")
     }
     
@@ -98,7 +100,8 @@ class SearchViewController: UIViewController {
         articles = nil
         self.uiTableView.reloadData()
         self.setLoadingView()
-        APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
+        guard let keyword = searchFilter["keyword"], let language = searchFilter["language"], let sort = searchFilter["sort"] else { return }
+        APIManager.getArticles(keyword: keyword, keywordLoc: keyword, lang: language, articlesSortBy: sort, articlesPage: 1) { (result) in
             switch result {
             case .success(let articleData):
                 self.articles = articleData.articles.results
@@ -117,19 +120,19 @@ class SearchViewController: UIViewController {
     }
     
     private func loadMoreArticles() {
-        if page < totalPage {
-            page += 1
-            APIManager.getArticles(keyword: keyword, keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: page) { (result) in
-                switch result {
-                case .success(let articleData):
-                    self.articles?.append(contentsOf: articleData.articles.results)
-                    DispatchQueue.main.async {
-                        self.uiTableView.reloadData()
-                        self.isMoreLoading = false
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
+        if page >= totalPage { return }
+        guard let keyword = searchFilter["keyword"], let language = searchFilter["language"], let sort = searchFilter["sort"] else { return }
+        page += 1
+        APIManager.getArticles(keyword: keyword, keywordLoc: keyword, lang: language, articlesSortBy: sort, articlesPage: page) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles?.append(contentsOf: articleData.articles.results)
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                    self.isMoreLoading = false
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
@@ -271,8 +274,27 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     }
 }
 
+// MARK: Filter Delegate
 extension SearchViewController: FilterSettingDelegate {
     func observeUserSetting(keyword: String, sort: String, category: String, language: String) {
-        
+        updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
+        UserDefaults.standard.set(searchFilter, forKey: "userFilter")
+    }
+    
+    private func updateUserFilter(keyword: String, sort: String, category: String, language: String) {
+        searchFilter.updateValue(keyword, forKey: "keyword")
+        searchFilter.updateValue(sort, forKey: "sort")
+        searchFilter.updateValue(category, forKey: "category")
+        searchFilter.updateValue(language.lowercased(), forKey: "language")
+    }
+    
+    private func getUserFilter() {
+        guard let userFilter = UserDefaults.standard.dictionary(forKey: "userFilter") else { return }
+        if let keyword = userFilter["keyword"] as? String, 
+            let sort = userFilter["sort"] as? String,
+            let category = userFilter["category"] as? String,
+            let language = userFilter["language"] as? String {
+            updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
+        }
     }
 }
