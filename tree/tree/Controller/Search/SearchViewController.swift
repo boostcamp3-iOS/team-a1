@@ -139,7 +139,8 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func filterItemTapAtion() {
-        guard let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
+        guard let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
+        filterViewController.settingDelegate = self
         filterViewController.transitioningDelegate = transitionDelegate
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
@@ -267,5 +268,11 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
             guard let articleUrl = articles?[$0.row].image else { return }
             articleImage.cancleLoadingImage(articleUrl)
         })    
+    }
+}
+
+extension SearchViewController: FilterSettingDelegate {
+    func observeUserSetting(keyword: String, sort: String, category: String, language: String) {
+        
     }
 }
