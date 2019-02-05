@@ -144,6 +144,7 @@ class SearchViewController: UIViewController {
     @objc private func filterItemTapAtion() {
         guard let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
         filterViewController.settingDelegate = self
+        filterViewController.filterValue = searchFilter
         filterViewController.transitioningDelegate = transitionDelegate
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
