@@ -23,7 +23,7 @@ class SearchFilterViewController: UIViewController {
 
     private var selectViewIsPresented: Bool = false
     var filterValue: [String: String]?
-    var settingDelegate: FilterSettingDelegate?
+    weak var settingDelegate: FilterSettingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FilterSettingDelegate {
+protocol FilterSettingDelegate: class {
     func observeUserSetting(keyword: String, sort: String, category: String, language: String)
 }
