@@ -26,7 +26,7 @@ enum ScrappedArticleProperty {
     }
 }
 
-enum ArticleCategory {
+enum ArticleCategory: CaseIterable{
     case arts
     case business
     case computers

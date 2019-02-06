@@ -60,13 +60,16 @@
 		D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */; };
 		D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */; };
 		D9D145BF220B0B6A00CC58DA /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145BD220B0B6800CC58DA /* ScrapViewController.swift */; };
-		D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */; };
 		D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C1220B0B7800CC58DA /* TreeData.xcdatamodeld */; };
 		D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C5220B0B8400CC58DA /* ScrapService.swift */; };
 		D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C6220B0B8400CC58DA /* ScrapManager.swift */; };
 		D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */; };
 		D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */; };
 		D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D145CF220B0B9300CC58DA /* Scrap.storyboard */; };
+		D9D145D2220B1C2500CC58DA /* ScrapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145D1220B1C2500CC58DA /* ScrapFilterViewController.swift */; };
+		D9D145D6220B1C7000CC58DA /* ScrapFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D145D3220B1C7000CC58DA /* ScrapFilterTableViewCell.xib */; };
+		D9D145D7220B1C7000CC58DA /* ScrapFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D145D4220B1C7000CC58DA /* ScrapFilter.storyboard */; };
+		D9D145D8220B1C7000CC58DA /* ScrapFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145D5220B1C7000CC58DA /* ScrapFilterTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,13 +130,16 @@
 		D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationManager.swift; sourceTree = "<group>"; };
 		D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		D9D145BD220B0B6800CC58DA /* ScrapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
-		D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 		D9D145C2220B0B7800CC58DA /* TreeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeData.xcdatamodel; sourceTree = "<group>"; };
 		D9D145C5220B0B8400CC58DA /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D9D145C6220B0B8400CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
 		D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D9D145CF220B0B9300CC58DA /* Scrap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
+		D9D145D1220B1C2500CC58DA /* ScrapFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterViewController.swift; sourceTree = "<group>"; };
+		D9D145D3220B1C7000CC58DA /* ScrapFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapFilterTableViewCell.xib; sourceTree = "<group>"; };
+		D9D145D4220B1C7000CC58DA /* ScrapFilter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScrapFilter.storyboard; sourceTree = "<group>"; };
+		D9D145D5220B1C7000CC58DA /* ScrapFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,7 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D145BD220B0B6800CC58DA /* ScrapViewController.swift */,
-				D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */,
+				D9D145D1220B1C2500CC58DA /* ScrapFilterViewController.swift */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -422,6 +428,9 @@
 			isa = PBXGroup;
 			children = (
 				D9D145CF220B0B9300CC58DA /* Scrap.storyboard */,
+				D9D145D4220B1C7000CC58DA /* ScrapFilter.storyboard */,
+				D9D145D5220B1C7000CC58DA /* ScrapFilterTableViewCell.swift */,
+				D9D145D3220B1C7000CC58DA /* ScrapFilterTableViewCell.xib */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -487,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */,
+				D9D145D6220B1C7000CC58DA /* ScrapFilterTableViewCell.xib in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
 				BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */,
@@ -497,6 +507,7 @@
 				BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
+				D9D145D7220B1C7000CC58DA /* ScrapFilter.storyboard in Resources */,
 				BC7969BC22002EB20003F520 /* Live.storyboard in Resources */,
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
 				BC7969D4220174B40003F520 /* TrendListCell.xib in Resources */,
@@ -554,13 +565,13 @@
 			files = (
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
+				D9D145D2220B1C2500CC58DA /* ScrapFilterViewController.swift in Sources */,
 				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
-				D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */,
 				BC7969B922002E620003F520 /* TrendDays.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
@@ -591,6 +602,7 @@
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
+				D9D145D8220B1C7000CC58DA /* ScrapFilterTableViewCell.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				D9D145BF220B0B6A00CC58DA /* ScrapViewController.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
