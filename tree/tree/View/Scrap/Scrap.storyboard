@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zr8-X7-0HT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cAP-f5-wbb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,29 +37,11 @@
             </objects>
             <point key="canvasLocation" x="1844" y="216.34182908545728"/>
         </scene>
-        <!--Scrap Tab Bar Controller-->
-        <scene sceneID="ByJ-HL-y8Q">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zr8-X7-0HT" customClass="ScrapTabBarController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HMA-tm-uhf">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="cAP-f5-wbb" kind="relationship" relationship="viewControllers" id="HxM-GS-gZF"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DgZ-p7-uCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-34.399999999999999" y="216.34182908545728"/>
-        </scene>
-        <!--Scrap-->
+        <!--SCRAP-->
         <scene sceneID="Ljl-B2-vKm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAP-f5-wbb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scrap" id="AlX-rY-hqD"/>
+                <navigationController storyboardIdentifier="ScrapViewController" automaticallyAdjustsScrollViewInsets="NO" id="cAP-f5-wbb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SCRAP" id="AlX-rY-hqD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyc-4E-lvn">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
