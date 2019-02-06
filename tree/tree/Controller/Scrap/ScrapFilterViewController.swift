@@ -24,7 +24,6 @@ class ScrapFilterViewController: UIViewController {
         super.viewDidLoad()
         tableViewSetting()
 //        headerView.layer.masksToBounds = true
-        headerView.backgroundColor = UIColor.red
     }
     
     private func tableViewSetting() {
@@ -46,6 +45,8 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
             return UITableViewCell()
         }
         
+        cell.setGradientLayer(categories[indexPath.row], width: view.bounds.width - 32)
+        // width? -> 계산이 잘 안되는데 어떻게 해결해야 할까? -> xib의 크키에 맞춰서 gradientlayer가 잡힌다.
         cell.titleLabel.text = categories[indexPath.row].capitalFirstCharactor()
         return cell
     }
