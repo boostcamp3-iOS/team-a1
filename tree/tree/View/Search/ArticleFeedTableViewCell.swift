@@ -11,6 +11,7 @@ import UIKit
 class ArticleFeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var betweenLabel: UILabel!
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var outerStackView: UIStackView!
     @IBOutlet weak var articleOuterView: UIView!
@@ -20,10 +21,11 @@ class ArticleFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         roundConersSetup()
+        settingShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,6 +34,14 @@ class ArticleFeedTableViewCell: UITableViewCell {
     
     private func roundConersSetup() {
         articleOuterView.roundCorners(layer: articleOuterView.layer, radius: 10)
+    }
+    
+    private func settingShadow() {
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOpacity = 0.15
+        shadowView.layer.shadowRadius = 10.0
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        shadowView.layer.shadowColor = UIColor.darkGray.cgColor
     }
     
     func settingData(article: Article) {
@@ -53,5 +63,4 @@ class ArticleFeedTableViewCell: UITableViewCell {
             self.imageStackView.isHidden = true
         }
     }
-    
 }
