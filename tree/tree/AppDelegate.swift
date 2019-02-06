@@ -15,13 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        guard let tabBarController = window?.rootViewController as? ScrapTabBarController else {
-//            return false
-//        }
-//        guard let scrapViewContoller = tabBarController.flowToViewController(itemIdx: 0) as? ScrapViewController else {
-//            return false
-//        }
-//        scrapViewContoller.managedContext = persistentContainer.viewContext
         
         return true
     }
@@ -68,30 +61,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
-
-private extension UITabBarController {
-    
-    /**
-     *A description field*
-     - important:
-     if your destination UIViewController is wrapped by structure like
-     UITabBarController -> UINavigationController -> destination,
-     this function will help to find destination easily
-     
-     - returns: Destination UIViewController
-     
-     *Another description field*
-     - version: 1.0
-     
-     */
-    func flowToViewController(itemIdx: Int) -> UIViewController {
-        guard let navigationController = self.customizableViewControllers?[itemIdx] as? UINavigationController else {
-            return UIViewController()
-        }
-        guard let targetViewController = navigationController.viewControllers[0] as? UIViewController else {
-            return UIViewController()
-        }
-        return targetViewController
-    }
 }
