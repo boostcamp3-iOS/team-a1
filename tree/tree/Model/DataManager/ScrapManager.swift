@@ -73,7 +73,7 @@ final class ScrapManager {
     
     static func unreadArticlesCount() -> Int {
         var result = 0
-        let request: NSFetchRequest<NSNumber> = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
+        let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
         let predicate = NSPredicate(format: "isRead == %@", NSNumber(value: false))
         request.predicate = predicate
         request.resultType = .countResultType
@@ -91,7 +91,7 @@ final class ScrapManager {
     
     static func unreadArticlesCount(category: ArticleCategory) -> Int {
         var result = 0
-        let request: NSFetchRequest<NSNumber> = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
+        let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
         let predicate = NSPredicate(
             format: "isRead == %@ AND %K == %@",
             NSNumber(value: false),
