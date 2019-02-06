@@ -16,7 +16,7 @@ class PresentationController: UIPresentationController {
         guard let parentContainerView = containerView else { return CGRect() }
         frame.size = size(forChildContentContainer: presentedViewController,
                           withParentContainerSize: parentContainerView.bounds.size)
-        frame.origin.y = parentContainerView.frame.height - 355
+        frame.origin.y = parentContainerView.frame.height - 300
         return frame
     }
     
