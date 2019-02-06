@@ -30,8 +30,6 @@ class SearchFilterViewController: UIViewController {
         settingSegment()
         registerDelegate()
         settingFilterValue()
-        roundCorners(layer: saveButton.layer, radius: CGFloat(5))
-        roundCorners(layer: self.view.layer, radius: CGFloat(15.0))
     }
     
     private func registerDelegate() {
@@ -72,9 +70,9 @@ class SearchFilterViewController: UIViewController {
         sortSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
     }
     
-    private func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
-        targetLayer.cornerRadius = withRaidus
-        targetLayer.masksToBounds = true
+    private func roundCorners() {
+        saveButton.roundCorners(layer: saveButton.layer, radius: CGFloat(5))
+        view.roundCorners(layer: self.view.layer, radius: CGFloat(15))
     }
     
     @IBAction func selectButtonClick(_ sender: UIButton) {
@@ -119,9 +117,8 @@ extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let selectValue = selectPickViewer.getList()[row]
         if selectPickViewer.tagNumber == 0 {
             categoryLabel.text = selectValue
-        } else {
-            languageLabel.text = selectValue
-        }
+        } 
+        languageLabel.text = selectValue
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

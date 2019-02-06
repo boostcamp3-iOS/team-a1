@@ -23,16 +23,15 @@ class ArticleFeedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        roundCorners(layer: articleOuterView.layer, radius: 10)
+        roundCorners()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    private func roundCorners(layer targetLayer: CALayer, radius withRaidus: CGFloat) {
-        targetLayer.cornerRadius = withRaidus
-        targetLayer.masksToBounds = true
+    
+    private func roundCorners() {
+        articleOuterView.roundCorners(layer: articleOuterView.layer, radius: 10)
     }
     
     func settingData(article: Article) {
