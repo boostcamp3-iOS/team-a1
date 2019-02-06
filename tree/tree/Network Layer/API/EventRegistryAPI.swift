@@ -11,6 +11,7 @@ import Foundation
 private enum DefaultParameter {
     case articleBodyLen
     case includeArticleImage
+    case includeArticleCategories
     case articlesCount
     case resultType
     case action
@@ -21,6 +22,7 @@ extension DefaultParameter {
         switch self {
         case .articleBodyLen: return -1
         case .includeArticleImage: return true
+        case .includeArticleCategories: return true
         case .articlesCount: return 20
         case .resultType: return "articles"
         case .action: return "getArticles"
@@ -77,6 +79,7 @@ extension EventRegistryAPI: APIService {
                 "resultType": DefaultParameter.resultType.value,
                 "articlesCount": DefaultParameter.articlesCount.value,
                 "includeArticleImage": DefaultParameter.includeArticleImage.value,
+                "includeArticleCategories": DefaultParameter.includeArticleCategories.value,
                 "articleBodyLen": DefaultParameter.articleBodyLen.value,
                 "apiKey": APIConstant.eventRegistryKey
             ]

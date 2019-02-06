@@ -10,8 +10,11 @@ import UIKit
 
 class ArticleFeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var betweenLabel: UILabel!
+    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var outerStackView: UIStackView!
     @IBOutlet weak var articleOuterView: UIView!
-    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var articleImageView: ArticleImage!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -20,15 +23,15 @@ class ArticleFeedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        settingArticleOuterView()
+        roundConersSetup()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    private func settingArticleOuterView() {
-        articleOuterView.layer.cornerRadius = 10
+    
+    private func roundConersSetup() {
+        articleOuterView.roundCorners(layer: articleOuterView.layer, radius: 10)
     }
     
     func settingData(article: Article) {
@@ -36,10 +39,19 @@ class ArticleFeedTableViewCell: UITableViewCell {
         self.descriptionLabel.text = article.body
         self.dateLabel.text = article.date
         self.companyLabel.text = article.source.title
-    }
-    
-    func settingImage(image: Data) {
-        self.articleImageView.image = UIImage(data: image)
+        betweenLabel.isHidden = true
+        if article.author?.isEmpty == false {
+            if let author = article.author?[0].name {
+                betweenLabel.isHidden = false
+                self.authorLabel.text = author
+            }
+        } 
+        if let articleImage = article.image { 
+            self.imageStackView.isHidden = false
+            self.articleImageView.loadImageUrl(articleUrl: articleImage)
+        } else {
+            self.imageStackView.isHidden = true
+        }
     }
     
 }

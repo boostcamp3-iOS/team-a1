@@ -16,14 +16,23 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var navigationFilterItem: UIButton!
     
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
+    private let articleImage: ArticleImage = ArticleImage()
+    private var loadingView: LoadingView?
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    private var transitionDelegate = PresentationManager()
+    private var transitionManager = PresentationManager()
     private var articles: [Article]?
-
+    private var defaultLabel: UILabel = UILabel()
+    private var keyword: String = ""
+    private var page: Int = 1
+    private var totalPage: Int = 0
+    private var isMoreLoading: Bool = false
+    private var isPresentedCheck: Bool = true
+    private lazy var searchFilter = [String: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -32,13 +41,27 @@ class SearchViewController: UIViewController {
         navigationBarSetting()
         registerArticleCell()
         filterItemSetting()
-        getArticlesFromServer()
+        getUserFilter()
+        setMessageBySearchState(to: "🌴Search Please🌴")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        isPresentedCheck = searchBarIsPresented
+    }
+    
+    private func setLoadingView() {
+        let loadingViewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        loadingView = LoadingView(frame: loadingViewFrame)
+        guard let loadView = loadingView else { return } 
+        loadView.center = self.view.center
+        self.view.addSubview(loadView)        
     }
     
     private func delegateSetting() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
+        uiTableView.prefetchDataSource = self
     }
     
     private func searchBarSetting() {
@@ -64,32 +87,87 @@ class SearchViewController: UIViewController {
         let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
         uiTableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
-  
-      private func filterItemSetting() {
+    
+    private func setMessageBySearchState(to message: String) {        
+        defaultLabel.text = message
+        defaultLabel.frame.size = CGSize(width: 200, height: 50)
+        defaultLabel.center = self.view.center
+        defaultLabel.textAlignment = .center
+        view.addSubview(defaultLabel)
+    }
+    
+    private func getArticles(keyword: String) {
+        articles = nil
+        self.uiTableView.reloadData()
+        self.setLoadingView()
+        guard let keyword = searchFilter["keyword"], 
+            let language = searchFilter["language"], 
+            let sort = searchFilter["sort"] 
+            else { return }
+        APIManager.getArticles(keyword: keyword, 
+                               keywordLoc: keyword,
+                               lang: language, 
+                               articlesSortBy: sort, 
+                               articlesPage: 1) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                self.totalPage = articleData.articles.pages
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                    self.loadingView?.removeFromSuperview()
+                    if self.articles?.count == 0 {
+                        self.setMessageBySearchState(to: "🌱No results🌱")
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func loadMoreArticles() {
+        if page >= totalPage { return }
+        guard let keyword = searchFilter["keyword"],
+            let language = searchFilter["language"],
+            let sort = searchFilter["sort"] 
+            else { return }
+        page += 1
+        APIManager.getArticles(keyword: keyword,
+                               keywordLoc: keyword, 
+                               lang: language, 
+                               articlesSortBy: sort,
+                               articlesPage: page) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles?.append(contentsOf: articleData.articles.results)
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                    self.isMoreLoading = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func filterItemSetting() {
         navigationFilterItem.addTarget(self, action: #selector(filterItemTapAtion), for: .touchUpInside)
-      }
-  
+    }
+    
     @objc private func filterItemTapAtion() {
-        guard let filterViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") else { return }
-        filterViewController.transitioningDelegate = transitionDelegate
+        guard
+            let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
+        filterViewController.settingDelegate = self
+        filterViewController.filterValue = searchFilter
+        filterViewController.transitioningDelegate = transitionManager
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
     }
-  
-    private func getArticlesFromServer() {
-      APIManager.getArticles(keyword: "Apple", keywordLoc: "title", lang: "eng", articlesSortBy: "date", articlesPage: 1) { (result) in
-          switch result {
-          case .success(let articleData):
-              self.articles = articleData.articles.results
-              DispatchQueue.main.async {
-                  self.uiTableView.reloadData()
-              }
-          case .failure(let error):
-              print(error.localizedDescription)
-          }
-      }
+    
 }
 
+// MARK: TableView
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,47 +175,40 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else {
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
-        
-        DispatchQueue.global().async {
-            if let articleImage = article.image {
-                guard let imageURL = URL(string: articleImage) else { return }
-                guard let imageData = try? Data(contentsOf: imageURL) else { return }
-                DispatchQueue.main.async {
-                    cell.settingImage(image: imageData)
-                }
-            }
-        }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return }
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
-        
         articleView.articleDetail = articles?[indexPath.row]
-        articleView.articleImage = cell.articleImageView.image
-        
         self.navigationController?.pushViewController(articleView, animated: true)
     }
-    
+}
+
+// MARK: ScrollView
+extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isMoreLoading {
+            let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
+            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
+                loadMoreArticles()
+                isMoreLoading.toggle()
+            }
+        }
         if searchBarIsPresented && tableViewContentOffsetY < scrollView.contentOffset.y {
             scrollViewCheckCount(.down)
         } else if !searchBarIsPresented && tableViewContentOffsetY > scrollView.contentOffset.y {
             scrollViewCheckCount(.up)
-        }
+        } 
         tableViewContentOffsetY = scrollView.contentOffset.y
     }
     
     func scrollViewCheckCount(_ scrollDirection: ScrollDirection) {
-        let directionIsDown: Bool = scrollDirection == .down ? true : false
+        let directionIsDown = scrollDirection == .down ? true : false
         tableViewScrollCount.down += directionIsDown == true ? 1 : 0
         tableViewScrollCount.up += directionIsDown == true ? 0 : 1
         if tableViewScrollCount.down > 15 || tableViewScrollCount.up > 5 {
@@ -159,19 +230,23 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func searchBarShowAndHideAnimation(_ direction: ScrollDirection) {
         let directionIsDown = direction == .down ? true : false
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            guard let self = self else { return }
-            self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
+        if !isPresentedCheck {
             self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
-            self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
+            UIView.animate(withDuration: 0.3) { 
+                self.uiSearchBarOuterView.alpha = 1
+                self.isPresentedCheck.toggle()
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) { 
+                self.uiSearchBarOuterView.center.y += directionIsDown ? (-1) * self.topOffset : self.topOffset
+                self.uiTableView.contentInset.top = directionIsDown ? 0 : self.topOffset
+                self.uiSearchBarOuterView.alpha = directionIsDown ? 0 : 1.0
+            }
         }
-    }
-    
-    @objc private func buttonTapAction(_ sender: UIBarItem) {
-
     }
 }
 
+// MARK: SearchBar
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         uiSearchBar.setShowsCancelButton(true, animated: true)
@@ -179,6 +254,11 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
+        if let searchKeyword = searchBar.text {
+            keyword = searchKeyword
+            getArticles(keyword: searchKeyword)
+            defaultLabel.removeFromSuperview()
+        }
         searchBarHideAndSetting()
     }
     
@@ -190,5 +270,47 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarHideAndSetting() {
         uiSearchBar.setShowsCancelButton(false, animated: true)
         uiSearchBar.resignFirstResponder()
+    }
+}
+
+// MARK: Prefetch
+extension SearchViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach({
+            guard let articleUrl = articles?[$0.row].image else { return }
+            articleImage.loadImageUrl(articleUrl: articleUrl)
+        })
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach({
+            guard let articleUrl = articles?[$0.row].image else { return }
+            articleImage.cancleLoadingImage(articleUrl)
+        })    
+    }
+}
+
+// MARK: Filter Delegate
+extension SearchViewController: FilterSettingDelegate {
+    func observeUserSetting(keyword: String, sort: String, category: String, language: String) {
+        updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
+        UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
+    }
+    
+    private func updateUserFilter(keyword: String, sort: String, category: String, language: String) {
+        searchFilter.updateValue(keyword, forKey: "keyword")
+        searchFilter.updateValue(sort, forKey: "sort")
+        searchFilter.updateValue(category, forKey: "category")
+        searchFilter.updateValue(language.lowercased(), forKey: "language")
+    }
+    
+    private func getUserFilter() {
+        guard let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else { return }
+        if let keyword = userFilter["keyword"] as? String, 
+            let sort = userFilter["sort"] as? String,
+            let category = userFilter["category"] as? String,
+            let language = userFilter["language"] as? String {
+            updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
+        }
     }
 }

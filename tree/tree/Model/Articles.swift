@@ -13,9 +13,9 @@ struct Articles: Codable {
 }
 
 struct Results: Codable {
-    let page: Int // Current page number
-    let totalResults: Int // Total articles count
-    let pages: Int // Total pages count
+    let page: Int
+    let totalResults: Int
+    let pages: Int
     let results: [Article]
 }
 
@@ -31,12 +31,19 @@ struct Article: Codable {
     let source: Source
     let author: [Author]?
     let image: String?
+    let categories: [Category]
     
     private enum CodingKeys: String, CodingKey {
-        case uri, lang, date, time
+        case uri, lang, date, time, categories
         case sim, url, title, body, source, image
         case author = "authors"
     }
+}
+
+struct Category: Codable {
+    let uri: String
+    let label: String
+    let wgt: Int
 }
 
 struct Source: Codable {
