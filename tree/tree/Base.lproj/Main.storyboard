@@ -32,7 +32,7 @@
         <scene sceneID="kbb-7S-min">
             <objects>
                 <viewControllerPlaceholder storyboardName="Live" referencedIdentifier="LiveViewController" id="m8g-Sr-hO3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3Bf-Lx-JOT"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="Live" selectedImage="Live" id="3Bf-Lx-JOT"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq5-qX-2w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +42,7 @@
         <scene sceneID="iPd-vv-429">
             <objects>
                 <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="SearchViewController" id="hkP-G0-nC6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="frv-0U-nfO"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="Search" selectedImage="Search" id="frv-0U-nfO"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRN-wS-xnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,11 +52,16 @@
         <scene sceneID="EJ0-l5-4LD">
             <objects>
                 <viewControllerPlaceholder storyboardName="Scrap" referencedIdentifier="ScrapViewController" id="Pla-em-ERx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="y7q-Qi-s58"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="Scrap" selectedImage="Scrap" id="y7q-Qi-s58"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1H-Pr-fkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="796" y="347"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Live" width="24" height="24"/>
+        <image name="Scrap" width="24" height="24"/>
+        <image name="Search" width="24" height="24"/>
+    </resources>
 </document>
