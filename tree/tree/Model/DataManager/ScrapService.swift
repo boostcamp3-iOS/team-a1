@@ -27,7 +27,6 @@ enum ScrappedArticleProperty {
 }
 
 enum ArticleCategory {
-    // MARK: Check Arts
     case arts
     case business
     case computers
@@ -44,6 +43,19 @@ enum ArticleCategory {
 
     func toString() -> String {
         return "\(self)"
+    }
+    
+    func capitalFirstCharactor() -> String {
+        let baseCategory: NSString = NSString(string: "\(self)")
+        let firstCharactor = baseCategory.character(at: 0)
+        guard let unicode = UnicodeScalar(firstCharactor - 32) as? UnicodeScalar else {
+            return ""
+        }
+        let result = baseCategory.replacingCharacters(
+            in: NSRange(location: 0, length: 1),
+            with: String(Character(unicode))
+        )
+        return result
     }
 }
 

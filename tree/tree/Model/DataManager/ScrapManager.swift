@@ -22,7 +22,6 @@ final class ScrapManager {
         return managedContext
     }()
 
-    // completion으로 처리를 할 때 -> Void 를 해줘야 한다?
     static func scrapArticle(
         article: Article,
         category: ArticleCategory,
@@ -128,7 +127,6 @@ final class ScrapManager {
         print("all data is Removed")
     }
     
-    // private 으로 하면 managedContext를 사용할 수 없다.
     static func fetchRequest(_ request: NSFetchRequest<ScrappedArticle>) -> [ScrappedArticle] {
         var result: [ScrappedArticle] = []
         do {
@@ -138,19 +136,17 @@ final class ScrapManager {
         }
         return result
     }
-    
-//    static func fetchRequest()
-    
 }
 
 private extension NSManagedObject {
     func setValue(_ value: Any?, forKey property: ScrappedArticleProperty) {
         self.setValue(value, forKeyPath: "\(property)")
     }
+    
     func setCategory(_ category: ArticleCategory) {
         self.setValue(category.toString(), forKey: .category)
     }
-    // MARK: string format for date
+    
     func setValues(
         _ newArticle: ScrappedArticle,
         articleData: Article,
@@ -162,7 +158,7 @@ private extension NSManagedObject {
         }
         newArticle.setCategory(categoryEnum)
         newArticle.setValue(articleData.lang, forKey: .language)
-        newArticle.setValue(articleData.author?[0] ?? "", forKey: .articleAuthor)
+        newArticle.setValue(articleData.author?[0].name ?? "", forKey: .articleAuthor)
         newArticle.setValue(articleData.date, forKey: .articleDate)
         newArticle.setValue(articleData.title, forKey: .articleTitle)
         newArticle.setValue(NSDate(), forKey: .scrappedDate)
@@ -170,6 +166,5 @@ private extension NSManagedObject {
         newArticle.setValue(articleData.uri, forKey: .articleUri)
         newArticle.setValue(articleData.source.title, forKey: .company)
         newArticle.setValue(articleData.body, forKey: .articleDescription)
-        
     }
 }
