@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
     private var searchBarTextField: UITextField?
     private var searchBarIsPresented: Bool = true
-    private var transitionDelegate = PresentationManager()
+    private var transitionManager = PresentationManager()
     private var articles: [Article]?
     private var defaultLabel: UILabel = UILabel()
     private var keyword: String = ""
@@ -156,10 +156,11 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func filterItemTapAtion() {
-        guard let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
+        guard
+            let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
         filterViewController.settingDelegate = self
         filterViewController.filterValue = searchFilter
-        filterViewController.transitioningDelegate = transitionDelegate
+        filterViewController.transitioningDelegate = transitionManager
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
     }
@@ -293,7 +294,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
 extension SearchViewController: FilterSettingDelegate {
     func observeUserSetting(keyword: String, sort: String, category: String, language: String) {
         updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
-        UserDefaults.standard.set(searchFilter, forKey: "userFilter")
+        UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
     }
     
     private func updateUserFilter(keyword: String, sort: String, category: String, language: String) {
@@ -304,7 +305,7 @@ extension SearchViewController: FilterSettingDelegate {
     }
     
     private func getUserFilter() {
-        guard let userFilter = UserDefaults.standard.dictionary(forKey: "userFilter") else { return }
+        guard let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else { return }
         if let keyword = userFilter["keyword"] as? String, 
             let sort = userFilter["sort"] as? String,
             let category = userFilter["category"] as? String,

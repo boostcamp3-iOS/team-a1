@@ -286,6 +286,8 @@
                         <outlet property="saveButton" destination="ibs-nC-XkP" id="6Ln-UB-CKW"/>
                         <outlet property="selectPickViewer" destination="tqh-hP-l7x" id="psB-u8-3w0"/>
                         <outlet property="sortSegmentedControl" destination="3jR-wy-24A" id="nCU-Yy-OT5"/>
+                        <outletCollection property="collectionOfSegmentedControl" destination="onr-x1-VqZ" collectionClass="NSMutableArray" id="fbD-MW-qVN"/>
+                        <outletCollection property="collectionOfSegmentedControl" destination="3jR-wy-24A" collectionClass="NSMutableArray" id="bHt-dG-YJe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8M-ha-ZUs" userLabel="First Responder" sceneMemberID="firstResponder"/>

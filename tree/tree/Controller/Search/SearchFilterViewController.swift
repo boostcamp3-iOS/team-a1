@@ -20,7 +20,8 @@ class SearchFilterViewController: UIViewController {
     @IBOutlet weak var keywordSortStackView: UIStackView!
     @IBOutlet weak var keywordSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
-
+    @IBOutlet var collectionOfSegmentedControl: Array<UISegmentedControl>?
+    
     private var selectViewIsPresented: Bool = false
     var filterValue: [String: String]?
     weak var settingDelegate: FilterSettingDelegate?
@@ -30,6 +31,7 @@ class SearchFilterViewController: UIViewController {
         settingSegment()
         registerDelegate()
         settingFilterValue()
+        roundCorners()
     }
     
     private func registerDelegate() {
@@ -38,36 +40,27 @@ class SearchFilterViewController: UIViewController {
     }
     
     private func settingFilterValue() {
-        guard let keyword = filterValue?["keyword"], let sort = filterValue?["sort"] else { return }
         categoryLabel.text = filterValue?["category"]
         languageLabel.text = filterValue?["language"]
-        switch keyword {
-        case "Title":
-            keywordSegmentedControl.selectedSegmentIndex = 0
-        default:
+        if filterValue?["keyword"] == "Body" {
             keywordSegmentedControl.selectedSegmentIndex = 1
         }
-        switch sort {
-        case "Date":
-            sortSegmentedControl.selectedSegmentIndex = 0
-        default:
+        if filterValue?["sort"] == "Relevance" {
             sortSegmentedControl.selectedSegmentIndex = 1
         }
     }
     
     private func settingSegment() {
         pickerView.isHidden = true
-        keywordSegmentedControl.backgroundColor = .clear
-        sortSegmentedControl.backgroundColor = .clear
-        keywordSegmentedControl.tintColor = .lightGray
-        sortSegmentedControl.tintColor = .lightGray
         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.gray ]
         let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.black ]
-        keywordSegmentedControl.setTitleTextAttributes(normalAttributedString, for: .normal)
-        keywordSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
-        sortSegmentedControl.setTitleTextAttributes(normalAttributedString, for: .normal)
-        sortSegmentedControl.setTitleTextAttributes(selectedAttributedString, for: .selected)
+        collectionOfSegmentedControl?.forEach({
+            $0.backgroundColor = .clear
+            $0.tintColor = .lightGray
+            $0.setTitleTextAttributes(normalAttributedString, for: .normal)
+            $0.setTitleTextAttributes(selectedAttributedString, for: .selected)
+        })
     }
     
     private func roundCorners() {
@@ -75,17 +68,18 @@ class SearchFilterViewController: UIViewController {
         view.roundCorners(layer: self.view.layer, radius: CGFloat(15))
     }
     
+    private func makeHidden(isPresented: Bool) {
+        languageStackView.isHidden = isPresented
+        categoryStackView.isHidden = !isPresented
+    }
+    
     @IBAction func selectButtonClick(_ sender: UIButton) {
         selectViewIsPresented.toggle()
         selectPickViewer.tagNumber = sender.tag
         if selectViewIsPresented {
-            if selectPickViewer.tagNumber == 0 {
-                languageStackView.isHidden = selectViewIsPresented
-                categoryStackView.isHidden = !selectViewIsPresented
-            } else {
-                languageStackView.isHidden = !selectViewIsPresented
-                categoryStackView.isHidden = selectViewIsPresented
-            }
+            selectPickViewer.tagNumber == 0 ? 
+                makeHidden(isPresented: selectViewIsPresented) : 
+                makeHidden(isPresented: !selectViewIsPresented)
         } else {
             languageStackView.isHidden = selectViewIsPresented
             categoryStackView.isHidden = selectViewIsPresented

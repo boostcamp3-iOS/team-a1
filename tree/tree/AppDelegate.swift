@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if UserDefaults.standard.dictionary(forKey: "userFilter") == nil {
+        if UserDefaults.standard.dictionary(forKey: "searchFilter") == nil {
             let searchFilter = ["keyword": "Title","sort": "Date","category": "All","language": "eng"]
-            UserDefaults.standard.set(searchFilter, forKey: "userFilter")
+            UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
         } 
         return true
     }
