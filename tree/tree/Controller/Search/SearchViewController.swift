@@ -100,8 +100,15 @@ class SearchViewController: UIViewController {
         articles = nil
         self.uiTableView.reloadData()
         self.setLoadingView()
-        guard let keyword = searchFilter["keyword"], let language = searchFilter["language"], let sort = searchFilter["sort"] else { return }
-        APIManager.getArticles(keyword: keyword, keywordLoc: keyword, lang: language, articlesSortBy: sort, articlesPage: 1) { (result) in
+        guard let keyword = searchFilter["keyword"], 
+            let language = searchFilter["language"], 
+            let sort = searchFilter["sort"] 
+            else { return }
+        APIManager.getArticles(keyword: keyword, 
+                               keywordLoc: keyword,
+                               lang: language, 
+                               articlesSortBy: sort, 
+                               articlesPage: 1) { (result) in
             switch result {
             case .success(let articleData):
                 self.articles = articleData.articles.results
@@ -121,9 +128,16 @@ class SearchViewController: UIViewController {
     
     private func loadMoreArticles() {
         if page >= totalPage { return }
-        guard let keyword = searchFilter["keyword"], let language = searchFilter["language"], let sort = searchFilter["sort"] else { return }
+        guard let keyword = searchFilter["keyword"],
+            let language = searchFilter["language"],
+            let sort = searchFilter["sort"] 
+            else { return }
         page += 1
-        APIManager.getArticles(keyword: keyword, keywordLoc: keyword, lang: language, articlesSortBy: sort, articlesPage: page) { (result) in
+        APIManager.getArticles(keyword: keyword,
+                               keywordLoc: keyword, 
+                               lang: language, 
+                               articlesSortBy: sort,
+                               articlesPage: page) { (result) in
             switch result {
             case .success(let articleData):
                 self.articles?.append(contentsOf: articleData.articles.results)

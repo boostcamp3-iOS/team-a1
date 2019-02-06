@@ -97,7 +97,10 @@ class SearchFilterViewController: UIViewController {
     }
     
     @IBAction func saveButtonClick(_ sender: Any) {
-        if let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), let category = categoryLabel.text, let language = languageLabel.text {
+        if let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
+            let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
+            let category = categoryLabel.text,
+            let language = languageLabel.text {
             settingDelegate?.observeUserSetting(keyword: keyword, sort: sort, category: category, language: language)
         }
         self.dismiss(animated: true, completion: nil)
@@ -105,6 +108,7 @@ class SearchFilterViewController: UIViewController {
 }
 
 extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
