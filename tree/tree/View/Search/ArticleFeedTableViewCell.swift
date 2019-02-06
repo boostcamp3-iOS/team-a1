@@ -23,14 +23,14 @@ class ArticleFeedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        roundCorners()
+        roundConersSetup()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    private func roundCorners() {
+    private func roundConersSetup() {
         articleOuterView.roundCorners(layer: articleOuterView.layer, radius: 10)
     }
     

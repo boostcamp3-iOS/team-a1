@@ -31,7 +31,7 @@ class SearchFilterViewController: UIViewController {
         settingSegment()
         registerDelegate()
         settingFilterValue()
-        roundCorners()
+        roundConersSetup()
     }
     
     private func registerDelegate() {
@@ -63,7 +63,7 @@ class SearchFilterViewController: UIViewController {
         })
     }
     
-    private func roundCorners() {
+    private func roundConersSetup() {
         saveButton.roundCorners(layer: saveButton.layer, radius: CGFloat(5))
         view.roundCorners(layer: self.view.layer, radius: CGFloat(15))
     }
