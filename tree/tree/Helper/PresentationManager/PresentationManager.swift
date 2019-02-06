@@ -15,7 +15,8 @@ class PresentationManager: NSObject {
 extension PresentationManager: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
+                                source: UIViewController
+        ) -> UIPresentationController? {
         let presentationController = PresentationController(presentedViewController: presented,
                                                             presenting: presenting)
         return presentationController
