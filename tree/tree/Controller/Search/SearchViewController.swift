@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
     private var transitionManager = PresentationManager()
     private var articles: [Article]?
     private var defaultLabel: UILabel = UILabel()
-    private var keyword: String = ""
+    private var searchKeyword: String = ""
     private var page: Int = 1
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
@@ -96,15 +96,21 @@ class SearchViewController: UIViewController {
         view.addSubview(defaultLabel)
     }
     
-    private func getArticles(keyword: String) {
-        articles = nil
-        self.uiTableView.reloadData()
-        self.setLoadingView()
+    private func checkSearchFilter(searchFilter: [String: String], type: Int) {
         guard let keyword = searchFilter["keyword"], 
             let language = searchFilter["language"], 
             let sort = searchFilter["sort"] 
             else { return }
-        APIManager.getArticles(keyword: keyword, 
+        type == 0 ? getArticles(keyword: keyword, language: language, sort: sort)
+   : loadMoreArticles(keyword: keyword, language: language, sort: sort)
+    }
+    
+    // type 0
+    private func getArticles(keyword: String, language: String, sort: String) {
+        articles = nil
+        self.uiTableView.reloadData()
+        self.setLoadingView()
+        APIManager.getArticles(keyword: searchKeyword, 
                                keywordLoc: keyword,
                                lang: language, 
                                articlesSortBy: sort, 
@@ -126,12 +132,9 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func loadMoreArticles() {
+    // type 1
+    private func loadMoreArticles(keyword: String, language: String, sort: String) {
         if page >= totalPage { return }
-        guard let keyword = searchFilter["keyword"],
-            let language = searchFilter["language"],
-            let sort = searchFilter["sort"] 
-            else { return }
         page += 1
         APIManager.getArticles(keyword: keyword,
                                keywordLoc: keyword, 
@@ -195,7 +198,7 @@ extension SearchViewController {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
             if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
-                loadMoreArticles()
+                checkSearchFilter(searchFilter: searchFilter, type: 1)
                 isMoreLoading.toggle()
             }
         }
@@ -254,9 +257,9 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
-        if let searchKeyword = searchBar.text {
-            keyword = searchKeyword
-            getArticles(keyword: searchKeyword)
+        if let getSearchKeyword = searchBar.text {
+            searchKeyword = getSearchKeyword
+            checkSearchFilter(searchFilter: searchFilter, type: 0)
             defaultLabel.removeFromSuperview()
         }
         searchBarHideAndSetting()
