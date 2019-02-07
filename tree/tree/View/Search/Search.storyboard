@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -169,29 +168,29 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6ff-oY-rfe">
-                                                <rect key="frame" x="0.0" y="119" width="327" height="52"/>
+                                                <rect key="frame" x="0.0" y="119" width="327" height="56"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2xF-SK-bHf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="52"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="159.5" height="56"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rr1-Sz-0OL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="22"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wki-O9-ks8">
-                                                                <rect key="frame" x="0.0" y="30" width="40.5" height="22"/>
+                                                                <rect key="frame" x="0.0" y="32" width="50.5" height="24"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOj-3T-297">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="14" height="22"/>
-                                                                        <state key="normal" image="iconArrDown"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                                        <state key="normal" image="down"/>
                                                                         <connections>
                                                                             <action selector="selectButtonClick:" destination="ZOY-Kd-jN3" eventType="touchUpInside" id="MXl-SD-Cew"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQv-k5-fLd">
-                                                                        <rect key="frame" x="22" y="0.0" width="18.5" height="20.5"/>
+                                                                        <rect key="frame" x="32" y="0.0" width="18.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -201,26 +200,26 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XgO-u5-wpk">
-                                                        <rect key="frame" x="167.5" y="0.0" width="159.5" height="52"/>
+                                                        <rect key="frame" x="167.5" y="0.0" width="159.5" height="56"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eD-Ao-H4b">
-                                                                <rect key="frame" x="91" y="0.0" width="68.5" height="22"/>
+                                                                <rect key="frame" x="91" y="0.0" width="68.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kzd-MX-fv8">
-                                                                <rect key="frame" x="117.5" y="30" width="42" height="22"/>
+                                                                <rect key="frame" x="107.5" y="32" width="52" height="24"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTc-aq-dgb">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="20" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="3.5" width="20" height="20.5"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEX-XE-ni0">
-                                                                        <rect key="frame" x="28" y="0.0" width="14" height="22"/>
-                                                                        <state key="normal" image="iconArrDown"/>
+                                                                        <rect key="frame" x="28" y="0.0" width="24" height="24"/>
+                                                                        <state key="normal" image="down"/>
                                                                         <connections>
                                                                             <action selector="selectButtonClick:" destination="ZOY-Kd-jN3" eventType="touchUpInside" id="RyZ-lc-xne"/>
                                                                         </connections>
@@ -232,10 +231,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Huy-jd-zI4">
-                                                <rect key="frame" x="0.0" y="171" width="327" height="55"/>
+                                                <rect key="frame" x="0.0" y="175" width="327" height="51"/>
                                                 <subviews>
                                                     <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="tqh-hP-l7x" customClass="PickerView" customModule="tree" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="55"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="51"/>
                                                     </pickerView>
                                                 </subviews>
                                             </stackView>
@@ -299,7 +298,7 @@
     </scenes>
     <resources>
         <image name="Search" width="24" height="24"/>
+        <image name="down" width="24" height="24"/>
         <image name="filter3X" width="20" height="14"/>
-        <image name="iconArrDown" width="14" height="8"/>
     </resources>
 </document>
