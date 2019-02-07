@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     private let cellIdentifier: String = "ArticleFeedTableViewCell"
     private let articleImage: ArticleImage = ArticleImage()
     private var loadingView: LoadingView?
+    private var defaultView: DefaultLabelView?
     private var topOffset: CGFloat = UIApplication.shared.statusBarOrientation.isLandscape ? 44 : 64
     private var tableViewContentOffsetY: CGFloat = 0
     private var tableViewScrollCount: (down: Int, up: Int) = (0, 0)
@@ -42,7 +43,7 @@ class SearchViewController: UIViewController {
         registerArticleCell()
         filterItemSetting()
         getUserFilter()
-        setMessageBySearchState(to: "🌴Search Please🌴")
+        setDefaultView(message: "Please Search 🔎")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +56,15 @@ class SearchViewController: UIViewController {
         guard let loadView = loadingView else { return } 
         loadView.center = self.view.center
         self.view.addSubview(loadView)        
+    }
+    
+    private func setDefaultView(message: String) {
+        let defaultViewFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 150)
+        defaultView = DefaultLabelView(frame: defaultViewFrame)
+        guard let defaultView = defaultView else { return } 
+        defaultView.defaultMessage.text = message
+        defaultView.center = self.view.center
+        self.view.addSubview(defaultView)  
     }
     
     private func delegateSetting() {
@@ -112,6 +122,7 @@ class SearchViewController: UIViewController {
     // type 0
     private func getArticles(keyword: String, language: String, sort: String) {
         articles = nil
+        self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
         APIManager.getArticles(keyword: searchKeyword, 
@@ -127,7 +138,7 @@ class SearchViewController: UIViewController {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
                     if self.articles?.count == 0 {
-                        self.setMessageBySearchState(to: "🌱No results🌱")
+                        self.setDefaultView(message: "No Results 🔎")
                     }
                 }
             case .failure(let error):

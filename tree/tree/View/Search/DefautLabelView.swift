@@ -40,6 +40,7 @@ class DefaultLabelView: UIView {
     
     private func setRadius() {
         let radius: CGFloat = 10
+        defaultImage.roundCorners(layer: defaultImage.layer, radius: radius * 5)
         outerView.roundCorners(layer: outerView.layer, radius: radius)
     }
 }
