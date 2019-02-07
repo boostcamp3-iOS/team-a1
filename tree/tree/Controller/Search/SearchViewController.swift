@@ -96,13 +96,17 @@ class SearchViewController: UIViewController {
         view.addSubview(defaultLabel)
     }
     
-    private func checkSearchFilter(searchFilter: [String: String], type: Int) {
+    private func checkSearchFilter(searchFilter: [String: String], type: ArticleType) {
         guard let keyword = searchFilter["keyword"], 
             let language = searchFilter["language"], 
             let sort = searchFilter["sort"] 
             else { return }
-        type == 0 ? getArticles(keyword: keyword, language: language, sort: sort)
-   : loadMoreArticles(keyword: keyword, language: language, sort: sort)
+        switch type {
+        case .load:
+            getArticles(keyword: keyword, language: language, sort: sort)
+        case .loadMore:
+            loadMoreArticles(keyword: keyword, language: language, sort: sort)
+        }
     }
     
     // type 0
@@ -198,7 +202,7 @@ extension SearchViewController {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
             if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
-                checkSearchFilter(searchFilter: searchFilter, type: 1)
+                checkSearchFilter(searchFilter: searchFilter, type: ArticleType.loadMore)
                 isMoreLoading.toggle()
             }
         }
@@ -259,7 +263,7 @@ extension SearchViewController: UISearchBarDelegate {
         self.navigationItem.title = searchBar.text ?? "Search"
         if let getSearchKeyword = searchBar.text {
             searchKeyword = getSearchKeyword
-            checkSearchFilter(searchFilter: searchFilter, type: 0)
+            checkSearchFilter(searchFilter: searchFilter, type: ArticleType.load)
             defaultLabel.removeFromSuperview()
         }
         searchBarHideAndSetting()
