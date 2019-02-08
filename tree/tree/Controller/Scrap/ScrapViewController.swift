@@ -11,91 +11,66 @@ import CoreData
 
 class ScrapViewController: UIViewController {
     
-
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tabBarButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton!
     
-    var testArray: [ScrappedArticle] = []
+    private lazy var scrappedArticles: [ScrappedArticle] = {
+        ScrapManager.fetchArticles()
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-//        let testArticle = Article.init(
-//            uri: "1",
-//            lang: "en",
-//            date: "2019-2-3",
-//            time: "00:00",
-//            sim: 02.07,
-//            url: "hello.world",
-//            title: "one",
-//            body: "test\nbody",
-//            source: Source.init(uri: "1", dataType: "2", title: "3"),
-//            author: nil,
-//            image: nil
-//        )
-//        let testArticle2 = Article.init(
-//            uri: "1",
-//            lang: "en",
-//            date: "2019-2-3",
-//            time: "00:00",
-//            sim: 02.07,
-//            url: "hello.world",
-//            title: "two",
-//            body: "test\nbody",
-//            source: Source.init(uri: "1", dataType: "2", title: "3"),
-//            author: nil,
-//            image: nil
-//        )
-//        let testArticle3 = Article.init(
-//            uri: "1",
-//            lang: "en",
-//            date: "2019-2-3",
-//            time: "00:00",
-//            sim: 02.07,
-//            url: "hello.world",
-//            title: "three",
-//            body: "test\nbody",
-//            source: Source.init(uri: "1", dataType: "2", title: "3"),
-//            author: nil,
-//            image: nil
-//        )
-        
-        testArray = ScrapManager.fetchArticles()
-//        testArray = ScrapManager.fetchArticles(.society)
-//        print(ScrapManager.countArticle())
-//        print(ScrapManager.countArticle(category: .arts))
-        
-//        ScrapManager.scrapArticle(article: testArticle, category: .society, imageData: nil)
-//        ScrapManager.scrapArticle(article: testArticle2, category: .science, imageData: nil)
-//        ScrapManager.scrapArticle(article: testArticle3, category: .arts, imageData: nil)
-        
-        tabBarButton.addTarget(self, action: #selector(goNext), for: .touchUpInside)
+        delegateSetup()
+        filterButtonSetup()
     }
     
-    @objc func goNext(_ sender: UIButton) {
+    func delegateSetup() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func filterButtonSetup() {
+        filterButton.addTarget(
+            self,
+            action: #selector(filterButtonDidTap),
+            for: .touchUpInside)
+    }
+    
+    @objc func filterButtonDidTap(_ sender: UIButton) {
         guard let tempUIViewController =
             UIStoryboard.init(name: "ScrapFilter", bundle: nil)
                 .instantiateViewController(withIdentifier: "ScrapFilterViewController")
                 as? ScrapFilterViewController else {
             return
         }
-        present(tempUIViewController,animated: true)
+        tempUIViewController.delegate = self
+        present(tempUIViewController, animated: true)
     }
     
+    func fetchAndReload(selectedCategory category: ArticleCategory) {
+        if category == .all {
+            scrappedArticles = ScrapManager.fetchArticles()
+        } else {
+            scrappedArticles = ScrapManager.fetchArticles(category)
+        }
+        tableView.reloadData()
+    }
 }
 
-extension ScrapViewController: UITableViewDelegate, UITableViewDataSource {
+extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+        return scrappedArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = testArray[indexPath.row].articleTitle
+        cell.textLabel?.text = scrappedArticles[indexPath.row].articleTitle
         return cell
     }
-    
+}
+
+extension ScrapViewController: ScrapFilterViewControllerDelegate {
+    func filterArticles(_ article: ArticleCategory) {
+        fetchAndReload(selectedCategory: article)
+    }
 }
