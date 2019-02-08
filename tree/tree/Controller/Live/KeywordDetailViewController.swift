@@ -14,22 +14,34 @@ class KeywordDetailViewController: UIViewController {
     
     var keywordData: TrendingSearch? {
         didSet {
-            let date = calculateDateRange()
             guard let keyword = keywordData?.title.query else { return }
-            getGraphData(to: keyword, date.start, date.end)
+            graphData(to: keyword, startDate, endDate)
         }
     }
     var graphData: Graph?
     
-    private let oneDay = TimeIntervalTypes.oneDay.value
-    private let oneMonth = TimeIntervalTypes.oneMonth.value
+    private var startDate: String {
+        let oneMonth = TimeIntervalTypes.oneMonth.value
+        let date = Date(timeInterval: -oneMonth, since: Date())
+        return dateFormatter.string(from: date)
+    }
+    private var endDate: String {
+        let oneDay = TimeIntervalTypes.oneDay.value
+        let date = Date(timeInterval: -oneDay, since: Date())
+        return dateFormatter.string(from: date)
+    }
+    
     private let timeUnit = TimeUnitTypes.week.value
     private let graphCellIdentifier = "KeywordDetailGraphCell"
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
-        tableView.reloadData()
     }
     
     private func setTableView() {
@@ -39,21 +51,12 @@ class KeywordDetailViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func calculateDateRange() -> (start: String, end: String) {
-        let todayDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let endDate = Date(timeInterval: -oneDay, since: todayDate)
-        let startDate = Date(timeInterval: -oneMonth, since: todayDate)
-        return (formatter.string(from: startDate), formatter.string(from: endDate))
-    }
-    
-    private func getGraphData(to keyword: String, _ startDate: String, _ endDate: String) {
+    private func graphData(to keyword: String, _ startDate: String, _ endDate: String) {
         let keywordGroups: [[String: Any]] = [[
             "groupName": keyword,
             "keywords": [keyword]
             ]]
-        APIManager.getGraphData(
+        APIManager.graphData(
             startDate: startDate,
             endDate: endDate,
             timeUnit: timeUnit,
