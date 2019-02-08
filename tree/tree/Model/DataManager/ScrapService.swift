@@ -27,7 +27,7 @@ enum ScrappedArticleProperty {
     }
 }
 
-enum ArticleCategory: CaseIterable{
+public enum ArticleCategory: CaseIterable{
     case all
     case arts
     case business

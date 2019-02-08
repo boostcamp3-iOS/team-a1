@@ -21,7 +21,7 @@ class ScrapFilterViewController: UIViewController {
             return ScrapManager.countArticle(category: $0, nil) != 0
         })
     }()
-    weak var delegate: ScrapFilterViewControllerDelegate?
+    weak var delegate: ScrapFilterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +62,4 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
         delegate?.filterArticles(categories[indexPath.row])
         dismiss(animated: true)
     }
-}
-
-protocol ScrapFilterViewControllerDelegate: class {
-    func filterArticles(_ article: ArticleCategory)
 }

@@ -69,7 +69,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ScrapViewController: ScrapFilterViewControllerDelegate {
+extension ScrapViewController: ScrapFilterDelegate {
     func filterArticles(_ article: ArticleCategory) {
         fetchAndReload(selectedCategory: article)
     }
