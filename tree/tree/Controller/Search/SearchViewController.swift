@@ -59,7 +59,10 @@ class SearchViewController: UIViewController {
     }
     
     private func setDefaultView(message: String) {
-        let defaultViewFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 150)
+        let defaultViewFrame = CGRect(x: 0,
+                                      y: 0,
+                                      width: self.view.frame.width,
+                                      height: 150)
         defaultView = DefaultLabelView(frame: defaultViewFrame)
         guard let defaultView = defaultView else { return } 
         defaultView.defaultMessage.text = message
@@ -119,7 +122,9 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func loadArticles(keyword: String, language: String, sort: String) {
+    private func loadArticles(keyword: String,
+                              language: String,
+                              sort: String) {
         articles = nil
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
