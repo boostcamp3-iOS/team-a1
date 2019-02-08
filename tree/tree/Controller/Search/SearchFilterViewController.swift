@@ -20,7 +20,7 @@ class SearchFilterViewController: UIViewController {
     @IBOutlet weak var keywordSortStackView: UIStackView!
     @IBOutlet weak var keywordSegmentedControl: UISegmentedControl!
     @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
-    @IBOutlet var collectionOfSegmentedControl: Array<UISegmentedControl>?
+    @IBOutlet var collectionOfSegmentedControl: [UISegmentedControl]?
     
     private var selectViewIsPresented: Bool = false
     var filterValue: [String: String]?
@@ -115,8 +115,9 @@ extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSour
         let selectValue = selectPickViewer.getList()[row]
         if selectPickViewer.tagNumber == 0 {
             categoryLabel.text = selectValue
-        } 
-        languageLabel.text = selectValue
+        } else {
+            languageLabel.text = selectValue
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
