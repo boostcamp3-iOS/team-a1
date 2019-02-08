@@ -15,7 +15,7 @@ class KeywordDetailViewController: UIViewController {
     var keywordData: TrendingSearch? {
         didSet {
             guard let keyword = keywordData?.title.query else { return }
-            graphData(to: keyword, startDate, endDate)
+            loadGraphData(to: keyword, startDate, endDate)
         }
     }
     var graphData: Graph?
@@ -51,7 +51,7 @@ class KeywordDetailViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func graphData(to keyword: String, _ startDate: String, _ endDate: String) {
+    private func loadGraphData(to keyword: String, _ startDate: String, _ endDate: String) {
         let keywordGroups: [[String: Any]] = [[
             "groupName": keyword,
             "keywords": [keyword]
