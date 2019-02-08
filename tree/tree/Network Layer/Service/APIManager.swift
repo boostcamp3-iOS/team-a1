@@ -56,14 +56,14 @@ final class APIManager {
         }
     }
     
-    static func getGraphData(
+    static func graphData(
         startDate: String,
         endDate: String,
         timeUnit: String,
         keywordGroups: [[String: Any]],
         completion: @escaping (Result<Graph>
     ) -> Void) {
-        APICenter<NaverAPI>().request(.getKeywordTrend(
+        APICenter<NaverAPIMode>().request(.keywordTrend(
             startDate: startDate,
             endDate: endDate,
             timeUnit: timeUnit,

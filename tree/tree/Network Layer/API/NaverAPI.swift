@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum NaverAPI {
-    case getKeywordTrend(
+enum NaverAPIMode {
+    case keywordTrend(
         startDate: String,
         endDate: String,
         timeUnit: String,
@@ -17,7 +17,7 @@ enum NaverAPI {
     )
 }
 
-extension NaverAPI: APIService {
+extension NaverAPIMode: APIService {
 
     var baseURL: URL {
         guard let url = URL(string: "https://openapi.naver.com/v1/datalab/search") else {
@@ -28,21 +28,21 @@ extension NaverAPI: APIService {
     
     var path: String? {
         switch self {
-        case .getKeywordTrend:
+        case .keywordTrend:
             return nil
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getKeywordTrend:
+        case .keywordTrend:
             return .post
         }
     }
     
     var parameters: Parameters {
         switch self {
-        case .getKeywordTrend(let startDate, let endDate, let timeUnit, let keywordGroups):
+        case .keywordTrend(let startDate, let endDate, let timeUnit, let keywordGroups):
             return [
                 "startDate": startDate,
                 "endDate": endDate,
@@ -54,14 +54,14 @@ extension NaverAPI: APIService {
     
     var task: HTTPTask {
         switch self {
-        case .getKeywordTrend:
+        case .keywordTrend:
             return .requestWith(url: nil, body: parameters, encoding: .body)
         }
     }
     
     var header: HTTPHeader? {
         switch self {
-        case .getKeywordTrend:
+        case .keywordTrend:
             return [
                 .naverClientID: APIConstant.naverClientID,
                 .naverClientSecret: APIConstant.naverClientSecret
