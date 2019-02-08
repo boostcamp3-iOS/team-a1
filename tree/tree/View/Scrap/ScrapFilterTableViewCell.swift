@@ -19,13 +19,22 @@ class ScrapFilterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         roundCorners(layer: cardBackgroudView.layer, radius: 15.0)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    func setAllCategory(width: CGFloat) {
+        setGradientLayer(.all, width: width)
+        titleLabel.text = "All Category"
+        descriptionLabel.text = "\(ScrapManager.countArticle(nil)) articles"
+    }
+    
+    func configure(_ category: ArticleCategory, width: CGFloat) {
+        setGradientLayer(category, width: width)
+        setTitleLabel(category)
+        setDescriptionLabel(category)
     }
     
     func setGradientLayer(_ category: ArticleCategory, width: CGFloat) {
-        var gradientLayer = CAGradientLayer()
+        cardBackgroudView.backgroundColor = .clear
+        let gradientLayer = CAGradientLayer()
         //        gradientLayer.frame = cell.forGradientView.bounds
         gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: 120)
         gradientLayer.cornerRadius = 15.0
@@ -33,5 +42,14 @@ class ScrapFilterTableViewCell: UITableViewCell {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradientLayer.colors = category.gradientColors()
         forGradientView.layer.addSublayer(gradientLayer)
+    }
+    
+    func setTitleLabel(_ category: ArticleCategory) {
+        titleLabel.text = category.capitalFirstCharactor()
+    }
+    
+    func setDescriptionLabel(_ category: ArticleCategory) {
+        let articleCount = ScrapManager.countArticle(category: category, nil)
+        descriptionLabel.text = "\(articleCount) articles"
     }
 }

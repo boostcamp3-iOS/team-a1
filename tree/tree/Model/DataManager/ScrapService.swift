@@ -28,6 +28,7 @@ enum ScrappedArticleProperty {
 }
 
 enum ArticleCategory: CaseIterable{
+    case all
     case arts
     case business
     case computers
@@ -61,6 +62,9 @@ enum ArticleCategory: CaseIterable{
     
     func gradientColors() -> [CGColor] {
         switch self {
+        case .all:
+            return [UIColor(hexString: "#f6416c").cgColor,
+                    UIColor(hexString: "#fff6b7").cgColor]
         case .arts: 
             return [UIColor(hexString: "#7b4397").cgColor,
                     UIColor(hexString: "#dc2430").cgColor]

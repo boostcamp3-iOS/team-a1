@@ -14,7 +14,14 @@ class ScrapFilterViewController: UIViewController {
     @IBOutlet weak var headerTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private let cellIdentifier = "ScrapFilterTableViewCell"
-    private var categories = ArticleCategory.allCases
+    private lazy var categories: [ArticleCategory] = {
+        var categoriyArray = ArticleCategory.allCases
+        categoriyArray = categoriyArray.filter({
+            if $0 == .all { return true }
+            return ScrapManager.countArticle(category: $0, nil) != 0
+        })
+        return categoriyArray
+    }()
 //    private var tableViewContentOffsetY: CGFloat = 0
 //    private var headerViewLarged = true
     
@@ -40,14 +47,17 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-                as? ScrapFilterTableViewCell else {
-            return UITableViewCell()
+        guard let cell =
+            tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ScrapFilterTableViewCell else {
+                return UITableViewCell()
         }
-        
-        cell.setGradientLayer(categories[indexPath.row], width: view.bounds.width - 32)
-        // width? -> 계산이 잘 안되는데 어떻게 해결해야 할까? -> xib의 크키에 맞춰서 gradientlayer가 잡힌다.
-        cell.titleLabel.text = categories[indexPath.row].capitalFirstCharactor()
+        if indexPath.row == 0 {
+            cell.setAllCategory(width: view.bounds.width - 32)
+        } else {
+            // width? -> 계산이 잘 안되는데 어떻게 해결해야 할까? -> xib의 크키에 맞춰서 gradientlayer가 잡힌다.
+            // 32 또한 수정을 해야 한다. constraint 값을 받도록 하자
+            cell.configure(categories[indexPath.row], width: view.bounds.width - 32)
+        }
         return cell
     }
     
@@ -55,9 +65,6 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
         guard let tappedCell = tableView.cellForRow(at: indexPath) as? ScrapFilterTableViewCell else { return }
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
 }
 
 extension ScrapFilterViewController {

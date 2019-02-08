@@ -65,8 +65,8 @@ class ScrapViewController: UIViewController {
         
         testArray = ScrapManager.fetchArticles()
 //        testArray = ScrapManager.fetchArticles(.society)
-        print(ScrapManager.unreadArticlesCount())
-        print(ScrapManager.unreadArticlesCount(category: .arts))
+//        print(ScrapManager.countArticle())
+//        print(ScrapManager.countArticle(category: .arts))
         
 //        ScrapManager.scrapArticle(article: testArticle, category: .society, imageData: nil)
 //        ScrapManager.scrapArticle(article: testArticle2, category: .science, imageData: nil)

@@ -70,7 +70,6 @@
 		D9D145D6220B1C7000CC58DA /* ScrapFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D145D3220B1C7000CC58DA /* ScrapFilterTableViewCell.xib */; };
 		D9D145D7220B1C7000CC58DA /* ScrapFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D145D4220B1C7000CC58DA /* ScrapFilter.storyboard */; };
 		D9D145D8220B1C7000CC58DA /* ScrapFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145D5220B1C7000CC58DA /* ScrapFilterTableViewCell.swift */; };
-		D9D145E8220B599900CC58DA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145E7220B599900CC58DA /* Extension+UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,7 +140,6 @@
 		D9D145D3220B1C7000CC58DA /* ScrapFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapFilterTableViewCell.xib; sourceTree = "<group>"; };
 		D9D145D4220B1C7000CC58DA /* ScrapFilter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScrapFilter.storyboard; sourceTree = "<group>"; };
 		D9D145D5220B1C7000CC58DA /* ScrapFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterTableViewCell.swift; sourceTree = "<group>"; };
-		D9D145E7220B599900CC58DA /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,7 +384,6 @@
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 				BC63852B2206CBF200074CF3 /* Enum+Countries.swift */,
 				6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */,
-				D9D145E7220B599900CC58DA /* Extension+UIColor.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -583,7 +580,6 @@
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
-				D9D145E8220B599900CC58DA /* Extension+UIColor.swift in Sources */,
 				BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */,
 				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
 				BC7969C52200AD0E0003F520 /* TrendPageView.swift in Sources */,
