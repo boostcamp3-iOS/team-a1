@@ -23,6 +23,8 @@
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
 		6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */; };
 		6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CCB220CAAB5002421AC /* DefautLabelView.swift */; };
+		6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */; };
+		6A47BF44220E0638008BEA7A /* LiveFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */; };
 		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
 		6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282B220187F8009EC8ED /* Extension+UIView.swift */; };
 		6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A65DA422203D22B005EB2BC /* LoadingView.xib */; };
@@ -90,6 +92,8 @@
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
 		6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultLabelView.xib; sourceTree = "<group>"; };
 		6A198CCB220CAAB5002421AC /* DefautLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefautLabelView.swift; sourceTree = "<group>"; };
+		6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedTableViewCell.swift; sourceTree = "<group>"; };
+		6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveFeedTableViewCell.xib; sourceTree = "<group>"; };
 		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
 		6A5D282B220187F8009EC8ED /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
@@ -299,6 +303,8 @@
 				BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */,
 				BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */,
 				BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */,
+				6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */,
+				6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */,
+				6A47BF44220E0638008BEA7A /* LiveFeedTableViewCell.xib in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
 				BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */,
@@ -575,6 +582,7 @@
 				BC7969B922002E620003F520 /* TrendDays.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
+				6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */,
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
