@@ -9,20 +9,17 @@
 import Foundation
 
 struct Graph: Codable {
-    let graphDefault: KeywordInterestRate
-    
-    private enum CodingKeys: String, CodingKey {
-        case graphDefault = "default"
-    }
+    let startDate, endDate, timeUnit: String
+    let results: [KeywordResult]
 }
 
-struct KeywordInterestRate: Codable {
-    let timelineData: [TimelineDatum]
+struct KeywordResult: Codable {
+    let title: String
+    let keywords: [String]
+    let data: [Datum]
 }
 
-struct TimelineDatum: Codable {
-    let time, formattedTime, formattedAxisTime: String
-    let value: [Int]
-    let hasData: [Bool]
-    let formattedValue: [String]
+struct Datum: Codable {
+    let period: String
+    let ratio: Double
 }
