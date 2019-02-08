@@ -8,12 +8,13 @@
 
 import UIKit
 
-class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
+class LiveViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
     private let pageNibName = "TrendPageView"
+    private let localizedLanguage = LocalizedLanguages.korean.rawValue
     private var livePagerPages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
@@ -37,8 +38,11 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     @objc func receiveCountryInfo(_ notification: Notification) {
         guard let countryInfo = notification.userInfo as? [String: String] else { return }
-        guard let countryCode = countryInfo["code"] else { return }
-        guard let countryName = countryInfo["name"] else { return }
+        guard
+            let countryCode = countryInfo["code"],
+            let countryName = countryInfo["name"]  else {
+                return
+        }
         networkWithServer(countryCode)
         self.countryName = countryName
     }
@@ -52,7 +56,7 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     private func networkWithServer(_ geo: String) {
-        APIManager.getDailyTrends(hl: "ko", geo: geo) { [weak self] (result) in
+        APIManager.getDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trandData):
@@ -72,18 +76,12 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
                 return []
         }
         pageByDays.daysKeywordChart = HeaderCellContent(
-            title: "일별 급상승 검색어",
+            title: "급상승 검색어",
             country: countryName
         )
         pageByDays.googleTrendData = googleTrendData
-        guard let pageByRealTime: TrendPageView = Bundle.main.loadNibNamed(
-            pageNibName,
-            owner: self,
-            options: nil
-            )?.first as? TrendPageView else {
-                return []
-        }
-        return [pageByDays, pageByRealTime]
+        pageByDays.delegate = self
+        return [pageByDays]
     }
     
     private func setPageScrollView(pages: [TrendPageView]) {
@@ -107,5 +105,18 @@ class LiveViewController: UIViewController, UICollectionViewDelegateFlowLayout {
             )
             scrollView.addSubview(pages[index])
         }
+    }
+}
+
+extension LiveViewController: PushViewControllerDelegate {
+    func pushViewControllerWhenDidSelectRow(with rowData: TrendingSearch) {
+        guard
+            let detailViewController = self.storyboard?.instantiateViewController(
+                withIdentifier: "KeywordDetailViewController"
+                ) as? KeywordDetailViewController else {
+                    return
+        }
+        detailViewController.keywordData = rowData
+        self.present(detailViewController, animated: true, completion: nil)
     }
 }
