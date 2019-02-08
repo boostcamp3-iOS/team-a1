@@ -24,7 +24,7 @@ class KeywordDetailGraphCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        makeRoundView(for: backgroundContainerView)
+        roundCorners(layer: backgroundContainerView.layer, radius: 14)
         configureShadow()
     }
     
@@ -43,9 +43,5 @@ class KeywordDetailGraphCell: UITableViewCell {
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
-    }
-    
-    private func makeRoundView(for view: UIView) {
-        view.layer.cornerRadius = 14
     }
 }
