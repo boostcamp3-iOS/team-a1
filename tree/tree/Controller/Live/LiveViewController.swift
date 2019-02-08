@@ -13,8 +13,6 @@ class LiveViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
 
-    private let pageNibName = "TrendPageView"
-    private let localizedLanguage = LocalizedLanguages.korean.rawValue
     private var livePagerPages: [TrendPageView] = []
     private var googleTrendData: TrendDays? {
         didSet {
@@ -24,6 +22,8 @@ class LiveViewController: UIViewController {
         }
     }
     private var countryName: String = Country.usa.info.name
+    private let pageNibName = "TrendPageView"
+    private let localizedLanguage = LocalizedLanguages.korean.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
