@@ -71,7 +71,7 @@ class GraphView: UIView {
             width: self.frame.width,
             height: mainLayer.frame.height - bottomSpace
         )
-        dataPoints = convertValueToPoints(with: graphData)
+        dataPoints = points(from: graphData)
         scrollView.showsHorizontalScrollIndicator = false
         removeAllLayer()
         drawHorizontalLines()
@@ -79,7 +79,7 @@ class GraphView: UIView {
         drawBottomLabels()
     }
     
-    private func convertValueToPoints(with graphData: KeywordResult) -> [CGPoint] {
+    private func points(from graphData: KeywordResult) -> [CGPoint] {
         var result: [CGPoint] = []
         for index in 0..<graphData.data.count {
             let graphValue = CGFloat(graphData.data[index].ratio)
