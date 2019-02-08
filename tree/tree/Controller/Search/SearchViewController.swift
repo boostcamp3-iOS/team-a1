@@ -113,14 +113,13 @@ class SearchViewController: UIViewController {
             else { return }
         switch type {
         case .load:
-            getArticles(keyword: keyword, language: language, sort: sort)
+            loadArticles(keyword: keyword, language: language, sort: sort)
         case .loadMore:
             loadMoreArticles(keyword: keyword, language: language, sort: sort)
         }
     }
     
-    // type 0
-    private func getArticles(keyword: String, language: String, sort: String) {
+    private func loadArticles(keyword: String, language: String, sort: String) {
         articles = nil
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
@@ -147,7 +146,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    // type 1
     private func loadMoreArticles(keyword: String, language: String, sort: String) {
         if page >= totalPage { return }
         page += 1
