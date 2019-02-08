@@ -10,16 +10,14 @@ import UIKit
 
 class GraphView: UIView {
     
+    private var dataPoints: [CGPoint]?
     private let dataLayer: CALayer = CALayer()
     private let mainLayer: CALayer = CALayer()
     private let scrollView: UIScrollView = UIScrollView()
     private let gridLayer: CALayer = CALayer()
-    private var dataPoints: [CGPoint]?
-    
     private let contentSpace: CGFloat = 60
     private let bottomSpace: CGFloat = 30
     private let leftSpace: CGFloat = 30
-    
     var graphData: KeywordResult? {
         didSet {
             self.setNeedsLayout()
