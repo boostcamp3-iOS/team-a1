@@ -26,6 +26,9 @@
 		6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA442203D242005EB2BC /* LoadingView.swift */; };
 		6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA492206190C005EB2BC /* ImageCache.swift */; };
 		6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
+		BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */; };
+		BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */; };
+		BC19FD17220D9D20006A9C7D /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
 		BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
 		BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */; };
 		BC2656BE21FD94EE00003413 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B521FD94EE00003413 /* APIService.swift */; };
@@ -36,6 +39,12 @@
 		BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */; };
+		BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */; };
+		BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
+		BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4B220B531D000465B0 /* KeywordDetailViewController.swift */; };
+		BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4D220B730F000465B0 /* GraphView.swift */; };
+		BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4F220C247E000465B0 /* NaverAPI.swift */; };
 		BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
 		BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852D2207442B00074CF3 /* Extension+Notification.swift */; };
 		BC7969B922002E620003F520 /* TrendDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrendDays.swift */; };
@@ -92,6 +101,9 @@
 		6AE2D7AD21FEF30D00444622 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.debug.xcconfig"; sourceTree = "<group>"; };
 		9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tree.release.xcconfig"; path = "Pods/Target Support Files/Pods-tree/Pods-tree.release.xcconfig"; sourceTree = "<group>"; };
+		BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+TimeIntervalTypes.swift"; sourceTree = "<group>"; };
+		BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+TimeUnitTypes.swift"; sourceTree = "<group>"; };
+		BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+LocalizedLanguages.swift"; sourceTree = "<group>"; };
 		BC2656AF21FD94E000003413 /* Extension+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
 		BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRegistryAPI.swift; sourceTree = "<group>"; };
 		BC2656B521FD94EE00003413 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -102,6 +114,12 @@
 		BC2656BB21FD94EE00003413 /* NetworkResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
+		BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailGraphCell.swift; sourceTree = "<group>"; };
+		BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordDetailGraphCell.xib; sourceTree = "<group>"; };
+		BC5D4E49220B23C8000465B0 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		BC5D4E4B220B531D000465B0 /* KeywordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailViewController.swift; sourceTree = "<group>"; };
+		BC5D4E4D220B730F000465B0 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		BC5D4E4F220C247E000465B0 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
 		BC63852B2206CBF200074CF3 /* Enum+Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Countries.swift"; sourceTree = "<group>"; };
 		BC63852D2207442B00074CF3 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		BC7969B822002E620003F520 /* TrendDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDays.swift; sourceTree = "<group>"; };
@@ -244,6 +262,7 @@
 			children = (
 				BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */,
 				BC7969C022002F440003F520 /* GoogleTrendAPI.swift */,
+				BC5D4E4F220C247E000465B0 /* NaverAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -276,8 +295,40 @@
 				D9D145C4220B0B8400CC58DA /* DataManager */,
 				BC2656C621FD950900003413 /* Articles.swift */,
 				BC7969B822002E620003F520 /* TrendDays.swift */,
+				BC5D4E49220B23C8000465B0 /* Graph.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC5D4E44220B1D60000465B0 /* Keyword */ = {
+			isa = PBXGroup;
+			children = (
+				BCDB9E252205A1040095E4E4 /* TrendHeaderCell.swift */,
+				BCDB9E262205A1040095E4E4 /* TrendHeaderCell.xib */,
+				BC7969D1220174B40003F520 /* TrendListCell.swift */,
+				BC7969D2220174B40003F520 /* TrendListCell.xib */,
+				BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */,
+				BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */,
+				BC5D4E46220B1D6C000465B0 /* Detail */,
+			);
+			path = Keyword;
+			sourceTree = "<group>";
+		};
+		BC5D4E45220B1D66000465B0 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		BC5D4E46220B1D6C000465B0 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */,
+				BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */,
+				BC5D4E4D220B730F000465B0 /* GraphView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		BC7969BA22002EA60003F520 /* Live */ = {
@@ -286,12 +337,8 @@
 				BC7969BB22002EB20003F520 /* Live.storyboard */,
 				BC7969C42200AD0E0003F520 /* TrendPageView.swift */,
 				BC7969C62200AD190003F520 /* TrendPageView.xib */,
-				BCDB9E252205A1040095E4E4 /* TrendHeaderCell.swift */,
-				BCDB9E262205A1040095E4E4 /* TrendHeaderCell.xib */,
-				BC7969D1220174B40003F520 /* TrendListCell.swift */,
-				BC7969D2220174B40003F520 /* TrendListCell.xib */,
-				BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */,
-				BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */,
+				BC5D4E45220B1D66000465B0 /* Events */,
+				BC5D4E44220B1D60000465B0 /* Keyword */,
 				BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */,
 			);
 			path = Live;
@@ -301,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7969BE22002EC30003F520 /* LiveViewController.swift */,
+				BC5D4E4B220B531D000465B0 /* KeywordDetailViewController.swift */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -378,6 +426,9 @@
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 				BC63852B2206CBF200074CF3 /* Enum+Countries.swift */,
 				6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */,
+				BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */,
+				BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */,
+				BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -486,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */,
 				D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
@@ -555,18 +607,24 @@
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
 				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
+				BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				BC2656BF21FD94EE00003413 /* APIManager.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */,
+				BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */,
+				BC19FD17220D9D20006A9C7D /* Enum+LocalizedLanguages.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
 				D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */,
 				BC7969B922002E620003F520 /* TrendDays.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
+				BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
+				BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */,
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
+				BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
 				BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */,
@@ -579,8 +637,10 @@
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
+				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */,
+				BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */,
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
 				BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */,
 				D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */,
