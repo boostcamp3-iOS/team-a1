@@ -40,7 +40,7 @@ class ScrapFilterTableViewCell: UITableViewCell {
         gradientLayer.cornerRadius = 15.0
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        gradientLayer.colors = category.gradientColors()
+        gradientLayer.colors = category.gradientColors
         forGradientView.layer.addSublayer(gradientLayer)
     }
     

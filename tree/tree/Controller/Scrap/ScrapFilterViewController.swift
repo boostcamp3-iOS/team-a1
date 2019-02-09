@@ -11,7 +11,7 @@ import UIKit
 class ScrapFilterViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     private let cellIdentifier = "ScrapFilterTableViewCell"
@@ -21,7 +21,7 @@ class ScrapFilterViewController: UIViewController {
             return ScrapManager.countArticle(category: $0, nil) != 0
         })
     }()
-    weak var delegate: ScrapFilterDelegate?
+    weak var filterDelegate: ScrapFilterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class ScrapFilterViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
-            UINib(nibName: "ScrapFilterTableViewCell", bundle: nil),
+            UINib(nibName: cellIdentifier, bundle: nil),
             forCellReuseIdentifier: cellIdentifier)
         tableView.separatorStyle = .none
     }
@@ -47,7 +47,6 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
         guard let cell =
             tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
                 as? ScrapFilterTableViewCell else {
-
                     return UITableViewCell()
         }
         if indexPath.row == 0 {
@@ -59,7 +58,7 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.filterArticles(categories[indexPath.row])
+        filterDelegate?.filterArticles(categories[indexPath.row])
         dismiss(animated: true)
     }
 }

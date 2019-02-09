@@ -60,12 +60,12 @@ public enum ArticleCategory: CaseIterable{
         return result
     }
     
-    func gradientColors() -> [CGColor] {
+    var gradientColors: [CGColor] {
         switch self {
         case .all:
             return [UIColor(hexString: "#f6416c").cgColor,
                     UIColor(hexString: "#fff6b7").cgColor]
-        case .arts: 
+        case .arts:
             return [UIColor(hexString: "#7b4397").cgColor,
                     UIColor(hexString: "#dc2430").cgColor]
         case .business:
@@ -105,7 +105,5 @@ public enum ArticleCategory: CaseIterable{
             return [UIColor(hexString: "#42275a").cgColor,
                     UIColor(hexString: "#734b6d").cgColor]
         }
-        
     }
 }
-

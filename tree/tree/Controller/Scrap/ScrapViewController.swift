@@ -24,12 +24,12 @@ class ScrapViewController: UIViewController {
         filterButtonSetup()
     }
     
-    func delegateSetup() {
+    private func delegateSetup() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func filterButtonSetup() {
+    private func filterButtonSetup() {
         filterButton.addTarget(
             self,
             action: #selector(filterButtonDidTap),
@@ -43,11 +43,11 @@ class ScrapViewController: UIViewController {
                 as? ScrapFilterViewController else {
             return
         }
-        tempUIViewController.delegate = self
+        tempUIViewController.filterDelegate = self
         present(tempUIViewController, animated: true)
     }
     
-    func fetchAndReload(selectedCategory category: ArticleCategory) {
+    private func fetchAndReload(selectedCategory category: ArticleCategory) {
         if category == .all {
             scrappedArticles = ScrapManager.fetchArticles()
         } else {
