@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PushViewControllerDelegate: class {
+    func pushViewControllerWhenDidSelectRow(with rowData: TrendingSearch)
+}
+
 class TrendPageView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
@@ -15,6 +19,7 @@ class TrendPageView: UIView {
     private let headerCellIdentifier = "TrendHeaderCell"
     private let listCellIdentifier = "TrendListCell"
     private let listHeaderCellIdentifier = "TrendListHeaderCell"
+    weak var delegate: PushViewControllerDelegate?
     var googleTrendData: TrendDays?
     var daysKeywordChart: HeaderCellContent?
     
@@ -61,7 +66,9 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             return 1
         default:
             guard
-                let listBySection = googleTrendData?.trend.searchesByDays[section-1].keywordList else {
+                let listBySection = googleTrendData?.trend
+                    .searchesByDays[section-1]
+                    .keywordList else {
                     return 0
             }
             return listBySection.count
@@ -75,7 +82,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         default:
             guard
                 let headerCell = tableView.dequeueReusableCell(
-                    withIdentifier: listHeaderCellIdentifier
+                        withIdentifier: listHeaderCellIdentifier
                     ) as? TrendListHeaderCell else {
                         return UIView()
             }
@@ -142,7 +149,13 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             headerData.expanded = !headerData.expanded
             tableView.reloadRows(at: [indexPath], with: .automatic)
         default:
-            break
+            guard
+                let keywordRowData = googleTrendData?.trend
+                    .searchesByDays[indexPath.section - 1]
+                    .keywordList[indexPath.row] else {
+                    return
+            }
+            delegate?.pushViewControllerWhenDidSelectRow(with: keywordRowData)
         }
     }
 }

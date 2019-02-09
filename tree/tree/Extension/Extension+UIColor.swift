@@ -35,4 +35,7 @@ extension UIColor {
     class var brightBlue: UIColor {
         return UIColor(red: 34/255.0, green: 105/255.0, blue: 232/255.0, alpha: 1.0)
     }
+    class var whiteGray: UIColor {
+        return UIColor(red: 205/255.0, green: 205/255.0, blue: 205/255.0, alpha: 1.0)
+    }
 }

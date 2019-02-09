@@ -33,8 +33,8 @@ class LoadingView: UIView {
         guard let view = Bundle.main.loadNibNamed(
             xibName,
             owner: self,
-            options: nil
-            )?.first as? UIView else { return }
+            options: nil)?.first as? UIView 
+            else { return }
         view.frame = self.bounds
         self.addSubview(view)
     }
