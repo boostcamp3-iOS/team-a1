@@ -71,45 +71,48 @@ final class ScrapManager {
         return result
     }
     
-    static func unreadArticlesCount() -> Int {
-        var result = 0
-        let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
-        let predicate = NSPredicate(format: "isRead == %@", NSNumber(value: false))
-        request.predicate = predicate
-        request.resultType = .countResultType
-        do {
-            let countResult = try managedContext.fetch(request)
-            guard let resultCount = countResult.first?.intValue else {
-                return 0
-            }
-            result = resultCount
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+    static func countArticle(_ isRead: Bool?) -> Int {
+        if let isRead = isRead {
+            return countArticleFetch(NSPredicate(format: "isRead == %@", NSNumber(value: isRead)))
         }
-        return result
+        return countArticleFetch(nil)
     }
     
-    static func unreadArticlesCount(category: ArticleCategory) -> Int {
-        var result = 0
+    static func countArticle(category: ArticleCategory, _ isRead: Bool?) -> Int {
+        var predicate: NSPredicate
+        if let isRead = isRead {
+            predicate = NSPredicate(
+                format: "isRead == %@ AND %K == %@",
+                NSNumber(value: isRead),
+                #keyPath(ScrappedArticle.category),
+                category.toString()
+            )
+        } else {
+            predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ScrappedArticle.category),
+                category.toString()
+            )
+        }
+        return countArticleFetch(predicate)
+    }
+    
+    static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
         let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
-        let predicate = NSPredicate(
-            format: "isRead == %@ AND %K == %@",
-            NSNumber(value: false),
-            #keyPath(ScrappedArticle.category),
-            category.toString()
-        )
-        request.predicate = predicate
         request.resultType = .countResultType
+        if let predicate = predicate {
+            request.predicate = predicate
+        }
         do {
-            let countResult = try managedContext.fetch(request)
-            guard let resultCount = countResult.first?.intValue else {
+            let result = try managedContext.fetch(request)
+            guard let resultCount = result.first?.intValue else {
                 return 0
             }
-            result = resultCount
+            return resultCount
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        return result
+        return 0
     }
     
     static func removeAllScrappedArticle() {
