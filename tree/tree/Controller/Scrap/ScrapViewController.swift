@@ -48,11 +48,9 @@ class ScrapViewController: UIViewController {
     }
     
     private func fetchAndReload(selectedCategory category: ArticleCategory) {
-        if category == .all {
-            scrappedArticles = ScrapManager.fetchArticles()
-        } else {
-            scrappedArticles = ScrapManager.fetchArticles(category)
-        }
+        scrappedArticles =
+            category == .all ?
+                ScrapManager.fetchArticles() : ScrapManager.fetchArticles(category)
         tableView.reloadData()
     }
 }
