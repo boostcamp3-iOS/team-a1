@@ -41,12 +41,13 @@ enum EventRegistryAPI {
 }
 
 extension EventRegistryAPI: APIService {
+    
     var baseURL: URL {
         guard let url = URL(string: "http://eventregistry.org") else { fatalError("Invalid URL") }
         return url
     }
     
-    var path: String {
+    var path: String? {
         switch self {
         case .getArticles:
             return "/api/v1/article"
@@ -95,5 +96,9 @@ extension EventRegistryAPI: APIService {
                 encoding: .query
             )
         }
+    }
+    
+    var header: HTTPHeader? {
+        return nil
     }
 }

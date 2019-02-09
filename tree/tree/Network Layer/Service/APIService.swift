@@ -10,10 +10,11 @@ import Foundation
 
 protocol APIService {
     var baseURL: URL { get }
-    var path: String { get }
+    var path: String? { get }
     var method: HTTPMethod { get }
     var parameters: Parameters { get }
     var task: HTTPTask { get }
+    var header: HTTPHeader? { get }
 }
 
 enum HTTPMethod: String {
@@ -34,8 +35,10 @@ enum HTTPHeaderField: String {
     case acceptType = "Accept"
     case acceptEncoding = "Accept-Encoding"
     case contentDisposition = "Content-Disposition"
+    case naverClientID = "X-Naver-Client-Id"
+    case naverClientSecret = "X-Naver-Client-Secret"
 }
 
 enum ContentType: String {
-    case json = "application/json; charset=UTF-8"
+    case json = "application/json"
 }
