@@ -78,7 +78,12 @@
 		D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C6220B0B8400CC58DA /* ScrapManager.swift */; };
 		D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */; };
 		D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */; };
-		D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D145CF220B0B9300CC58DA /* Scrap.storyboard */; };
+		D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */; };
+		D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */; };
+		D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */; };
+		D9DFFB47220EEA7F0047E326 /* ScrapFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB44220EEA7F0047E326 /* ScrapFilter.storyboard */; };
+		D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB48220EEA990047E326 /* Scrap.storyboard */; };
+		D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB4A220EEADC0047E326 /* ScrapFilterDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,7 +162,12 @@
 		D9D145C6220B0B8400CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
 		D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D9D145CF220B0B9300CC58DA /* Scrap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
+		D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterViewController.swift; sourceTree = "<group>"; };
+		D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterTableViewCell.swift; sourceTree = "<group>"; };
+		D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapFilterTableViewCell.xib; sourceTree = "<group>"; };
+		D9DFFB44220EEA7F0047E326 /* ScrapFilter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScrapFilter.storyboard; sourceTree = "<group>"; };
+		D9DFFB48220EEA990047E326 /* Scrap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
+		D9DFFB4A220EEADC0047E326 /* ScrapFilterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrapFilterDelegate.swift; path = tree/Helper/ScrapFilterDelegate.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +455,7 @@
 		D9C6AB7E21FED67A001C0AB8 /* PresentationManager */ = {
 			isa = PBXGroup;
 			children = (
+				D9DFFB4A220EEADC0047E326 /* ScrapFilterDelegate.swift */,
 				D9C6AB7F21FED9F7001C0AB8 /* PresentationController.swift */,
 				D9C6AB8121FEDB08001C0AB8 /* PresentationManager.swift */,
 			);
@@ -454,6 +465,7 @@
 		D9D145BC220B0B6800CC58DA /* Scrap */ = {
 			isa = PBXGroup;
 			children = (
+				D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */,
 				D9D145BD220B0B6800CC58DA /* ScrapViewController.swift */,
 				D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */,
 			);
@@ -481,7 +493,10 @@
 		D9D145CE220B0B9300CC58DA /* Scrap */ = {
 			isa = PBXGroup;
 			children = (
-				D9D145CF220B0B9300CC58DA /* Scrap.storyboard */,
+				D9DFFB44220EEA7F0047E326 /* ScrapFilter.storyboard */,
+				D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */,
+				D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */,
+				D9DFFB48220EEA990047E326 /* Scrap.storyboard */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -546,8 +561,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9DFFB47220EEA7F0047E326 /* ScrapFilter.storyboard in Resources */,
 				BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */,
-				D9D145D0220B0B9300CC58DA /* Scrap.storyboard in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
 				BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */,
@@ -558,9 +573,11 @@
 				6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */,
 				BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
+				D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
 				BC7969BC22002EB20003F520 /* Live.storyboard in Resources */,
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
+				D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */,
 				BC7969D4220174B40003F520 /* TrendListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,10 +659,13 @@
 				BC2656BD21FD94EE00003413 /* EventRegistryAPI.swift in Sources */,
 				BC7969C52200AD0E0003F520 /* TrendPageView.swift in Sources */,
 				D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */,
+				D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */,
 				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */,
+				D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
+				D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
 				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
