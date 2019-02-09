@@ -11,6 +11,10 @@ import UIKit
 class KeywordDetailViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     var keywordData: TrendingSearch? {
         didSet {
@@ -42,6 +46,7 @@ class KeywordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableView()
+        navigationBar.topItem?.title = keywordData?.title.query
     }
     
     private func setTableView() {

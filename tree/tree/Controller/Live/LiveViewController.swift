@@ -27,6 +27,7 @@ class LiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentInsetAdjustmentBehavior = .never
         networkWithServer(Country.usa.info.code)
         NotificationCenter.default.addObserver(
             self,
@@ -117,6 +118,6 @@ extension LiveViewController: PushViewControllerDelegate {
                     return
         }
         detailViewController.keywordData = rowData
-        self.present(detailViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

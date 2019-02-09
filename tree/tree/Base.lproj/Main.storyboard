@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="96.7016491754123"/>
         </scene>
-        <!--LiveViewController-->
+        <!--LiveNavigationViewController-->
         <scene sceneID="kbb-7S-min">
             <objects>
-                <viewControllerPlaceholder storyboardName="Live" referencedIdentifier="LiveViewController" id="m8g-Sr-hO3" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Live" referencedIdentifier="LiveNavigationViewController" id="m8g-Sr-hO3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="Live" selectedImage="Live" id="3Bf-Lx-JOT"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq5-qX-2w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
