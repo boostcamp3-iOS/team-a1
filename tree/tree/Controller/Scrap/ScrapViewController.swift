@@ -20,11 +20,11 @@ class ScrapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegateSetup()
+        tableViewSetup()
         filterButtonSetup()
     }
     
-    private func delegateSetup() {
+    private func tableViewSetup() {
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -48,9 +48,11 @@ class ScrapViewController: UIViewController {
     }
     
     private func fetchAndReload(selectedCategory category: ArticleCategory) {
-        scrappedArticles =
-            category == .all ?
-                ScrapManager.fetchArticles() : ScrapManager.fetchArticles(category)
+        if category == .all {
+            scrappedArticles = ScrapManager.fetchArticles()
+        } else {
+            scrappedArticles = ScrapManager.fetchArticles(category)
+        }
         tableView.reloadData()
     }
 }
