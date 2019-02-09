@@ -63,11 +63,11 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem id="iSu-Ye-EuQ">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="wzn-ud-L9i">
+                                        <barButtonItem key="leftBarButtonItem" image="back" id="wzn-ud-L9i">
                                             <connections>
                                                 <action selector="backButtonItem:" destination="oYK-lS-6zv" id="BK9-lN-fRD"/>
                                             </connections>
@@ -120,5 +120,6 @@
     </scenes>
     <resources>
         <image name="Live" width="24" height="24"/>
+        <image name="back" width="29" height="29"/>
     </resources>
 </document>
