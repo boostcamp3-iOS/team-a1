@@ -9,7 +9,7 @@
 import Foundation
 
 final class APIManager {
-    static func getArticles(
+    static func loadArticles(
         keyword: String,
         keywordLoc: String,
         lang: String,
@@ -36,7 +36,7 @@ final class APIManager {
                 }
     }
     
-    static func getDailyTrends(
+    static func loadDailyTrends(
         hl: String,
         geo: String,
         completion: @escaping (Result<TrendDays>
@@ -56,7 +56,7 @@ final class APIManager {
         }
     }
     
-    static func graphData(
+    static func loadGraphData(
         startDate: String,
         endDate: String,
         timeUnit: String,
