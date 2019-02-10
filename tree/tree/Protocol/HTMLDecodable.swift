@@ -16,7 +16,6 @@ extension HTMLDecodable {
     func decode(_ html: String?) -> String? {
         guard let html = html else { return nil }
         guard let data = html.data(using: .utf8) else { return nil }
-        print(data)
         let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
             NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
             NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue
