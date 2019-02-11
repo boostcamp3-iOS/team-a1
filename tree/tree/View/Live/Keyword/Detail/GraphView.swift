@@ -43,7 +43,7 @@ class GraphView: UIView {
     
     override func layoutSubviews() {
         guard let graphData = graphData else { return }
-        if hasData(from: graphData) {
+        if hasGraphData(to: graphData) {
             drawFrame(from: graphData)
             dataPoints = points(from: graphData)
             removeAllLayer()
@@ -56,7 +56,7 @@ class GraphView: UIView {
         }
     }
     
-    private func hasData(from graphData: KeywordResult) -> Bool {
+    private func hasGraphData(to graphData: KeywordResult) -> Bool {
         if graphData.data.count > 1 {
             return true
         }
