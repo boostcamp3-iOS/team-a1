@@ -19,21 +19,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019년 1월 31일 목요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpp-Rv-vCs">
-                        <rect key="frame" x="23" y="27.5" width="352" height="24"/>
+                        <rect key="frame" x="23" y="22.5" width="329" height="24"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="vpp-Rv-vCs" secondAttribute="bottom" constant="5" id="BB7-IP-nVR"/>
                     <constraint firstItem="vpp-Rv-vCs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="V5E-PW-9Aq"/>
-                    <constraint firstAttribute="bottom" secondItem="vpp-Rv-vCs" secondAttribute="bottom" id="iC1-yU-8bZ"/>
-                    <constraint firstAttribute="trailing" secondItem="vpp-Rv-vCs" secondAttribute="trailing" id="jW3-FA-WzK"/>
+                    <constraint firstItem="vpp-Rv-vCs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ohm-2r-0Lw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateLabel" destination="vpp-Rv-vCs" id="XPa-aI-Os9"/>
+                <outlet property="headerLabel" destination="vpp-Rv-vCs" id="i3E-dJ-kxg"/>
             </connections>
             <point key="canvasLocation" x="128.80000000000001" y="116.94152923538232"/>
         </tableViewCell>

@@ -11,6 +11,11 @@ import UIKit
 class GraphView: UIView {
     
     private var dataPoints: [CGPoint]?
+    var graphData: KeywordResult? {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
     private let dataLayer: CALayer = CALayer()
     private let mainLayer: CALayer = CALayer()
     private let scrollView: UIScrollView = UIScrollView()
@@ -18,11 +23,6 @@ class GraphView: UIView {
     private let contentSpace: CGFloat = 60
     private let bottomSpace: CGFloat = 30
     private let leftSpace: CGFloat = 30
-    var graphData: KeywordResult? {
-        didSet {
-            self.setNeedsLayout()
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +43,28 @@ class GraphView: UIView {
     
     override func layoutSubviews() {
         guard let graphData = graphData else { return }
+        if hasGraphData(to: graphData) {
+            drawScrollViewFrame(from: graphData)
+            drawGraphLayerFrame(from: graphData)
+            dataPoints = graphPoints(from: graphData)
+            removeAllLayer()
+            drawHorizontalLines()
+            drawGraph()
+            drawBottomLabels()
+            scrollView.showsHorizontalScrollIndicator = false
+        } else {
+            drawEmptyLayer()
+        }
+    }
+    
+    private func hasGraphData(to graphData: KeywordResult) -> Bool {
+        if graphData.data.count > 1 {
+            return true
+        }
+        return false
+    }
+    
+    private func drawScrollViewFrame(from graphData: KeywordResult) {
         scrollView.frame = CGRect(
             x: 0,
             y: 0,
@@ -53,6 +75,9 @@ class GraphView: UIView {
             width: CGFloat(graphData.data.count) * contentSpace + 100,
             height: self.frame.size.height
         )
+    }
+    
+    private func drawGraphLayerFrame(from graphData: KeywordResult) {
         mainLayer.frame = CGRect(
             x: 0, y: 0, width: CGFloat(graphData.data.count) * contentSpace,
             height: self.frame.size.height
@@ -69,15 +94,9 @@ class GraphView: UIView {
             width: self.frame.width,
             height: mainLayer.frame.height - bottomSpace
         )
-        dataPoints = points(from: graphData)
-        scrollView.showsHorizontalScrollIndicator = false
-        removeAllLayer()
-        drawHorizontalLines()
-        drawGraph()
-        drawBottomLabels()
     }
     
-    private func points(from graphData: KeywordResult) -> [CGPoint] {
+    private func graphPoints(from graphData: KeywordResult) -> [CGPoint] {
         var result: [CGPoint] = []
         for index in 0..<graphData.data.count {
             let graphValue = CGFloat(graphData.data[index].ratio)
@@ -209,5 +228,20 @@ class GraphView: UIView {
         lineLayer.strokeColor = lineColor
         lineLayer.lineWidth = lineWidth
         return lineLayer
+    }
+    
+    private func drawEmptyLayer() {
+        let emptyLayer = CALayer()
+        emptyLayer.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: self.frame.width,
+            height: self.frame.height
+        )
+        self.layer.addSublayer(emptyLayer)
+        let textLayer = drawTextLayer(alignmentMode: .center, fontSize: 40)
+        textLayer.frame = emptyLayer.frame
+        textLayer.string = "\n😭"
+        emptyLayer.addSublayer(textLayer)
     }
 }

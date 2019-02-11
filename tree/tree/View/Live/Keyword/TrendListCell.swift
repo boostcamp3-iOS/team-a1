@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrendListCell: UITableViewCell {
+class TrendListCell: UITableViewCell, HTMLDecodable {
     
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var hitsLabel: UILabel!
@@ -28,7 +28,11 @@ class TrendListCell: UITableViewCell {
     func configure(by content: Default, with section: Int, _ row: Int) {
         titleLabel.text = content.searchesByDays[section].keywordList[row].title.query
         rankLabel.text = "\(row + 1)"
-        subscriptLabel.text = content.searchesByDays[section].keywordList[row].articles[0].title
+        guard
+            let article = content.searchesByDays[section]
+                          .keywordList[row]
+                          .articles.first else { return }
+        subscriptLabel.text = decode(article.title)
         hitsLabel.text = content.searchesByDays[section].keywordList[row].formattedTraffic
     }
     

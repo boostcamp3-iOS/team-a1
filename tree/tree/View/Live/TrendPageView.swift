@@ -87,8 +87,18 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                         return UIView()
             }
             headerCell.backgroundColor = UIColor.white
-            headerCell.dateLabel.text = googleTrendData?.trend.searchesByDays[section-1].formattedDate
+            headerCell.headerLabel.text = googleTrendData?.trend.searchesByDays[section-1]
+                                         .formattedDate
             return headerCell.contentView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 10
+        default:
+            return 50
         }
     }
     
@@ -122,10 +132,6 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             cell.configure(by: keywordData, with: section, row)
             return cell
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
