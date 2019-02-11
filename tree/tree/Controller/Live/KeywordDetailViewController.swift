@@ -139,11 +139,10 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
         switch section {
         case 0:
             headerCell.headerLabel.text = HeaderTitles.changeInteresting.rawValue
-            return headerCell.contentView
         default:
             headerCell.headerLabel.text = HeaderTitles.relatedArticles.rawValue
-            return headerCell.contentView
         }
+        return headerCell.contentView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
