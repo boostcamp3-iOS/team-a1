@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oM8-k9-adR">
-                                <rect key="frame" x="0.0" y="-19.666666666666686" width="375" height="812.33333333333326"/>
+                                <rect key="frame" x="0.0" y="-19.666666666666686" width="375" height="812.33333333333348"/>
                             </scrollView>
                             <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="r2V-zT-FjH">
                                 <rect key="frame" x="168" y="625.66666666666663" width="39" height="37"/>
@@ -90,7 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="3rS-DI-l8W" id="LnX-SA-aRt"/>
-                        <outlet property="tableView" destination="YrI-zR-8zt" id="l8d-zt-k9w"/>
+                        <outlet property="tableView" destination="YrI-zR-8zt" id="ZR0-gC-Xgg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xp-1q-a4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,6 +120,6 @@
     </scenes>
     <resources>
         <image name="Live" width="24" height="24"/>
-        <image name="back" width="29" height="29"/>
+        <image name="back" width="21" height="21"/>
     </resources>
 </document>

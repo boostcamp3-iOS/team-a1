@@ -10,7 +10,7 @@ import UIKit
 
 class KeywordDetailViewController: UIViewController {
 
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
@@ -20,10 +20,16 @@ class KeywordDetailViewController: UIViewController {
         didSet {
             guard let keyword = keywordData?.title.query else { return }
             loadGraphData(to: keyword, startDate, endDate)
+            articleData = keywordData?.articles
         }
     }
-    var graphData: Graph?
-    
+    var graphData: Graph? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     private var startDate: String {
         let oneMonth = TimeIntervalTypes.oneMonth.value
         let date = Date(timeInterval: -oneMonth, since: Date())
@@ -34,9 +40,18 @@ class KeywordDetailViewController: UIViewController {
         let date = Date(timeInterval: -oneDay, since: Date())
         return dateFormatter.string(from: date)
     }
-    
+    private var articleData: [KeywordArticles]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
+            }
+        }
+    }
     private let timeUnit = TimeUnitTypes.week.value
     private let graphCellIdentifier = "KeywordDetailGraphCell"
+    private let headerCellIdentifier = "TrendListHeaderCell"
+    private let articleCellIdentifier = "KeywordDetailArticleCell"
+    private let appleGothicNeoBold = "AppleSDGothicNeo-Bold"
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -45,15 +60,29 @@ class KeywordDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerXIB()
         setTableView()
         navigationBar.topItem?.title = keywordData?.title.query
     }
     
+    private func registerXIB() {
+        let graphNib = UINib(nibName: graphCellIdentifier, bundle: nil)
+        tableView.register(graphNib, forCellReuseIdentifier: graphCellIdentifier)
+        let headerNib = UINib(nibName: headerCellIdentifier, bundle: nil)
+        tableView.register(headerNib, forCellReuseIdentifier: headerCellIdentifier)
+        let articleNib = UINib(nibName: articleCellIdentifier, bundle: nil)
+        tableView.register(articleNib, forCellReuseIdentifier: articleCellIdentifier)
+    }
+    
     private func setTableView() {
-        let nibName = UINib(nibName: graphCellIdentifier, bundle: nil)
-        tableView.register(nibName, forCellReuseIdentifier: graphCellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorInset = UIEdgeInsets(
+            top: 0,
+            left: UIScreen.main.bounds.width,
+            bottom: 0,
+            right: 0
+        )
     }
     
     private func loadGraphData(to keyword: String, _ startDate: String, _ endDate: String) {
@@ -61,12 +90,13 @@ class KeywordDetailViewController: UIViewController {
             "groupName": keyword,
             "keywords": [keyword]
             ]]
-        APIManager.graphData(
+        APIManager.loadGraphData(
             startDate: startDate,
             endDate: endDate,
             timeUnit: timeUnit,
             keywordGroups: keywordGroups
-        ) { (result) in
+        ) { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let graphData):
                 self.graphData = graphData
@@ -78,20 +108,72 @@ class KeywordDetailViewController: UIViewController {
 }
 
 extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if articleData != nil {
+            return 2
+        }
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: graphCellIdentifier,
-                for: indexPath
-            ) as? KeywordDetailGraphCell else {
-                return UITableViewCell()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        default:
+            if let articleData = articleData {
+                return articleData.count
+            }
+            return 0
         }
-        cell.graphData = graphData?.results[0]
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard
+            let headerCell = tableView.dequeueReusableCell(
+                withIdentifier: headerCellIdentifier
+                ) as? TrendListHeaderCell else {
+                    return UIView()
+        }
+        headerCell.headerLabel.font = UIFont(name: appleGothicNeoBold, size: 17)
+        switch section {
+        case 0:
+            headerCell.headerLabel.text = HeaderTitles.changeInteresting.rawValue
+            return headerCell.contentView
+        default:
+            headerCell.headerLabel.text = HeaderTitles.relatedArticles.rawValue
+            return headerCell.contentView
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            guard
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: graphCellIdentifier,
+                    for: indexPath
+                ) as? KeywordDetailGraphCell else {
+                        return UITableViewCell()
+            }
+            cell.graphData = graphData?.results[0]
+            return cell
+        default:
+            guard
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: articleCellIdentifier,
+                    for: indexPath
+                ) as? KeywordDetailArticleCell else {
+                    return UITableViewCell()
+            }
+            if let articleData = articleData {
+                cell.configure(articleData[indexPath.row])
+            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
