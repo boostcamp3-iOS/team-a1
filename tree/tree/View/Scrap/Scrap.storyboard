@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cAP-f5-wbb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scrap-->
+        <scene sceneID="YM0-IX-eyT">
+            <objects>
+                <viewController id="TDY-12-b1x" customClass="ScrapViewController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3s4-GA-p24">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-Se-Vc5">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="I5D-rs-gT6" style="IBUITableViewCellStyleDefault" id="Gty-lP-qRH">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gty-lP-qRH" id="LSn-z9-V3F">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I5D-rs-gT6">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zb3-AA-joQ" firstAttribute="bottom" secondItem="Fwc-Se-Vc5" secondAttribute="bottom" id="g9s-S7-0mB"/>
+                            <constraint firstItem="zb3-AA-joQ" firstAttribute="trailing" secondItem="Fwc-Se-Vc5" secondAttribute="trailing" id="wYk-J9-JBe"/>
+                            <constraint firstItem="Fwc-Se-Vc5" firstAttribute="leading" secondItem="zb3-AA-joQ" secondAttribute="leading" id="wx9-F7-j8b"/>
+                            <constraint firstItem="Fwc-Se-Vc5" firstAttribute="top" secondItem="zb3-AA-joQ" secondAttribute="top" id="zs1-QD-WD5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zb3-AA-joQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scrap" id="unw-3k-txW">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ngn-ry-vjo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Category"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filterButton" destination="jGy-hd-WEj" id="t6L-5A-UtT"/>
+                        <outlet property="tableView" destination="Fwc-Se-Vc5" id="hIL-eo-b7q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtI-4T-0Np" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1844" y="216.34182908545728"/>
+        </scene>
+        <!--SCRAP-->
+        <scene sceneID="Ljl-B2-vKm">
+            <objects>
+                <navigationController storyboardIdentifier="ScrapViewController" automaticallyAdjustsScrollViewInsets="NO" id="cAP-f5-wbb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="SCRAP" image="Scrap" id="AlX-rY-hqD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyc-4E-lvn">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="TDY-12-b1x" kind="relationship" relationship="rootViewController" id="a4z-2x-rg9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfa-GX-iaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="216.34182908545728"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Scrap" width="24" height="24"/>
+    </resources>
+</document>

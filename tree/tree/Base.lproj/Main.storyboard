@@ -1,24 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wl8-n7-42D">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Scrap Tab Bar Controller-->
+        <scene sceneID="e7L-jV-jS9">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wl8-n7-42D" customClass="ScrapTabBarController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l2H-O3-W2R">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="m8g-Sr-hO3" kind="relationship" relationship="viewControllers" id="O6w-ZC-iun"/>
+                        <segue destination="hkP-G0-nC6" kind="relationship" relationship="viewControllers" id="EqW-de-paT"/>
+                        <segue destination="Pla-em-ERx" kind="relationship" relationship="viewControllers" id="Bkf-dM-ehF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfo-k4-cRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="128.80000000000001" y="96.7016491754123"/>
+        </scene>
+        <!--LiveNavigationViewController-->
+        <scene sceneID="kbb-7S-min">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Live" referencedIdentifier="LiveNavigationViewController" id="m8g-Sr-hO3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="Live" selectedImage="Live" id="3Bf-Lx-JOT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tq5-qX-2w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="96"/>
+        </scene>
+        <!--SearchViewController-->
+        <scene sceneID="iPd-vv-429">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" referencedIdentifier="SearchViewController" id="hkP-G0-nC6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="Search" selectedImage="Search" id="frv-0U-nfO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IRN-wS-xnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="238"/>
+        </scene>
+        <!--ScrapViewController-->
+        <scene sceneID="EJ0-l5-4LD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Scrap" referencedIdentifier="ScrapViewController" id="Pla-em-ERx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="Scrap" selectedImage="Scrap" id="y7q-Qi-s58"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V1H-Pr-fkW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="347"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Live" width="24" height="24"/>
+        <image name="Scrap" width="24" height="24"/>
+        <image name="Search" width="24" height="24"/>
+    </resources>
 </document>

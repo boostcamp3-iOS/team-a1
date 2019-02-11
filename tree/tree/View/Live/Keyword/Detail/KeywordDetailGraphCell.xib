@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="KeywordDetailGraphCell" id="KGk-i7-Jjw" customClass="KeywordDetailGraphCell" customModule="tree" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyF-oC-ai4">
+                        <rect key="frame" x="20" y="11" width="335" height="217.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xp4-4c-w1H" customClass="GraphView" customModule="tree" customModuleProvider="target">
+                                <rect key="frame" x="20" y="30" width="295" height="177.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="177.5" id="aPk-OD-j4h"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xp4-4c-w1H" firstAttribute="leading" secondItem="HyF-oC-ai4" secondAttribute="leading" constant="20" id="7uP-gk-7BK"/>
+                            <constraint firstItem="Xp4-4c-w1H" firstAttribute="centerX" secondItem="HyF-oC-ai4" secondAttribute="centerX" id="DFp-b6-GZx"/>
+                            <constraint firstItem="Xp4-4c-w1H" firstAttribute="top" secondItem="HyF-oC-ai4" secondAttribute="top" constant="30" id="Dp7-Vy-UGe"/>
+                            <constraint firstAttribute="bottom" secondItem="Xp4-4c-w1H" secondAttribute="bottom" constant="10" id="ewE-Jw-qRA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="HyF-oC-ai4" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="04M-7e-oew"/>
+                    <constraint firstItem="HyF-oC-ai4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BFX-3i-jgq"/>
+                    <constraint firstItem="HyF-oC-ai4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Oq6-PK-PTR"/>
+                    <constraint firstItem="HyF-oC-ai4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nth-8j-e7g"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backgroundContainerView" destination="HyF-oC-ai4" id="caG-Ft-Ntn"/>
+                <outlet property="graphView" destination="Xp4-4c-w1H" id="3If-yp-wvg"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
