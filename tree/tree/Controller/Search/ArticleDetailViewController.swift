@@ -28,12 +28,12 @@ class ArticleDetailViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        createFloatingButton()
+//        createFloatingButton()
         self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        removeFloatingButton()
+//        removeFloatingButton()
         self.tabBarController?.tabBar.isHidden = false
     }
     
