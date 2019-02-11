@@ -12,9 +12,6 @@ class KeywordDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     var keywordData: TrendingSearch? {
         didSet {
@@ -63,6 +60,10 @@ class KeywordDetailViewController: UIViewController {
         registerXIB()
         setTableView()
         navigationBar.topItem?.title = keywordData?.title.query
+    }
+    
+    @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func registerXIB() {
