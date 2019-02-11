@@ -58,7 +58,7 @@ class KeywordDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerXIB()
-        setTableView()
+        tableViewSetup()
         navigationBar.topItem?.title = keywordData?.title.query
     }
     
@@ -75,7 +75,7 @@ class KeywordDetailViewController: UIViewController {
         tableView.register(articleNib, forCellReuseIdentifier: articleCellIdentifier)
     }
     
-    private func setTableView() {
+    private func tableViewSetup() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(
