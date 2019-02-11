@@ -57,7 +57,7 @@ class LiveViewController: UIViewController {
     }
     
     private func networkWithServer(_ geo: String) {
-        APIManager.loadDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
+        APIManager.fetchDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trandData):

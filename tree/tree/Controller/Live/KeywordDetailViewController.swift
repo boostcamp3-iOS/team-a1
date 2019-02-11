@@ -91,7 +91,7 @@ class KeywordDetailViewController: UIViewController {
             "groupName": keyword,
             "keywords": [keyword]
             ]]
-        APIManager.loadGraphData(
+        APIManager.requestGraphData(
             startDate: startDate,
             endDate: endDate,
             timeUnit: timeUnit,

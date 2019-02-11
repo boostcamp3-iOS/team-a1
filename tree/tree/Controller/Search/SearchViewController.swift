@@ -129,7 +129,7 @@ class SearchViewController: UIViewController {
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
-        APIManager.loadArticles(
+        APIManager.fetchArticles(
             keyword: searchKeyword, 
             keywordLoc: keyword,
             lang: language, 
@@ -159,7 +159,7 @@ class SearchViewController: UIViewController {
         sort: String) {
         if page >= totalPage { return }
         page += 1
-        APIManager.loadArticles(
+        APIManager.fetchArticles(
             keyword: keyword,
             keywordLoc: keyword, 
             lang: language, 
