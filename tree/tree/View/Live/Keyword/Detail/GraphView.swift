@@ -45,7 +45,7 @@ class GraphView: UIView {
         guard let graphData = graphData else { return }
         if hasGraphData(to: graphData) {
             drawFrame(from: graphData)
-            dataPoints = points(from: graphData)
+            dataPoints = graphPoints(from: graphData)
             removeAllLayer()
             drawHorizontalLines()
             drawGraph()
@@ -92,7 +92,7 @@ class GraphView: UIView {
         )
     }
     
-    private func points(from graphData: KeywordResult) -> [CGPoint] {
+    private func graphPoints(from graphData: KeywordResult) -> [CGPoint] {
         var result: [CGPoint] = []
         for index in 0..<graphData.data.count {
             let graphValue = CGFloat(graphData.data[index].ratio)
