@@ -10,7 +10,7 @@ import UIKit
 
 class KeywordDetailViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
     var keywordData: TrendingSearch? {

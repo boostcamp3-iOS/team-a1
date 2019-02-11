@@ -90,7 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="3rS-DI-l8W" id="LnX-SA-aRt"/>
-                        <outlet property="tableView" destination="YrI-zR-8zt" id="ZR0-gC-Xgg"/>
+                        <outlet property="tableView" destination="YrI-zR-8zt" id="25z-sz-hYA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xp-1q-a4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
