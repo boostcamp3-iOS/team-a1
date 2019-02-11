@@ -44,7 +44,8 @@ class GraphView: UIView {
     override func layoutSubviews() {
         guard let graphData = graphData else { return }
         if hasGraphData(to: graphData) {
-            drawFrame(from: graphData)
+            drawScrollViewFrame(from: graphData)
+            drawGraphLayerFrame(from: graphData)
             dataPoints = graphPoints(from: graphData)
             removeAllLayer()
             drawHorizontalLines()
@@ -63,7 +64,7 @@ class GraphView: UIView {
         return false
     }
     
-    private func drawFrame(from graphData: KeywordResult) {
+    private func drawScrollViewFrame(from graphData: KeywordResult) {
         scrollView.frame = CGRect(
             x: 0,
             y: 0,
@@ -74,6 +75,9 @@ class GraphView: UIView {
             width: CGFloat(graphData.data.count) * contentSpace + 100,
             height: self.frame.size.height
         )
+    }
+    
+    private func drawGraphLayerFrame(from graphData: KeywordResult) {
         mainLayer.frame = CGRect(
             x: 0, y: 0, width: CGFloat(graphData.data.count) * contentSpace,
             height: self.frame.size.height
