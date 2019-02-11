@@ -324,7 +324,8 @@ extension SearchViewController: FilterSettingDelegate {
         keyword: String, 
         sort: String,
         category: String,
-        language: String) {
+        language: String
+    ) {
         updateUserFilter(
             keyword: keyword, 
             sort: sort, 
@@ -338,7 +339,8 @@ extension SearchViewController: FilterSettingDelegate {
         keyword: String, 
         sort: String, 
         category: String,
-        language: String) {
+        language: String
+    ) {
         searchFilter.updateValue(keyword, forKey: "keyword")
         searchFilter.updateValue(sort, forKey: "sort")
         searchFilter.updateValue(category, forKey: "category")
@@ -346,7 +348,10 @@ extension SearchViewController: FilterSettingDelegate {
     }
     
     private func userFilter() {
-        guard let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else { return }
+        guard 
+            let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else {
+                return
+        }
         if let keyword = userFilter["keyword"] as? String, 
             let sort = userFilter["sort"] as? String,
             let category = userFilter["category"] as? String,
