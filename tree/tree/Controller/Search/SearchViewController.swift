@@ -222,7 +222,7 @@ extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
-            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
+            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.2 {
                 checkFilterStatus(using: searchFilter, type: ArticleType.loadMore)
                 isMoreLoading.toggle()
             }
