@@ -13,7 +13,17 @@ class KeywordDetailGraphCell: UITableViewCell {
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var graphView: GraphView!
     
-    private weak var shadowView: UIView?
+    private var shadowView: UIView {
+        let shadowView = UIView(
+            frame: CGRect(
+                x: innerMargin,
+                y: innerMargin,
+                width: bounds.width - (2 * innerMargin),
+                height: bounds.height - (2 * innerMargin))
+        )
+        insertSubview(shadowView, at: 0)
+        return shadowView
+    }
     private let innerMargin: CGFloat = 20.0
     
     var graphData: KeywordResult? {
@@ -25,19 +35,6 @@ class KeywordDetailGraphCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         roundCorners(layer: backgroundContainerView.layer, radius: 14)
-        configureShadow()
-    }
-    
-    private func configureShadow() {
-        let shadowView = UIView(
-            frame: CGRect(
-                x: innerMargin,
-                y: innerMargin,
-                width: bounds.width - (2 * innerMargin),
-                height: bounds.height - (2 * innerMargin))
-        )
-        insertSubview(shadowView, at: 0)
-        self.shadowView = shadowView
         self.applyShadow(
             shadowView: shadowView,
             width: CGFloat(0.0),

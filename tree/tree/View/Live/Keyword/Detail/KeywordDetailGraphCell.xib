@@ -49,7 +49,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundContainerView" destination="HyF-oC-ai4" id="caG-Ft-Ntn"/>
-                <outlet property="graphView" destination="Xp4-4c-w1H" id="fOp-FW-4ub"/>
+                <outlet property="graphView" destination="Xp4-4c-w1H" id="3If-yp-wvg"/>
             </connections>
         </tableViewCell>
     </objects>
