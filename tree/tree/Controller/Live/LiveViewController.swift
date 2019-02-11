@@ -27,6 +27,7 @@ class LiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentInsetAdjustmentBehavior = .never
         networkWithServer(Country.usa.info.code)
         NotificationCenter.default.addObserver(
             self,
@@ -56,7 +57,7 @@ class LiveViewController: UIViewController {
     }
     
     private func networkWithServer(_ geo: String) {
-        APIManager.getDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
+        APIManager.fetchDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trandData):
@@ -117,6 +118,6 @@ extension LiveViewController: PushViewControllerDelegate {
                     return
         }
         detailViewController.keywordData = rowData
-        self.present(detailViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

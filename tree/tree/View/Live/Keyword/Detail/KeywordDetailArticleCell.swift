@@ -1,17 +1,19 @@
 //
-//  KeywordDetailGraphCell.swift
+//  KeywordDetailArticleCell.swift
 //  tree
 //
-//  Created by ParkSungJoon on 06/02/2019.
+//  Created by ParkSungJoon on 10/02/2019.
 //  Copyright © 2019 gardener. All rights reserved.
 //
 
 import UIKit
 
-class KeywordDetailGraphCell: UITableViewCell {
+class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
 
     @IBOutlet weak var backgroundContainerView: UIView!
-    @IBOutlet weak var graphView: GraphView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var pressLabel: UILabel!
+    @IBOutlet weak var timeAgoLabel: UILabel!
     
     private var shadowView: UIView {
         let shadowView = UIView(
@@ -26,12 +28,6 @@ class KeywordDetailGraphCell: UITableViewCell {
     }
     private let innerMargin: CGFloat = 20.0
     
-    var graphData: KeywordResult? {
-        didSet {
-            graphView.graphData = graphData
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         roundCorners(layer: backgroundContainerView.layer, radius: 14)
@@ -40,5 +36,16 @@ class KeywordDetailGraphCell: UITableViewCell {
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
+    }
+    
+    func configure(_ article: KeywordArticles) {
+        guard
+            let title = decode(article.title),
+            let press = decode(article.source) else {
+                return
+        }
+        titleLabel.text = title
+        pressLabel.text = press
+        timeAgoLabel.text = article.timeAgo
     }
 }
