@@ -25,11 +25,11 @@ class TrendPageView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        registerTableView()
-        setTableView()
+        registerXIB()
+        tableViewSetup()
     }
     
-    private func registerTableView() {
+    private func registerXIB() {
         let headerNib = UINib(nibName: headerCellIdentifier, bundle: nil)
         tableView.register(headerNib, forCellReuseIdentifier: headerCellIdentifier)
         let listNib = UINib(nibName: listCellIdentifier, bundle: nil)
@@ -38,7 +38,7 @@ class TrendPageView: UIView {
         tableView.register(dateHeaderNib, forCellReuseIdentifier: listHeaderCellIdentifier)
     }
     
-    private func setTableView() {
+    private func tableViewSetup() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(
