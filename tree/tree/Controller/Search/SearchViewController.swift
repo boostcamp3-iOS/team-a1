@@ -32,8 +32,8 @@ class SearchViewController: UIViewController {
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
-    private lazy var searchFilter = [String: String]()
     private var heightAtIndexPath = NSMutableDictionary()
+    private lazy var searchFilter = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

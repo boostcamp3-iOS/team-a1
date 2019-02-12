@@ -14,6 +14,10 @@ class ArticleImage: UIImageView {
     private var task = [URLSessionTask]()
     private var imageUrl: String?
     
+    func image(from: Data) {
+        self.image = UIImage(data: from)
+    }
+    
     func cancleLoadingImage(_ articleUrl: String) {
         guard let imageURL = URL(string: articleUrl) else { return }
         guard let taskIndex = task.index(where: { $0.originalRequest?.url == imageURL}) else { return }
@@ -31,7 +35,8 @@ class ArticleImage: UIImageView {
             self.image = imageFromCache
             return
         } else {
-            if let imagePath = imageCache.path(for: extract ?? ""), let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
+            if let imagePath = imageCache.path(for: extract ?? ""), 
+                let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
                 self.image = imageToDisk
                 self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)
                 return
