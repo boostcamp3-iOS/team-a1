@@ -14,12 +14,13 @@ class ScrapViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
     
+    private var initialized: Bool = false
     private var articleDeleted: Bool = false
     public var scrappedArticles: [ScrappedArticle]? {
         didSet {
-            if !articleDeleted {
+            if initialized && !articleDeleted {
                 tableView.reloadData()
-            } else {
+            } else if articleDeleted {
                 articleDeleted = false
             }
         }
@@ -46,6 +47,7 @@ class ScrapViewController: UIViewController {
     
     private func tableDataSetup() {
         scrappedArticles = ScrapManager.fetchArticles()
+        initialized = true
     }
     
     @objc func filterButtonDidTap(_ sender: UIButton) {

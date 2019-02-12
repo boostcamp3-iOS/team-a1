@@ -43,6 +43,16 @@ public enum ArticleCategory: CaseIterable{
     case society
     case sports
 
+    init(containString: String) {
+        for item in ArticleCategory.allCases {
+            if containString.contains(item.capitalFirstCharactor()) {
+                self = item
+                return
+            }
+        }
+        self = .all
+    }
+    
     func toString() -> String {
         return "\(self)"
     }

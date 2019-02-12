@@ -216,7 +216,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let temp = articles?[indexPath.row] else {
             return
         }
-        ScrapManager.scrapArticle(article: temp, category: .business, imageData: nil)
+        ScrapManager.scrapArticle(
+            article: temp,
+            category: ArticleCategory(containString: "\(temp.categories[0])"),
+            imageData: nil)
         self.navigationController?.pushViewController(articleView, animated: true)
     }
 }
