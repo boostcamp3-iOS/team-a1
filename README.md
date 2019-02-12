@@ -28,12 +28,12 @@
 
 > LIVE
 
-![](./image/스크린샷1.png) {: width="300"}
-![](./image/스크린샷2.png) {: width="300"}
-![](./image/스크린샷3.png) {: width="300"}
+![](./image/스크린샷1.png)
+![](./image/스크린샷2.png)
+![](./image/스크린샷3.png)
 
 
 > SEARCH
 
-![](./image/스크린샷4.png) {: width="300"}
-![](./image/스크린샷5.png) {: width="300"}
+![](./image/스크린샷4.png)
+![](./image/스크린샷5.png)
