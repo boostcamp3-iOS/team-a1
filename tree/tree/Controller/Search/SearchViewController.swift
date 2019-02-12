@@ -33,7 +33,8 @@ class SearchViewController: UIViewController {
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
     private lazy var searchFilter = [String: String]()
-    
+    private var heightAtIndexPath = NSMutableDictionary()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -79,7 +80,11 @@ class SearchViewController: UIViewController {
     
     private func searchBarSetting() {
         uiSearchBar.backgroundImage = UIImage()
-        guard let searchBarTextfield: UITextField = uiSearchBar.value(forKey: "searchField") as? UITextField else { return }
+        guard 
+            let searchBarTextfield = uiSearchBar.value(forKey: "searchField") as? UITextField 
+        else { 
+            return 
+        }
         searchBarTextfield.backgroundColor = UIColor.lightGray
         searchBarTextfield.textColor = UIColor.black
     }
@@ -87,6 +92,7 @@ class SearchViewController: UIViewController {
     private func tableViewSetting() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
+        uiTableView?.rowHeight = UITableView.automaticDimension
     }
     
     private func navigationBarSetting() {
@@ -203,7 +209,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
+        guard 
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: cellIdentifier, 
+                for: indexPath) as? ArticleFeedTableViewCell 
+            else {
+                return UITableViewCell() 
+        }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
         return cell
@@ -214,6 +226,19 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
         articleView.articleDetail = articles?[indexPath.row]
         self.navigationController?.pushViewController(articleView, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let height = NSNumber(value: Float(cell.frame.size.height))
+        heightAtIndexPath.setObject(height, forKey: indexPath as NSCopying)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = heightAtIndexPath.object(forKey: indexPath) as? NSNumber {
+            return CGFloat(height.floatValue)
+        } else {
+            return UITableView.automaticDimension
+        }
     }
 }
 
