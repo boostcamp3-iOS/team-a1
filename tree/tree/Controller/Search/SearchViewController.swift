@@ -32,9 +32,9 @@ class SearchViewController: UIViewController {
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
-    private var heightAtIndexPath = NSMutableDictionary()
+    private var heightAtIndexPath = [IndexPath: Float]()
     private lazy var searchFilter = [String: String]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegateSetting()
@@ -251,13 +251,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let height = NSNumber(value: Float(cell.frame.size.height))
-        heightAtIndexPath.setObject(height, forKey: indexPath as NSCopying)
+        let height = Float(cell.frame.size.height)
+        heightAtIndexPath.updateValue(height, forKey: indexPath)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let height = heightAtIndexPath.object(forKey: indexPath) as? NSNumber {
-            return CGFloat(height.floatValue)
+        if let height = heightAtIndexPath[indexPath] {
+            return CGFloat(height)
         } else {
             return UITableView.automaticDimension
         }
