@@ -48,10 +48,11 @@ class ArticleImageViewController: UIViewController {
             initTouchPosition = touchPosition
         } else if sender.state == UIGestureRecognizer.State.changed {
             if touchPosition.y - initTouchPosition.y > 0 {
-                self.view.frame = CGRect(x: 0, 
-                                         y: touchPosition.y - initTouchPosition.y,
-                                         width: self.view.frame.size.width, 
-                                         height: self.view.frame.size.height)
+                self.view.frame = CGRect(
+                    x: 0, 
+                    y: touchPosition.y - initTouchPosition.y,
+                    width: self.view.frame.size.width, 
+                    height: self.view.frame.size.height)
             }
         } else if sender.state == UIGestureRecognizer.State.ended ||
             sender.state == UIGestureRecognizer.State.cancelled {
@@ -59,10 +60,11 @@ class ArticleImageViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             } else {
                 UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame = CGRect(x: 0, 
-                                             y: 0, 
-                                             width: self.view.frame.size.width, 
-                                             height: self.view.frame.size.height)
+                    self.view.frame = CGRect(
+                        x: 0, 
+                        y: 0, 
+                        width: self.view.frame.size.width, 
+                        height: self.view.frame.size.height)
                 })
             }
         }

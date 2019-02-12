@@ -52,7 +52,12 @@ class SearchViewController: UIViewController {
     }
     
     private func setLoadingView() {
-        let loadingViewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let loadingViewFrame = CGRect(
+            x: 0,
+            y: 0, 
+            width: 100,
+            height: 100
+        )
         loadingView = LoadingView(frame: loadingViewFrame)
         guard let loadView = loadingView else { return } 
         loadView.center = self.view.center
@@ -60,10 +65,12 @@ class SearchViewController: UIViewController {
     }
     
     private func setDefaultView(message: String) {
-        let defaultViewFrame = CGRect(x: 0,
-                                      y: 0,
-                                      width: self.view.frame.width,
-                                      height: 150)
+        let defaultViewFrame = CGRect(
+            x: 0,
+            y: 0,
+            width: self.view.frame.width,
+            height: 150
+        )
         defaultView = DefaultLabelView(frame: defaultViewFrame)
         guard let defaultView = defaultView else { return } 
         defaultView.defaultMessage.text = message
@@ -81,10 +88,9 @@ class SearchViewController: UIViewController {
     private func searchBarSetting() {
         uiSearchBar.backgroundImage = UIImage()
         guard 
-            let searchBarTextfield = uiSearchBar.value(forKey: "searchField") as? UITextField 
-        else { 
-            return 
-        }
+            let searchBarTextfield = uiSearchBar.value(
+                forKey: "searchField"
+            ) as? UITextField else { return }
         searchBarTextfield.backgroundColor = UIColor.lightGray
         searchBarTextfield.textColor = UIColor.black
     }
@@ -122,9 +128,17 @@ class SearchViewController: UIViewController {
             else { return }
         switch type {
         case .load:
-            loadArticles(keyword: keyword, language: language, sort: sort)
+            loadArticles(
+                keyword: keyword,
+                language: language, 
+                sort: sort
+            )
         case .loadMore:
-            loadMoreArticles(keyword: keyword, language: language, sort: sort)
+            loadMoreArticles(
+                keyword: keyword, 
+                language: language, 
+                sort: sort
+            )
         }
     }
     
