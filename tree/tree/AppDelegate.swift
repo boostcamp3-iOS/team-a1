@@ -13,12 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var scrapViewController: ScrapViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if UserDefaults.standard.dictionary(forKey: "searchFilter") == nil {
             let searchFilter = ["keyword": "Title","sort": "Date","category": "All","language": "eng"]
             UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
-        } 
+        }
+        guard let tabBarController = window?.rootViewController as? UITabBarController,
+            let navigationController = tabBarController.customizableViewControllers?[2] as? UINavigationController,
+            let uiViewController = navigationController.viewControllers[0] as? ScrapViewController else { return true }
+        scrapViewController = uiViewController
         return true
     }
 

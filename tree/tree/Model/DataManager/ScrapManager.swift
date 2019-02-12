@@ -40,6 +40,8 @@ final class ScrapManager {
         )
         do {
             try managedContext.save()
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
         } catch {
             print(error.localizedDescription)
         }
@@ -115,6 +117,15 @@ final class ScrapManager {
         return 0
     }
     
+    static func removeArticle(_ article: ScrappedArticle) {
+        managedContext.delete(article)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
     static func removeAllScrappedArticle() {
         let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
         var results: [ScrappedArticle] = []
@@ -159,9 +170,12 @@ private extension NSManagedObject {
         if let imageData: Data = imageData {
             newArticle.setValue(imageData, forKey: .image)
         }
+        if let authors = articleData.author,
+            authors.count > 0 {
+            newArticle.setValue(authors[0].name, forKey: .articleAuthor)
+        }
         newArticle.setCategory(categoryEnum)
         newArticle.setValue(articleData.lang, forKey: .language)
-        newArticle.setValue(articleData.author?[0].name ?? "", forKey: .articleAuthor)
         newArticle.setValue(articleData.date, forKey: .articleDate)
         newArticle.setValue(articleData.title, forKey: .articleTitle)
         newArticle.setValue(NSDate(), forKey: .scrappedDate)
