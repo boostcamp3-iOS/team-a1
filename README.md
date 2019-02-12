@@ -21,19 +21,19 @@
 
 ## 기능 트리
 
-![](./image/functiontree.png)
+![](./image/tree.png)
 
 
 ## 현재까지 작업한 뷰
 
 > LIVE
 
-![](./image/스크린샷1.png)
-![](./image/스크린샷2.png)
-![](./image/스크린샷3.png)
+![](./image/스크린샷1.png) {: width="300"}
+![](./image/스크린샷2.png) {: width="300"}
+![](./image/스크린샷3.png) {: width="300"}
 
 
 > SEARCH
 
-![](./image/스크린샷4.png)
-![](./image/스크린샷5.png)
+![](./image/스크린샷4.png) {: width="300"}
+![](./image/스크린샷5.png) {: width="300"}
