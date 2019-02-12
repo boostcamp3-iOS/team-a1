@@ -205,7 +205,9 @@ class SearchViewController: UIViewController {
     
     @objc private func filterItemTapAtion() {
         guard
-            let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
+            let filterViewController = self.storyboard?.instantiateViewController(
+                withIdentifier: "SearchFilterViewController"
+            ) as? SearchFilterViewController else { return }
         filterViewController.settingDelegate = self
         filterViewController.filterValue = searchFilter
         filterViewController.transitioningDelegate = transitionManager
@@ -226,8 +228,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard 
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: cellIdentifier, 
-                for: indexPath) as? ArticleFeedTableViewCell 
-            else {
+                for: indexPath
+            ) as? ArticleFeedTableViewCell else {
                 return UITableViewCell() 
         }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
@@ -272,9 +274,15 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         if let height = heightAtIndexPath[indexPath] {
             return CGFloat(height)
-        } else {
-            return UITableView.automaticDimension
+        } 
+        return UITableView.automaticDimension
+    }
+    
+    func checkPosition(position: CGFloat, height: CGFloat) -> Bool {
+        if position > 0 && position < height * 0.2 {
+            return true
         }
+        return false
     }
 }
 
@@ -283,7 +291,10 @@ extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
-            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.2 {
+            if checkPosition(
+                position: scrollPosition,
+                height: scrollView.contentSize.height
+            ) {
                 checkFilterStatus(using: searchFilter, type: ArticleType.loadMore)
                 isMoreLoading.toggle()
             }
