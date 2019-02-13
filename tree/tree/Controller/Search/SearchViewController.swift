@@ -278,7 +278,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
-    func isAdditionalDataPosition(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
+    func shouldLoadAdditionalData(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
         if minimumHeightPortionToLoadAdditionalData > 0 &&
             minimumHeightPortionToLoadAdditionalData < contentHeight * 0.2 {
             return true
@@ -292,7 +292,7 @@ extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
-            if isAdditionalDataPosition(
+            if shouldLoadAdditionalData(
                 minimumHeightPortionToLoadAdditionalData: scrollPosition,
                 contentHeight: scrollView.contentSize.height
             ) {
