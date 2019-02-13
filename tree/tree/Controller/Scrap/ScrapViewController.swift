@@ -29,25 +29,25 @@ class ScrapViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewSetup()
-        filterButtonSetup()
-        tableDataSetup()
+        setupTableView()
+        setupFilterButton()
+        setupTableViewData()
         registerArticleCell()
     }
     
-    private func tableViewSetup() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    private func filterButtonSetup() {
+    private func setupFilterButton() {
         filterButton.addTarget(
             self,
             action: #selector(filterButtonDidTap),
             for: .touchUpInside)
     }
     
-    private func tableDataSetup() {
+    private func setupTableViewData() {
         scrappedArticles = ScrapManager.fetchArticles()
     }
     
@@ -129,9 +129,10 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ScrapViewController: ScrapFilterDelegate {
     func filterArticles(_ category: ArticleCategory) {
-        if category == .all {
+        switch category {
+        case .all:
             scrappedArticles = ScrapManager.fetchArticles()
-        } else {
+        default:
             scrappedArticles = ScrapManager.fetchArticles(category)
         }
     }
