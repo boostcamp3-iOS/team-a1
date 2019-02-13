@@ -32,14 +32,15 @@ class SearchViewController: UIViewController {
     private var totalPage: Int = 0
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
+    private var heightAtIndexPath = [IndexPath: Float]()
     private lazy var searchFilter = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegateSetting()
-        searchBarSetting()
-        tableViewSetting()
-        navigationBarSetting()
+        setUpDelegate()
+        setUpSearchBar()
+        setUpTableView()
+        setUpNavigationBar()
         registerArticleCell()
         filterItemSetting()
         userFilter()
@@ -51,7 +52,12 @@ class SearchViewController: UIViewController {
     }
     
     private func setLoadingView() {
-        let loadingViewFrame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        let loadingViewFrame = CGRect(
+            x: 0,
+            y: 0, 
+            width: 100,
+            height: 100
+        )
         loadingView = LoadingView(frame: loadingViewFrame)
         guard let loadView = loadingView else { return } 
         loadView.center = self.view.center
@@ -59,10 +65,12 @@ class SearchViewController: UIViewController {
     }
     
     private func setDefaultView(message: String) {
-        let defaultViewFrame = CGRect(x: 0,
-                                      y: 0,
-                                      width: self.view.frame.width,
-                                      height: 150)
+        let defaultViewFrame = CGRect(
+            x: 0,
+            y: 0,
+            width: self.view.frame.width,
+            height: 150
+        )
         defaultView = DefaultLabelView(frame: defaultViewFrame)
         guard let defaultView = defaultView else { return } 
         defaultView.defaultMessage.text = message
@@ -70,26 +78,30 @@ class SearchViewController: UIViewController {
         self.view.addSubview(defaultView)  
     }
     
-    private func delegateSetting() {
+    private func setUpDelegate() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
         uiTableView.prefetchDataSource = self
     }
     
-    private func searchBarSetting() {
+    private func setUpSearchBar() {
         uiSearchBar.backgroundImage = UIImage()
-        guard let searchBarTextfield: UITextField = uiSearchBar.value(forKey: "searchField") as? UITextField else { return }
+        guard 
+            let searchBarTextfield = uiSearchBar.value(
+                forKey: "searchField"
+            ) as? UITextField else { return }
         searchBarTextfield.backgroundColor = UIColor.lightGray
         searchBarTextfield.textColor = UIColor.black
     }
     
-    private func tableViewSetting() {
+    private func setUpTableView() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
+        uiTableView?.rowHeight = UITableView.automaticDimension
     }
     
-    private func navigationBarSetting() {
+    private func setUpNavigationBar() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.backgroundColor = UIColor.white
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
@@ -116,9 +128,17 @@ class SearchViewController: UIViewController {
             else { return }
         switch type {
         case .load:
-            loadArticles(keyword: keyword, language: language, sort: sort)
+            loadArticles(
+                keyword: keyword,
+                language: language, 
+                sort: sort
+            )
         case .loadMore:
-            loadMoreArticles(keyword: keyword, language: language, sort: sort)
+            loadMoreArticles(
+                keyword: keyword, 
+                language: language, 
+                sort: sort
+            )
         }
     }
     
@@ -185,7 +205,9 @@ class SearchViewController: UIViewController {
     
     @objc private func filterItemTapAtion() {
         guard
-            let filterViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchFilterViewController") as? SearchFilterViewController else { return }
+            let filterViewController = self.storyboard?.instantiateViewController(
+                withIdentifier: "SearchFilterViewController"
+            ) as? SearchFilterViewController else { return }
         filterViewController.settingDelegate = self
         filterViewController.filterValue = searchFilter
         filterViewController.transitioningDelegate = transitionManager
@@ -203,7 +225,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ArticleFeedTableViewCell else { return UITableViewCell() }
+        guard 
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: cellIdentifier, 
+                for: indexPath
+            ) as? ArticleFeedTableViewCell else {
+                return UITableViewCell() 
+        }
         guard let article = articles?[indexPath.row] else { return UITableViewCell() }
         cell.settingData(article: article)
         return cell
@@ -215,6 +243,48 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         articleView.articleDetail = articles?[indexPath.row]
         self.navigationController?.pushViewController(articleView, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true 
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .insert:
+            print("scrap")
+        default:
+            return
+        }
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let scrapButton = UITableViewRowAction(style: .default, title: "SCRAP") { (_, indexPath) in
+            tableView.dataSource?.tableView!(tableView, commit: .insert, forRowAt: indexPath)
+            return
+        }
+        scrapButton.backgroundColor = UIColor.white
+        return [scrapButton]
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let height = Float(cell.frame.size.height)
+        heightAtIndexPath.updateValue(height, forKey: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = heightAtIndexPath[indexPath] {
+            return CGFloat(height)
+        } 
+        return UITableView.automaticDimension
+    }
+    
+    func shouldLoadAdditionalData(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
+        if minimumHeightPortionToLoadAdditionalData > 0 &&
+            minimumHeightPortionToLoadAdditionalData < contentHeight * 0.2 {
+            return true
+        }
+        return false
+    }
 }
 
 // MARK: ScrollView
@@ -222,7 +292,10 @@ extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
-            if scrollPosition > 0 && scrollPosition < scrollView.contentSize.height * 0.3 {
+            if shouldLoadAdditionalData(
+                minimumHeightPortionToLoadAdditionalData: scrollPosition,
+                contentHeight: scrollView.contentSize.height
+            ) {
                 checkFilterStatus(using: searchFilter, type: ArticleType.loadMore)
                 isMoreLoading.toggle()
             }
@@ -313,7 +386,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.cancleLoadingImage(articleUrl)
+            articleImage.cancelLoadingImage(articleUrl)
         })    
     }
 }
