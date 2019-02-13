@@ -211,14 +211,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-        guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController") as? ArticleDetailViewController else { return }
+        guard let articleView
+            = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
+                as? ArticleDetailViewController,
+        let article = articles?[indexPath.row] else { return }
         articleView.articleDetail = articles?[indexPath.row]
-        guard let temp = articles?[indexPath.row] else {
-            return
-        }
         ScrapManager.scrapArticle(
-            article: temp,
-            category: ArticleCategory(containString: "\(temp.categories[0])"),
+            article: article,
+            category: ArticleCategory(containString: "\(article.categories.first)"),
             imageData: nil)
         self.navigationController?.pushViewController(articleView, animated: true)
     }
