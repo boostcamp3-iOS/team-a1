@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         guard let tabBarController = window?.rootViewController as? UITabBarController,
             let navigationController = tabBarController.customizableViewControllers?[2] as? UINavigationController,
-            let uiViewController = navigationController.viewControllers[0] as? ScrapViewController else { return true }
-        scrapViewController = uiViewController
+            let connectedScrapViewController = navigationController.viewControllers.first as? ScrapViewController else { return true }
+        scrapViewController = connectedScrapViewController
         return true
     }
 
