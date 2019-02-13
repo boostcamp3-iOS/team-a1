@@ -37,10 +37,10 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegateSetting()
-        searchBarSetting()
-        tableViewSetting()
-        navigationBarSetting()
+        setUpDelegate()
+        setUpSearchBar()
+        setUpTableView()
+        setUpNavigationBar()
         registerArticleCell()
         filterItemSetting()
         userFilter()
@@ -78,14 +78,14 @@ class SearchViewController: UIViewController {
         self.view.addSubview(defaultView)  
     }
     
-    private func delegateSetting() {
+    private func setUpDelegate() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
         uiTableView.prefetchDataSource = self
     }
     
-    private func searchBarSetting() {
+    private func setUpSearchBar() {
         uiSearchBar.backgroundImage = UIImage()
         guard 
             let searchBarTextfield = uiSearchBar.value(
@@ -95,13 +95,13 @@ class SearchViewController: UIViewController {
         searchBarTextfield.textColor = UIColor.black
     }
     
-    private func tableViewSetting() {
+    private func setUpTableView() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
         uiTableView?.rowHeight = UITableView.automaticDimension
     }
     
-    private func navigationBarSetting() {
+    private func setUpNavigationBar() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.backgroundColor = UIColor.white
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
@@ -278,8 +278,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
-    func checkPosition(position: CGFloat, height: CGFloat) -> Bool {
-        if position > 0 && position < height * 0.2 {
+    func isAdditionalDataPosition(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
+        if minimumHeightPortionToLoadAdditionalData > 0 &&
+            minimumHeightPortionToLoadAdditionalData < contentHeight * 0.2 {
             return true
         }
         return false
@@ -291,9 +292,9 @@ extension SearchViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if !isMoreLoading {
             let scrollPosition = scrollView.contentSize.height - scrollView.frame.size.height - scrollView.contentOffset.y 
-            if checkPosition(
-                position: scrollPosition,
-                height: scrollView.contentSize.height
+            if isAdditionalDataPosition(
+                minimumHeightPortionToLoadAdditionalData: scrollPosition,
+                contentHeight: scrollView.contentSize.height
             ) {
                 checkFilterStatus(using: searchFilter, type: ArticleType.loadMore)
                 isMoreLoading.toggle()
@@ -385,7 +386,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.cancleLoadingImage(articleUrl)
+            articleImage.cancelLoadingImage(articleUrl)
         })    
     }
 }

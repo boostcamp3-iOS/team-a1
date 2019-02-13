@@ -367,6 +367,7 @@
 		BC649BA6220F68110032ACF2 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */,
 				BC649BA7220F68230032ACF2 /* HTMLDecodable.swift */,
 			);
 			path = Protocol;
@@ -470,7 +471,6 @@
 				D9C6AB7E21FED67A001C0AB8 /* PresentationManager */,
 				D9C6AB5C21FC152D001C0AB8 /* SearchScrollEnum.swift */,
 				BC63852B2206CBF200074CF3 /* Enum+Countries.swift */,
-				6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */,
 				BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */,
 				BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */,
 				BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */,

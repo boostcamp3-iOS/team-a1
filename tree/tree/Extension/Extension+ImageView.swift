@@ -18,7 +18,7 @@ class ArticleImage: UIImageView {
         self.image = UIImage(data: from)
     }
     
-    func cancleLoadingImage(_ articleUrl: String) {
+    func cancelLoadingImage(_ articleUrl: String) {
         guard let imageURL = URL(string: articleUrl) else { return }
         guard let taskIndex = task.index(where: { $0.originalRequest?.url == imageURL}) else { return }
         let myTask = task[taskIndex]
