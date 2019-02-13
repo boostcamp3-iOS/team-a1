@@ -67,7 +67,7 @@ final class ScrapManager {
             NSPredicate(
                 format: "%K == %@",
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
         )
         result = fetchRequest(request)
         return result
@@ -87,13 +87,13 @@ final class ScrapManager {
                 format: "isRead == %@ AND %K == %@",
                 NSNumber(value: isRead),
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
             )
         } else {
             predicate = NSPredicate(
                 format: "%K == %@",
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
             )
         }
         return countArticleFetch(predicate)
@@ -158,7 +158,7 @@ private extension NSManagedObject {
     }
     
     func setCategory(_ category: ArticleCategory) {
-        self.setValue(category.toString(), forKey: .category)
+        self.setValue(category.stringValue, forKey: .category)
     }
     
     func setValues(
@@ -172,7 +172,7 @@ private extension NSManagedObject {
         }
         if let authors = articleData.author,
             authors.count > 0 {
-            newArticle.setValue(authors[0].name, forKey: .articleAuthor)
+            newArticle.setValue(authors.first?.name, forKey: .articleAuthor)
         }
         newArticle.setCategory(categoryEnum)
         newArticle.setValue(articleData.lang, forKey: .language)

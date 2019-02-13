@@ -22,6 +22,10 @@ enum ScrappedArticleProperty {
     case articleUri
     case category
     
+    var stringValue: String {
+        return "\(self)"
+    }
+    
     func toString() -> String {
         return "\(self)"
     }
@@ -53,7 +57,7 @@ public enum ArticleCategory: CaseIterable{
         self = .all
     }
     
-    func toString() -> String {
+    var stringValue: String {
         return "\(self)"
     }
     
