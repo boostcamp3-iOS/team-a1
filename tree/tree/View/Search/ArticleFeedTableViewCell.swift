@@ -63,4 +63,24 @@ class ArticleFeedTableViewCell: UITableViewCell {
             self.imageStackView.isHidden = true
         }
     }
+    
+    func settingData(scrappedArticle: ScrappedArticle) {
+        self.titleLabel.text = scrappedArticle.articleTitle
+        self.descriptionLabel.text = scrappedArticle.articleDescription
+        self.dateLabel.text = scrappedArticle.articleDate
+        self.companyLabel.text = scrappedArticle.company
+        betweenLabel.isHidden = true
+        if scrappedArticle.articleAuthor != nil {
+            betweenLabel.isHidden = false
+            self.authorLabel.text = scrappedArticle.articleAuthor
+        }
+        self.imageStackView.isHidden = true
+//        if let articleImage = scrappedArticle.image {
+//            self.imageStackView.isHidden = false
+//            self.articleImageView.loadImageUrl(articleUrl: articleImage)
+//        } else {
+//            self.imageStackView.isHidden = true
+//        }
+        
+    }
 }

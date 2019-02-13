@@ -14,11 +14,12 @@ class ScrapViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
     
-    private var initialized: Bool = false
+    private let cellIdentifier = "ScrapTableViewCell"
+    
     private var articleDeleted: Bool = false
     public var scrappedArticles: [ScrappedArticle]? {
         didSet {
-            if initialized && !articleDeleted {
+            if tableView != nil && !articleDeleted {
                 tableView.reloadData()
             } else if articleDeleted {
                 articleDeleted = false
@@ -31,6 +32,7 @@ class ScrapViewController: UIViewController {
         tableViewSetup()
         filterButtonSetup()
         tableDataSetup()
+        registerArticleCell()
     }
     
     private func tableViewSetup() {
@@ -47,7 +49,11 @@ class ScrapViewController: UIViewController {
     
     private func tableDataSetup() {
         scrappedArticles = ScrapManager.fetchArticles()
-        initialized = true
+    }
+    
+    private func registerArticleCell() {
+        let articleFeedNib = UINib(nibName: "ArticleFeedTableViewCell", bundle: nil)
+        tableView.register(articleFeedNib, forCellReuseIdentifier: cellIdentifier)
     }
     
     @objc func filterButtonDidTap(_ sender: UIButton) {
@@ -68,11 +74,23 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         return scrappedArticles.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath
+        ) -> UITableViewCell {
+        guard let cell =
+            tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+                as? ArticleFeedTableViewCell else { return UITableViewCell() }
         guard let scrappedArticles = scrappedArticles else { return UITableViewCell() }
-        cell.textLabel?.text = scrappedArticles[indexPath.row].articleTitle
+        cell.settingData(scrappedArticle: scrappedArticles[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+        guard
+            let articleView = storyboard.instantiateViewController(
+                withIdentifier: "ArticleDetailViewController"
+                ) as? ArticleDetailViewController else { return }
+        self.navigationController?.pushViewController(articleView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -83,11 +101,10 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
         ) -> UISwipeActionsConfiguration? {
-            let markAsReadAction: UIContextualAction =
-                UIContextualAction(style: .normal, title: "Mark as Read") {
-                    (action: UIContextualAction,
-                    view: UIView,
-                    completion: (Bool) -> Void ) in
+        let markAsReadAction: UIContextualAction
+            = UIContextualAction(
+                style: .normal,
+                title: "Mark as Read") { (_, _, _ completion) in
                     completion(true)
         }
         markAsReadAction.backgroundColor = .purple
