@@ -57,14 +57,12 @@ class ScrapViewController: UIViewController {
     }
     
     @objc func filterButtonDidTap(_ sender: UIButton) {
-        guard let tempUIViewController =
+        guard let scrapFilterViewController =
             UIStoryboard.init(name: "ScrapFilter", bundle: nil)
                 .instantiateViewController(withIdentifier: "ScrapFilterViewController")
-                as? ScrapFilterViewController else {
-            return
-        }
-        tempUIViewController.filterDelegate = self
-        present(tempUIViewController, animated: true)
+                as? ScrapFilterViewController else { return }
+        scrapFilterViewController.filterDelegate = self
+        present(scrapFilterViewController, animated: true)
     }
 }
 
@@ -74,8 +72,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         return scrappedArticles.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath
-        ) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =
             tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
                 as? ArticleFeedTableViewCell else { return UITableViewCell() }
@@ -100,7 +97,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-        ) -> UISwipeActionsConfiguration? {
+    ) -> UISwipeActionsConfiguration? {
         let markAsReadAction: UIContextualAction
             = UIContextualAction(
                 style: .normal,
@@ -114,7 +111,8 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
         commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath) {
+        forRowAt indexPath: IndexPath
+    ) {
         if editingStyle == .delete {
             guard var tempArticles = self.scrappedArticles else {
                 return
