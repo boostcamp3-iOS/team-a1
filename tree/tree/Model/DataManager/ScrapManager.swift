@@ -40,6 +40,8 @@ final class ScrapManager {
         )
         do {
             try managedContext.save()
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
         } catch {
             print(error.localizedDescription)
         }
@@ -65,7 +67,7 @@ final class ScrapManager {
             NSPredicate(
                 format: "%K == %@",
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
         )
         result = fetchRequest(request)
         return result
@@ -85,13 +87,13 @@ final class ScrapManager {
                 format: "isRead == %@ AND %K == %@",
                 NSNumber(value: isRead),
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
             )
         } else {
             predicate = NSPredicate(
                 format: "%K == %@",
                 #keyPath(ScrappedArticle.category),
-                category.toString()
+                category.stringValue
             )
         }
         return countArticleFetch(predicate)
@@ -113,6 +115,15 @@ final class ScrapManager {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return 0
+    }
+    
+    static func removeArticle(_ article: ScrappedArticle) {
+        managedContext.delete(article)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     static func removeAllScrappedArticle() {
@@ -147,7 +158,7 @@ private extension NSManagedObject {
     }
     
     func setCategory(_ category: ArticleCategory) {
-        self.setValue(category.toString(), forKey: .category)
+        self.setValue(category.stringValue, forKey: .category)
     }
     
     func setValues(
@@ -159,9 +170,12 @@ private extension NSManagedObject {
         if let imageData: Data = imageData {
             newArticle.setValue(imageData, forKey: .image)
         }
+        if let authors = articleData.author,
+            authors.count > 0 {
+            newArticle.setValue(authors.first?.name, forKey: .articleAuthor)
+        }
         newArticle.setCategory(categoryEnum)
         newArticle.setValue(articleData.lang, forKey: .language)
-        newArticle.setValue(articleData.author?[0].name ?? "", forKey: .articleAuthor)
         newArticle.setValue(articleData.date, forKey: .articleDate)
         newArticle.setValue(articleData.title, forKey: .articleTitle)
         newArticle.setValue(NSDate(), forKey: .scrappedDate)
