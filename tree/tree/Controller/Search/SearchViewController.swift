@@ -142,9 +142,11 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func loadArticles(keyword: String,
-                              language: String,
-                              sort: String) {
+    private func loadArticles(
+        keyword: String,
+        language: String,
+        sort: String
+    ) {
         articles = nil
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
