@@ -365,7 +365,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.navigationItem.title = searchBar.text ?? "Search"
-        if let getSearchKeyword = searchBar.text {
+        if let getSearchKeyword = searchBar.text, getSearchKeyword.count > 0 {
             searchKeyword = getSearchKeyword
             checkFilterStatus(using: searchFilter, type: ArticleType.load)
             defaultLabel.removeFromSuperview()
