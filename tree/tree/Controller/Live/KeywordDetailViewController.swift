@@ -184,7 +184,12 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
         switch indexPath.section {
         case 1:
             let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-            guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleWebViewController") as? ArticleWebViewController else { return }
+            guard 
+                let articleView = storyboard.instantiateViewController(
+                    withIdentifier: "ArticleWebViewController"
+                ) as? ArticleWebViewController, 
+                let url = articleData?[indexPath.row].url else { return }
+            articleView.articleURL = url
             self.navigationController?.pushViewController(articleView, animated: true)
         default:
             return

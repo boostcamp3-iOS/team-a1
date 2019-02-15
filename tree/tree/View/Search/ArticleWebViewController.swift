@@ -15,7 +15,7 @@ class ArticleWebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
     private var loadingView: LoadingView?
-    private var articleURL: String = ""
+    var articleURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
