@@ -1,20 +1,17 @@
 //
-//  LiveFeedTableViewCell.swift
+//  EventHeaderCell.swift
 //  tree
 //
-//  Created by hyeri kim on 09/02/2019.
+//  Created by ParkSungJoon on 12/02/2019.
 //  Copyright © 2019 gardener. All rights reserved.
 //
 
 import UIKit
 
-class EventFeedCell: UITableViewCell {
+class EventHeaderCell: UITableViewCell {
 
     @IBOutlet weak var backgroundContainerView: UIView!
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var whereTitleLabel: UILabel!
-    @IBOutlet weak var eventDataLabel: UILabel!
-    @IBOutlet weak var whereDataLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     private var shadowView: UIView {
         let shadowView = UIView(
@@ -37,14 +34,5 @@ class EventFeedCell: UITableViewCell {
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
-    }
-    
-    func configure(by event: ResultInfo) {
-        guard
-            let location = event.location?.label.eng,
-            let country = event.location?.country?.label.eng,
-            let title = event.title["eng"] else { return }
-        eventDataLabel.text = title
-        whereDataLabel.text = location + ", " + country
     }
 }
