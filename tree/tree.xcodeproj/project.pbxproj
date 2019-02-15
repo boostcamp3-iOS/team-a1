@@ -27,6 +27,7 @@
 		6A40D80E22165A9800F06CA6 /* ArticleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */; };
 		6A40D81022168F8900F06CA6 /* ExtractArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */; };
 		6A40D812221693AD00F06CA6 /* ExtractAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D811221693AD00F06CA6 /* ExtractAPI.swift */; };
+		6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8132216C56400F06CA6 /* Enum+Languages.swift */; };
 		6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */; };
 		6A47BF44220E0638008BEA7A /* LiveFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */; };
 		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
@@ -118,6 +119,7 @@
 		6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebViewController.swift; sourceTree = "<group>"; };
 		6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArticle.swift; sourceTree = "<group>"; };
 		6A40D811221693AD00F06CA6 /* ExtractAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAPI.swift; sourceTree = "<group>"; };
+		6A40D8132216C56400F06CA6 /* Enum+Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Languages.swift"; sourceTree = "<group>"; };
 		6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedTableViewCell.swift; sourceTree = "<group>"; };
 		6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveFeedTableViewCell.xib; sourceTree = "<group>"; };
 		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */,
 				6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */,
 				BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */,
+				6A40D8132216C56400F06CA6 /* Enum+Languages.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				BC7969B922002E620003F520 /* TrendDays.swift in Sources */,
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */,
+				6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */,
 				BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */,
