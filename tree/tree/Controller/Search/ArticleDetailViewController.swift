@@ -16,9 +16,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
     
-    private lazy var papagoButton = UIButton(type: .custom)
     private var floatingButton = UIButton()
-    private var floatingCheckAnimation: Bool = true 
     var articleDetail: Article?
     
     override func viewDidLoad() {
@@ -79,10 +77,9 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func removeFloatingButton() {
-        if floatingButton.superview != nil || papagoButton.superview != nil {
+        if floatingButton.superview != nil {
             DispatchQueue.main.async {
                 self.floatingButton.removeFromSuperview()
-                self.papagoButton.removeFromSuperview()
             }
         }
     }
@@ -91,31 +88,9 @@ class ArticleDetailViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: { 
             self.floatingButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { (_) in
-            if self.floatingCheckAnimation {
-                UIView.animate(withDuration: 0.2, animations: { 
-                    self.floatingButton.transform = CGAffineTransform.identity
-                    self.papagoButton.backgroundColor = .black
-                    self.papagoButton.translatesAutoresizingMaskIntoConstraints = false
-                    self.papagoButton.addTarget(self, action: #selector(self.papagoTranslate), for: .touchUpInside)
-                    DispatchQueue.main.async {
-                        if let keyWindow = UIApplication.shared.keyWindow {
-                            keyWindow.addSubview(self.papagoButton)
-                            NSLayoutConstraint.activate([
-                                keyWindow.trailingAnchor.constraint(equalTo: self.papagoButton.trailingAnchor, constant: 25),
-                                self.floatingButton.topAnchor.constraint(equalTo: self.papagoButton.bottomAnchor, constant: 16),
-                                self.papagoButton.widthAnchor.constraint(equalToConstant: 30),
-                                self.papagoButton.heightAnchor.constraint(equalToConstant: 30)])
-                        }
-                        self.papagoButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                    }  
-                })
-            } else {
-                UIView.animate(withDuration: 0.2, animations: { 
-                    self.floatingButton.transform = CGAffineTransform.identity
-                })
-                self.papagoButton.removeFromSuperview()
-            }
-            self.floatingCheckAnimation.toggle()
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.floatingButton.transform = CGAffineTransform.identity
+            })
         }
     }
     
@@ -125,9 +100,4 @@ class ArticleDetailViewController: UIViewController {
         articleViewer.articleImage = articleImage
         self.present(articleViewer, animated: false, completion: nil)
     }
-    
-    @objc private func papagoTranslate() {
-        
-    }
-    
 }
