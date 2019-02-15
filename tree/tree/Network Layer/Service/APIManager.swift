@@ -15,8 +15,7 @@ final class APIManager {
         lang: String,
         articlesSortBy: String,
         articlesPage: Int,
-        completion: @escaping (Result<Articles>
-    ) -> Void ) {
+        completion: @escaping (Result<Articles>) -> Void ) {
         APICenter<EventRegistryAPI>().request(.fetchArticles(
                 keyword: keyword,
                 keywordLoc: keywordLoc,
@@ -39,8 +38,7 @@ final class APIManager {
     static func fetchDailyTrends(
         hl: String,
         geo: String,
-        completion: @escaping (Result<TrendDays>
-    ) -> Void) {
+        completion: @escaping (Result<TrendDays>) -> Void) {
         APICenter<GoogleTrendAPI>().requestDownload(.getDailyTrends(hl: hl, geo: geo)) { (prettyJSON, error)  in
             guard error == nil else {
                 return completion(Result.failure(error!))
@@ -61,8 +59,7 @@ final class APIManager {
         endDate: String,
         timeUnit: String,
         keywordGroups: [[String: Any]],
-        completion: @escaping (Result<Graph>
-    ) -> Void) {
+        completion: @escaping (Result<Graph>) -> Void) {
         APICenter<NaverAPIMode>().request(.keywordTrend(
             startDate: startDate,
             endDate: endDate,
@@ -84,8 +81,7 @@ final class APIManager {
     
     static func fetchRecentEvents(
         pageNumber: Int,
-        completion: @escaping (Result<Events>
-    ) -> Void) {
+        completion: @escaping (Result<Events>) -> Void) {
         APICenter<EventRegistryAPI>().request(.fetchRecentEvents(
             eventPages: pageNumber
         )) { (data, error) in
