@@ -12,15 +12,21 @@ protocol PushViewControllerDelegate: class {
     func pushViewControllerWhenDidSelectRow(with rowData: TrendingSearch)
 }
 
-class TrendPageView: UIView {
-
+class TrendPageView: UIView, ExpandableHeaderDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
 
     private let headerCellIdentifier = "TrendHeaderCell"
     private let listCellIdentifier = "TrendListCell"
     private let listHeaderCellIdentifier = "TrendListHeaderCell"
     weak var delegate: PushViewControllerDelegate?
-    var googleTrendData: TrendDays?
+    var googleTrendData: TrendDays? {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     var daysKeywordChart: HeaderCellContent?
     
     override func awakeFromNib() {
@@ -47,6 +53,14 @@ class TrendPageView: UIView {
             bottom: 0,
             right: 0
         )
+    }
+    
+    func tappedCountryButton(_ country: String) {
+        guard let headerData = daysKeywordChart else { return }
+        headerData.expanded = !headerData.expanded
+        headerData.country = country
+        let headerIndexPath = IndexPath(row: 0, section: 0)
+        tableView.reloadRows(at: [headerIndexPath], with: .automatic)
     }
 }
 
@@ -114,6 +128,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             guard let headerData = daysKeywordChart else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             cell.configure(by: headerData)
             return cell
         default:

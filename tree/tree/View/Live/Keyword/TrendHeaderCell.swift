@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ExpandableHeaderDelegate: class {
+    func tappedCountryButton(_ country: String)
+}
+
 class HeaderCellContent {
     var title: String
     var country: String
@@ -32,6 +36,7 @@ class TrendHeaderCell: UITableViewCell {
     
     private var zeroHeightConstraint: NSLayoutConstraint?
     private weak var shadowView: UIView?
+    weak var delegate: ExpandableHeaderDelegate?
     private let innerMargin: CGFloat = 20.0
     
     override func awakeFromNib() {
@@ -149,5 +154,6 @@ class TrendHeaderCell: UITableViewCell {
             object: nil,
             userInfo: ["name": name, "code": code]
         )
+        delegate?.tappedCountryButton(name)
     }
 }
