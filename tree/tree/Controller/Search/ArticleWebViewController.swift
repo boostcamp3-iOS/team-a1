@@ -15,12 +15,13 @@ class ArticleWebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     
     private var loadingView: LoadingView?
+    private var article: ExtractArticle?
     var articleURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        requestURL(url: articleURL)
+        fetctExtractArticle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +32,18 @@ class ArticleWebViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    private func fetctExtractArticle() {
+        APIManager.extractArticle(url: articleURL) { (result) in
+            switch result {
+            case .success(let data):
+                self.article = data
+                print(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func setupDelegate() {
         webView.uiDelegate = self
         webView.navigationDelegate = self
