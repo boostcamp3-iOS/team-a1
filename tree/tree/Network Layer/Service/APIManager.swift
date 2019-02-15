@@ -17,7 +17,7 @@ final class APIManager {
         articlesPage: Int,
         completion: @escaping (Result<Articles>
     ) -> Void ) {
-        APICenter<EventRegistryAPI>().request(.getArticles(
+        APICenter<EventRegistryAPI>().request(.fetchArticles(
                 keyword: keyword,
                 keywordLoc: keywordLoc,
                 lang: lang,
@@ -75,6 +75,26 @@ final class APIManager {
             guard let responseData = data else { return }
             do {
                 let decodeJSON = try JSONDecoder().decode(Graph.self, from: responseData)
+                completion(Result.success(decodeJSON))
+            } catch {
+                completion(Result.failure(NetworkError.decodingFail))
+            }
+        }
+    }
+    
+    static func fetchRecentEvents(
+        pageNumber: Int,
+        completion: @escaping (Result<Events>
+    ) -> Void) {
+        APICenter<EventRegistryAPI>().request(.fetchRecentEvents(
+            eventPages: pageNumber
+        )) { (data, error) in
+            guard error == nil else {
+                return completion(Result.failure(error!))
+            }
+            guard let responseData = data else { return }
+            do {
+                let decodeJSON = try JSONDecoder().decode(Events.self, from: responseData)
                 completion(Result.success(decodeJSON))
             } catch {
                 completion(Result.failure(NetworkError.decodingFail))
