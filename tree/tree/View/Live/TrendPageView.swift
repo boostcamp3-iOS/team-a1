@@ -57,7 +57,7 @@ class TrendPageView: UIView, ExpandableHeaderDelegate {
     
     func tappedCountryButton(_ country: String) {
         guard let headerData = daysKeywordChart else { return }
-        headerData.expanded = !headerData.expanded
+        headerData.expanded.toggle()
         headerData.country = country
         let headerIndexPath = IndexPath(row: 0, section: 0)
         tableView.reloadRows(at: [headerIndexPath], with: .automatic)
@@ -167,7 +167,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let headerData = daysKeywordChart else { return }
-            headerData.expanded = !headerData.expanded
+            headerData.expanded.toggle()
             tableView.reloadRows(at: [indexPath], with: .automatic)
         default:
             guard
