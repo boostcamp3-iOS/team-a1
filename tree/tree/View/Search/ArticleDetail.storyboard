@@ -166,30 +166,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NO9-bh-thx">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciZ-bU-iOX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem id="PSb-Ch-Wxw">
+                                        <barButtonItem key="leftBarButtonItem" image="back" id="eE6-1Q-gFc">
+                                            <connections>
+                                                <action selector="backButtonItem:" destination="qcW-UM-RW4" id="Uj6-HL-LYG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NO9-bh-thx" firstAttribute="leading" secondItem="gCy-MR-0gT" secondAttribute="leading" id="LEa-mQ-qyM"/>
-                            <constraint firstItem="gCy-MR-0gT" firstAttribute="bottom" secondItem="NO9-bh-thx" secondAttribute="bottom" id="kn8-7H-mzc"/>
-                            <constraint firstItem="NO9-bh-thx" firstAttribute="top" secondItem="gCy-MR-0gT" secondAttribute="top" id="rd3-Kq-xA2"/>
-                            <constraint firstItem="gCy-MR-0gT" firstAttribute="trailing" secondItem="NO9-bh-thx" secondAttribute="trailing" id="sjM-PJ-Zpx"/>
+                            <constraint firstItem="NO9-bh-thx" firstAttribute="top" secondItem="ciZ-bU-iOX" secondAttribute="bottom" id="2c7-rZ-fQe"/>
+                            <constraint firstItem="NO9-bh-thx" firstAttribute="trailing" secondItem="gCy-MR-0gT" secondAttribute="trailing" id="2hz-Mx-jW5"/>
+                            <constraint firstItem="NO9-bh-thx" firstAttribute="leading" secondItem="gCy-MR-0gT" secondAttribute="leading" id="69x-AE-4pF"/>
+                            <constraint firstItem="ciZ-bU-iOX" firstAttribute="leading" secondItem="gCy-MR-0gT" secondAttribute="leading" id="BWy-6x-mXj"/>
+                            <constraint firstItem="ciZ-bU-iOX" firstAttribute="trailing" secondItem="gCy-MR-0gT" secondAttribute="trailing" id="Ooq-Cn-GDb"/>
+                            <constraint firstItem="ciZ-bU-iOX" firstAttribute="top" secondItem="gCy-MR-0gT" secondAttribute="top" id="eIn-6n-bmK"/>
+                            <constraint firstItem="NO9-bh-thx" firstAttribute="bottom" secondItem="gCy-MR-0gT" secondAttribute="bottom" id="gFv-1t-4lI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gCy-MR-0gT"/>
                     </view>
                     <connections>
+                        <outlet property="barButtonItem" destination="eE6-1Q-gFc" id="Ymr-bS-x0T"/>
                         <outlet property="webView" destination="NO9-bh-thx" id="HSk-i4-nWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZK-RL-39N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="-226"/>
+            <point key="canvasLocation" x="1312.8" y="-226.23688155922042"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="21" height="21"/>
+    </resources>
 </document>

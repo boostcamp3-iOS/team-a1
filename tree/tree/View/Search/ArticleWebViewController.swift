@@ -11,6 +11,7 @@ import WebKit
 
 class ArticleWebViewController: UIViewController {
 
+    @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBOutlet weak var webView: WKWebView!
     
     private var loadingView: LoadingView?
@@ -45,6 +46,10 @@ class ArticleWebViewController: UIViewController {
         guard let loadView = loadingView else { return } 
         loadView.center = self.view.center
         self.view.addSubview(loadView)        
+    }
+    
+    @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -179,4 +179,15 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 1:
+            let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+            guard let articleView = storyboard.instantiateViewController(withIdentifier: "ArticleWebViewController") as? ArticleWebViewController else { return }
+            self.navigationController?.pushViewController(articleView, animated: true)
+        default:
+            return
+        }
+    }
 }
