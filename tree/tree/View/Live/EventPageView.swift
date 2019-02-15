@@ -50,6 +50,20 @@ class EventPageView: UIView {
     }
 }
 
+private enum EventSection: Int {
+    case header
+    case list
+    
+    init(section: Int) {
+        switch section {
+        case 0:
+            self = .header
+        default:
+            self = .list
+        }
+    }
+}
+
 extension EventPageView: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,10 +75,10 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch EventSection(section: section) {
+        case .header:
             return 1
-        default:
+        case .list:
             guard let eventList = recentEventData else { return 0 }
             return eventList[section - 1].events.count
         }
@@ -75,15 +89,15 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
+        switch EventSection(section: section) {
+        case .header:
             return UIView()
-        default:
+        case .list:
             guard
                 let headerCell = tableView.dequeueReusableCell(
                     withIdentifier: listHeaderCellIdentifier
                     ) as? TrendListHeaderCell else {
-                        return UIView()
+                        fatalError(FatalErrorMessage.invalidCell.rawValue)
             }
             guard let recentEventData = recentEventData else { return UIView() }
             headerCell.backgroundColor = UIColor.white
@@ -93,36 +107,36 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-        case 0:
+        switch EventSection(section: section) {
+        case .header:
             return 10
-        default:
+        case .list:
             return 50
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        switch EventSection(section: indexPath.section) {
+        case .header:
             guard
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: headerCellIdentifier,
                     for: indexPath
-                ) as? EventHeaderCell else {
-                    return UITableViewCell()
+                    ) as? EventHeaderCell else {
+                        fatalError(FatalErrorMessage.invalidCell.rawValue)
             }
             return cell
-        default:
+        case .list:
             guard
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: feedCellIdentifier,
                     for: indexPath
-                ) as? EventFeedCell else {
-                    return UITableViewCell()
+                    ) as? EventFeedCell else {
+                        fatalError(FatalErrorMessage.invalidCell.rawValue)
             }
             guard
                 let resultInfoData = recentEventData else {
-                    return UITableViewCell()
+                    fatalError(FatalErrorMessage.nilData.rawValue)
             }
             let resultInfoRowData = resultInfoData[indexPath.section - 1].events[indexPath.row]
             cell.configure(by: resultInfoRowData)

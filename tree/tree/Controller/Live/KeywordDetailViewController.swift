@@ -108,6 +108,20 @@ class KeywordDetailViewController: UIViewController {
     }
 }
 
+private enum KeywordDetailSection: Int {
+    case gragh
+    case articleList
+    
+    init(section: Int) {
+        switch section {
+        case 0:
+            self = .gragh
+        default:
+            self = .articleList
+        }
+    }
+}
+
 extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         if articleData != nil {
@@ -117,10 +131,10 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch KeywordDetailSection(section: section) {
+        case .gragh:
             return 1
-        default:
+        case .articleList:
             if let articleData = articleData {
                 return articleData.count
             }
@@ -136,10 +150,10 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                     return UIView()
         }
         headerCell.headerLabel.font = UIFont(name: appleGothicNeoBold, size: 17)
-        switch section {
-        case 0:
+        switch KeywordDetailSection(section: section) {
+        case .gragh:
             headerCell.headerLabel.text = HeaderTitles.changeInteresting.rawValue
-        default:
+        case .articleList:
             headerCell.headerLabel.text = HeaderTitles.relatedArticles.rawValue
         }
         return headerCell.contentView
@@ -150,24 +164,24 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        switch KeywordDetailSection(section: indexPath.section) {
+        case .gragh:
             guard
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: graphCellIdentifier,
                     for: indexPath
-                ) as? KeywordDetailGraphCell else {
-                        return UITableViewCell()
+                    ) as? KeywordDetailGraphCell else {
+                        fatalError(FatalErrorMessage.invalidCell.rawValue)
             }
-            cell.graphData = graphData?.results[0]
+            cell.graphData = graphData?.results.first
             return cell
-        default:
+        case .articleList:
             guard
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: articleCellIdentifier,
                     for: indexPath
-                ) as? KeywordDetailArticleCell else {
-                    return UITableViewCell()
+                    ) as? KeywordDetailArticleCell else {
+                        fatalError(FatalErrorMessage.invalidCell.rawValue)
             }
             if let articleData = articleData {
                 cell.configure(articleData[indexPath.row])
