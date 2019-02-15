@@ -52,16 +52,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Scrap" id="unw-3k-txW">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ngn-ry-vjo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
+                                <rect key="frame" x="276" y="7" width="20" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Category"/>
+                                <color key="tintColor" red="1" green="0.1952382141" blue="0.1174305212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="filter3X"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="jGy-hd-WEj" id="t6L-5A-UtT"/>
-                        <outlet property="tableView" destination="Fwc-Se-Vc5" id="hIL-eo-b7q"/>
+                        <outlet property="tableView" destination="Fwc-Se-Vc5" id="dLz-HJ-zGy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtI-4T-0Np" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -90,5 +91,6 @@
     </scenes>
     <resources>
         <image name="Scrap" width="24" height="24"/>
+        <image name="filter3X" width="20" height="14"/>
     </resources>
 </document>
