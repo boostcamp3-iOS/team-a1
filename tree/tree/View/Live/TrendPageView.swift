@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PushViewControllerDelegate: class {
-    func pushViewControllerWhenDidSelectRow(with rowData: TrendingSearch)
+    func didSelectRow(with rowData: TrendingSearch)
 }
 
 class TrendPageView: UIView, ExpandableHeaderDelegate {
@@ -19,7 +19,7 @@ class TrendPageView: UIView, ExpandableHeaderDelegate {
     private let headerCellIdentifier = "TrendHeaderCell"
     private let listCellIdentifier = "TrendListCell"
     private let listHeaderCellIdentifier = "TrendListHeaderCell"
-    weak var delegate: PushViewControllerDelegate?
+    weak var pushViewControllerDelegate: PushViewControllerDelegate?
     var googleTrendData: TrendDays? {
         didSet {
             DispatchQueue.main.async {
@@ -192,7 +192,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                     .keywordList[indexPath.row] else {
                         return
             }
-            delegate?.pushViewControllerWhenDidSelectRow(with: keywordRowData)
+            pushViewControllerDelegate?.didSelectRow(with: keywordRowData)
         }
     }
 }
