@@ -241,13 +241,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView
             = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
-                as? ArticleDetailViewController,
-        let article = articles?[indexPath.row] else { return }
+                as? ArticleDetailViewController else { return }
         articleView.articleDetail = articles?[indexPath.row]
-        ScrapManager.scrapArticle(
-            article: article,
-            category: ArticleCategory(containString: "\(article.categories.first)"),
-            imageData: nil)
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -291,6 +286,23 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             return true
         }
         return false
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard let cell = self.tableView(tableView, cellForRowAt: indexPath)
+            as? ArticleFeedTableViewCell else { return nil }
+        guard let article = articles?[indexPath.row] else { return nil }
+        var imagaData: Data? {
+            if let data = cell.articleImageView.image {
+                return UIImage.pngData(data)()
+            }
+            return nil
+        }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData) { _ in }
+        return UISwipeActionsConfiguration(actions: [scrapAction])
     }
 }
 
