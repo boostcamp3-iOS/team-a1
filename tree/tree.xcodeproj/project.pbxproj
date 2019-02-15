@@ -23,8 +23,8 @@
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
 		6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */; };
 		6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CCB220CAAB5002421AC /* DefautLabelView.swift */; };
-		6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */; };
-		6A47BF44220E0638008BEA7A /* LiveFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */; };
+		6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* EventFeedCell.swift */; };
+		6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* EventFeedCell.xib */; };
 		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
 		6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282B220187F8009EC8ED /* Extension+UIView.swift */; };
 		6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A65DA422203D22B005EB2BC /* LoadingView.xib */; };
@@ -45,6 +45,12 @@
 		BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
 		BC2656C721FD950900003413 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
 		BC42C038221138C100E0833B /* Enum+HeaderTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */; };
+		BC42C07A22128DEB00E0833B /* EventPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C07922128DEB00E0833B /* EventPageView.swift */; };
+		BC42C07C22128DFE00E0833B /* EventPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07B22128DFE00E0833B /* EventPageView.xib */; };
+		BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C07D22129C4700E0833B /* EventHeaderCell.swift */; };
+		BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07E22129C4700E0833B /* EventHeaderCell.xib */; };
+		BC42C0822212EE1A00E0833B /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0812212EE1A00E0833B /* Events.swift */; };
+		BC42C08A2215C78900E0833B /* CategoryEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0892215C78900E0833B /* CategoryEvents.swift */; };
 		BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */; };
 		BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */; };
 		BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
@@ -110,8 +116,8 @@
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
 		6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultLabelView.xib; sourceTree = "<group>"; };
 		6A198CCB220CAAB5002421AC /* DefautLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefautLabelView.swift; sourceTree = "<group>"; };
-		6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveFeedTableViewCell.swift; sourceTree = "<group>"; };
-		6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveFeedTableViewCell.xib; sourceTree = "<group>"; };
+		6A47BF41220E0638008BEA7A /* EventFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedCell.swift; sourceTree = "<group>"; };
+		6A47BF42220E0638008BEA7A /* EventFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFeedCell.xib; sourceTree = "<group>"; };
 		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
 		6A5D282B220187F8009EC8ED /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
@@ -134,6 +140,12 @@
 		BC2656BC21FD94EE00003413 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC2656C621FD950900003413 /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+HeaderTitles.swift"; sourceTree = "<group>"; };
+		BC42C07922128DEB00E0833B /* EventPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPageView.swift; sourceTree = "<group>"; };
+		BC42C07B22128DFE00E0833B /* EventPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventPageView.xib; sourceTree = "<group>"; };
+		BC42C07D22129C4700E0833B /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
+		BC42C07E22129C4700E0833B /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
+		BC42C0812212EE1A00E0833B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		BC42C0892215C78900E0833B /* CategoryEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvents.swift; sourceTree = "<group>"; };
 		BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailGraphCell.swift; sourceTree = "<group>"; };
 		BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordDetailGraphCell.xib; sourceTree = "<group>"; };
 		BC5D4E49220B23C8000465B0 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -325,6 +337,8 @@
 				BC2656C621FD950900003413 /* Articles.swift */,
 				BC7969B822002E620003F520 /* TrendDays.swift */,
 				BC5D4E49220B23C8000465B0 /* Graph.swift */,
+				BC42C0812212EE1A00E0833B /* Events.swift */,
+				BC42C0892215C78900E0833B /* CategoryEvents.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +360,10 @@
 		BC5D4E45220B1D66000465B0 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				BC42C07D22129C4700E0833B /* EventHeaderCell.swift */,
+				BC42C07E22129C4700E0833B /* EventHeaderCell.xib */,
+				6A47BF41220E0638008BEA7A /* EventFeedCell.swift */,
+				6A47BF42220E0638008BEA7A /* EventFeedCell.xib */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -376,11 +394,11 @@
 				BC7969BB22002EB20003F520 /* Live.storyboard */,
 				BC7969C42200AD0E0003F520 /* TrendPageView.swift */,
 				BC7969C62200AD190003F520 /* TrendPageView.xib */,
-				BC5D4E45220B1D66000465B0 /* Events */,
-				BC5D4E44220B1D60000465B0 /* Keyword */,
+				BC42C07922128DEB00E0833B /* EventPageView.swift */,
+				BC42C07B22128DFE00E0833B /* EventPageView.xib */,
 				BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */,
-				6A47BF41220E0638008BEA7A /* LiveFeedTableViewCell.swift */,
-				6A47BF42220E0638008BEA7A /* LiveFeedTableViewCell.xib */,
+				BC5D4E44220B1D60000465B0 /* Keyword */,
+				BC5D4E45220B1D66000465B0 /* Events */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -589,10 +607,11 @@
 			files = (
 				D9DFFB47220EEA7F0047E326 /* ScrapFilter.storyboard in Resources */,
 				BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */,
-				6A47BF44220E0638008BEA7A /* LiveFeedTableViewCell.xib in Resources */,
+				6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
 				BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */,
+				BC42C07C22128DFE00E0833B /* EventPageView.xib in Resources */,
 				35DC0DD921F6F3CB00F30416 /* LaunchScreen.storyboard in Resources */,
 				BC9E02AB2202EBFD00ADD1D5 /* TrendListHeaderCell.xib in Resources */,
 				35CB482121FB6306000D96CF /* ArticleFeedTableViewCell.xib in Resources */,
@@ -601,6 +620,7 @@
 				BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */,
+				BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */,
 				35DC0DD421F6F3C700F30416 /* Main.storyboard in Resources */,
 				BC7969BC22002EB20003F520 /* Live.storyboard in Resources */,
 				BC649BA3220F5EFA0032ACF2 /* KeywordDetailArticleCell.xib in Resources */,
@@ -659,6 +679,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC42C07A22128DEB00E0833B /* EventPageView.swift in Sources */,
 				6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */,
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
@@ -677,7 +698,7 @@
 				BC2656C721FD950900003413 /* Articles.swift in Sources */,
 				BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
-				6A47BF43220E0638008BEA7A /* LiveFeedTableViewCell.swift in Sources */,
+				6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */,
 				BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
 				6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */,
@@ -694,9 +715,11 @@
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */,
 				D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */,
+				BC42C08A2215C78900E0833B /* CategoryEvents.swift in Sources */,
 				BC2656C221FD94EE00003413 /* ParametersEncoder.swift in Sources */,
 				D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
+				BC42C0822212EE1A00E0833B /* Events.swift in Sources */,
 				BC2656C121FD94EE00003413 /* NetworkResponse.swift in Sources */,
 				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
@@ -717,6 +740,7 @@
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				D9D145BF220B0B6A00CC58DA /* ScrapViewController.swift in Sources */,
+				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				BC7969C122002F440003F520 /* GoogleTrendAPI.swift in Sources */,
