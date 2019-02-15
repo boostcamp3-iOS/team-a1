@@ -90,11 +90,16 @@ class SearchFilterViewController: UIViewController {
         }
     }
     
+    private func findSelectedRow(row: String) -> String? {
+        let userSelect = Languages.allCases.filter {$0.value == row}.map {"\($0)"}
+        return userSelect.joined()
+    }
+    
     @IBAction func saveButtonClick(_ sender: Any) {
         if let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
             let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
-            let category = categoryLabel.text,
-            let language = languageLabel.text {
+            let category = findSelectedRow(row: categoryLabel.text ?? "All"),
+            let language = findSelectedRow(row: languageLabel.text ?? "Eng") {
             settingDelegate?.observeUserSetting(keyword: keyword, sort: sort, category: category, language: language)
         }
         self.dismiss(animated: true, completion: nil)
