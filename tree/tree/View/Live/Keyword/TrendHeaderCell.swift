@@ -36,7 +36,7 @@ class TrendHeaderCell: UITableViewCell {
     
     private var zeroHeightConstraint: NSLayoutConstraint?
     private weak var shadowView: UIView?
-    weak var delegate: ExpandableHeaderDelegate?
+    weak var expandableHeaderDelegate: ExpandableHeaderDelegate?
     private let innerMargin: CGFloat = 20.0
     
     override func awakeFromNib() {
@@ -154,6 +154,6 @@ class TrendHeaderCell: UITableViewCell {
             object: nil,
             userInfo: ["name": name, "code": code]
         )
-        delegate?.tappedCountryButton(name)
+        expandableHeaderDelegate?.tappedCountryButton(name)
     }
 }

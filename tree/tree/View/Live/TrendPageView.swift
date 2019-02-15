@@ -128,7 +128,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             guard let headerData = daysKeywordChart else {
                 return UITableViewCell()
             }
-            cell.delegate = self
+            cell.expandableHeaderDelegate = self
             cell.configure(by: headerData)
             return cell
         default:
