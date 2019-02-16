@@ -65,7 +65,7 @@ class ArticleWebViewController: UIViewController {
         }
     }
     
-    private func setLoadingView() {
+    private func setupLoadingView() {
         let loadingViewFrame = CGRect(
             x: 0,
             y: 0, 
@@ -85,7 +85,7 @@ class ArticleWebViewController: UIViewController {
 
 extension ArticleWebViewController: WKUIDelegate, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        setLoadingView()
+        setupLoadingView()
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

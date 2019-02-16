@@ -98,10 +98,17 @@ class SearchFilterViewController: UIViewController {
     @IBAction func saveButtonClick(_ sender: Any) {
         if let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
             let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
-            let category = findSelectedRow(row: categoryLabel.text ?? "All"),
-            let language = findSelectedRow(row: languageLabel.text ?? "Eng") {
-            settingDelegate?.observeUserSetting(keyword: keyword, sort: sort, category: category, language: language)
+            let category = categoryLabel.text,
+            let language = languageLabel.text,
+            let lan = findSelectedRow(row: language) {
+            settingDelegate?.observeUserSetting(
+                keyword: keyword,
+                sort: sort,
+                category: category, 
+                language: lan
+            )
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
 }
