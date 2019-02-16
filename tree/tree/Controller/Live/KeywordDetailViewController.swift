@@ -106,6 +106,19 @@ class KeywordDetailViewController: UIViewController {
             }
         }
     }
+    
+    private func fetctExtractArticle(
+        urlString: String, 
+        completion: @escaping(ArticleViewerType, ExtractArticle?) -> Void) {
+        APIManager.extractArticle(url: urlString) { (result) in
+            switch result {
+            case .success(let data):
+                completion(.articleViewer, data)
+            case .failure:
+                completion(.webViewer, nil)
+            }
+        }
+    }
 }
 
 private enum KeywordDetailSection: Int {
@@ -199,14 +212,29 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
         case .gragh:
             return
         case .articleList:
-            let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-            guard 
-                let articleView = storyboard.instantiateViewController(
-                    withIdentifier: "ArticleWebViewController"
-                    ) as? ArticleWebViewController, 
-                let url = articleData?[indexPath.row].url else { return }
-            articleView.articleURL = url
-            self.navigationController?.pushViewController(articleView, animated: true)
+            guard let url = articleData?[indexPath.row].url else { return }
+            fetctExtractArticle(urlString: url, completion: { (viewerType,data) in
+                switch viewerType {
+                case .webViewer:
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+                        guard 
+                            let articleView = storyboard.instantiateViewController(
+                                withIdentifier: "ArticleWebViewController"
+                                ) as? ArticleWebViewController else { return }
+                        self.navigationController?.pushViewController(articleView, animated: true)
+                    }
+                case .articleViewer:
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+                        guard 
+                            let articleView = storyboard.instantiateViewController(
+                                withIdentifier: "ArticleDetailViewController"
+                                )as? ArticleDetailViewController else { return }
+                        self.navigationController?.pushViewController(articleView, animated: true)
+                    }
+                }
+            })
         }
     }
 }

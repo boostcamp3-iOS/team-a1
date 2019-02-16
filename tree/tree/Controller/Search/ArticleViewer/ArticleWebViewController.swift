@@ -21,7 +21,7 @@ class ArticleWebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        fetctExtractArticle()
+        loadWebView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,20 +32,6 @@ class ArticleWebViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
 
-    private func fetctExtractArticle() {
-        if let url = articleURL {
-            APIManager.extractArticle(url: url) { (result) in
-                switch result {
-                case .success(let data):
-                    self.article = data
-                    print(data)
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-    }
-    
     private func setupDelegate() {
         webView.uiDelegate = self
         webView.navigationDelegate = self
