@@ -20,11 +20,16 @@ class ArticleDetailViewController: UIViewController {
     private var floatingButton = UIButton()
     private var floatingCheckAnimation: Bool = true 
     var articleDetail: Article?
+    var scrappedArticleDetail: ScrappedArticle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerGestureRecognizer()
-        setArticleData()
+        if scrappedArticleDetail == nil {
+            configure()
+        } else {
+            configureWithScrappedArticle()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +55,7 @@ class ArticleDetailViewController: UIViewController {
         imageView.addGestureRecognizer(tapGesture)
     }
     
-    private func setArticleData() {
+    private func configure() {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
@@ -59,6 +64,23 @@ class ArticleDetailViewController: UIViewController {
             if let author = articleDetail?.author?[0].name {
                 self.authorLabel.text = author
             }
+        }
+    }
+    
+    private func configureWithScrappedArticle() {
+        guard let articleData = scrappedArticleDetail else { return}
+        if let title = articleData.articleTitle,
+            let date = articleData.articleDate,
+            let content = articleData.articleDescription {
+            titleLabel.text = title
+            dateLabel.text = date
+            contentLabel.text = content
+        }
+        if let author = articleData.articleAuthor {
+            authorLabel.text = author
+        }
+        if let image = articleData.image {
+            imageView.image(from: image as Data)
         }
     }
     

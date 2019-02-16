@@ -15,14 +15,13 @@ class ScrapViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     
     private let cellIdentifier = "ScrapTableViewCell"
-    
-    private var articleDeleted: Bool = false
+    private var isArticleDeleted: Bool = false
     public var scrappedArticles: [ScrappedArticle]? {
         didSet {
-            if tableView != nil && !articleDeleted {
+            if tableView != nil && !isArticleDeleted {
                 tableView.reloadData()
-            } else if articleDeleted {
-                articleDeleted = false
+            } else if isArticleDeleted {
+                isArticleDeleted = false
             }
         }
     }
@@ -67,6 +66,7 @@ class ScrapViewController: UIViewController {
 }
 
 extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let scrappedArticles = scrappedArticles else { return 0 }
         return scrappedArticles.count
@@ -86,7 +86,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         guard
             let articleView = storyboard.instantiateViewController(
                 withIdentifier: "ArticleDetailViewController"
-                ) as? ArticleDetailViewController else { return }
+                ) as? ArticleDetailViewController,
+            let scrappedArticleData = scrappedArticles?[indexPath.row] else { return }
+        articleView.scrappedArticleDetail = scrappedArticleData
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -98,30 +100,24 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let markAsReadAction: UIContextualAction
-            = UIContextualAction(
-                style: .normal,
-                title: "Mark as Read") { (_, _, _ completion) in
-                    completion(true)
+        let markAsReadAction = customUIContextualAction(.markAsRead, nil, nil) { _ in
+            
         }
-        markAsReadAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [markAsReadAction])
     }
     
     func tableView(
         _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            guard var tempArticles = self.scrappedArticles else {
-                return
-            }
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        let deleteAction = customUIContextualAction(.delete, nil, nil) { _ in
+            guard var tempArticles = self.scrappedArticles else { return }
             ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
-            articleDeleted = true
-            scrappedArticles = tempArticles
+            self.isArticleDeleted = true
+            self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
