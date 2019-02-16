@@ -112,7 +112,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                 let headerCell = tableView.dequeueReusableCell(
                     withIdentifier: listHeaderCellIdentifier
                     ) as? TrendListHeaderCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             headerCell.backgroundColor = UIColor.white
             headerCell.headerLabel.text = googleTrendData?.trend.searchesByDays[section-1]
@@ -138,10 +138,10 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: headerCellIdentifier,
                 for: indexPath
                 ) as? TrendHeaderCell else {
-                    fatalError(FatalErrorMessage.invalidCell.rawValue)
+                    fatalError(FatalError.invalidCell.localizedDescription)
             }
             guard let headerData = daysKeywordChart else {
-                fatalError(FatalErrorMessage.nilData.rawValue)
+                fatalError(FatalError.nilData.localizedDescription)
             }
             cell.expandableHeaderDelegate = self
             cell.configure(by: headerData)
@@ -152,10 +152,10 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
                     withIdentifier: listCellIdentifier,
                     for: indexPath
                     ) as? TrendListCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             guard let keywordData = googleTrendData?.trend else {
-                fatalError(FatalErrorMessage.nilData.rawValue)
+                fatalError(FatalError.nilData.localizedDescription)
             }
             let section = indexPath.section - 1
             let row = indexPath.row

@@ -97,7 +97,7 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
                 let headerCell = tableView.dequeueReusableCell(
                     withIdentifier: listHeaderCellIdentifier
                     ) as? TrendListHeaderCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             guard let recentEventData = recentEventData else { return UIView() }
             headerCell.backgroundColor = UIColor.white
@@ -123,7 +123,7 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
                     withIdentifier: headerCellIdentifier,
                     for: indexPath
                     ) as? EventHeaderCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             return cell
         case .list:
@@ -132,11 +132,11 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
                     withIdentifier: feedCellIdentifier,
                     for: indexPath
                     ) as? EventFeedCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             guard
                 let resultInfoData = recentEventData else {
-                    fatalError(FatalErrorMessage.nilData.rawValue)
+                    fatalError(FatalError.nilData.localizedDescription)
             }
             let resultInfoRowData = resultInfoData[indexPath.section - 1].events[indexPath.row]
             cell.configure(by: resultInfoRowData)

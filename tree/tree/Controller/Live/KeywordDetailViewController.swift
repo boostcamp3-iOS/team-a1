@@ -171,7 +171,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                     withIdentifier: graphCellIdentifier,
                     for: indexPath
                     ) as? KeywordDetailGraphCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             cell.graphData = graphData?.results.first
             return cell
@@ -181,7 +181,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                     withIdentifier: articleCellIdentifier,
                     for: indexPath
                     ) as? KeywordDetailArticleCell else {
-                        fatalError(FatalErrorMessage.invalidCell.rawValue)
+                        fatalError(FatalError.invalidCell.localizedDescription)
             }
             if let articleData = articleData {
                 cell.configure(articleData[indexPath.row])
