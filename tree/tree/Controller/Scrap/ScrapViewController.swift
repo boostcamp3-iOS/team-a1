@@ -15,13 +15,13 @@ class ScrapViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     
     private let cellIdentifier = "ScrapTableViewCell"
-    private var articleIsDeleted: Bool = false
+    private var isArticleDeleted: Bool = false
     public var scrappedArticles: [ScrappedArticle]? {
         didSet {
-            if tableView != nil && !articleIsDeleted {
+            if tableView != nil && !isArticleDeleted {
                 tableView.reloadData()
-            } else if articleIsDeleted {
-                articleIsDeleted = false
+            } else if isArticleDeleted {
+                isArticleDeleted = false
             }
         }
     }
@@ -113,7 +113,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         let deleteAction = customUIContextualAction(.delete, nil, nil) { _ in
             guard var tempArticles = self.scrappedArticles else { return }
             ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
-            self.articleIsDeleted = true
+            self.isArticleDeleted = true
             self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
