@@ -100,8 +100,7 @@ final class APIManager {
     
     static func extractArticle(
         url: String,
-        completion: @escaping (Result<ExtractArticle>
-        ) -> Void) {
+        completion: @escaping (Result<ExtractArticle>) -> Void) {
         APICenter<ExtractAPI>().request(.extractArticleInfo(
             url: url
         )) { (data, error) in

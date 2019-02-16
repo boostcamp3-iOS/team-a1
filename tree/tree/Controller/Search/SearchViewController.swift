@@ -38,7 +38,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setuppDelegate()
+        setupDelegate()
         setupSearchBar()
         setupTableView()
         setupNavigationBar()
@@ -79,7 +79,7 @@ class SearchViewController: UIViewController {
         self.view.addSubview(defaultView)  
     }
     
-    private func setuppDelegate() {
+    private func setupDelegate() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
@@ -360,7 +360,9 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let getSearchKeyword = searchBar.text, getSearchKeyword.count > 0, !isLoading {
+        if let getSearchKeyword = searchBar.text,
+            getSearchKeyword.count > 0,
+            !isLoading {
             self.navigationItem.title = searchBar.text ?? "Search"
             isLoading.toggle()
             searchKeyword = getSearchKeyword

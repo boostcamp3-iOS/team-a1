@@ -16,7 +16,7 @@ class ArticleWebViewController: UIViewController {
     
     private var loadingView: LoadingView?
     private var article: ExtractArticle?
-    var articleURL: String = ""
+    var articleURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +33,15 @@ class ArticleWebViewController: UIViewController {
     }
 
     private func fetctExtractArticle() {
-        APIManager.extractArticle(url: articleURL) { (result) in
-            switch result {
-            case .success(let data):
-                self.article = data
-                print(data)
-            case .failure(let error):
-                print(error)
+        if let url = articleURL {
+            APIManager.extractArticle(url: url) { (result) in
+                switch result {
+                case .success(let data):
+                    self.article = data
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
@@ -49,7 +51,7 @@ class ArticleWebViewController: UIViewController {
         webView.navigationDelegate = self
     }
     
-    private func makeRequestURL(urlString: String) -> URLRequest? {
+    private func makeURLRequest(urlString: String) -> URLRequest? {
         if let makeURL = URL(string: urlString) {
             let urlRequest = URLRequest(url: makeURL)
             return urlRequest
@@ -58,7 +60,7 @@ class ArticleWebViewController: UIViewController {
     }
     
     private func loadWebView() {
-        if let requestURL = makeRequestURL(urlString: articleURL) {
+        if let url = articleURL, let requestURL = makeURLRequest(urlString: url) {
             webView.load(requestURL)
         }
     }
