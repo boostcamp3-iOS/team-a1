@@ -15,9 +15,8 @@ final class APIManager {
         lang: String,
         articlesSortBy: String,
         articlesPage: Int,
-        completion: @escaping (Result<Articles>
-    ) -> Void ) {
-        APICenter<EventRegistryAPI>().request(.getArticles(
+        completion: @escaping (Result<Articles>) -> Void ) {
+        APICenter<EventRegistryAPI>().request(.fetchArticles(
                 keyword: keyword,
                 keywordLoc: keywordLoc,
                 lang: lang,
@@ -39,8 +38,7 @@ final class APIManager {
     static func fetchDailyTrends(
         hl: String,
         geo: String,
-        completion: @escaping (Result<TrendDays>
-    ) -> Void) {
+        completion: @escaping (Result<TrendDays>) -> Void) {
         APICenter<GoogleTrendAPI>().requestDownload(.getDailyTrends(hl: hl, geo: geo)) { (prettyJSON, error)  in
             guard error == nil else {
                 return completion(Result.failure(error!))
@@ -61,8 +59,7 @@ final class APIManager {
         endDate: String,
         timeUnit: String,
         keywordGroups: [[String: Any]],
-        completion: @escaping (Result<Graph>
-    ) -> Void) {
+        completion: @escaping (Result<Graph>) -> Void) {
         APICenter<NaverAPIMode>().request(.keywordTrend(
             startDate: startDate,
             endDate: endDate,
@@ -82,10 +79,29 @@ final class APIManager {
         }
     }
     
+    static func fetchRecentEvents(
+        pageNumber: Int,
+        completion: @escaping (Result<Events>) -> Void) {
+        APICenter<EventRegistryAPI>().request(.fetchRecentEvents(
+            eventPages: pageNumber
+        )) { (data, error) in
+            guard error == nil else {
+                return completion(Result.failure(error!))
+            }
+            guard let responseData = data else { return }
+            do {
+                let decodeJSON = try JSONDecoder().decode(Events.self, from: responseData)
+                completion(Result.success(decodeJSON))
+            } catch {
+                completion(Result.failure(NetworkError.decodingFail))
+            }
+        }
+    }
+    
     static func extractArticle(
         url: String,
         completion: @escaping (Result<ExtractArticle>
-    ) -> Void) {
+        ) -> Void) {
         APICenter<ExtractAPI>().request(.extractArticleInfo(
             url: url
         )) { (data, error) in
