@@ -80,9 +80,9 @@
 		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
 		BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB9E252205A1040095E4E4 /* TrendHeaderCell.swift */; };
 		BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDB9E262205A1040095E4E4 /* TrendHeaderCell.xib */; };
-		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		BCE1B8B6221723230098B3B8 /* Enum+FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */; };
 		BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B72217E43F0098B3B8 /* NibName.swift */; };
+		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -924,7 +924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74HR8KDU73;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -944,7 +944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74HR8KDU73;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
