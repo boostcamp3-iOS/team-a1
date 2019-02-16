@@ -246,36 +246,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         guard let articleView
             = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
-                as? ArticleDetailViewController,
-        let article = articles?[indexPath.row] else { return }
+                as? ArticleDetailViewController else { return }
         articleView.articleDetail = articles?[indexPath.row]
-        ScrapManager.scrapArticle(
-            article: article,
-            category: ArticleCategory(containString: "\(article.categories.first)"),
-            imageData: nil)
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true 
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .insert:
-            print("scrap")
-        default:
-            return
-        }
-    }
-
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let scrapButton = UITableViewRowAction(style: .default, title: "SCRAP") { (_, indexPath) in
-            tableView.dataSource?.tableView!(tableView, commit: .insert, forRowAt: indexPath)
-            return
-        }
-        scrapButton.backgroundColor = UIColor.white
-        return [scrapButton]
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -296,6 +273,23 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             return true
         }
         return false
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard let cell = self.tableView(tableView, cellForRowAt: indexPath)
+            as? ArticleFeedTableViewCell else { return nil }
+        guard let article = articles?[indexPath.row] else { return nil }
+        var imagaData: Data? {
+            if let data = cell.articleImageView.image {
+                return UIImage.pngData(data)()
+            }
+            return nil
+        }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData) { _ in }
+        return UISwipeActionsConfiguration(actions: [scrapAction])
     }
 }
 

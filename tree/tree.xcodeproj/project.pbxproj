@@ -80,6 +80,7 @@
 		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
 		BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB9E252205A1040095E4E4 /* TrendHeaderCell.swift */; };
 		BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDB9E262205A1040095E4E4 /* TrendHeaderCell.xib */; };
+		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		BCE1B8B6221723230098B3B8 /* Enum+FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */; };
 		BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B72217E43F0098B3B8 /* NibName.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
@@ -185,6 +186,7 @@
 		BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+FatalError.swift"; sourceTree = "<group>"; };
 		BCE1B8B72217E43F0098B3B8 /* NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibName.swift; sourceTree = "<group>"; };
 		BF0163F8362378789ACC30D4 /* Pods_tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 				6A5D282B220187F8009EC8ED /* Extension+UIView.swift */,
 				BC63852D2207442B00074CF3 /* Extension+Notification.swift */,
 				6A0957AB2208490E00D46741 /* Extension+PickerView.swift */,
+				D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				D9C6AB8221FEDB08001C0AB8 /* PresentationManager.swift in Sources */,
 				D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */,
 				BC2656C321FD94EE00003413 /* NetworkResult.swift in Sources */,
+				D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */,
 				BC2656C021FD94EE00003413 /* APICenter.swift in Sources */,
 				BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */,
 				D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */,
@@ -920,7 +924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 74HR8KDU73;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -940,7 +944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 74HR8KDU73;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

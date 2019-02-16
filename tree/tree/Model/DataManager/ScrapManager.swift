@@ -99,6 +99,25 @@ final class ScrapManager {
         return countArticleFetch(predicate)
     }
     
+    typealias IsScrappedHandler = (Bool,ScrappedArticle?) -> Void
+    static func articleIsScrapped(
+        uri articleUri: String,
+        completion: @escaping IsScrappedHandler
+    ) -> Void {
+        let request: NSFetchRequest = ScrappedArticle.fetchRequest()
+        request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
+        do {
+            let result = try managedContext.fetch(request)
+            if result.isEmpty {
+                completion(false,nil)
+            } else {
+                completion(true,result.first)
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
         let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
         request.resultType = .countResultType
