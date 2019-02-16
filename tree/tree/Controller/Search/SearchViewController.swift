@@ -247,7 +247,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleView
             = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
                 as? ArticleDetailViewController else { return }
-        articleView.articleDetail = articles?[indexPath.row]
+        articleView.articleData = articles?[indexPath.row] as AnyObject
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
