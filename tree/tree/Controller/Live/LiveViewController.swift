@@ -28,8 +28,6 @@ class LiveViewController: UIViewController {
     }
     private var countryName: String = Country.usa.info.name
     private var loadingView: LoadingView?
-    private let trendPageNibName = "TrendPageView"
-    private let eventPageNibName = "EventPageView"
     private let localizedLanguage = LocalizedLanguages.korean.rawValue
     
     override func viewDidLoad() {
@@ -145,7 +143,7 @@ class LiveViewController: UIViewController {
     
     private func createPages() -> [UIView] {
         guard let pageByDays: TrendPageView = Bundle.main.loadNibNamed(
-            trendPageNibName,
+            NibName.trendPage,
             owner: self,
             options: nil
         )?.first as? TrendPageView else {
@@ -155,10 +153,10 @@ class LiveViewController: UIViewController {
             title: "급상승 검색어",
             country: countryName
         )
-        pageByDays.delegate = self
+        pageByDays.pushViewControllerDelegate = self
         
         guard let pageByEvent: EventPageView = Bundle.main.loadNibNamed(
-            eventPageNibName,
+            NibName.eventPage,
             owner: self,
             options: nil
         )?.first as? EventPageView else {
@@ -205,7 +203,7 @@ class LiveViewController: UIViewController {
 }
 
 extension LiveViewController: PushViewControllerDelegate {
-    func pushViewControllerWhenDidSelectRow(with rowData: TrendingSearch) {
+    func didSelectRow(with rowData: TrendingSearch) {
         guard
             let detailViewController = self.storyboard?.instantiateViewController(
                 withIdentifier: "KeywordDetailViewController"
