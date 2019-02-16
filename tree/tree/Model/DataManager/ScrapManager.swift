@@ -99,9 +99,10 @@ final class ScrapManager {
         return countArticleFetch(predicate)
     }
     
+    typealias IsScrappedHandler = (Bool,ScrappedArticle?) -> Void
     static func articleIsScrapped(
         uri articleUri: String,
-        completion: @escaping (Bool,ScrappedArticle?) -> Void
+        completion: @escaping IsScrappedHandler
     ) -> Void {
         let request: NSFetchRequest = ScrappedArticle.fetchRequest()
         request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
@@ -117,7 +118,6 @@ final class ScrapManager {
         }
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
-        return
     }
     
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{

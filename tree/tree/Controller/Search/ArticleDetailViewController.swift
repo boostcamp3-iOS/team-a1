@@ -26,9 +26,9 @@ class ArticleDetailViewController: UIViewController {
         super.viewDidLoad()
         registerGestureRecognizer()
         if scrappedArticleDetail == nil {
-            setArticleData()
+            configure()
         } else {
-            setScrappedArticleData()
+            configureWithScrappedArticle()
         }
     }
 
@@ -55,7 +55,7 @@ class ArticleDetailViewController: UIViewController {
         imageView.addGestureRecognizer(tapGesture)
     }
     
-    private func setArticleData() {
+    private func configure() {
         titleLabel.text = articleDetail?.title
         dateLabel.text = articleDetail?.date
         contentLabel.text = articleDetail?.body
@@ -67,7 +67,7 @@ class ArticleDetailViewController: UIViewController {
         }
     }
     
-    private func setScrappedArticleData() {
+    private func configureWithScrappedArticle() {
         guard let articleData = scrappedArticleDetail else { return}
         if let title = articleData.articleTitle,
             let date = articleData.articleDate,
