@@ -28,6 +28,7 @@
 		6A40D81022168F8900F06CA6 /* ExtractArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */; };
 		6A40D812221693AD00F06CA6 /* ExtractAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D811221693AD00F06CA6 /* ExtractAPI.swift */; };
 		6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8132216C56400F06CA6 /* Enum+Languages.swift */; };
+		6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */; };
 		6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* EventFeedCell.swift */; };
 		6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* EventFeedCell.xib */; };
 		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
@@ -129,6 +130,7 @@
 		6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArticle.swift; sourceTree = "<group>"; };
 		6A40D811221693AD00F06CA6 /* ExtractAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAPI.swift; sourceTree = "<group>"; };
 		6A40D8132216C56400F06CA6 /* Enum+Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Languages.swift"; sourceTree = "<group>"; };
+		6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+ArticleViewerType.swift"; sourceTree = "<group>"; };
 		6A47BF41220E0638008BEA7A /* EventFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedCell.swift; sourceTree = "<group>"; };
 		6A47BF42220E0638008BEA7A /* EventFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFeedCell.xib; sourceTree = "<group>"; };
 		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */,
 				6A40D8132216C56400F06CA6 /* Enum+Languages.swift */,
 				BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */,
+				6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */,
 				BCE1B8B72217E43F0098B3B8 /* NibName.swift */,
 			);
 			path = Helper;
@@ -761,6 +764,7 @@
 				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */,
+				6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */,
 				BC649BA2220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift in Sources */,
 				BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */,
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
