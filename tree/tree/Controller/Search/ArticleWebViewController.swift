@@ -49,8 +49,8 @@ class ArticleWebViewController: UIViewController {
         webView.navigationDelegate = self
     }
     
-    private func requestURL(url: String) {
-        if let makeUrl = URL(string: url) {
+    private func requestURL(urlString: String) {
+        if let makeUrl = URL(string: urlString) {
             let request = URLRequest(url: makeUrl)
             webView.load(request)
         }

@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
     private var searchKeyword: String = ""
     private var page: Int = 1
     private var totalPage: Int = 0
+    private var isLoading: Bool = false
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
     private var heightAtIndexPath = [IndexPath: Float]()
@@ -163,6 +164,7 @@ class SearchViewController: UIViewController {
                 self.articles = articleData.articles.results
                 self.totalPage = articleData.articles.pages
                 DispatchQueue.main.async {
+                    self.isLoading.toggle()
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
                     if self.articles?.count == 0 {
@@ -364,8 +366,9 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.navigationItem.title = searchBar.text ?? "Search"
-        if let getSearchKeyword = searchBar.text, getSearchKeyword.count > 0 {
+        if let getSearchKeyword = searchBar.text, getSearchKeyword.count > 0, !isLoading {
+            self.navigationItem.title = searchBar.text ?? "Search"
+            isLoading.toggle()
             searchKeyword = getSearchKeyword
             checkFilterStatus(using: searchFilter, type: ArticleType.load)
             defaultLabel.removeFromSuperview()
