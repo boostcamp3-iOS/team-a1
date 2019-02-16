@@ -15,6 +15,9 @@ private enum DefaultParameter {
     case articlesCount
     case resultType
     case action
+    case eventsCount
+    case includeEventConcepts
+    case language
 }
 
 extension DefaultParameter {
@@ -26,17 +29,23 @@ extension DefaultParameter {
         case .articlesCount: return 20
         case .resultType: return "articles"
         case .action: return "getArticles"
+        case .eventsCount: return 50
+        case .includeEventConcepts: return false
+        case .language: return "eng"
         }
     }
 }
 
 enum EventRegistryAPI {
-    case getArticles(
+    case fetchArticles(
         keyword: String,
         keywordLoc: String,
         lang: String,
         articlesSortBy: String,
         articlesPage: Int
+    )
+    case fetchRecentEvents(
+        eventPages: Int
     )
 }
 
@@ -49,21 +58,25 @@ extension EventRegistryAPI: APIService {
     
     var path: String? {
         switch self {
-        case .getArticles:
+        case .fetchArticles:
             return "/api/v1/article"
+        case .fetchRecentEvents:
+            return "/api/v1/topRecentEvents"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .getArticles:
+        case .fetchArticles:
+            return .get
+        case .fetchRecentEvents:
             return .get
         }
     }
     
     var parameters: Parameters {
         switch self {
-        case .getArticles(
+        case .fetchArticles(
             let keyword,
             let keywordLoc,
             let lang,
@@ -84,12 +97,26 @@ extension EventRegistryAPI: APIService {
                 "articleBodyLen": DefaultParameter.articleBodyLen.value,
                 "apiKey": APIConstant.eventRegistryKey
             ]
+        case .fetchRecentEvents(
+            let eventPages
+            ):
+            return [
+                "eventPages": eventPages,
+                "includeEventConcepts": DefaultParameter.includeEventConcepts.value,
+                "eventsCount": DefaultParameter.eventsCount.value
+            ]
         }
     }
     
     var task: HTTPTask {
         switch self {
-        case .getArticles:
+        case .fetchArticles:
+            return .requestWith(
+                url: parameters,
+                body: nil,
+                encoding: .query
+            )
+        case .fetchRecentEvents:
             return .requestWith(
                 url: parameters,
                 body: nil,
