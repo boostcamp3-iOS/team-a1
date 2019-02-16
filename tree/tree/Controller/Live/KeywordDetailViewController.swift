@@ -195,18 +195,18 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 1:
+        switch KeywordDetailSection(section: indexPath.section) {
+        case .gragh:
+            return
+        case .articleList:
             let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
             guard 
                 let articleView = storyboard.instantiateViewController(
                     withIdentifier: "ArticleWebViewController"
-                ) as? ArticleWebViewController, 
+                    ) as? ArticleWebViewController, 
                 let url = articleData?[indexPath.row].url else { return }
             articleView.articleURL = url
             self.navigationController?.pushViewController(articleView, animated: true)
-        default:
-            return
         }
     }
 }
