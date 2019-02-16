@@ -46,6 +46,7 @@ public enum ArticleCategory: CaseIterable{
     case shopping
     case society
     case sports
+    case etc
 
     init(containString: String) {
         for item in ArticleCategory.allCases {
@@ -118,6 +119,9 @@ public enum ArticleCategory: CaseIterable{
         case .sports:
             return [UIColor(hexString: "#42275a").cgColor,
                     UIColor(hexString: "#734b6d").cgColor]
+        case .etc:
+            return [UIColor(hexString: "#1d4350").cgColor,
+                    UIColor(hexString: "#a43931").cgColor]
         }
     }
 }
