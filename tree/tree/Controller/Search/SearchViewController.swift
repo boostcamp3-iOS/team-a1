@@ -250,24 +250,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return true 
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .insert:
-            print("scrap")
-        default:
-            return
-        }
-    }
-
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let scrapButton = UITableViewRowAction(style: .default, title: "SCRAP") { (_, indexPath) in
-            tableView.dataSource?.tableView!(tableView, commit: .insert, forRowAt: indexPath)
-            return
-        }
-        scrapButton.backgroundColor = UIColor.white
-        return [scrapButton]
-    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let height = Float(cell.frame.size.height)
         heightAtIndexPath.updateValue(height, forKey: indexPath)

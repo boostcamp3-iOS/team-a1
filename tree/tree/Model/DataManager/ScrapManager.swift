@@ -116,8 +116,6 @@ final class ScrapManager {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
     }
     
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
