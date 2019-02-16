@@ -213,7 +213,8 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
             return
         case .articleList:
             guard let url = articleData?[indexPath.row].url else { return }
-            fetctExtractArticle(urlString: url, completion: { (viewerType,data) in
+            fetctExtractArticle(urlString: url, completion: { [weak self](viewerType, data) in
+                guard let self = self else { return }
                 switch viewerType {
                 case .webViewer:
                     DispatchQueue.main.async {
@@ -222,6 +223,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                             let articleView = storyboard.instantiateViewController(
                                 withIdentifier: "ArticleWebViewController"
                                 ) as? ArticleWebViewController else { return }
+                        articleView.articleURL = self.articleData?[indexPath.row].url
                         self.navigationController?.pushViewController(articleView, animated: true)
                     }
                 case .articleViewer:
@@ -231,6 +233,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                             let articleView = storyboard.instantiateViewController(
                                 withIdentifier: "ArticleDetailViewController"
                                 )as? ArticleDetailViewController else { return }
+                        articleView.articleData = data as AnyObject
                         self.navigationController?.pushViewController(articleView, animated: true)
                     }
                 }
