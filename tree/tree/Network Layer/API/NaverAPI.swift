@@ -20,7 +20,7 @@ enum NaverAPIMode {
 extension NaverAPIMode: APIService {
 
     var baseURL: URL {
-        guard let url = URL(string: naverAPIBaseURL) else {
+        guard let url = URL(string: BaseURL.naverAPIBaseURL) else {
             fatalError("Invalid URL")
         }
         return url

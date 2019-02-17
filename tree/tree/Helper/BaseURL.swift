@@ -8,7 +8,9 @@
 
 import Foundation
 
-let extractAPIBaseURL = "http://analytics.eventregistry.org"
-let naverAPIBaseURL = "https://openapi.naver.com/v1/datalab/search"
-let googleTrendAPIBaseURL = "https://trends.google.com/trends/api"
-let eventRegistryAPIBaseURL = "http://eventregistry.org"
+struct BaseURL {
+    static let extractAPIBaseURL = "http://analytics.eventregistry.org"
+    static let naverAPIBaseURL = "https://openapi.naver.com/v1/datalab/search"
+    static let googleTrendAPIBaseURL = "https://trends.google.com/trends/api"
+    static let eventRegistryAPIBaseURL = "http://eventregistry.org"
+}
