@@ -21,14 +21,19 @@ enum ScrappedArticleProperty {
     case articleTitle
     case articleUri
     case category
+    case articleWebData
+    case articleURL
     
     var stringValue: String {
         return "\(self)"
     }
-    
-    func toString() -> String {
-        return "\(self)"
-    }
+}
+
+public struct WebViewArticle {
+    let webData: Data
+    let articleURL: String
+    let title: String
+    let press: String
 }
 
 public enum ArticleCategory: CaseIterable{
@@ -46,6 +51,7 @@ public enum ArticleCategory: CaseIterable{
     case shopping
     case society
     case sports
+    case live
     case etc
 
     init(containString: String) {
@@ -119,6 +125,9 @@ public enum ArticleCategory: CaseIterable{
         case .sports:
             return [UIColor(hexString: "#42275a").cgColor,
                     UIColor(hexString: "#734b6d").cgColor]
+        case .live:
+            return [UIColor(hexString: "#ed213a").cgColor,
+                    UIColor(hexString: "#93291e").cgColor]
         case .etc:
             return [UIColor(hexString: "#1d4350").cgColor,
                     UIColor(hexString: "#a43931").cgColor]
