@@ -13,15 +13,8 @@ class TrendIntentCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var keywordLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configure(by keyword: TrendingSearch, _ rank: Int) {
+        rankLabel.text = "\(rank)"
+        keywordLabel.text = keyword.title.query
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -75,7 +75,8 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     }
     
     var desiredSize: CGSize {
-        var siriResponseViewSize = self.extensionContext!.hostedViewMaximumAllowedSize
+        guard let extensionContext = self.extensionContext else { fatalError() }
+        var siriResponseViewSize = extensionContext.hostedViewMaximumAllowedSize
         guard let trendData = trendData else { return siriResponseViewSize }
         siriResponseViewSize.height = CGFloat(trendData.count) * 44  + 5
         return siriResponseViewSize
@@ -104,8 +105,8 @@ extension IntentViewController: UITableViewDataSource {
                 for: indexPath
             ) as? TrendIntentCell else { fatalError() }
         guard let trendData = trendData else { fatalError() }
-        cell.rankLabel.text = "\(indexPath.row + 1)"
-        cell.keywordLabel.text = trendData[indexPath.row].title.query
+        let rank = indexPath.row + 1
+        cell.configure(by: trendData[indexPath.row], rank)
         return cell
     }
 }
