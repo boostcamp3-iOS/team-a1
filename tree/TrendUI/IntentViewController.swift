@@ -25,9 +25,9 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     private var trendData: [TrendingSearch]? {
         didSet {
             DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             }
-            self.hideActivityIndicator()
         }
     }
     
@@ -60,7 +60,6 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         guard
             let intent = interaction.intent as? TrendIntent,
             let country = intent.country else { return }
-        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         APIManager.fetchDailyTrends(hl: localizedLanguage, geo: country) { (result) in
             switch result {
@@ -80,13 +79,6 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         guard let trendData = trendData else { return siriResponseViewSize }
         siriResponseViewSize.height = CGFloat(trendData.count) * 44  + 5
         return siriResponseViewSize
-    }
-    
-    private func hideActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-        }
     }
 }
 
