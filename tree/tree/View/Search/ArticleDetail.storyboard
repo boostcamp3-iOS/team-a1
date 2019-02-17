@@ -94,7 +94,7 @@
                                     <navigationItem id="fid-Xx-j84">
                                         <barButtonItem key="leftBarButtonItem" image="back" id="WBh-ua-nBK">
                                             <connections>
-                                                <action selector="backButtonItem:" destination="XeH-nL-Zfx" id="Q8R-zG-7gu"/>
+                                                <action selector="backButtonItemDidTap:" destination="XeH-nL-Zfx" id="TNf-xf-2UI"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
