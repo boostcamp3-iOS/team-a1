@@ -4,10 +4,10 @@
         <attribute name="articleAuthor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleHtmlData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleUri" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="articleURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="articleWebData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>

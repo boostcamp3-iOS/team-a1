@@ -26,6 +26,6 @@ extension ScrappedArticle {
     @NSManaged public var articleTitle: String?
     @NSManaged public var articleUri: String?
     @NSManaged public var category: String?
-    @NSManaged public var articleHtmlData: NSData?
+    @NSManaged public var articleWebData: NSData?
     @NSManaged public var articleURL: String?
 }
