@@ -47,6 +47,22 @@ final class ScrapManager {
         }
     }
     
+    static func scrapArticle(webArticle: WebViewArticle){
+        guard let entity =
+            NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext) else {
+            return
+        }
+        let newWebViewArticle = ScrappedArticle(entity: entity, insertInto: managedContext)
+        newWebViewArticle.setValues(newWebViewArticle, articleData: webArticle)
+        do {
+            try managedContext.save()
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     static func fetchArticles() -> [ScrappedArticle] {
         let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
         let sortDescriptor: NSSortDescriptor =
@@ -202,5 +218,17 @@ private extension NSManagedObject {
         newArticle.setValue(articleData.uri, forKey: .articleUri)
         newArticle.setValue(articleData.source.title, forKey: .company)
         newArticle.setValue(articleData.body, forKey: .articleDescription)
+    }
+    
+    func setValues(
+        _ newWebViewArticle: ScrappedArticle,
+        articleData: WebViewArticle
+    ) {
+        newWebViewArticle.setCategory(.live)
+        newWebViewArticle.setValue(NSDate(), forKey: .scrappedDate)
+        newWebViewArticle.setValue(articleData.webData as NSData, forKey: .articleWebData)
+        newWebViewArticle.setValue(articleData.articleURL, forKey: .articleURL)
+        newWebViewArticle.setValue(articleData.press, forKey: .articleAuthor)
+        newWebViewArticle.setValue(articleData.title, forKey: .articleTitle)
     }
 }
