@@ -52,6 +52,54 @@
 		BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07E22129C4700E0833B /* EventHeaderCell.xib */; };
 		BC42C0822212EE1A00E0833B /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0812212EE1A00E0833B /* Events.swift */; };
 		BC42C08A2215C78900E0833B /* CategoryEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0892215C78900E0833B /* CategoryEvents.swift */; };
+		BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BC558ED3221943190037C1EF /* Intents.intentdefinition */; };
+		BC558EDD221944890037C1EF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EDC221944890037C1EF /* IntentHandler.swift */; };
+		BC558EE5221944890037C1EF /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC558EE4221944890037C1EF /* IntentsUI.framework */; };
+		BC558EE8221944890037C1EF /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EE7221944890037C1EF /* IntentViewController.swift */; };
+		BC558EEB221944890037C1EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC558EE9221944890037C1EF /* MainInterface.storyboard */; };
+		BC558EEF221944890037C1EF /* TrendUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC558EE3221944890037C1EF /* TrendUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC558EF2221944890037C1EF /* Trend.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC558EDA221944890037C1EF /* Trend.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC558EFB2219449C0037C1EF /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
+		BC558EFC221944A40037C1EF /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
+		BC558EFE221946570037C1EF /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BC558ED3221943190037C1EF /* Intents.intentdefinition */; };
+		BC558EFF221946580037C1EF /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BC558ED3221943190037C1EF /* Intents.intentdefinition */; };
+		BC558F002219486E0037C1EF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B621FD94EE00003413 /* APIManager.swift */; };
+		BC558F14221949340037C1EF /* EventRegistryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */; };
+		BC558F16221949370037C1EF /* GoogleTrendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C022002F440003F520 /* GoogleTrendAPI.swift */; };
+		BC558F182219493A0037C1EF /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4F220C247E000465B0 /* NaverAPI.swift */; };
+		BC558F1A2219493C0037C1EF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B521FD94EE00003413 /* APIService.swift */; };
+		BC558F1C2219493F0037C1EF /* APICenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B721FD94EE00003413 /* APICenter.swift */; };
+		BC558F1E221949450037C1EF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
+		BC558F20221949480037C1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
+		BC558F222219494B0037C1EF /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B921FD94EE00003413 /* NetworkResponse.swift */; };
+		BC558F242219494E0037C1EF /* ParametersEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BA21FD94EE00003413 /* ParametersEncoder.swift */; };
+		BC558F26221949AB0037C1EF /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		BC558F27221949AE0037C1EF /* TrendDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrendDays.swift */; };
+		BC558F28221949B00037C1EF /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
+		BC558F29221949B20037C1EF /* CategoryEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0892215C78900E0833B /* CategoryEvents.swift */; };
+		BC558F2A221949B40037C1EF /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0812212EE1A00E0833B /* Events.swift */; };
+		BC558F2B221949CD0037C1EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
+		BC558F2C221949E80037C1EF /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
+		BC558F2E22194FE40037C1EF /* TrendIntentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558F2D22194FE40037C1EF /* TrendIntentCell.swift */; };
+		BC558F2F221951750037C1EF /* EventRegistryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */; };
+		BC558F30221951750037C1EF /* GoogleTrendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969C022002F440003F520 /* GoogleTrendAPI.swift */; };
+		BC558F31221951750037C1EF /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4F220C247E000465B0 /* NaverAPI.swift */; };
+		BC558F32221951750037C1EF /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B521FD94EE00003413 /* APIService.swift */; };
+		BC558F33221951750037C1EF /* APICenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B721FD94EE00003413 /* APICenter.swift */; };
+		BC558F34221951750037C1EF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B621FD94EE00003413 /* APIManager.swift */; };
+		BC558F35221951750037C1EF /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656B921FD94EE00003413 /* NetworkResponse.swift */; };
+		BC558F36221951750037C1EF /* ParametersEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BA21FD94EE00003413 /* ParametersEncoder.swift */; };
+		BC558F37221951750037C1EF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BB21FD94EE00003413 /* NetworkResult.swift */; };
+		BC558F38221951750037C1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656BC21FD94EE00003413 /* NetworkError.swift */; };
+		BC558F392219517A0037C1EF /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656C621FD950900003413 /* Articles.swift */; };
+		BC558F3A2219517A0037C1EF /* TrendDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969B822002E620003F520 /* TrendDays.swift */; };
+		BC558F3B2219517A0037C1EF /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
+		BC558F3C2219517A0037C1EF /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0812212EE1A00E0833B /* Events.swift */; };
+		BC558F3D2219517A0037C1EF /* CategoryEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0892215C78900E0833B /* CategoryEvents.swift */; };
+		BC558F3E221951830037C1EF /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
+		BC558F3F2219518F0037C1EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
+		BC558F4022195FE50037C1EF /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
+		BC558F4122195FE60037C1EF /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
 		BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */; };
 		BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */; };
 		BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
@@ -76,9 +124,9 @@
 		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
 		BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB9E252205A1040095E4E4 /* TrendHeaderCell.swift */; };
 		BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDB9E262205A1040095E4E4 /* TrendHeaderCell.xib */; };
-		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		BCE1B8B6221723230098B3B8 /* Enum+FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */; };
 		BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE1B8B72217E43F0098B3B8 /* NibName.swift */; };
+		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -101,6 +149,48 @@
 		D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB48220EEA990047E326 /* Scrap.storyboard */; };
 		D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB4A220EEADC0047E326 /* ScrapFilterDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BC558EED221944890037C1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35DC0DC321F6F3C700F30416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC558EE2221944890037C1EF;
+			remoteInfo = TrendUI;
+		};
+		BC558EF0221944890037C1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35DC0DC321F6F3C700F30416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC558ED9221944890037C1EF;
+			remoteInfo = Trend;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC558EF9221944890037C1EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BC558EF2221944890037C1EF /* Trend.appex in Embed App Extensions */,
+				BC558EEF221944890037C1EF /* TrendUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC558F12221948F50037C1EF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +241,18 @@
 		BC42C07E22129C4700E0833B /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		BC42C0812212EE1A00E0833B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		BC42C0892215C78900E0833B /* CategoryEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvents.swift; sourceTree = "<group>"; };
+		BC558ED3221943190037C1EF /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		BC558ED5221943330037C1EF /* tree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tree.entitlements; sourceTree = "<group>"; };
+		BC558EDA221944890037C1EF /* Trend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Trend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC558EDC221944890037C1EF /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		BC558EDE221944890037C1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC558EE3221944890037C1EF /* TrendUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TrendUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC558EE4221944890037C1EF /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		BC558EE7221944890037C1EF /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		BC558EEA221944890037C1EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		BC558EEC221944890037C1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendIntentHandler.swift; sourceTree = "<group>"; };
+		BC558F2D22194FE40037C1EF /* TrendIntentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendIntentCell.swift; sourceTree = "<group>"; };
 		BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailGraphCell.swift; sourceTree = "<group>"; };
 		BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordDetailGraphCell.xib; sourceTree = "<group>"; };
 		BC5D4E49220B23C8000465B0 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -211,6 +313,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC558ED7221944890037C1EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC558EE0221944890037C1EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC558EE5221944890037C1EF /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -227,6 +344,8 @@
 			isa = PBXGroup;
 			children = (
 				35DC0DCD21F6F3C700F30416 /* tree */,
+				BC558EDB221944890037C1EF /* Trend */,
+				BC558EE6221944890037C1EF /* TrendUI */,
 				35DC0DCC21F6F3C700F30416 /* Products */,
 				2D4B42C94B5BA86EDCCB8E9D /* Pods */,
 				968D39AD37EEED1A9F7CF6F0 /* Frameworks */,
@@ -237,6 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				35DC0DCB21F6F3C700F30416 /* tree.app */,
+				BC558EDA221944890037C1EF /* Trend.appex */,
+				BC558EE3221944890037C1EF /* TrendUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +365,8 @@
 		35DC0DCD21F6F3C700F30416 /* tree */ = {
 			isa = PBXGroup;
 			children = (
+				BC558ED5221943330037C1EF /* tree.entitlements */,
+				BC558ED2221943130037C1EF /* Siri */,
 				6AE2D7AC21FEF30D00444622 /* Config */,
 				BC2656C521FD950900003413 /* Model */,
 				BC2656B121FD94EE00003413 /* Network Layer */,
@@ -292,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				BF0163F8362378789ACC30D4 /* Pods_tree.framework */,
+				BC558EE4221944890037C1EF /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -349,6 +473,35 @@
 				BC42C0892215C78900E0833B /* CategoryEvents.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BC558ED2221943130037C1EF /* Siri */ = {
+			isa = PBXGroup;
+			children = (
+				BC558ED3221943190037C1EF /* Intents.intentdefinition */,
+				BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */,
+			);
+			path = Siri;
+			sourceTree = "<group>";
+		};
+		BC558EDB221944890037C1EF /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				BC558EDC221944890037C1EF /* IntentHandler.swift */,
+				BC558EDE221944890037C1EF /* Info.plist */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		BC558EE6221944890037C1EF /* TrendUI */ = {
+			isa = PBXGroup;
+			children = (
+				BC558EE7221944890037C1EF /* IntentViewController.swift */,
+				BC558F2D22194FE40037C1EF /* TrendIntentCell.swift */,
+				BC558EE9221944890037C1EF /* MainInterface.storyboard */,
+				BC558EEC221944890037C1EF /* Info.plist */,
+			);
+			path = TrendUI;
 			sourceTree = "<group>";
 		};
 		BC5D4E44220B1D60000465B0 /* Keyword */ = {
@@ -569,15 +722,53 @@
 				35DC0DC821F6F3C700F30416 /* Frameworks */,
 				35DC0DC921F6F3C700F30416 /* Resources */,
 				BC1AFAC821F6F987009E0498 /* ShellScript */,
+				BC558EF9221944890037C1EF /* Embed App Extensions */,
+				BC558F12221948F50037C1EF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC558EEE221944890037C1EF /* PBXTargetDependency */,
+				BC558EF1221944890037C1EF /* PBXTargetDependency */,
 			);
 			name = tree;
 			productName = tree;
 			productReference = 35DC0DCB21F6F3C700F30416 /* tree.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BC558ED9221944890037C1EF /* Trend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC558EF6221944890037C1EF /* Build configuration list for PBXNativeTarget "Trend" */;
+			buildPhases = (
+				BC558ED6221944890037C1EF /* Sources */,
+				BC558ED7221944890037C1EF /* Frameworks */,
+				BC558ED8221944890037C1EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trend;
+			productName = Trend;
+			productReference = BC558EDA221944890037C1EF /* Trend.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		BC558EE2221944890037C1EF /* TrendUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC558EF3221944890037C1EF /* Build configuration list for PBXNativeTarget "TrendUI" */;
+			buildPhases = (
+				BC558EDF221944890037C1EF /* Sources */,
+				BC558EE0221944890037C1EF /* Frameworks */,
+				BC558EE1221944890037C1EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrendUI;
+			productName = TrendUI;
+			productReference = BC558EE3221944890037C1EF /* TrendUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -590,6 +781,17 @@
 				ORGANIZATIONNAME = gardener;
 				TargetAttributes = {
 					35DC0DCA21F6F3C700F30416 = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
+					};
+					BC558ED9221944890037C1EF = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					BC558EE2221944890037C1EF = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -608,6 +810,8 @@
 			projectRoot = "";
 			targets = (
 				35DC0DCA21F6F3C700F30416 /* tree */,
+				BC558ED9221944890037C1EF /* Trend */,
+				BC558EE2221944890037C1EF /* TrendUI */,
 			);
 		};
 /* End PBXProject section */
@@ -639,6 +843,21 @@
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
 				D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */,
 				BC7969D4220174B40003F520 /* TrendListCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC558ED8221944890037C1EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC558EE1221944890037C1EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC558EEB221944890037C1EF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +913,7 @@
 				BC42C07A22128DEB00E0833B /* EventPageView.swift in Sources */,
 				6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */,
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
+				BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */,
 				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
 				BC2656C421FD94EE00003413 /* NetworkError.swift in Sources */,
 				BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */,
@@ -746,6 +966,7 @@
 				6AE2D7AE21FEF30D00444622 /* Config.swift in Sources */,
 				BC42C038221138C100E0833B /* Enum+HeaderTitles.swift in Sources */,
 				BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */,
+				BC558EFB2219449C0037C1EF /* TrendIntentHandler.swift in Sources */,
 				BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */,
 				D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */,
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
@@ -764,7 +985,76 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC558ED6221944890037C1EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC558F26221949AB0037C1EF /* Articles.swift in Sources */,
+				BC558F29221949B20037C1EF /* CategoryEvents.swift in Sources */,
+				BC558F182219493A0037C1EF /* NaverAPI.swift in Sources */,
+				BC558F1E221949450037C1EF /* NetworkResult.swift in Sources */,
+				BC558F2B221949CD0037C1EF /* Config.swift in Sources */,
+				BC558F002219486E0037C1EF /* APIManager.swift in Sources */,
+				BC558EFE221946570037C1EF /* Intents.intentdefinition in Sources */,
+				BC558F2A221949B40037C1EF /* Events.swift in Sources */,
+				BC558F1C2219493F0037C1EF /* APICenter.swift in Sources */,
+				BC558F222219494B0037C1EF /* NetworkResponse.swift in Sources */,
+				BC558EFC221944A40037C1EF /* TrendIntentHandler.swift in Sources */,
+				BC558F28221949B00037C1EF /* Graph.swift in Sources */,
+				BC558F4022195FE50037C1EF /* Enum+LocalizedLanguages.swift in Sources */,
+				BC558EDD221944890037C1EF /* IntentHandler.swift in Sources */,
+				BC558F2C221949E80037C1EF /* Extension+URL.swift in Sources */,
+				BC558F14221949340037C1EF /* EventRegistryAPI.swift in Sources */,
+				BC558F1A2219493C0037C1EF /* APIService.swift in Sources */,
+				BC558F242219494E0037C1EF /* ParametersEncoder.swift in Sources */,
+				BC558F20221949480037C1EF /* NetworkError.swift in Sources */,
+				BC558F27221949AE0037C1EF /* TrendDays.swift in Sources */,
+				BC558F16221949370037C1EF /* GoogleTrendAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC558EDF221944890037C1EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC558F392219517A0037C1EF /* Articles.swift in Sources */,
+				BC558F30221951750037C1EF /* GoogleTrendAPI.swift in Sources */,
+				BC558F35221951750037C1EF /* NetworkResponse.swift in Sources */,
+				BC558F36221951750037C1EF /* ParametersEncoder.swift in Sources */,
+				BC558F37221951750037C1EF /* NetworkResult.swift in Sources */,
+				BC558F32221951750037C1EF /* APIService.swift in Sources */,
+				BC558EFF221946580037C1EF /* Intents.intentdefinition in Sources */,
+				BC558F34221951750037C1EF /* APIManager.swift in Sources */,
+				BC558F3B2219517A0037C1EF /* Graph.swift in Sources */,
+				BC558F2E22194FE40037C1EF /* TrendIntentCell.swift in Sources */,
+				BC558F31221951750037C1EF /* NaverAPI.swift in Sources */,
+				BC558F33221951750037C1EF /* APICenter.swift in Sources */,
+				BC558F4122195FE60037C1EF /* Enum+LocalizedLanguages.swift in Sources */,
+				BC558F3E221951830037C1EF /* Extension+URL.swift in Sources */,
+				BC558F3D2219517A0037C1EF /* CategoryEvents.swift in Sources */,
+				BC558F38221951750037C1EF /* NetworkError.swift in Sources */,
+				BC558F2F221951750037C1EF /* EventRegistryAPI.swift in Sources */,
+				BC558F3C2219517A0037C1EF /* Events.swift in Sources */,
+				BC558F3F2219518F0037C1EF /* Config.swift in Sources */,
+				BC558F3A2219517A0037C1EF /* TrendDays.swift in Sources */,
+				BC558EE8221944890037C1EF /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC558EEE221944890037C1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC558EE2221944890037C1EF /* TrendUI */;
+			targetProxy = BC558EED221944890037C1EF /* PBXContainerItemProxy */;
+		};
+		BC558EF1221944890037C1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC558ED9221944890037C1EF /* Trend */;
+			targetProxy = BC558EF0221944890037C1EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		35DC0DD221F6F3C700F30416 /* Main.storyboard */ = {
@@ -781,6 +1071,14 @@
 				35DC0DD821F6F3CB00F30416 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BC558EE9221944890037C1EF /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC558EEA221944890037C1EF /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -906,16 +1204,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8965743E41477F79773392B1 /* Pods-tree.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74HR8KDU73;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gardener.tree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -926,17 +1226,95 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9833F533FEAC2BBB2BE859BF /* Pods-tree.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 74HR8KDU73;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gardener.tree;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BC558EF4221944890037C1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = TrendUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.TrendUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC558EF5221944890037C1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = TrendUI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.TrendUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BC558EF7221944890037C1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = Trend/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.Trend;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC558EF8221944890037C1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = Trend/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.Trend;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -959,6 +1337,24 @@
 			buildConfigurations = (
 				35DC0DDE21F6F3CB00F30416 /* Debug */,
 				35DC0DDF21F6F3CB00F30416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC558EF3221944890037C1EF /* Build configuration list for PBXNativeTarget "TrendUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC558EF4221944890037C1EF /* Debug */,
+				BC558EF5221944890037C1EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC558EF6221944890037C1EF /* Build configuration list for PBXNativeTarget "Trend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC558EF7221944890037C1EF /* Debug */,
+				BC558EF8221944890037C1EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

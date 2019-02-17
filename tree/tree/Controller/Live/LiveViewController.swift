@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 class LiveViewController: UIViewController {
     
@@ -59,12 +60,44 @@ class LiveViewController: UIViewController {
         )
     }
     
+    // MARK: - Intent Setting
+    private func donate(country: String) {
+        let intent = TrendIntent()
+        intent.suggestedInvocationPhrase = "\(countryName) 급상승 검색어"
+        intent.country = country // 급상승 검색어를 불러올 국가를 선택합니다.
+        
+        let interaction = INInteraction(intent: intent, response: nil)
+        interaction.donate { (error) in
+            if error != nil {
+                if let error = error as NSError? {
+                    print("Interaction donation failed: \(error.description)")
+                } else {
+                    print("Successfully donated interaction")
+                }
+            }
+        }
+    }
+    
     private func setupTrendPages() {
         livePagerPages = createPages()
         addPagesToScrollView(pages: livePagerPages)
         pageControl.numberOfPages = livePagerPages.count
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
+    }
+    
+    // MARK: Siri 권한 호출
+    private func requestSiriAuthorization(_ geo: String) {
+        print(geo)
+        INPreferences.requestSiriAuthorization({ (status) in
+            switch status {
+            case .authorized:
+                self.donate(country: geo)
+            default:
+                print("권한이 거부됨.")
+                break
+            }
+        })
     }
     
     private func fetchDailyTrends(from geo: String) {
@@ -74,6 +107,7 @@ class LiveViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let trendData):
+                self.requestSiriAuthorization(geo)
                 DispatchQueue.main.async {
                     self.loadingView?.removeFromSuperview()
                 }
