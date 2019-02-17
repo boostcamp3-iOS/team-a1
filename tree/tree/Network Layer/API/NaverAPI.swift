@@ -20,7 +20,7 @@ enum NaverAPIMode {
 extension NaverAPIMode: APIService {
 
     var baseURL: URL {
-        guard let url = URL(string: "https://openapi.naver.com/v1/datalab/search") else {
+        guard let url = URL(string: naverAPIBaseURL) else {
             fatalError("Invalid URL")
         }
         return url

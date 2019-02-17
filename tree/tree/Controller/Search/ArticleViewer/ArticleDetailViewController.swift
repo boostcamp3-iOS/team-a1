@@ -144,7 +144,7 @@ class ArticleDetailViewController: UIViewController {
         self.present(articleViewer, animated: false, completion: nil)
     }
     
-    @IBAction func backButtonItem(_ sender: Any) {
+    @IBAction func backButtonItemDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -14,7 +14,7 @@ enum ExtractAPI {
 
 extension ExtractAPI: APIService {
     var baseURL: URL {
-        guard let url = URL(string: "http://analytics.eventregistry.org") else { fatalError("Invalid URL") }
+        guard let url = URL(string: extractAPIBaseURL) else { fatalError("Invalid URL") }
         return url
     }
     

@@ -52,7 +52,7 @@ enum EventRegistryAPI {
 extension EventRegistryAPI: APIService {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://eventregistry.org") else { fatalError("Invalid URL") }
+        guard let url = URL(string: eventRegistryAPIBaseURL) else { fatalError("Invalid URL") }
         return url
     }
     
