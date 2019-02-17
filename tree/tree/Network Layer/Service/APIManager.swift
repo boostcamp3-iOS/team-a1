@@ -97,4 +97,23 @@ final class APIManager {
             }
         }
     }
+    
+    static func extractArticle(
+        url: String,
+        completion: @escaping (Result<ExtractArticle>) -> Void) {
+        APICenter<ExtractAPI>().request(.extractArticleInfo(
+            url: url
+        )) { (data, error) in
+            guard error == nil else {
+                return completion(Result.failure(error!))
+            }
+            guard let responseData = data else { return }
+            do {
+                let decodeJSON = try JSONDecoder().decode(ExtractArticle.self, from: responseData)
+                completion(Result.success(decodeJSON))
+            } catch {
+                completion(Result.failure(NetworkError.decodingFail))
+            }
+        }
+    }
 }

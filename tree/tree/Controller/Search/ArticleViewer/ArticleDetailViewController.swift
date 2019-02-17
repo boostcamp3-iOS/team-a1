@@ -16,10 +16,9 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
     
-    private lazy var papagoButton = UIButton(type: .custom)
     private var floatingButton = UIButton()
-    private var floatingCheckAnimation: Bool = true 
-    var articleDetail: Article?
+    private var isNavigationBarHidden = false
+    var articleData: AnyObject?
     var scrappedArticleDetail: ScrappedArticle?
     
     override func viewDidLoad() {
@@ -35,11 +34,18 @@ class ArticleDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         createFloatingButton()
         self.tabBarController?.tabBar.isHidden = true
+        if navigationController?.isNavigationBarHidden == false {
+            navigationController?.isNavigationBarHidden.toggle()
+            isNavigationBarHidden = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         removeFloatingButton()
         self.tabBarController?.tabBar.isHidden = false
+        if isNavigationBarHidden {
+            navigationController?.isNavigationBarHidden.toggle()
+        }
     }
     
     private func getImageFromCache(from articleUrl: String?) {
@@ -56,19 +62,32 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func configure() {
-        titleLabel.text = articleDetail?.title
-        dateLabel.text = articleDetail?.date
-        contentLabel.text = articleDetail?.body
-        getImageFromCache(from: articleDetail?.image ?? nil)
-        if articleDetail?.author?.isEmpty == false {
-            if let author = articleDetail?.author?[0].name {
-                self.authorLabel.text = author
+        switch articleData {
+        case is ExtractArticle:
+            let articleDetail = self.articleData as? ExtractArticle
+            titleLabel.text = articleDetail?.title
+            contentLabel.text = articleDetail?.body
+            if articleDetail?.body.count == 0 {
+                contentLabel.text = articleDetail?.description
             }
+            getImageFromCache(from: articleDetail?.image ?? nil)
+        case is Article:
+            let articleDetail = self.articleData as? Article
+            titleLabel.text = articleDetail?.title
+            dateLabel.text = articleDetail?.date
+            contentLabel.text = articleDetail?.body
+            getImageFromCache(from: articleDetail?.image ?? nil)
+            if articleDetail?.author?.isEmpty == false,
+                let author = articleDetail?.author?.first?.name {
+                    self.authorLabel.text = author
+            }
+        default:
+            print("nothing")
         }
     }
     
     private func configureWithScrappedArticle() {
-        guard let articleData = scrappedArticleDetail else { return}
+        guard let articleData = scrappedArticleDetail else { return }
         if let title = articleData.articleTitle,
             let date = articleData.articleDate,
             let content = articleData.articleDescription {
@@ -101,10 +120,9 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func removeFloatingButton() {
-        if floatingButton.superview != nil || papagoButton.superview != nil {
+        if floatingButton.superview != nil {
             DispatchQueue.main.async {
                 self.floatingButton.removeFromSuperview()
-                self.papagoButton.removeFromSuperview()
             }
         }
     }
@@ -113,31 +131,9 @@ class ArticleDetailViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: { 
             self.floatingButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { (_) in
-            if self.floatingCheckAnimation {
-                UIView.animate(withDuration: 0.2, animations: { 
-                    self.floatingButton.transform = CGAffineTransform.identity
-                    self.papagoButton.backgroundColor = .black
-                    self.papagoButton.translatesAutoresizingMaskIntoConstraints = false
-                    self.papagoButton.addTarget(self, action: #selector(self.papagoTranslate), for: .touchUpInside)
-                    DispatchQueue.main.async {
-                        if let keyWindow = UIApplication.shared.keyWindow {
-                            keyWindow.addSubview(self.papagoButton)
-                            NSLayoutConstraint.activate([
-                                keyWindow.trailingAnchor.constraint(equalTo: self.papagoButton.trailingAnchor, constant: 25),
-                                self.floatingButton.topAnchor.constraint(equalTo: self.papagoButton.bottomAnchor, constant: 16),
-                                self.papagoButton.widthAnchor.constraint(equalToConstant: 30),
-                                self.papagoButton.heightAnchor.constraint(equalToConstant: 30)])
-                        }
-                        self.papagoButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                    }  
-                })
-            } else {
-                UIView.animate(withDuration: 0.2, animations: { 
-                    self.floatingButton.transform = CGAffineTransform.identity
-                })
-                self.papagoButton.removeFromSuperview()
-            }
-            self.floatingCheckAnimation.toggle()
+            UIView.animate(withDuration: 0.2, animations: { 
+                self.floatingButton.transform = CGAffineTransform.identity
+            })
         }
     }
     
@@ -148,8 +144,7 @@ class ArticleDetailViewController: UIViewController {
         self.present(articleViewer, animated: false, completion: nil)
     }
     
-    @objc private func papagoTranslate() {
-        
+    @IBAction func backButtonItemDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
-    
 }

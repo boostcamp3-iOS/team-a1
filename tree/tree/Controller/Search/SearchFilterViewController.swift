@@ -48,6 +48,7 @@ class SearchFilterViewController: UIViewController {
         if filterValue?["sort"] == "Relevance" {
             sortSegmentedControl.selectedSegmentIndex = 1
         }
+        selectPickViewer.selectRow(0, inComponent: 0, animated: true)
     }
     
     private func settingSegment() {
@@ -80,9 +81,11 @@ class SearchFilterViewController: UIViewController {
             selectPickViewer.tagNumber == 0 ? 
                 makeHidden(isPresented: selectViewIsPresented) : 
                 makeHidden(isPresented: !selectViewIsPresented)
+            saveButton.isHidden = true
         } else {
             languageStackView.isHidden = selectViewIsPresented
             categoryStackView.isHidden = selectViewIsPresented
+            saveButton.isHidden = false
         }
         UIView.animate(withDuration: 0.3) { 
             self.keywordSortStackView.isHidden = self.selectViewIsPresented
@@ -90,12 +93,23 @@ class SearchFilterViewController: UIViewController {
         }
     }
     
+    private func extractUserSelectedLanguage(selectedItem: String) -> String? {
+        let userSelect = Languages.allCases.filter {$0.value == selectedItem}.map {"\($0)"}
+        return userSelect.joined()
+    }
+    
     @IBAction func saveButtonClick(_ sender: Any) {
         if let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
             let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
             let category = categoryLabel.text,
-            let language = languageLabel.text {
-            settingDelegate?.observeUserSetting(keyword: keyword, sort: sort, category: category, language: language)
+            let language = languageLabel.text,
+            let lan = extractUserSelectedLanguage(selectedItem: language) {
+            settingDelegate?.observeUserSetting(
+                keyword: keyword,
+                sort: sort,
+                category: category, 
+                language: lan
+            )
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -108,11 +122,11 @@ extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return selectPickViewer.getList().count
+        return selectPickViewer.pickerItemList().count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectValue = selectPickViewer.getList()[row]
+        let selectValue = selectPickViewer.pickerItemList()[row]
         if selectPickViewer.tagNumber == 0 {
             categoryLabel.text = selectValue
         } else {
@@ -121,6 +135,6 @@ extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return selectPickViewer.getList()[row]
+        return selectPickViewer.pickerItemList()[row]
     }
 }

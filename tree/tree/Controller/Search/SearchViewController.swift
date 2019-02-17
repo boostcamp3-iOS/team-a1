@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
     private var searchKeyword: String = ""
     private var page: Int = 1
     private var totalPage: Int = 0
+    private var isLoading: Bool = false
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
     private var heightAtIndexPath = [IndexPath: Float]()
@@ -37,12 +38,12 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpDelegate()
-        setUpSearchBar()
-        setUpTableView()
-        setUpNavigationBar()
+        setupDelegate()
+        setupSearchBar()
+        setupTableView()
+        setupNavigationBar()
         registerArticleCell()
-        filterItemSetting()
+        setupFilterItem()
         userFilter()
         setDefaultView(message: "Please Search 🔎")
     }
@@ -78,14 +79,14 @@ class SearchViewController: UIViewController {
         self.view.addSubview(defaultView)  
     }
     
-    private func setUpDelegate() {
+    private func setupDelegate() {
         uiSearchBar.delegate = self
         uiTableView.delegate = self
         uiTableView.dataSource = self
         uiTableView.prefetchDataSource = self
     }
     
-    private func setUpSearchBar() {
+    private func setupSearchBar() {
         uiSearchBar.backgroundImage = UIImage()
         guard 
             let searchBarTextfield = uiSearchBar.value(
@@ -95,13 +96,13 @@ class SearchViewController: UIViewController {
         searchBarTextfield.textColor = UIColor.black
     }
     
-    private func setUpTableView() {
+    private func setupTableView() {
         uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         uiTableView.separatorStyle = .none
         uiTableView?.rowHeight = UITableView.automaticDimension
     }
     
-    private func setUpNavigationBar() {
+    private func setupNavigationBar() {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         navigationBar.backgroundColor = UIColor.white
         navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
@@ -142,9 +143,11 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func loadArticles(keyword: String,
-                              language: String,
-                              sort: String) {
+    private func loadArticles(
+        keyword: String,
+        language: String,
+        sort: String
+    ) {
         articles = nil
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
@@ -161,6 +164,7 @@ class SearchViewController: UIViewController {
                 self.articles = articleData.articles.results
                 self.totalPage = articleData.articles.pages
                 DispatchQueue.main.async {
+                    self.isLoading.toggle()
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
                     if self.articles?.count == 0 {
@@ -176,7 +180,8 @@ class SearchViewController: UIViewController {
     private func loadMoreArticles(
         keyword: String,
         language: String,
-        sort: String) {
+        sort: String
+    ) {
         if page >= totalPage { return }
         page += 1
         APIManager.fetchArticles(
@@ -199,7 +204,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func filterItemSetting() {
+    private func setupFilterItem() {
         navigationFilterItem.addTarget(self, action: #selector(filterItemTapAtion), for: .touchUpInside)
     }
     
@@ -242,7 +247,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleView
             = storyboard.instantiateViewController(withIdentifier: "ArticleDetailViewController")
                 as? ArticleDetailViewController else { return }
-        articleView.articleDetail = articles?[indexPath.row]
+        articleView.articleData = articles?[indexPath.row] as AnyObject
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -355,8 +360,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.navigationItem.title = searchBar.text ?? "Search"
-        if let getSearchKeyword = searchBar.text {
+        if let getSearchKeyword = searchBar.text,
+            getSearchKeyword.count > 0,
+            !isLoading {
+            self.navigationItem.title = searchBar.text ?? "Search"
+            isLoading.toggle()
             searchKeyword = getSearchKeyword
             checkFilterStatus(using: searchFilter, type: ArticleType.load)
             defaultLabel.removeFromSuperview()

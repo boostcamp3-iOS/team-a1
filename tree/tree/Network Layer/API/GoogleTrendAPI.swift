@@ -15,7 +15,7 @@ enum GoogleTrendAPI {
 extension GoogleTrendAPI: APIService {
     
     var baseURL: URL {
-        guard let url = URL(string: "https://trends.google.com/trends/api") else {
+        guard let url = URL(string: BaseURL.googleTrendAPIBaseURL) else {
             fatalError("Invalid URL")
         }
         return url

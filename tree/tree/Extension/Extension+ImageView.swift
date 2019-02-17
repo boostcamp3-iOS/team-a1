@@ -50,7 +50,7 @@ class ArticleImage: UIImageView {
                 guard let data = data else { return }
                 guard let imageToCache = UIImage(data: data) else { return }
                 if self.imageUrl == articleUrl {
-                    self.image = imageToCache
+                    self.image = self.downsampledImage(data: data, to: self.bounds.size, scale: 1)
                 }
                 self.ioQueue.async {
                     if let path = extract {
@@ -61,5 +61,18 @@ class ArticleImage: UIImageView {
         }
         myTask.resume()
         task.append(myTask)
+    }
+
+    func downsampledImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> UIImage? {
+        let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+        guard let imageSource = CGImageSourceCreateWithData(data as CFData, imageSourceOptions) else { return nil }
+        let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
+        let downsampleOptions = [
+            kCGImageSourceCreateThumbnailFromImageAlways: true,
+            kCGImageSourceShouldCacheImmediately: true,
+            kCGImageSourceCreateThumbnailWithTransform: true,
+            kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
+        guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else { return nil }
+        return UIImage(cgImage: downsampledImage)
     }
 }

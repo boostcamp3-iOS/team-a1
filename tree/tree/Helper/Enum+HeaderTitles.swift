@@ -10,5 +10,5 @@ import Foundation
 
 enum HeaderTitles: String {
     case changeInteresting = "시간 흐름에 따른 관심도 변화"
-    case relatedArticles = "관심 기사"
+    case relatedArticles = "관련 기사"
 }
