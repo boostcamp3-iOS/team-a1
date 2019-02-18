@@ -17,7 +17,7 @@ class SplashViewController: UIViewController {
                 radius: rightBottomCircleView.frame.width / 2
             )
             rightBottomCircleView.applyGradient(
-                colours: orangePurpleBlueGradientColors,
+                colours: rightBottomGradientColors,
                 startPoint: CGPoint(x: 1.0, y: 0.0),
                 endPoint: CGPoint(x: 0.0, y: 1.0)
             )
@@ -30,7 +30,7 @@ class SplashViewController: UIViewController {
                 radius: leftBottomCircleView.frame.width / 2
             )
             leftBottomCircleView.applyGradient(
-                colours: skyDeepBlueGradientColors,
+                colours: leftBottomGradientColors,
                 startPoint: CGPoint(x: 0.0, y: 0.0),
                 endPoint: CGPoint(x: 1.0, y: 1.0)
             )
@@ -43,7 +43,7 @@ class SplashViewController: UIViewController {
                 radius: leftTopCircleView.frame.width / 2
             )
             leftTopCircleView.applyGradient(
-                colours: brightRedYellowGradientColors,
+                colours: leftTopGradientColors,
                 startPoint: CGPoint(x: 0.0, y: 0.0),
                 endPoint: CGPoint(x: 1.0, y: 1.1)
             )
@@ -56,7 +56,7 @@ class SplashViewController: UIViewController {
                 radius: rightTopCircleView.frame.width / 2
             )
             rightTopCircleView.applyGradient(
-                colours: lightPinkPurple,
+                colours: rightTopGradientColors,
                 startPoint: CGPoint(x: 1.0, y: 0.0),
                 endPoint: CGPoint(x: 0.0, y: 1.0)
             )
@@ -64,10 +64,10 @@ class SplashViewController: UIViewController {
     }
     @IBOutlet weak var appNameLabel: UILabel!
     
-    private let orangePurpleBlueGradientColors = [UIColor.orange, UIColor.purpleBlue]
-    private let skyDeepBlueGradientColors = [UIColor.skyBlue, UIColor.deepBlue]
-    private let brightRedYellowGradientColors = [UIColor.brightRed, UIColor.brightYellow]
-    private let lightPinkPurple = [UIColor.lightPink, UIColor.brightPurple]
+    private let rightBottomGradientColors = [UIColor.orange, UIColor.purpleBlue]
+    private let leftBottomGradientColors = [UIColor.skyBlue, UIColor.deepBlue]
+    private let leftTopGradientColors = [UIColor.brightRed, UIColor.brightYellow]
+    private let rightTopGradientColors = [UIColor.lightPink, UIColor.brightPurple]
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
