@@ -84,7 +84,9 @@ class SplashViewController: UIViewController {
     
     private func changerRootViewController() {
         let main = UIStoryboard(name: "Main", bundle: nil)
-        guard let tabBarController = main.instantiateViewController(withIdentifier: "ScrapTabBarController") as? UITabBarController else { return }
+        guard let tabBarController = main.instantiateViewController(
+            withIdentifier: "ScrapTabBarController"
+        ) as? UITabBarController else { return }
         UIApplication.shared.keyWindow?.rootViewController = tabBarController
     }
     
@@ -92,7 +94,6 @@ class SplashViewController: UIViewController {
         UIView.animate(withDuration: 0.4, delay: delay, options: .curveEaseIn, animations: {
             object.alpha = 0.0
             object.transform = CGAffineTransform(scaleX: 0.00, y: 0.00)
-            object.layoutIfNeeded()
         }) { _ in
             self.scaleUp(object)
         }
@@ -112,11 +113,9 @@ class SplashViewController: UIViewController {
     }
     
     private func scaleUp(_ view: UIView) {
-        view.layoutIfNeeded()
         UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseIn, animations: {
             view.alpha = 1.0
             view.transform = CGAffineTransform.identity
-            view.layoutIfNeeded()
         })
     }
 }
