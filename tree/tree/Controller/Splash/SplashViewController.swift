@@ -77,12 +77,12 @@ class SplashViewController: UIViewController {
         animateObjectToScaleUp(rightTopCircleView, 0.3)
         fadeInObject(appNameLabel, duration: 0.5, delay: 1.0) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
-                self.changerRootViewController()
+                self.changeRootViewController()
             })
         }
     }
     
-    private func changerRootViewController() {
+    private func changeRootViewController() {
         let main = UIStoryboard(name: "Main", bundle: nil)
         guard let tabBarController = main.instantiateViewController(
             withIdentifier: "ScrapTabBarController"
