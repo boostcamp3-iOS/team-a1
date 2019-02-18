@@ -55,8 +55,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         of interaction: INInteraction,
         interactiveBehavior: INUIInteractiveBehavior,
         context: INUIHostedViewContext,
-        completion: @escaping (Bool, Set<INParameter>, CGSize
-    ) -> Void) {
+        completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
         guard
             let intent = interaction.intent as? TrendIntent,
             let country = intent.country else { return }
