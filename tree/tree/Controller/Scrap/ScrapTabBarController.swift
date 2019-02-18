@@ -22,6 +22,14 @@ class ScrapTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let scrapViewController = appDelegate.scrapViewController as? ScrapViewController else {
+                return
+        }
+        scrapViewController.setupScrapBadgeValue()
+    }
 }
 
 extension ScrapTabBarController: UITabBarControllerDelegate {
