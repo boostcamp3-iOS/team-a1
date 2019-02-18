@@ -12,8 +12,24 @@ import CoreData
 class ScrapViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var filterButton: UIButton!
-    @IBOutlet weak var readAllButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton! {
+        didSet {
+            filterButton.addTarget(
+                self,
+                action: #selector(filterButtonDidTap),
+                for: .touchUpInside
+            )
+        }
+    }
+    @IBOutlet weak var readAllButton: UIButton! {
+        didSet {
+            readAllButton.addTarget(
+                self,
+                action: #selector(readAllButtonDidTap),
+                for: .touchUpInside
+            )
+        }
+    }
     
     private let cellIdentifier = "ScrapTableViewCell"
     private var isArticleDeleted: Bool = false
@@ -30,7 +46,6 @@ class ScrapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupButtonAction()
         setupTableViewData()
         registerArticleCell()
         setupScrapBadgeValue()
@@ -44,19 +59,6 @@ class ScrapViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func setupButtonAction() {
-        filterButton.addTarget(
-            self,
-            action: #selector(filterButtonDidTap),
-            for: .touchUpInside
-        )
-        readAllButton.addTarget(
-            self,
-            action: #selector(readAllButtonDidTap),
-            for: .touchUpInside
-        )
     }
     
     private func setupTableViewData() {
@@ -121,14 +123,14 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        guard let scrappedArticle = scrappedArticles else {
+        guard let scrappedArticles = scrappedArticles else {
             return nil
         }
         let markAsReadAction = customUIContextualAction(
         .markAsRead,
         nil,
         nil,
-        scrappedArticle[indexPath.row].articleUri
+        scrappedArticles[indexPath.row].articleUri
     ) { [weak self] _ in
             guard let self = self else { return }
             self.setupScrapBadgeValue()
