@@ -182,6 +182,22 @@ final class ScrapManager {
         }
         return result
     }
+    
+    static func markAllAsRead() {
+        let batchUpdate = NSBatchUpdateRequest(entityName: "ScrappedArticle")
+        batchUpdate.propertiesToUpdate = [#keyPath(ScrappedArticle.isRead): true]
+        
+        batchUpdate.affectedStores = managedContext.persistentStoreCoordinator?.persistentStores
+        batchUpdate.resultType = .updatedObjectsCountResultType
+        
+        do {
+            guard let batchResult =
+                try managedContext.execute(batchUpdate) as? NSBatchUpdateResult else { return }
+//            print("Records updated \(batchResult.result)")
+        } catch let error as NSError {
+            print("Could not update \(error), \(error.userInfo)")
+        }
+    }
 }
 
 private extension NSManagedObject {
