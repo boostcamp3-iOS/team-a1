@@ -44,6 +44,7 @@ class KeywordDetailViewController: UIViewController {
             }
         }
     }
+    private var loadingView: LoadingView?
     private let timeUnit = TimeUnitTypes.week.value
     private let graphCellIdentifier = "KeywordDetailGraphCell"
     private let headerCellIdentifier = "TrendListHeaderCell"
@@ -118,6 +119,19 @@ class KeywordDetailViewController: UIViewController {
                 completion(.webViewer, nil)
             }
         }
+    }
+    
+    private func setupLoadingView() {
+        let loadingViewFrame = CGRect(
+            x: 0,
+            y: 0, 
+            width: 100,
+            height: 100
+        )
+        loadingView = LoadingView(frame: loadingViewFrame)
+        guard let loadView = loadingView else { return } 
+        loadView.center = self.view.center
+        self.view.addSubview(loadView)        
     }
 }
 
@@ -213,6 +227,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
             return
         case .articleList:
             guard let url = articleData?[indexPath.row].url else { return }
+            setupLoadingView()
             fetctExtractArticle(urlString: url, completion: { [weak self](viewerType, data) in
                 guard let self = self else { return }
                 switch viewerType {
@@ -224,6 +239,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                                 withIdentifier: "ArticleWebViewController"
                                 ) as? ArticleWebViewController else { return }
                         articleView.articleURL = self.articleData?[indexPath.row].url
+                        self.loadingView?.removeFromSuperview()
                         self.navigationController?.pushViewController(articleView, animated: true)
                     }
                 case .articleViewer:
@@ -234,6 +250,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                                 withIdentifier: "ArticleDetailViewController"
                                 )as? ArticleDetailViewController else { return }
                         articleView.articleData = data as AnyObject
+                        self.loadingView?.removeFromSuperview()
                         self.navigationController?.pushViewController(articleView, animated: true)
                     }
                 }
