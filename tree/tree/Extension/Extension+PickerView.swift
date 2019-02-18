@@ -9,15 +9,17 @@
 import UIKit
 
 class PickerView: UIPickerView {
-    private let categories = ["Arts","Businees","Computers","Games","Health","Home", "Recreation","Reference","Regional","Science","Shopping","Society","Sports"]
-    private let languages = ["Any","Eng","Jpn","Fra","Ita","Spa","Rus","Deu"]
     var tagNumber = 0 
     
-    func getList() -> [String] {
+    func pickerItemList() -> [String] {
         if tagNumber == 0 {
-            return categories
+            return ArticleCategory.allCases.map { 
+                $0.stringValue 
+            }
         } else {
-            return languages
+            return Languages.allCases.map { 
+                $0.value 
+            }
         }
     }
 }

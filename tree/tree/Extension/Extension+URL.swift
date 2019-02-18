@@ -16,7 +16,7 @@ extension URL {
                 name: $0.key,
                 value: "\($0.value)"
                 .addingPercentEncoding(
-                withAllowedCharacters: .urlHostAllowed
+                withAllowedCharacters: .urlQueryAllowed
             ))
         }
         return components?.url

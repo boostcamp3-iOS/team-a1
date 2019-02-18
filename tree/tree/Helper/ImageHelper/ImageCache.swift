@@ -24,7 +24,7 @@ open class ImageCache {
     }
     
     func path(for imageName: String) -> URL? {
-        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
         return directory?.appendingPathComponent(imageName)
     }
 }
