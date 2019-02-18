@@ -118,6 +118,19 @@ final class ScrapManager {
         }
     }
     
+    static func readArticle(_ articleUri: String) {
+        let request: NSFetchRequest = ScrappedArticle.fetchRequest()
+        request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
+        do {
+            var result = try managedContext.fetch(request)
+            result.first?.isRead = true
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
         let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
         request.resultType = .countResultType
