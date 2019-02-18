@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Intent View Controller-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController id="ObA-dk-sSI" customClass="IntentViewController" customModule="TrendUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jsj-37-vF7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrendIntentCell" rowHeight="54" id="UvN-c0-4S7" customClass="TrendIntentCell" customModule="TrendUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UvN-c0-4S7" id="dSr-GI-6dZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="53.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="MSX-PG-XPz">
+                                                    <rect key="frame" x="15" y="16.5" width="285" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-wJ-LYU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="25" id="uaW-oM-sbH"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{ keyword }" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kgk-tM-hSq">
+                                                            <rect key="frame" x="25" y="0.0" width="260" height="20.5"/>
+                                                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.14901960780000001" green="0.1578711569" blue="0.25516378880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="MSX-PG-XPz" firstAttribute="centerY" secondItem="dSr-GI-6dZ" secondAttribute="centerY" id="42J-Lx-64I"/>
+                                                <constraint firstItem="MSX-PG-XPz" firstAttribute="leading" secondItem="dSr-GI-6dZ" secondAttribute="leading" constant="15" id="B7A-Pm-pMW"/>
+                                                <constraint firstAttribute="trailing" secondItem="MSX-PG-XPz" secondAttribute="trailing" constant="20" id="T4l-nZ-JNf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="keywordLabel" destination="Kgk-tM-hSq" id="das-EF-yXQ"/>
+                                            <outlet property="rankLabel" destination="VlL-wJ-LYU" id="yi6-bh-KEJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="94Y-dK-E8e">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.14901960784313725" green="0.15787115693092346" blue="0.25516378879547119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="jsj-37-vF7" firstAttribute="top" secondItem="4PN-XC-lEE" secondAttribute="top" id="1zV-UI-vBR"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="jsj-37-vF7" secondAttribute="trailing" id="5fJ-nM-XZ7"/>
+                            <constraint firstItem="94Y-dK-E8e" firstAttribute="top" secondItem="4PN-XC-lEE" secondAttribute="top" id="IP8-fb-bGZ"/>
+                            <constraint firstItem="94Y-dK-E8e" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" id="Pdv-ea-D0P"/>
+                            <constraint firstItem="jsj-37-vF7" firstAttribute="leading" secondItem="4PN-XC-lEE" secondAttribute="leading" id="VJn-ze-QiT"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="bottom" secondItem="jsj-37-vF7" secondAttribute="bottom" id="ldQ-lX-3Xg"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="trailing" secondItem="94Y-dK-E8e" secondAttribute="trailing" id="m6n-P3-H9Y"/>
+                            <constraint firstItem="4PN-XC-lEE" firstAttribute="bottom" secondItem="94Y-dK-E8e" secondAttribute="bottom" id="oJN-aR-YDv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4PN-XC-lEE"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="300"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="94Y-dK-E8e" id="vZt-LH-Zc4"/>
+                        <outlet property="tableView" destination="jsj-37-vF7" id="zsS-MB-6vb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.19999999999999" y="133.13343328335833"/>
+        </scene>
+    </scenes>
+</document>
