@@ -12,7 +12,24 @@ import CoreData
 class ScrapViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var filterButton: UIButton! {
+        didSet {
+            filterButton.addTarget(
+                self,
+                action: #selector(filterButtonDidTap),
+                for: .touchUpInside
+            )
+        }
+    }
+    @IBOutlet weak var readAllButton: UIButton! {
+        didSet {
+            readAllButton.addTarget(
+                self,
+                action: #selector(readAllButtonDidTap),
+                for: .touchUpInside
+            )
+        }
+    }
     
     private let cellIdentifier = "ScrapTableViewCell"
     private var isArticleDeleted: Bool = false
@@ -29,21 +46,20 @@ class ScrapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupFilterButton()
         setupTableViewData()
         registerArticleCell()
+        setupScrapBadgeValue()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupScrapBadgeValue()
     }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    private func setupFilterButton() {
-        filterButton.addTarget(
-            self,
-            action: #selector(filterButtonDidTap),
-            for: .touchUpInside)
+        tableView.separatorStyle = .none
     }
     
     private func setupTableViewData() {
@@ -62,6 +78,11 @@ class ScrapViewController: UIViewController {
                 as? ScrapFilterViewController else { return }
         scrapFilterViewController.filterDelegate = self
         present(scrapFilterViewController, animated: true)
+    }
+    
+    @objc func readAllButtonDidTap(_ sender: UIButton) {
+        ScrapManager.markAllAsRead()
+        setupScrapBadgeValue()
     }
 }
 
@@ -89,6 +110,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
                 ) as? ArticleDetailViewController,
             let scrappedArticleData = scrappedArticles?[indexPath.row] else { return }
         articleView.scrappedArticleDetail = scrappedArticleData
+        if let articleUri = scrappedArticleData.articleUri {
+            ScrapManager.readArticle(articleUri)
+        }
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -100,8 +124,17 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let markAsReadAction = customUIContextualAction(.markAsRead, nil, nil) { _ in
-            
+        guard let scrappedArticles = scrappedArticles else {
+            return nil
+        }
+        let markAsReadAction = customUIContextualAction(
+        .markAsRead,
+        nil,
+        nil,
+        scrappedArticles[indexPath.row].articleUri
+    ) { [weak self] _ in
+            guard let self = self else { return }
+            self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [markAsReadAction])
     }
@@ -110,12 +143,14 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = customUIContextualAction(.delete, nil, nil) { _ in
+        let deleteAction = customUIContextualAction(.delete, nil, nil, nil) { [weak self] _ in
+            guard let self = self else { return }
             guard var tempArticles = self.scrappedArticles else { return }
             ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
             self.isArticleDeleted = true
             self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
@@ -128,6 +163,17 @@ extension ScrapViewController: ScrapFilterDelegate {
             scrappedArticles = ScrapManager.fetchArticles()
         default:
             scrappedArticles = ScrapManager.fetchArticles(category)
+        }
+    }
+}
+
+extension ScrapViewController {
+    public func setupScrapBadgeValue() {
+        let count = ScrapManager.countArticle(false)
+        if count == 0 {
+            tabBarController?.tabBar.items?[2].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[2].badgeValue = "\(count)"
         }
     }
 }

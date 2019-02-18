@@ -113,9 +113,22 @@ final class ScrapManager {
             } else {
                 completion(true,result.first)
             }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
+    }
+    
+    static func readArticle(_ articleUri: String) {
+        let request: NSFetchRequest = ScrappedArticle.fetchRequest()
+        request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
+        do {
+            var result = try managedContext.fetch(request)
+            result.first?.isRead = true
+            try managedContext.save()
+        } catch {
+            print("Could not fetch. \(error)")
+        }
+        
     }
     
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
@@ -130,8 +143,8 @@ final class ScrapManager {
                 return 0
             }
             return resultCount
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         return 0
     }
@@ -140,7 +153,7 @@ final class ScrapManager {
         managedContext.delete(article)
         do {
             try managedContext.save()
-        } catch let error as NSError {
+        } catch {
             print(error.localizedDescription)
         }
     }
@@ -154,8 +167,8 @@ final class ScrapManager {
                 managedContext.delete(item)
             }
             try managedContext.save()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         print("all data is Removed")
     }
@@ -164,10 +177,22 @@ final class ScrapManager {
         var result: [ScrappedArticle] = []
         do {
             result = try managedContext.fetch(request)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         return result
+    }
+    
+    static func markAllAsRead() {
+        let batchUpdate = NSBatchUpdateRequest(entityName: "ScrappedArticle")
+        batchUpdate.propertiesToUpdate = [#keyPath(ScrappedArticle.isRead): true]
+        batchUpdate.affectedStores = managedContext.persistentStoreCoordinator?.persistentStores
+        batchUpdate.resultType = .updatedObjectsCountResultType
+        do {
+            try managedContext.execute(batchUpdate)
+        } catch {
+            print("Could not update \(error)")
+        }
     }
 }
 

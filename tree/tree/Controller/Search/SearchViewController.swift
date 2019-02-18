@@ -288,7 +288,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return nil
         }
-        let scrapAction = customUIContextualAction(.scrap, article, imagaData) { _ in }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil) { _ in }
         return UISwipeActionsConfiguration(actions: [scrapAction])
     }
 }
