@@ -113,8 +113,8 @@ final class ScrapManager {
             } else {
                 completion(true,result.first)
             }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
     }
     
@@ -125,8 +125,8 @@ final class ScrapManager {
             var result = try managedContext.fetch(request)
             result.first?.isRead = true
             try managedContext.save()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         
     }
@@ -143,8 +143,8 @@ final class ScrapManager {
                 return 0
             }
             return resultCount
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         return 0
     }
@@ -153,7 +153,7 @@ final class ScrapManager {
         managedContext.delete(article)
         do {
             try managedContext.save()
-        } catch let error as NSError {
+        } catch {
             print(error.localizedDescription)
         }
     }
@@ -167,8 +167,8 @@ final class ScrapManager {
                 managedContext.delete(item)
             }
             try managedContext.save()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         print("all data is Removed")
     }
@@ -177,8 +177,8 @@ final class ScrapManager {
         var result: [ScrappedArticle] = []
         do {
             result = try managedContext.fetch(request)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
+            print("Could not fetch. \(error)")
         }
         return result
     }
@@ -190,8 +190,8 @@ final class ScrapManager {
         batchUpdate.resultType = .updatedObjectsCountResultType
         do {
             try managedContext.execute(batchUpdate)
-        } catch let error as NSError {
-            print("Could not update \(error), \(error.userInfo)")
+        } catch {
+            print("Could not update \(error)")
         }
     }
 }
