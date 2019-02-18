@@ -58,6 +58,8 @@
 		BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07E22129C4700E0833B /* EventHeaderCell.xib */; };
 		BC42C0822212EE1A00E0833B /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0812212EE1A00E0833B /* Events.swift */; };
 		BC42C08A2215C78900E0833B /* CategoryEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C0892215C78900E0833B /* CategoryEvents.swift */; };
+		BC558F57221A65840037C1EF /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC558F56221A65840037C1EF /* Splash.storyboard */; };
+		BC558F59221A65C40037C1EF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558F58221A65C40037C1EF /* SplashViewController.swift */; };
 		BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */; };
 		BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */; };
 		BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
@@ -163,6 +165,8 @@
 		BC42C07E22129C4700E0833B /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		BC42C0812212EE1A00E0833B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		BC42C0892215C78900E0833B /* CategoryEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvents.swift; sourceTree = "<group>"; };
+		BC558F56221A65840037C1EF /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		BC558F58221A65C40037C1EF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailGraphCell.swift; sourceTree = "<group>"; };
 		BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordDetailGraphCell.xib; sourceTree = "<group>"; };
 		BC5D4E49220B23C8000465B0 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -375,6 +379,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BC558F54221A655C0037C1EF /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				BC558F58221A65C40037C1EF /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		BC558F55221A65670037C1EF /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				BC558F56221A65840037C1EF /* Splash.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		BC5D4E44220B1D60000465B0 /* Keyword */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +482,7 @@
 		D9C6AB3F21FA9CB4001C0AB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC558F55221A65670037C1EF /* Splash */,
 				D9D145CE220B0B9300CC58DA /* Scrap */,
 				6A65DA412203D202005EB2BC /* Helper */,
 				BC7969BA22002EA60003F520 /* Live */,
@@ -486,6 +507,7 @@
 		D9C6AB4821FAAD09001C0AB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC558F54221A655C0037C1EF /* Splash */,
 				BC7969BD22002EB70003F520 /* Live */,
 				D9C6AB4921FAAD09001C0AB8 /* Search */,
 				D9D145BC220B0B6800CC58DA /* Scrap */,
@@ -656,6 +678,7 @@
 				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
 				6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */,
 				BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */,
+				BC558F57221A65840037C1EF /* Splash.storyboard in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */,
 				BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */,
@@ -771,6 +794,7 @@
 				6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */,
 				BC649BA2220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift in Sources */,
 				BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */,
+				BC558F59221A65C40037C1EF /* SplashViewController.swift in Sources */,
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
 				BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */,
 				D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */,
