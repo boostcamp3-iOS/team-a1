@@ -186,13 +186,10 @@ final class ScrapManager {
     static func markAllAsRead() {
         let batchUpdate = NSBatchUpdateRequest(entityName: "ScrappedArticle")
         batchUpdate.propertiesToUpdate = [#keyPath(ScrappedArticle.isRead): true]
-        
         batchUpdate.affectedStores = managedContext.persistentStoreCoordinator?.persistentStores
         batchUpdate.resultType = .updatedObjectsCountResultType
-        
         do {
-            guard let batchResult =
-                try managedContext.execute(batchUpdate) as? NSBatchUpdateResult else { return }
+            try managedContext.execute(batchUpdate)
         } catch let error as NSError {
             print("Could not update \(error), \(error.userInfo)")
         }
