@@ -32,6 +32,12 @@ class ScrapViewController: UIViewController {
         setupFilterButton()
         setupTableViewData()
         registerArticleCell()
+        setupScrapBadgeValue()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupScrapBadgeValue()
     }
     
     private func setupTableView() {
@@ -89,6 +95,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
                 ) as? ArticleDetailViewController,
             let scrappedArticleData = scrappedArticles?[indexPath.row] else { return }
         articleView.scrappedArticleDetail = scrappedArticleData
+        if let articleUri = scrappedArticleData.articleUri {
+            ScrapManager.readArticle(articleUri)
+        }
         self.navigationController?.pushViewController(articleView, animated: true)
     }
     
@@ -100,8 +109,17 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let markAsReadAction = customUIContextualAction(.markAsRead, nil, nil) { _ in
-            
+        guard let scrappedArticle = scrappedArticles else {
+            return nil
+        }
+        let markAsReadAction = customUIContextualAction(
+        .markAsRead,
+        nil,
+        nil,
+        scrappedArticle[indexPath.row].articleUri
+    ) { [weak self] _ in
+            guard let self = self else { return }
+            self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [markAsReadAction])
     }
@@ -110,7 +128,8 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let deleteAction = customUIContextualAction(.delete, nil, nil) { _ in
+        let deleteAction = customUIContextualAction(.delete, nil, nil, nil) { [weak self] _ in
+            guard let self = self else { return }
             guard var tempArticles = self.scrappedArticles else { return }
             ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
             self.isArticleDeleted = true
@@ -131,3 +150,16 @@ extension ScrapViewController: ScrapFilterDelegate {
         }
     }
 }
+
+extension ScrapViewController {
+    public func setupScrapBadgeValue() {
+        let count = ScrapManager.countArticle(false)
+        if count == 0 {
+            tabBarController?.tabBar.items?[2].badgeValue = nil
+        } else {
+            tabBarController?.tabBar.items?[2].badgeValue = "\(count)"
+        }
+    }
+}
+
+

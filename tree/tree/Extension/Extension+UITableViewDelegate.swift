@@ -19,6 +19,7 @@ extension UITableViewDelegate {
         _ type: CustomUIContextualActionState,
         _ articleData: Article?,
         _ imageData: Data?,
+        _ articleUri: String?,
         completion: @escaping (Bool) -> Void
         ) -> UIContextualAction {
         switch type {
@@ -70,8 +71,13 @@ extension UITableViewDelegate {
             let readAction = UIContextualAction(
                 style: .normal,
                 title: nil) { (_, _, success) in
+                    if let articleUri = articleUri {
+                        ScrapManager.readArticle(articleUri)
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
                     success(true)
-                    completion(true)
             }
             readAction.image = UIImage(named: "checked.png")
             readAction.backgroundColor = .purple
