@@ -71,11 +71,11 @@ class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        animateObjectToScaleUp(rightBottomCircleView, 0.0)
-        animateObjectToScaleUp(leftBottomCircleView, 0.1)
-        animateObjectToScaleUp(leftTopCircleView, 0.2)
-        animateObjectToScaleUp(rightTopCircleView, 0.3)
-        fadeInObject(appNameLabel, duration: 0.5, delay: 1.0) {
+        animateViewToScaleUp(view: rightBottomCircleView, delay: 0.0)
+        animateViewToScaleUp(view: leftBottomCircleView, delay: 0.1)
+        animateViewToScaleUp(view: leftTopCircleView, delay: 0.2)
+        animateViewToScaleUp(view: rightTopCircleView, delay: 0.3)
+        fadeIn(label: appNameLabel, duration: 0.5, delay: 1.0) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
                 self.changeRootViewController()
             })
@@ -90,29 +90,29 @@ class SplashViewController: UIViewController {
         UIApplication.shared.keyWindow?.rootViewController = tabBarController
     }
     
-    private func animateObjectToScaleUp(_ object: UIView, _ delay: TimeInterval) {
+    private func animateViewToScaleUp(view: UIView, delay: TimeInterval) {
         UIView.animate(withDuration: 0.4, delay: delay, options: .curveEaseIn, animations: {
-            object.alpha = 0.0
-            object.transform = CGAffineTransform(scaleX: 0.00, y: 0.00)
+            view.alpha = 0.0
+            view.transform = CGAffineTransform(scaleX: 0.00, y: 0.00)
         }) { _ in
-            self.scaleUp(object)
+            self.scaleUp(view: view)
         }
     }
     
-    private func fadeInObject(
-        _ object: UIView,
+    private func fadeIn(
+        label: UILabel,
         duration: TimeInterval,
         delay: TimeInterval,
         completion: @escaping () -> Void) {
-        object.alpha = 0.0
+        label.alpha = 0.0
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseIn, animations: {
-            object.alpha = 1.0
+            label.alpha = 1.0
         }) { _ in
             completion()
         }
     }
     
-    private func scaleUp(_ view: UIView) {
+    private func scaleUp(view: UIView) {
         UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveEaseIn, animations: {
             view.alpha = 1.0
             view.transform = CGAffineTransform.identity
