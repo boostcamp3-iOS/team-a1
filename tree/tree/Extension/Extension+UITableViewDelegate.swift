@@ -45,17 +45,26 @@ extension UITableViewDelegate {
                             ScrapManager.removeArticle(tempscrppaedArticle)
                         }
                     }
-                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-                    appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+                    guard
+                        let appDelegate =
+                            UIApplication.shared.delegate as? AppDelegate,
+                        let scrapViewController =
+                            appDelegate.scrapViewController as? ScrapViewController
+                        else { return }
+                    
+                    scrapViewController.scrappedArticles = ScrapManager.fetchArticles()
+                    scrapViewController.setupScrapBadgeValue()
                     completion(true)
                     success(true)
             }
             if isScrapped {
                 scrapAction.image = UIImage(named: "upload.png")
+                scrapAction.backgroundColor = .red
             } else {
                 scrapAction.image = UIImage(named: "download.png")
+                scrapAction.backgroundColor = .blue
             }
-            scrapAction.backgroundColor = .blue
+            
             return scrapAction
         case .delete:
             let deleteAction = UIContextualAction(

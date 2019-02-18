@@ -13,6 +13,7 @@ class ScrapViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var readAllButton: UIButton!
     
     private let cellIdentifier = "ScrapTableViewCell"
     private var isArticleDeleted: Bool = false
@@ -29,7 +30,7 @@ class ScrapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupFilterButton()
+        setupButtonAction()
         setupTableViewData()
         registerArticleCell()
         setupScrapBadgeValue()
@@ -45,10 +46,14 @@ class ScrapViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func setupFilterButton() {
+    private func setupButtonAction() {
         filterButton.addTarget(
             self,
             action: #selector(filterButtonDidTap),
+            for: .touchUpInside)
+        readAllButton.addTarget(
+            self,
+            action: #selector(readAllButtonDidTap),
             for: .touchUpInside)
     }
     
@@ -68,6 +73,11 @@ class ScrapViewController: UIViewController {
                 as? ScrapFilterViewController else { return }
         scrapFilterViewController.filterDelegate = self
         present(scrapFilterViewController, animated: true)
+    }
+    
+    @objc func readAllButtonDidTap(_ sender: UIButton) {
+        ScrapManager.markAllAsRead()
+        setupScrapBadgeValue()
     }
 }
 
@@ -135,6 +145,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             self.isArticleDeleted = true
             self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
