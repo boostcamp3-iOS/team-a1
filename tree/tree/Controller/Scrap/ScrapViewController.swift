@@ -59,6 +59,7 @@ class ScrapViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
     }
     
     private func setupTableViewData() {
@@ -176,5 +177,3 @@ extension ScrapViewController {
         }
     }
 }
-
-
