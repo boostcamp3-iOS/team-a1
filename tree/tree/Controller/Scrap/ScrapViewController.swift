@@ -50,11 +50,13 @@ class ScrapViewController: UIViewController {
         filterButton.addTarget(
             self,
             action: #selector(filterButtonDidTap),
-            for: .touchUpInside)
+            for: .touchUpInside
+        )
         readAllButton.addTarget(
             self,
             action: #selector(readAllButtonDidTap),
-            for: .touchUpInside)
+            for: .touchUpInside
+        )
     }
     
     private func setupTableViewData() {
