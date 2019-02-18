@@ -193,7 +193,6 @@ final class ScrapManager {
         do {
             guard let batchResult =
                 try managedContext.execute(batchUpdate) as? NSBatchUpdateResult else { return }
-//            print("Records updated \(batchResult.result)")
         } catch let error as NSError {
             print("Could not update \(error), \(error.userInfo)")
         }
