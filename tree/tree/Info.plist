@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>tŕee</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +30,7 @@
 		<true/>
 	</dict>
 	<key>NSSiriUsageDescription</key>
-	<string>Siri 권한 확인</string>
+	<string>급상승 검색어를 불러오는데 사용됩니다.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>TrendIntent</string>

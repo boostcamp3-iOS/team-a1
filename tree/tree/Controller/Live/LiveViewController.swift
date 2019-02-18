@@ -86,18 +86,43 @@ class LiveViewController: UIViewController {
         view.bringSubviewToFront(pageControl)
     }
     
-    // MARK: Siri 권한 호출
+    // MARK: - Siri 권한 확인
+    private func checkSiriAuthorization(_ geo: String) {
+        let status = INPreferences.siriAuthorizationStatus()
+        switch status {
+        case .authorized:
+            donate(country: geo)
+        case .denied: return
+        case .notDetermined, .restricted:
+            requestSiriAuthorization(geo)
+        }
+    }
+    
+    // MARK: - Siri 권한 요청
     private func requestSiriAuthorization(_ geo: String) {
-        print(geo)
-        INPreferences.requestSiriAuthorization({ (status) in
-            switch status {
+        INPreferences.requestSiriAuthorization { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
             case .authorized:
                 self.donate(country: geo)
-            default:
-                print("권한이 거부됨.")
-                break
+            case .denied:
+                let alertController = self.createAlertController(
+                    title: SiriAuthorization.denied.title,
+                    message: SiriAuthorization.denied.message,
+                    hasHandler: false
+                )
+                self.present(alertController, animated: true, completion: nil)
+            case .restricted:
+                let alertController = self.createAlertController(
+                    title: SiriAuthorization.restricted.title,
+                    message: SiriAuthorization.restricted.message,
+                    hasHandler: false
+                )
+                self.present(alertController, animated: true, completion: nil)
+            case .notDetermined:
+                return
             }
-        })
+        }
     }
     
     private func fetchDailyTrends(from geo: String) {
@@ -107,7 +132,7 @@ class LiveViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let trendData):
-                self.requestSiriAuthorization(geo)
+                self.checkSiriAuthorization(geo)
                 DispatchQueue.main.async {
                     self.loadingView?.removeFromSuperview()
                 }

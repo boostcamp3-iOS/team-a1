@@ -100,6 +100,8 @@
 		BC558F3F2219518F0037C1EF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
 		BC558F4022195FE50037C1EF /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
 		BC558F4122195FE60037C1EF /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
+		BC558F49221995D00037C1EF /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558F48221995D00037C1EF /* Extension+UIViewController.swift */; };
+		BC558F4B221996360037C1EF /* Enum+SiriAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558F4A221996360037C1EF /* Enum+SiriAuthorization.swift */; };
 		BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */; };
 		BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */; };
 		BC5D4E4A220B23C8000465B0 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E49220B23C8000465B0 /* Graph.swift */; };
@@ -253,6 +255,8 @@
 		BC558EEC221944890037C1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendIntentHandler.swift; sourceTree = "<group>"; };
 		BC558F2D22194FE40037C1EF /* TrendIntentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendIntentCell.swift; sourceTree = "<group>"; };
+		BC558F48221995D00037C1EF /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		BC558F4A221996360037C1EF /* Enum+SiriAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+SiriAuthorization.swift"; sourceTree = "<group>"; };
 		BC5D4E3F220B1D17000465B0 /* KeywordDetailGraphCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailGraphCell.swift; sourceTree = "<group>"; };
 		BC5D4E40220B1D17000465B0 /* KeywordDetailGraphCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordDetailGraphCell.xib; sourceTree = "<group>"; };
 		BC5D4E49220B23C8000465B0 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
@@ -584,6 +588,7 @@
 				BC63852D2207442B00074CF3 /* Extension+Notification.swift */,
 				6A0957AB2208490E00D46741 /* Extension+PickerView.swift */,
 				D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */,
+				BC558F48221995D00037C1EF /* Extension+UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 				BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */,
 				BCE1B8B5221723230098B3B8 /* Enum+FatalError.swift */,
 				BCE1B8B72217E43F0098B3B8 /* NibName.swift */,
+				BC558F4A221996360037C1EF /* Enum+SiriAuthorization.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -936,6 +942,7 @@
 				6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */,
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
 				BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */,
+				BC558F49221995D00037C1EF /* Extension+UIViewController.swift in Sources */,
 				BC2656BE21FD94EE00003413 /* APIService.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
 				BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */,
@@ -968,6 +975,7 @@
 				BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */,
 				BC558EFB2219449C0037C1EF /* TrendIntentHandler.swift in Sources */,
 				BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */,
+				BC558F4B221996360037C1EF /* Enum+SiriAuthorization.swift in Sources */,
 				D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */,
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
