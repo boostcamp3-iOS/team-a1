@@ -363,7 +363,7 @@ extension SearchViewController: UISearchBarDelegate {
             let getSearchKeyword = searchBar.text, 
             getSearchKeyword.count > 0, 
             !isLoading else { return }
-        self.navigationItem.title = searchKeyword
+        self.navigationItem.title = getSearchKeyword
         isLoading.toggle()
         searchKeyword = getSearchKeyword
         checkFilterStatus(using: searchFilter, type: ArticleType.load)

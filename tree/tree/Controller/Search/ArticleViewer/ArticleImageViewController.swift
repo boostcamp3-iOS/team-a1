@@ -22,16 +22,10 @@ class ArticleImageViewController: UIViewController {
         addPanGestureRecognizer()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.none)
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIApplication.shared.setStatusBarHidden(false, with: UIStatusBarAnimation.none)
-    }
-
     private func setArticleImage() {
         imageView.image = articleImage
     }
