@@ -51,6 +51,16 @@
                         <viewLayoutGuide key="safeArea" id="zb3-AA-joQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scrap" id="unw-3k-txW">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="ffS-yj-iCo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BNf-WT-A8U">
+                                <rect key="frame" x="16" y="0.0" width="56" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Read All">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ngn-ry-vjo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -61,6 +71,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="jGy-hd-WEj" id="t6L-5A-UtT"/>
+                        <outlet property="readAllButton" destination="BNf-WT-A8U" id="kaz-fm-w7u"/>
                         <outlet property="tableView" destination="Fwc-Se-Vc5" id="hIL-eo-b7q"/>
                     </connections>
                 </viewController>

@@ -19,6 +19,7 @@ extension UITableViewDelegate {
         _ type: CustomUIContextualActionState,
         _ articleData: Article?,
         _ imageData: Data?,
+        _ articleUri: String?,
         completion: @escaping (Bool) -> Void
         ) -> UIContextualAction {
         switch type {
@@ -44,17 +45,26 @@ extension UITableViewDelegate {
                             ScrapManager.removeArticle(tempscrppaedArticle)
                         }
                     }
-                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-                    appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+                    guard
+                        let appDelegate =
+                            UIApplication.shared.delegate as? AppDelegate,
+                        let scrapViewController =
+                            appDelegate.scrapViewController as? ScrapViewController
+                        else { return }
+                    
+                    scrapViewController.scrappedArticles = ScrapManager.fetchArticles()
+                    scrapViewController.setupScrapBadgeValue()
                     completion(true)
                     success(true)
             }
             if isScrapped {
                 scrapAction.image = UIImage(named: "upload.png")
+                scrapAction.backgroundColor = .red
             } else {
                 scrapAction.image = UIImage(named: "download.png")
+                scrapAction.backgroundColor = .blue
             }
-            scrapAction.backgroundColor = .blue
+            
             return scrapAction
         case .delete:
             let deleteAction = UIContextualAction(
@@ -70,8 +80,13 @@ extension UITableViewDelegate {
             let readAction = UIContextualAction(
                 style: .normal,
                 title: nil) { (_, _, success) in
+                    if let articleUri = articleUri {
+                        ScrapManager.readArticle(articleUri)
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
                     success(true)
-                    completion(true)
             }
             readAction.image = UIImage(named: "checked.png")
             readAction.backgroundColor = .purple
