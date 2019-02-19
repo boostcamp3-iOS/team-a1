@@ -45,7 +45,7 @@ class SearchViewController: UIViewController {
         registerArticleCell()
         setupFilterItem()
         userFilter()
-        setDefaultView(message: "Please Search 🔎")
+        setDefaultView(message: "🧐")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +78,7 @@ class SearchViewController: UIViewController {
         )
         defaultView = DefaultLabelView(frame: defaultViewFrame)
         guard let defaultView = defaultView else { return } 
-        defaultView.defaultMessage.text = message
+        defaultView.defaultMessageLabel.text = message
         defaultView.center = self.view.center
         self.view.addSubview(defaultView)  
     }
@@ -171,7 +171,7 @@ class SearchViewController: UIViewController {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
                     if self.articles?.count == 0 {
-                        self.setDefaultView(message: "No Results 🔎")
+                        self.setDefaultView(message: "🤷‍♂️")
                     }
                 }
             case .failure(let error):

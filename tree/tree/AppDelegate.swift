@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if UserDefaults.standard.dictionary(forKey: "searchFilter") == nil {
-            let searchFilter = ["keyword": "Title","sort": "Date","category": "All","language": "eng"]
+            let searchFilter = ["keyword": "Title","sort": "Date","category": "all","language": "eng"]
             UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
         }
         guard let tabBarController = window?.rootViewController as? UITabBarController,
