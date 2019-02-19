@@ -28,9 +28,9 @@ class SearchFilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPickerView()
         setupSegment()
         setupFilterValue()
-        setupPickerView()
         roundConersSetup()
     }
     
@@ -40,15 +40,16 @@ class SearchFilterViewController: UIViewController {
     }
     
     private func setupFilterValue() {
-        categoryLabel.text = filterValue?["category"]
-        languageLabel.text = filterValue?["language"]
+        if let category = filterValue?["category"], let language = filterValue?["language"] {
+            categoryLabel.text = category
+            languageLabel.text = selectPickViewer.extractUserSelectedLan(selectedLabel: language)
+        }
         if filterValue?["keyword"] == "Body" {
             keywordSegmentedControl.selectedSegmentIndex = 1
         }
         if filterValue?["sort"] == "Relevance" {
             sortSegmentedControl.selectedSegmentIndex = 1
         }
-        selectPickViewer.selectRow(0, inComponent: 0, animated: true)
     }
     
     private func setupSegment() {
@@ -74,13 +75,27 @@ class SearchFilterViewController: UIViewController {
         categoryStackView.isHidden = !isPresented
     }
     
+    private func extractSelectedRow(selectedString: String) {
+        let selectedRow = selectPickViewer.findRow(userValue: selectedString)
+        selectPickViewer.selectRow(selectedRow, inComponent: 0, animated: true)
+    }
+    
     @IBAction func selectButtonClick(_ sender: UIButton) {
         selectViewIsPresented.toggle()
         selectPickViewer.tagNumber = sender.tag
         if selectViewIsPresented {
-            selectPickViewer.tagNumber == 0 ? 
-                makeHidden(isPresented: selectViewIsPresented) : 
+            switch selectPickViewer.pickerType {
+            case .category:
+                makeHidden(isPresented: selectViewIsPresented)
+                if let categoryText = categoryLabel.text {
+                    extractSelectedRow(selectedString: categoryText)
+                }
+            case .language:
                 makeHidden(isPresented: !selectViewIsPresented)
+                if let languageText = languageLabel.text {
+                    extractSelectedRow(selectedString: languageText)
+                }
+            }
             saveButton.isHidden = true
         } else {
             languageStackView.isHidden = selectViewIsPresented
@@ -92,25 +107,21 @@ class SearchFilterViewController: UIViewController {
             self.pickerView.isHidden = !self.selectViewIsPresented
         }
     }
-    
-    private func extractUserSelectedLanguage(selectedItem: String) -> String? {
-        let userSelect = Languages.allCases.filter {$0.value == selectedItem}.map {"\($0)"}
-        return userSelect.joined()
-    }
-    
+   
     @IBAction func saveButtonClick(_ sender: Any) {
-        guard 
-            let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
+        guard let keyword = keywordSegmentedControl.titleForSegment(at: keywordSegmentedControl.selectedSegmentIndex), 
             let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
             let category = categoryLabel.text,
             let language = languageLabel.text,
-            let lan = extractUserSelectedLanguage(selectedItem: language) else { return }
-        settingDelegate?.observeUserSetting( 
+            let lan = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
+            else { return }
+        settingDelegate?.observeUserSetting(
             keyword: keyword,
             sort: sort,
             category: category, 
             language: lan
         )
+
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -127,9 +138,10 @@ extension SearchFilterViewController: UIPickerViewDelegate, UIPickerViewDataSour
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectValue = selectPickViewer.pickerItemList()[row]
-        if selectPickViewer.tagNumber == 0 {
+        switch selectPickViewer.pickerType {
+        case .category:
             categoryLabel.text = selectValue
-        } else {
+        case .language:
             languageLabel.text = selectValue
         }
     }

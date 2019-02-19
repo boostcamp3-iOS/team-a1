@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum Languages: CaseIterable {
-    case eng
-    case jpn
+enum Languages: Int, CaseIterable {
+    case eng = 0
+    case jpn 
     case fra
     case ita
     case spa
