@@ -20,7 +20,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private let localizedLanguage = "ko"
+    private let localizedLanguage = LocalizedLanguages.korean.rawValue
     private let cellIdentifier = "TrendIntentCell"
     private var trendData: [TrendingSearch]? {
         didSet {
