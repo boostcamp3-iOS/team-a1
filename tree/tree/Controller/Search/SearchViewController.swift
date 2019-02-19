@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     private var transitionManager = PresentationManager()
     private var articles: [Article]?
     private var defaultLabel: UILabel = UILabel()
-    private var searchKeyword: String = ""
+    private var searchKeyword: String?
     private var page: Int = 1
     private var totalPage: Int = 0
     private var isLoading: Bool = false
@@ -97,16 +97,14 @@ class SearchViewController: UIViewController {
     }
     
     private func setupTableView() {
-        uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
+        uiTableView.contentInset = UIEdgeInsets(
+            top: topOffset,
+            left: 0, 
+            bottom: 0,
+            right: 0
+        )
         uiTableView.separatorStyle = .none
         uiTableView?.rowHeight = UITableView.automaticDimension
-    }
-    
-    private func setupNavigationBar() {
-        guard let navigationBar = self.navigationController?.navigationBar else { return }
-        navigationBar.backgroundColor = UIColor.white
-        navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        navigationBar.shadowImage = UIImage()
     }
     
     private func registerArticleCell() {
@@ -149,11 +147,12 @@ class SearchViewController: UIViewController {
         sort: String
     ) {
         articles = nil
+        guard let searchBarText = searchKeyword else { return }
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
         APIManager.fetchArticles(
-            keyword: searchKeyword, 
+            keyword: searchBarText, 
             keywordLoc: keyword,
             lang: language, 
             articlesSortBy: sort, 
