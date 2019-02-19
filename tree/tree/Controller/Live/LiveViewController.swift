@@ -175,7 +175,6 @@ class LiveViewController: UIViewController {
      */
     private func resortByCategory(from events: [ResultInfo]) -> [CategoryEvents] {
         var categoryDic: [String: [ResultInfo]] = [:]
-        let categoryETC = ArticleCategory.etc.stringValue.uppercased()
         for event in events {
             if let category = event.categories.first?.uri.components(separatedBy: "/")[1] {
                 if var categoryKey = categoryDic[category] {
@@ -183,13 +182,6 @@ class LiveViewController: UIViewController {
                     categoryDic.updateValue(categoryKey, forKey: category)
                 } else {
                     categoryDic.updateValue([event], forKey: category)
-                }
-            } else {
-                if var etcKey = categoryDic[categoryETC] {
-                    etcKey.append(event)
-                    categoryDic.updateValue(etcKey, forKey: categoryETC)
-                } else {
-                    categoryDic.updateValue([event], forKey: categoryETC)
                 }
             }
         }
