@@ -80,11 +80,8 @@ final class APIManager {
     }
     
     static func fetchRecentEvents(
-        pageNumber: Int,
         completion: @escaping (Result<Events>) -> Void) {
-        APICenter<EventRegistryAPI>().request(.fetchRecentEvents(
-            eventPages: pageNumber
-        )) { (data, error) in
+        APICenter<EventRegistryAPI>().request(.fetchRecentEvents) { (data, error) in
             guard error == nil else {
                 return completion(Result.failure(error!))
             }
