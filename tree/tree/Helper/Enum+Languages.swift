@@ -10,7 +10,7 @@ import Foundation
 
 enum Languages: Int, CaseIterable {
     case eng = 0
-    case jpn 
+    case jpn
     case fra
     case ita
     case spa

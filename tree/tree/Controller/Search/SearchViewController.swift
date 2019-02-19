@@ -56,6 +56,15 @@ class SearchViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.current.orientation {
+        case .portrait, .landscapeLeft, .landscapeRight:
+            isPresentedCheck = searchBarIsPresented 
+        default:
+            return
+        }
+    }
+    
     private func setLoadingView() {
         let loadingViewFrame = CGRect(
             x: 0,
