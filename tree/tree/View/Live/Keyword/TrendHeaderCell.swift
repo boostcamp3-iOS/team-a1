@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExpandableHeaderDelegate: class {
-    func tappedCountryButton(_ country: String)
+    func countryButtonDidTapped(_ country: String)
 }
 
 class HeaderCellContent {
@@ -115,7 +115,7 @@ class TrendHeaderCell: UITableViewCell {
             buttons[index].tag = index
             buttons[index].addTarget(
                 self,
-                action: #selector(didSelectCountry(_:)),
+                action: #selector(didSelectedCountry(_:)),
                 for: .touchUpInside
             )
         }
@@ -128,22 +128,22 @@ class TrendHeaderCell: UITableViewCell {
                     for: $0,
                     radius: 20,
                     borderWidth: 2.0,
-                    borderColor: UIColor.brightBlue.cgColor,
-                    textColor: UIColor.brightBlue
+                    borderColor: UIColor.treeBlue.cgColor,
+                    textColor: UIColor.treeBlue
                 )
             } else {
                 makeCountryButtonUI(
                     for: $0,
                     radius: 20,
                     borderWidth: 1.0,
-                    borderColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1),
-                    textColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+                    borderColor: UIColor.treeGray.cgColor,
+                    textColor: UIColor.treeGray
                 )
             }
         }
     }
     
-    @objc private func didSelectCountry(_ button: UIButton) {
+    @objc private func didSelectedCountry(_ button: UIButton) {
         guard
             let name = Country(rawValue: button.tag)?.info.name,
             let code = Country(rawValue: button.tag)?.info.code
@@ -154,6 +154,6 @@ class TrendHeaderCell: UITableViewCell {
             object: nil,
             userInfo: ["name": name, "code": code]
         )
-        expandableHeaderDelegate?.tappedCountryButton(name)
+        expandableHeaderDelegate?.countryButtonDidTapped(name)
     }
 }

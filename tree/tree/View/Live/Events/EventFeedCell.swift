@@ -17,7 +17,7 @@ class EventFeedCell: UITableViewCell {
     @IBOutlet weak var whereDataLabel: UILabel!
     
     private let defaultLocationText = "No Location"
-    private let localizedLanguage = LocalizedLanguages.korean.rawValue
+    private let localizedLanguage = LocalizedLanguages.english.rawValue
     
     private var shadowView: UIView {
         let shadowView = UIView(

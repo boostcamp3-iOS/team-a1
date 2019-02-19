@@ -121,7 +121,7 @@ class GraphView: UIView {
         let lineLayer = drawLineLayer(
             path: path,
             lineWidth: 3.0,
-            lineColor: UIColor.brightBlue.cgColor
+            lineColor: UIColor.treeBlue.cgColor
         )
         dataLayer.addSublayer(lineLayer)
     }
