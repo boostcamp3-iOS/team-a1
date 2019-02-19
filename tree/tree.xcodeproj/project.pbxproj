@@ -120,6 +120,8 @@
 		BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4B220B531D000465B0 /* KeywordDetailViewController.swift */; };
 		BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4D220B730F000465B0 /* GraphView.swift */; };
 		BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D4E4F220C247E000465B0 /* NaverAPI.swift */; };
+		BC5F08A9221BBA6B007C432F /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC5F08A8221BBA6B007C432F /* Splash.storyboard */; };
+		BC5F08AC221BBA74007C432F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5F08AB221BBA74007C432F /* SplashViewController.swift */; };
 		BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
 		BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852D2207442B00074CF3 /* Extension+Notification.swift */; };
 		BC649BA2220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC649BA0220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift */; };
@@ -281,6 +283,8 @@
 		BC5D4E4B220B531D000465B0 /* KeywordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailViewController.swift; sourceTree = "<group>"; };
 		BC5D4E4D220B730F000465B0 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		BC5D4E4F220C247E000465B0 /* NaverAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPI.swift; sourceTree = "<group>"; };
+		BC5F08A8221BBA6B007C432F /* Splash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		BC5F08AB221BBA74007C432F /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BC63852B2206CBF200074CF3 /* Enum+Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Countries.swift"; sourceTree = "<group>"; };
 		BC63852D2207442B00074CF3 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		BC649BA0220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordDetailArticleCell.swift; sourceTree = "<group>"; };
@@ -575,6 +579,22 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		BC5F08A7221BBA5F007C432F /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				BC5F08A8221BBA6B007C432F /* Splash.storyboard */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		BC5F08AA221BBA6E007C432F /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				BC5F08AB221BBA74007C432F /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		BC649BA6220F68110032ACF2 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +646,7 @@
 		D9C6AB3F21FA9CB4001C0AB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC5F08A7221BBA5F007C432F /* Splash */,
 				D9D145CE220B0B9300CC58DA /* Scrap */,
 				6A65DA412203D202005EB2BC /* Helper */,
 				BC7969BA22002EA60003F520 /* Live */,
@@ -650,6 +671,7 @@
 		D9C6AB4821FAAD09001C0AB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC5F08AA221BBA6E007C432F /* Splash */,
 				BC7969BD22002EB70003F520 /* Live */,
 				D9C6AB4921FAAD09001C0AB8 /* Search */,
 				D9D145BC220B0B6800CC58DA /* Scrap */,
@@ -872,6 +894,7 @@
 				35DC0E0821F70BBC00F30416 /* ArticleDetail.storyboard in Resources */,
 				6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */,
 				BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */,
+				BC5F08A9221BBA6B007C432F /* Splash.storyboard in Resources */,
 				35DC0DD621F6F3CB00F30416 /* Assets.xcassets in Resources */,
 				D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */,
 				BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */,
@@ -1005,6 +1028,7 @@
 				BC649BA2220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift in Sources */,
 				BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */,
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
+				BC5F08AC221BBA74007C432F /* SplashViewController.swift in Sources */,
 				BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */,
 				D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
@@ -1260,7 +1284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1282,7 +1306,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

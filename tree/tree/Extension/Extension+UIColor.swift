@@ -38,4 +38,28 @@ extension UIColor {
     class var whiteGray: UIColor {
         return UIColor(red: 205/255.0, green: 205/255.0, blue: 205/255.0, alpha: 1.0)
     }
+    class var orange: UIColor {
+        return UIColor.init(hexString: "#FF7300")
+    }
+    class var purpleBlue: UIColor {
+        return UIColor.init(hexString: "#6D3EFF")
+    }
+    class var skyBlue: UIColor {
+        return UIColor.init(hexString: "#00DDFF")
+    }
+    class var deepBlue: UIColor {
+        return UIColor.init(hexString: "#102D9C")
+    }
+    class var brightRed: UIColor {
+        return UIColor.init(hexString: "#FF2600")
+    }
+    class var brightYellow: UIColor {
+        return UIColor.init(hexString: "#FFE600")
+    }
+    class var lightPink: UIColor {
+        return UIColor.init(hexString: "#FF69FF")
+    }
+    class var brightPurple: UIColor {
+        return UIColor.init(hexString: "#4523FF")
+    }
 }

@@ -11,7 +11,7 @@
         <!--Scrap Tab Bar Controller-->
         <scene sceneID="e7L-jV-jS9">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wl8-n7-42D" customClass="ScrapTabBarController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ScrapTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="wl8-n7-42D" customClass="ScrapTabBarController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l2H-O3-W2R">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
