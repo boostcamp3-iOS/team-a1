@@ -267,7 +267,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func shouldLoadAdditionalData(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
-        if minimumHeightPortionToLoadAdditionalData > 0 &&
+        if minimumHeightPortionToLoadAdditionalData > 0 ,
             minimumHeightPortionToLoadAdditionalData < contentHeight * 0.2 {
             return true
         }
@@ -359,15 +359,15 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let getSearchKeyword = searchBar.text,
-            getSearchKeyword.count > 0,
-            !isLoading {
-            self.navigationItem.title = searchBar.text ?? "Search"
-            isLoading.toggle()
-            searchKeyword = getSearchKeyword
-            checkFilterStatus(using: searchFilter, type: ArticleType.load)
-            defaultLabel.removeFromSuperview()
-        }
+        guard 
+            let getSearchKeyword = searchBar.text, 
+            getSearchKeyword.count > 0, 
+            !isLoading else { return }
+        self.navigationItem.title = searchKeyword
+        isLoading.toggle()
+        searchKeyword = getSearchKeyword
+        checkFilterStatus(using: searchFilter, type: ArticleType.load)
+        defaultLabel.removeFromSuperview()
         searchBarHideAndSetting()
     }
     
