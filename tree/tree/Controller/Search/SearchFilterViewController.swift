@@ -28,9 +28,9 @@ class SearchFilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingSegment()
+        setupSegment()
         registerDelegate()
-        settingFilterValue()
+        setupFilterValue()
         roundConersSetup()
     }
     
@@ -39,7 +39,7 @@ class SearchFilterViewController: UIViewController {
         selectPickViewer.dataSource = self
     }
     
-    private func settingFilterValue() {
+    private func setupFilterValue() {
         categoryLabel.text = filterValue?["category"]
         languageLabel.text = filterValue?["language"]
         if filterValue?["keyword"] == "Body" {
@@ -51,7 +51,7 @@ class SearchFilterViewController: UIViewController {
         selectPickViewer.selectRow(0, inComponent: 0, animated: true)
     }
     
-    private func settingSegment() {
+    private func setupSegment() {
         pickerView.isHidden = true
         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.gray ]
