@@ -35,7 +35,8 @@ class ArticleImage: UIImageView {
             self.image = imageFromCache
             return
         } else {
-            if let path = extract, let imagePath = imageCache.path(for: path), 
+            if let path = extract, 
+                let imagePath = imageCache.path(for: path), 
                 let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
                 self.image = imageToDisk
                 self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)

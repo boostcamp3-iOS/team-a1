@@ -230,10 +230,10 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
             setupLoadingView()
             fetctExtractArticle(urlString: url, completion: { [weak self](viewerType, data) in
                 guard let self = self else { return }
+                let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
                 switch viewerType {
                 case .webViewer:
                     DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
                         guard 
                             let articleView = storyboard.instantiateViewController(
                                 withIdentifier: "ArticleWebViewController"
@@ -244,7 +244,6 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                     }
                 case .articleViewer:
                     DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
                         guard 
                             let articleView = storyboard.instantiateViewController(
                                 withIdentifier: "ArticleDetailViewController"

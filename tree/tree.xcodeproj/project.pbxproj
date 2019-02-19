@@ -412,6 +412,18 @@
 			path = tree;
 			sourceTree = "<group>";
 		};
+		6A0EB3FA221BCB5E00D521CD /* Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */,
+				6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */,
+				6A198CCB220CAAB5002421AC /* DefautLabelView.swift */,
+				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
+				35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */,
+			);
+			path = Viewer;
+			sourceTree = "<group>";
+		};
 		6A40D8152218009D00F06CA6 /* ArticleViewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,12 +670,8 @@
 		D9C6AB4021FA9CBB001C0AB8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
+				6A0EB3FA221BCB5E00D521CD /* Viewer */,
 				D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */,
-				35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */,
-				35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */,
-				6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */,
-				6A198CCB220CAAB5002421AC /* DefautLabelView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1284,7 +1292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1306,7 +1314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H92U9KV5T2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

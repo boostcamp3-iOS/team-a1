@@ -23,16 +23,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="277.5"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzW-7t-AY4">
-                                <rect key="frame" x="8" y="8" width="304" height="261.5"/>
+                                <rect key="frame" x="16" y="16" width="288" height="245.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="4zC-LI-oKs">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="261.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="245.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6lS-a8-Glq">
-                                                <rect key="frame" x="0.0" y="0.0" width="304" height="143.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="136"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIe-0C-fkN" customClass="ArticleImage" customModule="tree" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="304" height="143.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="288" height="136"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -40,19 +40,19 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-4z-hhG">
-                                                <rect key="frame" x="0.0" y="152.5" width="304" height="109"/>
+                                                <rect key="frame" x="0.0" y="136.5" width="288" height="109"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rqt-b7-WHH">
-                                                        <rect key="frame" x="8" y="8" width="288" height="73"/>
+                                                        <rect key="frame" x="8" y="8" width="272" height="73"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="반도체 파운드리 ‘투톱’ 체제 원년…삼성 vs TSMC ‘7나노’ 수주전 가열" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPT-tI-AB2">
-                                                                <rect key="frame" x="0.0" y="0.0" width="288" height="41"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="272" height="41"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설 민생대책에 35조 쏟아붓는다…고속도로 통행료 무료설 민생대책에 35조 쏟아붓는다…고속도로 통행료 무료설 민생대책에 35조 쏟아붓는" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttn-G2-uDt">
-                                                                <rect key="frame" x="0.0" y="44" width="288" height="29"/>
+                                                                <rect key="frame" x="0.0" y="44" width="272" height="29"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-3o-fKE">
-                                                        <rect key="frame" x="8" y="89" width="288" height="12"/>
+                                                        <rect key="frame" x="8" y="89" width="272" height="12"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-NN-7mD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="41" height="12"/>
@@ -86,7 +86,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019년 1월 23일" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQ4-dJ-Xar">
-                                                                <rect key="frame" x="221.5" y="0.0" width="66.5" height="12"/>
+                                                                <rect key="frame" x="205.5" y="0.0" width="66.5" height="12"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="10"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -109,10 +109,10 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bzW-7t-AY4" secondAttribute="bottom" constant="8" id="5qd-yr-987"/>
-                            <constraint firstItem="bzW-7t-AY4" firstAttribute="top" secondItem="yW5-Gj-kDD" secondAttribute="top" constant="8" id="Xh5-xq-xWf"/>
-                            <constraint firstItem="bzW-7t-AY4" firstAttribute="leading" secondItem="yW5-Gj-kDD" secondAttribute="leading" constant="8" id="mx3-tj-efU"/>
-                            <constraint firstAttribute="trailing" secondItem="bzW-7t-AY4" secondAttribute="trailing" constant="8" id="vuo-fT-52O"/>
+                            <constraint firstAttribute="bottom" secondItem="bzW-7t-AY4" secondAttribute="bottom" constant="16" id="5qd-yr-987"/>
+                            <constraint firstItem="bzW-7t-AY4" firstAttribute="top" secondItem="yW5-Gj-kDD" secondAttribute="top" constant="16" id="Xh5-xq-xWf"/>
+                            <constraint firstItem="bzW-7t-AY4" firstAttribute="leading" secondItem="yW5-Gj-kDD" secondAttribute="leading" constant="16" id="mx3-tj-efU"/>
+                            <constraint firstAttribute="trailing" secondItem="bzW-7t-AY4" secondAttribute="trailing" constant="16" id="vuo-fT-52O"/>
                         </constraints>
                     </view>
                 </subviews>
