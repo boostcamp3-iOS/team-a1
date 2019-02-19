@@ -28,6 +28,7 @@ class TrendHeaderCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var expandingStackView: UIStackView!
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var grayLineView: UIView!
@@ -38,12 +39,14 @@ class TrendHeaderCell: UITableViewCell {
     private weak var shadowView: UIView?
     weak var expandableHeaderDelegate: ExpandableHeaderDelegate?
     private let innerMargin: CGFloat = 20.0
+    private let downImage = UIImage(named: "down-arrow")
+    private let upImage = UIImage(named: "up-arrow")
     
     override func awakeFromNib() {
         super.awakeFromNib()
         zeroHeightConstraint = expandingStackView.heightAnchor.constraint(equalToConstant: 0)
         setButtonTagAndAction(at: countryButtons)
-        makeRoundView(for: backgroundContainerView)
+        roundCorners(layer: backgroundContainerView.layer, radius: 14)
         countryButtons.forEach { (button) in
             makeCountryButtonUI(
                 for: button,
@@ -64,6 +67,15 @@ class TrendHeaderCell: UITableViewCell {
         titleLabel.text = content.title
         countryLabel.text = content.country
         hideExpandedViewIf(content.expanded)
+        toggleArrowImageView(by: content.expanded)
+    }
+    
+    private func toggleArrowImageView(by expanded: Bool) {
+        if expanded {
+            arrowImageView.image = upImage
+        } else {
+            arrowImageView.image = downImage
+        }
     }
     
     private func hideExpandedViewIf(_ expanded: Bool) {
@@ -91,10 +103,6 @@ class TrendHeaderCell: UITableViewCell {
             width: CGFloat(0.0),
             height: CGFloat(0.0)
         )
-    }
-    
-    private func makeRoundView(for view: UIView) {
-        view.layer.cornerRadius = 14
     }
     
     private func makeCountryButtonUI(
