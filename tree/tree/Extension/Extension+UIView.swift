@@ -23,4 +23,13 @@ extension UIView {
         targetLayer.cornerRadius = withRaidus
         targetLayer.masksToBounds = true
     }
+    
+    func applyGradient(colours: [UIColor], startPoint: CGPoint, endPoint: CGPoint) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.startPoint = startPoint
+        gradient.endPoint = endPoint
+        gradient.colors = colours.map { $0.cgColor }
+        self.layer.addSublayer(gradient)
+    }
 }
