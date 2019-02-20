@@ -20,19 +20,19 @@ class ScrapTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let tabBarViewControllers = self.viewControllers,
+            let connectedNavigationController = tabBarViewControllers[safe: 2]
+                as? UINavigationController,
+            let scrapViewController = connectedNavigationController.viewControllers.first
+                as? ScrapViewController else { return }
+        appDelegate.scrapViewController = scrapViewController
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-            let viewControllers = self.viewControllers,
-            viewControllers.count >= 3,
-            let navigationController = viewControllers[2]
-                as? UINavigationController,
-            let connectedScrapViewController = navigationController.viewControllers.first
-                as? ScrapViewController else { return }
-        appDelegate.scrapViewController = connectedScrapViewController
-        connectedScrapViewController.setupScrapBadgeValue()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.scrapViewController?.setupScrapBadgeValue()
     }
 }
 
