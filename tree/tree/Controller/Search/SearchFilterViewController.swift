@@ -75,7 +75,7 @@ class SearchFilterViewController: UIViewController {
         view.roundCorners(layer: self.view.layer, radius: CGFloat(15))
     }
     
-    private func makeHidden(isPresented: Bool) {
+    private func makeHidden(by isPresented: Bool) {
         languageStackView.isHidden = isPresented
         categoryStackView.isHidden = !isPresented
     }
@@ -91,12 +91,12 @@ class SearchFilterViewController: UIViewController {
         if selectViewIsPresented {
             switch selectPickViewer.pickerType {
             case .category:
-                makeHidden(isPresented: selectViewIsPresented)
+                makeHidden(by: selectViewIsPresented)
                 if let categoryText = categoryLabel.text {
                     extractSelectedRow(selectedRowLabel: categoryText.lowercased())
                 }
             case .language:
-                makeHidden(isPresented: !selectViewIsPresented)
+                makeHidden(by: !selectViewIsPresented)
                 if let languageText = languageLabel.text {
                     extractSelectedRow(selectedRowLabel: languageText)
                 }

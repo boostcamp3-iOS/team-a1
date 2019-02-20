@@ -50,7 +50,7 @@ public enum ArticleCategory: Int, CaseIterable{
 
     init(containString: String) {
         for item in ArticleCategory.allCases {
-            if containString.contains(item.capitalFirstCharactor()) {
+            if containString.contains("\(item)".capitalized) {
                 self = item
                 return
             }
@@ -60,19 +60,6 @@ public enum ArticleCategory: Int, CaseIterable{
     
     var stringValue: String {
         return "\(self)"
-    }
-    
-    func capitalFirstCharactor() -> String {
-        let baseCategory: NSString = NSString(string: "\(self)")
-        let firstCharactor = baseCategory.character(at: 0)
-        guard let unicode = UnicodeScalar(firstCharactor - 32) else {
-            return ""
-        }
-        let result = baseCategory.replacingCharacters(
-            in: NSRange(location: 0, length: 1),
-            with: String(Character(unicode))
-        )
-        return result
     }
     
     var gradientColors: [CGColor] {

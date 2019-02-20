@@ -380,12 +380,12 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard 
-            let getSearchKeyword = searchBar.text, 
-            getSearchKeyword.count > 0, 
+            let searchKeyword = searchBar.text, 
+            searchKeyword.count > 0, 
             !isLoading else { return }
-        self.navigationItem.title = getSearchKeyword
+        self.navigationItem.title = searchKeyword
         isLoading.toggle()
-        searchKeyword = getSearchKeyword
+        self.searchKeyword = searchKeyword
         checkFilterStatus(using: searchFilter, type: ArticleType.load)
         defaultLabel.removeFromSuperview()
         searchBarHideAndSetting()
