@@ -15,9 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var scrapViewController: ScrapViewController?
 
+    var preferredStatusBarStyle: UIStatusBarStyle {     
+        return .lightContent
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if UserDefaults.standard.dictionary(forKey: "searchFilter") == nil {
-            let searchFilter = ["keyword": "Title","sort": "Date","category": "all","language": "eng"]
+            let searchFilter = [
+                "keyword": "Title",
+                "sort": "Date",
+                "category": "all",
+                "language": "eng"
+            ]
             UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
         }
         guard let tabBarController = window?.rootViewController as? UITabBarController,
