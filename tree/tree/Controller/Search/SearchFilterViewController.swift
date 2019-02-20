@@ -40,10 +40,11 @@ class SearchFilterViewController: UIViewController {
     }
     
     private func setupFilterValue() {
-        if let category = filterValue?["category"], let language = filterValue?["language"] {
-            categoryLabel.text = category.capitalized
-            languageLabel.text = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
-        }
+        guard 
+            let category = filterValue?["category"],
+            let language = filterValue?["language"] else { return }
+        categoryLabel.text = category.capitalized
+        languageLabel.text = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
         if filterValue?["keyword"] == "Body" {
             keywordSegmentedControl.selectedSegmentIndex = 1
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 class PickerView: UIPickerView {
-    var pickerType: PickerViewType = .language
+    var pickerType: PickerViewType = .category
     var tagNumber = 0 {
         didSet {
             if tagNumber == 0 {
