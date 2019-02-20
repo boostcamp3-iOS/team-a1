@@ -200,6 +200,16 @@
                                                 <action selector="backButtonItem:" destination="qcW-UM-RW4" id="Uj6-HL-LYG"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ebV-ZC-N7U">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KEE-zp-XZn">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Scrap"/>
+                                            </button>
+                                            <connections>
+                                                <action selector="scrapButtonDidTap:" destination="qcW-UM-RW4" id="lXB-3m-rh6"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
