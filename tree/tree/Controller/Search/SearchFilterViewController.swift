@@ -41,8 +41,8 @@ class SearchFilterViewController: UIViewController {
     
     private func setupFilterValue() {
         if let category = filterValue?["category"], let language = filterValue?["language"] {
-            categoryLabel.text = category
-            languageLabel.text = selectPickViewer.extractUserSelectedLan(selectedLabel: language)
+            categoryLabel.text = category.capitalized
+            languageLabel.text = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
         }
         if filterValue?["keyword"] == "Body" {
             keywordSegmentedControl.selectedSegmentIndex = 1
@@ -75,8 +75,8 @@ class SearchFilterViewController: UIViewController {
         categoryStackView.isHidden = !isPresented
     }
     
-    private func extractSelectedRow(selectedString: String) {
-        let selectedRow = selectPickViewer.findRow(userValue: selectedString)
+    private func extractSelectedRow(selectedRowLabel: String) {
+        let selectedRow = selectPickViewer.findSelectedRow(rowValue: selectedRowLabel)
         selectPickViewer.selectRow(selectedRow, inComponent: 0, animated: true)
     }
     
@@ -88,12 +88,12 @@ class SearchFilterViewController: UIViewController {
             case .category:
                 makeHidden(isPresented: selectViewIsPresented)
                 if let categoryText = categoryLabel.text {
-                    extractSelectedRow(selectedString: categoryText)
+                    extractSelectedRow(selectedRowLabel: categoryText)
                 }
             case .language:
                 makeHidden(isPresented: !selectViewIsPresented)
                 if let languageText = languageLabel.text {
-                    extractSelectedRow(selectedString: languageText)
+                    extractSelectedRow(selectedRowLabel: languageText)
                 }
             }
             saveButton.isHidden = true
@@ -113,7 +113,7 @@ class SearchFilterViewController: UIViewController {
             let sort = sortSegmentedControl.titleForSegment(at: sortSegmentedControl.selectedSegmentIndex), 
             let category = categoryLabel.text,
             let language = languageLabel.text,
-            let lan = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
+            let lan = selectPickViewer.extractUserSelectedLan(selectedRowLabel: language)
             else { return }
         settingDelegate?.observeUserSetting(
             keyword: keyword,
@@ -121,7 +121,6 @@ class SearchFilterViewController: UIViewController {
             category: category, 
             language: lan
         )
-
         self.dismiss(animated: true, completion: nil)
     }
 }

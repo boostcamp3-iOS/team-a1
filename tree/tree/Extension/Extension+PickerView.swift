@@ -33,29 +33,31 @@ class PickerView: UIPickerView {
         }
     }
     
+    // 사용자가 선택한 언어 추출
     func extractUserSelectedLanguage(selectedItem: String) -> String? {
-        let userSelectedItem = Languages.allCases.filter {$0.value == selectedItem}.map {"\($0)"}
+        let userSelectedItem = Languages.allCases.filter {"\($0)" == selectedItem}.map {$0.value}
         return userSelectedItem.joined()
     }
     
-    func extractUserSelectedLan(selectedLabel: String) -> String? {
-        let userSelectedLabel = Languages.allCases.filter {"\($0)" == selectedLabel}.map {"\($0.value)"}
+    // 사용자가 선택한 언어 축약형 추출
+    func extractUserSelectedLan(selectedRowLabel: String) -> String? {
+        let userSelectedLabel = Languages.allCases.filter {$0.value == selectedRowLabel}.map {"\($0)"}
         return userSelectedLabel.joined()
     }
     
-    func findRow(userValue: String) -> Int {
+    func findSelectedRow(rowValue: String) -> Int {
         var index = 0 
         switch pickerType {
         case .category:
             ArticleCategory.allCases.forEach({
-                if $0.stringValue == userValue {
+                if $0.stringValue == rowValue {
                     index = $0.rawValue
                 }
             })
             return index
         case .language:
             Languages.allCases.forEach({
-                if $0.value == userValue {
+                if $0.value == rowValue {
                     index = $0.rawValue
                 }
             })

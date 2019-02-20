@@ -65,7 +65,7 @@ public enum ArticleCategory: Int, CaseIterable{
     func capitalFirstCharactor() -> String {
         let baseCategory: NSString = NSString(string: "\(self)")
         let firstCharactor = baseCategory.character(at: 0)
-        guard let unicode = UnicodeScalar(firstCharactor - 32) as? UnicodeScalar else {
+        guard let unicode = UnicodeScalar(firstCharactor - 32) else {
             return ""
         }
         let result = baseCategory.replacingCharacters(
