@@ -136,20 +136,23 @@ class SearchViewController: UIViewController {
     private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
         guard let keyword = searchFilter["keyword"], 
             let language = searchFilter["language"], 
-            let sort = searchFilter["sort"] 
+            let sort = searchFilter["sort"],
+            let category = searchFilter["category"]
             else { return }
         switch type {
         case .load:
             loadArticles(
                 keyword: keyword,
                 language: language, 
-                sort: sort
+                sort: sort,
+                category: "dmoz/\(category)"
             )
         case .loadMore:
             loadMoreArticles(
                 keyword: keyword, 
                 language: language, 
-                sort: sort
+                sort: sort,
+                category: "dmoz/\(category)"
             )
         }
     }
@@ -157,7 +160,8 @@ class SearchViewController: UIViewController {
     private func loadArticles(
         keyword: String,
         language: String,
-        sort: String
+        sort: String,
+        category: String
     ) {
         articles = nil
         guard let searchBarText = searchKeyword else { return }
@@ -168,7 +172,8 @@ class SearchViewController: UIViewController {
             keyword: searchBarText, 
             keywordLoc: keyword,
             lang: language, 
-            articlesSortBy: sort, 
+            articlesSortBy: sort,
+            categoryUri: category, 
             articlesPage: 1
         ) { (result) in
             switch result {
@@ -192,7 +197,8 @@ class SearchViewController: UIViewController {
     private func loadMoreArticles(
         keyword: String,
         language: String,
-        sort: String
+        sort: String,
+        category: String
     ) {
         if page >= totalPage { return }
         page += 1
@@ -201,6 +207,7 @@ class SearchViewController: UIViewController {
             keywordLoc: keyword, 
             lang: language, 
             articlesSortBy: sort,
+            categoryUri: category,
             articlesPage: page
         ) { (result) in
             switch result {
