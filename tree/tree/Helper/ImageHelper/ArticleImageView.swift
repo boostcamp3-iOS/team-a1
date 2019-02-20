@@ -1,5 +1,5 @@
 //
-//  Extension+ImageView.swift
+//  ArticleImageView.swift
 //  tree
 //
 //  Created by hyeri kim on 30/01/2019.

@@ -33,7 +33,7 @@
 		6A40D8192219618C00F06CA6 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8182219618C00F06CA6 /* BaseURL.swift */; };
 		6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* EventFeedCell.swift */; };
 		6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* EventFeedCell.xib */; };
-		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
+		6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* ArticleImageView.swift */; };
 		6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282B220187F8009EC8ED /* Extension+UIView.swift */; };
 		6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A65DA422203D22B005EB2BC /* LoadingView.xib */; };
 		6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA442203D242005EB2BC /* LoadingView.swift */; };
@@ -237,7 +237,7 @@
 		6A40D8182219618C00F06CA6 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		6A47BF41220E0638008BEA7A /* EventFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedCell.swift; sourceTree = "<group>"; };
 		6A47BF42220E0638008BEA7A /* EventFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFeedCell.xib; sourceTree = "<group>"; };
-		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
+		6A5D282922013FA5009EC8ED /* ArticleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageView.swift; sourceTree = "<group>"; };
 		6A5D282B220187F8009EC8ED /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		6A65DA442203D242005EB2BC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -448,6 +448,7 @@
 		6A65DA4B2206D533005EB2BC /* ImageHelper */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D282922013FA5009EC8ED /* ArticleImageView.swift */,
 				6A65DA492206190C005EB2BC /* ImageCache.swift */,
 			);
 			path = ImageHelper;
@@ -647,7 +648,6 @@
 			children = (
 				BC2656AF21FD94E000003413 /* Extension+URL.swift */,
 				D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */,
-				6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */,
 				6A5D282B220187F8009EC8ED /* Extension+UIView.swift */,
 				BC63852D2207442B00074CF3 /* Extension+Notification.swift */,
 				6A0957AB2208490E00D46741 /* Extension+PickerView.swift */,
@@ -1053,7 +1053,7 @@
 				D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */,
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
-				6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */,
+				6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
@@ -1296,7 +1296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1306,7 +1306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1318,7 +1318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tree/tree.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H92U9KV5T2;
 				INFOPLIST_FILE = tree/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1328,7 +1328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

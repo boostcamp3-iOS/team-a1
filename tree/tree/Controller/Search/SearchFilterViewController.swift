@@ -32,6 +32,7 @@ class SearchFilterViewController: UIViewController {
         setupSegment()
         setupFilterValue()
         roundConersSetup()
+        setupLayerColor()
     }
     
     private func setupPickerView() {
@@ -57,13 +58,16 @@ class SearchFilterViewController: UIViewController {
         pickerView.isHidden = true
         let font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
         let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.gray ]
-        let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.black ]
+        let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.white ]
         collectionOfSegmentedControl?.forEach({
-            $0.backgroundColor = .clear
-            $0.tintColor = .lightGray
+            $0.tintColor = UIColor.brightBlue
             $0.setTitleTextAttributes(normalAttributedString, for: .normal)
             $0.setTitleTextAttributes(selectedAttributedString, for: .selected)
         })
+    }
+    
+    private func setupLayerColor() {
+        saveButton.backgroundColor = UIColor.brightBlue
     }
     
     private func roundConersSetup() {
@@ -89,7 +93,7 @@ class SearchFilterViewController: UIViewController {
             case .category:
                 makeHidden(isPresented: selectViewIsPresented)
                 if let categoryText = categoryLabel.text {
-                    extractSelectedRow(selectedRowLabel: categoryText)
+                    extractSelectedRow(selectedRowLabel: categoryText.lowercased())
                 }
             case .language:
                 makeHidden(isPresented: !selectViewIsPresented)
