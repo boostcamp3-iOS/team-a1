@@ -29,14 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
             UserDefaults.standard.set(searchFilter, forKey: "searchFilter")
         }
-        guard let tabBarController = window?.rootViewController as? UITabBarController,
-            let tabBarConnectedViewcontrollers = tabBarController.customizableViewControllers,
-            tabBarConnectedViewcontrollers.count >= 3,
-            let navigationController = tabBarConnectedViewcontrollers[2]
-                as? UINavigationController,
-            let connectedScrapViewController = navigationController.viewControllers.first
-                as? ScrapViewController else { return true }
-        scrapViewController = connectedScrapViewController
         return true
     }
 
