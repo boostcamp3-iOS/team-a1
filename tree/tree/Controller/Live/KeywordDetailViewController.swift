@@ -44,6 +44,8 @@ class KeywordDetailViewController: UIViewController {
             }
         }
     }
+    private var isSelected: Bool = false 
+    private var loadingView: LoadingView?
     private let timeUnit = TimeUnitTypes.week.value
     private let graphCellIdentifier = "KeywordDetailGraphCell"
     private let headerCellIdentifier = "TrendListHeaderCell"
@@ -118,6 +120,19 @@ class KeywordDetailViewController: UIViewController {
                 completion(.webViewer, nil)
             }
         }
+    }
+    
+    private func setupLoadingView() {
+        let loadingViewFrame = CGRect(
+            x: 0,
+            y: 0, 
+            width: 100,
+            height: 100
+        )
+        loadingView = LoadingView(frame: loadingViewFrame)
+        guard let loadView = loadingView else { return } 
+        loadView.center = self.view.center
+        self.view.addSubview(loadView)        
     }
 }
 
@@ -208,36 +223,45 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch KeywordDetailSection(section: indexPath.section) {
-        case .gragh:
-            return
-        case .articleList:
-            guard let url = articleData?[indexPath.row].url else { return }
-            fetctExtractArticle(urlString: url, completion: { [weak self](viewerType, data) in
-                guard let self = self else { return }
-                switch viewerType {
-                case .webViewer:
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-                        guard 
-                            let articleView = storyboard.instantiateViewController(
-                                withIdentifier: "ArticleWebViewController"
-                                ) as? ArticleWebViewController else { return }
-                        articleView.articleURL = self.articleData?[indexPath.row].url
-                        self.navigationController?.pushViewController(articleView, animated: true)
+        guard let url = articleData?[indexPath.row].url else { return }
+        if !isSelected { 
+            isSelected.toggle()
+            switch KeywordDetailSection(section: indexPath.section) {
+            case .gragh:
+                return
+            case .articleList:
+                setupLoadingView()
+                fetctExtractArticle(
+                    urlString: url,
+                    completion: { [weak self] (viewerType, data) in
+                    guard let self = self else { return }
+                    let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+                    switch viewerType {
+                    case .webViewer:
+                        DispatchQueue.main.async {
+                            guard 
+                                let articleView = storyboard.instantiateViewController(
+                                    withIdentifier: "ArticleWebViewController"
+                                    ) as? ArticleWebViewController else { return }
+                            articleView.articleURL = self.articleData?[indexPath.row].url
+                            self.isSelected.toggle()
+                            self.loadingView?.removeFromSuperview()
+                            self.navigationController?.pushViewController(articleView, animated: true)
+                        }
+                    case .articleViewer:
+                        DispatchQueue.main.async {
+                            guard 
+                                let articleView = storyboard.instantiateViewController(
+                                    withIdentifier: "ArticleDetailViewController"
+                                    )as? ArticleDetailViewController else { return }
+                            articleView.articleData = data as AnyObject
+                            self.isSelected.toggle()
+                            self.loadingView?.removeFromSuperview()
+                            self.navigationController?.pushViewController(articleView, animated: true)
+                        }
                     }
-                case .articleViewer:
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-                        guard 
-                            let articleView = storyboard.instantiateViewController(
-                                withIdentifier: "ArticleDetailViewController"
-                                )as? ArticleDetailViewController else { return }
-                        articleView.articleData = data as AnyObject
-                        self.navigationController?.pushViewController(articleView, animated: true)
-                    }
-                }
-            })
+                })
+            }
         }
     }
 }

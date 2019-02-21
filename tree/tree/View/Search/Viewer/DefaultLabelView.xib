@@ -11,8 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DefaultLabelView" customModule="tree" customModuleProvider="target">
             <connections>
-                <outlet property="defaultImage" destination="90d-Qa-iXV" id="M2J-E8-e4g"/>
-                <outlet property="defaultMessage" destination="om6-Ok-7MG" id="1j2-3i-nzc"/>
+                <outlet property="defaultMessageLabel" destination="om6-Ok-7MG" id="Cq8-eF-wxu"/>
                 <outlet property="outerView" destination="vbn-Kt-rZg" id="rVK-lB-tuG"/>
             </connections>
         </placeholder>
@@ -24,28 +23,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbn-Kt-rZg">
                     <rect key="frame" x="16" y="16" width="343" height="118"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="90d-Qa-iXV">
-                            <rect key="frame" x="235" y="8" width="100" height="100"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="100" id="JR4-OF-YRP"/>
-                                <constraint firstAttribute="height" constant="100" id="shD-VF-JBi"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Search" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Ok-7MG">
-                            <rect key="frame" x="8" y="47.5" width="219" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om6-Ok-7MG">
+                            <rect key="frame" x="171.5" y="59" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="90"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="90d-Qa-iXV" firstAttribute="leading" secondItem="om6-Ok-7MG" secondAttribute="trailing" constant="8" id="3DK-bb-fvG"/>
-                        <constraint firstItem="om6-Ok-7MG" firstAttribute="centerY" secondItem="90d-Qa-iXV" secondAttribute="centerY" id="TEI-fN-yhp"/>
-                        <constraint firstItem="90d-Qa-iXV" firstAttribute="top" secondItem="vbn-Kt-rZg" secondAttribute="top" constant="8" id="UMP-jT-kQe"/>
-                        <constraint firstAttribute="trailing" secondItem="90d-Qa-iXV" secondAttribute="trailing" constant="8" id="Yi3-mh-8Cb"/>
-                        <constraint firstItem="om6-Ok-7MG" firstAttribute="leading" secondItem="vbn-Kt-rZg" secondAttribute="leading" constant="8" id="xid-Zx-BUP"/>
+                        <constraint firstItem="om6-Ok-7MG" firstAttribute="centerY" secondItem="vbn-Kt-rZg" secondAttribute="centerY" id="SNv-t2-iBE"/>
+                        <constraint firstItem="om6-Ok-7MG" firstAttribute="centerX" secondItem="vbn-Kt-rZg" secondAttribute="centerX" id="gOb-Ax-Ywq"/>
                     </constraints>
                 </view>
             </subviews>
@@ -58,7 +46,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="437.60000000000002" y="197.45127436281859"/>
+            <point key="canvasLocation" x="436" y="197.00149925037482"/>
         </view>
     </objects>
 </document>

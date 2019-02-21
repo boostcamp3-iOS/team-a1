@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Languages: CaseIterable {
-    case eng
+enum Languages: Int, CaseIterable {
+    case eng = 0
     case jpn
     case fra
     case ita
@@ -23,7 +23,7 @@ enum Languages: CaseIterable {
         case .jpn: return "Japanese"
         case .fra: return "France"
         case .ita: return "Italian"
-        case .spa: return "spanish"
+        case .spa: return "Spanish"
         case .rus: return "Russian"
         case .deu: return "Dutch"
         }

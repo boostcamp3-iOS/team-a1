@@ -14,6 +14,7 @@ final class APIManager {
         keywordLoc: String,
         lang: String,
         articlesSortBy: String,
+        categoryUri: String,
         articlesPage: Int,
         completion: @escaping (Result<Articles>) -> Void ) {
         APICenter<EventRegistryAPI>().request(.fetchArticles(
@@ -21,6 +22,7 @@ final class APIManager {
                 keywordLoc: keywordLoc,
                 lang: lang,
                 articlesSortBy: articlesSortBy,
+                categoryUri: categoryUri,
                 articlesPage: articlesPage)) { (data, error) in
                     guard error == nil else {
                         return completion(Result.failure(error!))

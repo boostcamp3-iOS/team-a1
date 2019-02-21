@@ -20,7 +20,9 @@
 		45A74A72C78EC54DD12F5CA6 /* Pods_tree.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0163F8362378789ACC30D4 /* Pods_tree.framework */; };
 		6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AB2208490E00D46741 /* Extension+PickerView.swift */; };
 		6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */; };
+		6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */; };
 		6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */; };
+		6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */; };
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
 		6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */; };
 		6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CCB220CAAB5002421AC /* DefautLabelView.swift */; };
@@ -32,7 +34,7 @@
 		6A40D8192219618C00F06CA6 /* NetworkBaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8182219618C00F06CA6 /* NetworkBaseURL.swift */; };
 		6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A47BF41220E0638008BEA7A /* EventFeedCell.swift */; };
 		6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A47BF42220E0638008BEA7A /* EventFeedCell.xib */; };
-		6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */; };
+		6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282922013FA5009EC8ED /* ArticleImageView.swift */; };
 		6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D282B220187F8009EC8ED /* Extension+UIView.swift */; };
 		6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A65DA422203D22B005EB2BC /* LoadingView.xib */; };
 		6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A65DA442203D242005EB2BC /* LoadingView.swift */; };
@@ -223,7 +225,9 @@
 		35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleDetail.storyboard; sourceTree = "<group>"; };
 		6A0957AB2208490E00D46741 /* Extension+PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+PickerView.swift"; sourceTree = "<group>"; };
 		6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterProtocol.swift; sourceTree = "<group>"; };
+		6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Filter.swift"; sourceTree = "<group>"; };
 		6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTypeEnum.swift; sourceTree = "<group>"; };
+		6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+PickerViewType.swift"; sourceTree = "<group>"; };
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
 		6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultLabelView.xib; sourceTree = "<group>"; };
 		6A198CCB220CAAB5002421AC /* DefautLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefautLabelView.swift; sourceTree = "<group>"; };
@@ -235,7 +239,7 @@
 		6A40D8182219618C00F06CA6 /* NetworkBaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBaseURL.swift; sourceTree = "<group>"; };
 		6A47BF41220E0638008BEA7A /* EventFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedCell.swift; sourceTree = "<group>"; };
 		6A47BF42220E0638008BEA7A /* EventFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFeedCell.xib; sourceTree = "<group>"; };
-		6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ImageView.swift"; sourceTree = "<group>"; };
+		6A5D282922013FA5009EC8ED /* ArticleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageView.swift; sourceTree = "<group>"; };
 		6A5D282B220187F8009EC8ED /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		6A65DA442203D242005EB2BC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -412,6 +416,18 @@
 			path = tree;
 			sourceTree = "<group>";
 		};
+		6A0EB3FA221BCB5E00D521CD /* Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */,
+				6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */,
+				6A198CCB220CAAB5002421AC /* DefautLabelView.swift */,
+				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
+				35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */,
+			);
+			path = Viewer;
+			sourceTree = "<group>";
+		};
 		6A40D8152218009D00F06CA6 /* ArticleViewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +450,7 @@
 		6A65DA4B2206D533005EB2BC /* ImageHelper */ = {
 			isa = PBXGroup;
 			children = (
+				6A5D282922013FA5009EC8ED /* ArticleImageView.swift */,
 				6A65DA492206190C005EB2BC /* ImageCache.swift */,
 			);
 			path = ImageHelper;
@@ -634,7 +651,6 @@
 			children = (
 				BC2656AF21FD94E000003413 /* Extension+URL.swift */,
 				D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */,
-				6A5D282922013FA5009EC8ED /* Extension+ImageView.swift */,
 				6A5D282B220187F8009EC8ED /* Extension+UIView.swift */,
 				BC63852D2207442B00074CF3 /* Extension+Notification.swift */,
 				6A0957AB2208490E00D46741 /* Extension+PickerView.swift */,
@@ -659,12 +675,8 @@
 		D9C6AB4021FA9CBB001C0AB8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				35DC0E0721F70BBC00F30416 /* ArticleDetail.storyboard */,
+				6A0EB3FA221BCB5E00D521CD /* Viewer */,
 				D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */,
-				35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */,
-				35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */,
-				6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */,
-				6A198CCB220CAAB5002421AC /* DefautLabelView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -717,6 +729,9 @@
 				6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */,
 				BCE1B8B72217E43F0098B3B8 /* NibName.swift */,
 				BC558F4A221996360037C1EF /* Enum+SiriAuthorization.swift */,
+				6A40D8182219618C00F06CA6 /* BaseURL.swift */,
+				6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */,
+				6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -995,6 +1010,7 @@
 				6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */,
 				BC5D4E4C220B531D000465B0 /* KeywordDetailViewController.swift in Sources */,
 				D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */,
+				6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */,
 				6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */,
 				6A40D81022168F8900F06CA6 /* ExtractArticle.swift in Sources */,
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
@@ -1024,6 +1040,7 @@
 				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
 				6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */,
+				6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */,
 				6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */,
 				BC649BA2220F5EFA0032ACF2 /* KeywordDetailArticleCell.swift in Sources */,
 				BC5D4E50220C247F000465B0 /* NaverAPI.swift in Sources */,
@@ -1041,7 +1058,7 @@
 				D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */,
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
-				6A5D282A22013FA5009EC8ED /* Extension+ImageView.swift in Sources */,
+				6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
@@ -1294,7 +1311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1316,7 +1333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

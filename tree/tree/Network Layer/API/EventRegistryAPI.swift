@@ -19,6 +19,7 @@ private enum DefaultParameter {
     case eventsPage
     case includeEventConcepts
     case language
+    case categoryUri
 }
 
 extension DefaultParameter {
@@ -34,6 +35,7 @@ extension DefaultParameter {
         case .eventsPage: return 1
         case .includeEventConcepts: return false
         case .language: return "eng"
+        case .categoryUri: return "dmoz"
         }
     }
 }
@@ -44,6 +46,7 @@ enum EventRegistryAPI {
         keywordLoc: String,
         lang: String,
         articlesSortBy: String,
+        categoryUri: String,
         articlesPage: Int
     )
     case fetchRecentEvents
@@ -81,6 +84,7 @@ extension EventRegistryAPI: APIService {
             let keywordLoc,
             let lang,
             let articlesSortBy,
+            let category,
             let articlesPage
             ):
             return [
@@ -89,6 +93,7 @@ extension EventRegistryAPI: APIService {
                 "lang": lang,
                 "articlesSortBy": articlesSortBy,
                 "articlesPage": articlesPage,
+                "categoryUri": category,
                 "action": DefaultParameter.action.value,
                 "resultType": DefaultParameter.resultType.value,
                 "articlesCount": DefaultParameter.articlesCount.value,
