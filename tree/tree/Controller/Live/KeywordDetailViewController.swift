@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkFetcher
 
 class KeywordDetailViewController: UIViewController {
 
@@ -93,7 +94,7 @@ class KeywordDetailViewController: UIViewController {
             "groupName": keyword,
             "keywords": [keyword]
             ]]
-        APIManager.requestGraphData(
+        BoosterManager.requestGraphData(
             startDate: startDate,
             endDate: endDate,
             timeUnit: timeUnit,
@@ -112,7 +113,7 @@ class KeywordDetailViewController: UIViewController {
     private func fetctExtractArticle(
         urlString: String, 
         completion: @escaping(ArticleViewerType, ExtractArticle?) -> Void) {
-        APIManager.extractArticle(url: urlString) { (result) in
+        BoosterManager.extractArticle(url: urlString) { (result) in
             switch result {
             case .success(let data):
                 completion(.articleViewer, data)

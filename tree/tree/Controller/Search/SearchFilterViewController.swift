@@ -60,14 +60,14 @@ class SearchFilterViewController: UIViewController {
         let normalAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.gray ]
         let selectedAttributedString = [ NSAttributedString.Key.font: font as Any, NSAttributedString.Key.foregroundColor: UIColor.white ]
         collectionOfSegmentedControl?.forEach({
-            $0.tintColor = UIColor.brightBlue
+            $0.tintColor = UIColor.treeBlue
             $0.setTitleTextAttributes(normalAttributedString, for: .normal)
             $0.setTitleTextAttributes(selectedAttributedString, for: .selected)
         })
     }
     
     private func setupLayerColor() {
-        saveButton.backgroundColor = UIColor.brightBlue
+        saveButton.backgroundColor = UIColor.treeBlue
     }
     
     private func roundConersSetup() {

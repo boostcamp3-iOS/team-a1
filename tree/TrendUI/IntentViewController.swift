@@ -7,6 +7,7 @@
 //
 
 import IntentsUI
+import NetworkFetcher
 
 // As an example, this extension's Info.plist has been configured to handle interactions for INSendMessageIntent.
 // You will want to replace this or add other intents as appropriate.
@@ -60,7 +61,7 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
             let intent = interaction.intent as? TrendIntent,
             let country = intent.country else { return }
         activityIndicator.startAnimating()
-        APIManager.fetchDailyTrends(hl: localizedLanguage, geo: country) { (result) in
+        BoosterManager.fetchDailyTrends(hl: localizedLanguage, geo: country) { (result) in
             switch result {
             case .success(let trendData):
                 guard let recentDay = trendData.trend.searchesByDays.first else { return }

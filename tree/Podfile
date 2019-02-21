@@ -1,12 +1,17 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'tree' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for tree
-
-  pod 'SwiftLint'
-
+abstract_target 'Gardener' do
+    use_frameworks!
+    pod 'SwiftLint'
+    pod 'Booster'
+    
+    target 'tree' do
+    end
+    target 'Trend' do
+    end
+    target 'TrendUI' do
+    end
+    target 'NetworkFetcher' do
+    end
 end

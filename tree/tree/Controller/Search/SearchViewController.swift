@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkFetcher
 
 class SearchViewController: UIViewController {
     
@@ -168,8 +169,8 @@ class SearchViewController: UIViewController {
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
-        APIManager.fetchArticles(
-            keyword: searchBarText, 
+        BoosterManager.fetchArticles(
+            keyword: searchBarText,
             keywordLoc: keyword,
             lang: language, 
             articlesSortBy: sort,
@@ -202,7 +203,7 @@ class SearchViewController: UIViewController {
     ) {
         if page >= totalPage { return }
         page += 1
-        APIManager.fetchArticles(
+        BoosterManager.fetchArticles(
             keyword: keyword,
             keywordLoc: keyword, 
             lang: language, 

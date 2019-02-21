@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkFetcher
 
 class EventPageView: UIView {
 

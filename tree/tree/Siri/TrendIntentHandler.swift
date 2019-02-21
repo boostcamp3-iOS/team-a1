@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NetworkFetcher
 
 final class TrendIntentHandler: NSObject, TrendIntentHandling {
     
@@ -18,7 +19,7 @@ final class TrendIntentHandler: NSObject, TrendIntentHandling {
             completion(TrendIntentResponse(code: .failure, userActivity: nil))
             return
         }
-        APIManager.fetchDailyTrends(hl: localizedLanguage, geo: country) { (result) in
+        BoosterManager.fetchDailyTrends(hl: localizedLanguage, geo: country) { (result) in
             switch result {
             case .success(let trendData):
                 guard let recentDay = trendData.trend.searchesByDays.first else { return }
