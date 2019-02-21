@@ -11,8 +11,7 @@ import UIKit
 class DefaultLabelView: UIView {
     
     @IBOutlet weak var outerView: UIView!
-    @IBOutlet weak var defaultMessage: UILabel!
-    @IBOutlet weak var defaultImage: UIImageView!
+    @IBOutlet weak var defaultMessageLabel: UILabel!
     
     private let xibName = "DefaultLabelView"
 
@@ -40,7 +39,6 @@ class DefaultLabelView: UIView {
     
     private func setRadius() {
         let radius: CGFloat = 10
-        defaultImage.roundCorners(layer: defaultImage.layer, radius: radius * 5)
         outerView.roundCorners(layer: outerView.layer, radius: radius)
     }
 }

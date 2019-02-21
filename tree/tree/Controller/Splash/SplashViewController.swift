@@ -82,6 +82,10 @@ class SplashViewController: UIViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {     
+        return .lightContent
+    }
+    
     private func changeRootViewController() {
         let main = UIStoryboard(name: "Main", bundle: nil)
         guard let tabBarController = main.instantiateViewController(

@@ -22,4 +22,11 @@ extension UIViewController {
         }
         return alertController
     }
+    
+    func setupNavigationBar() {
+        guard let navigationBar = self.navigationController?.navigationBar else { return }
+        navigationBar.backgroundColor = UIColor.white
+        navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        navigationBar.shadowImage = UIImage()
+    }
 }

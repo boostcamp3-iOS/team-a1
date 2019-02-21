@@ -45,7 +45,7 @@ class ScrapFilterTableViewCell: UITableViewCell {
     }
     
     func setTitleLabel(_ category: ArticleCategory) {
-        titleLabel.text = category.capitalFirstCharactor()
+        titleLabel.text = "\(category)".capitalized
     }
     
     func setDescriptionLabel(_ category: ArticleCategory) {
