@@ -134,10 +134,10 @@ class SearchViewController: UIViewController {
     }
     
     private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
-        guard let keyword = searchFilter["keyword"], 
-            let language = searchFilter["language"], 
-            let sort = searchFilter["sort"],
-            let category = searchFilter["category"]
+        guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
+            let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
+            let sort = searchFilter[SearchFilter.searchSort.rawValue],
+            let category = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
         switch type {
         case .load:
@@ -442,10 +442,10 @@ extension SearchViewController: FilterSettingDelegate {
         category: String,
         language: String
     ) {
-        searchFilter.updateValue(keyword, forKey: "keyword")
-        searchFilter.updateValue(sort, forKey: "sort")
-        searchFilter.updateValue(category, forKey: "category")
-        searchFilter.updateValue(language.lowercased(), forKey: "language")
+        searchFilter.updateValue(keyword, forKey: SearchFilter.searchKeyword.rawValue)
+        searchFilter.updateValue(sort, forKey: SearchFilter.searchSort.rawValue)
+        searchFilter.updateValue(category, forKey: SearchFilter.searchCategory.rawValue)
+        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.searchLanguage.rawValue)
     }
     
     private func userFilter() {
@@ -453,10 +453,10 @@ extension SearchViewController: FilterSettingDelegate {
             let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else {
                 return
         }
-        if let keyword = userFilter["keyword"] as? String, 
-            let sort = userFilter["sort"] as? String,
-            let category = userFilter["category"] as? String,
-            let language = userFilter["language"] as? String {
+        if let keyword = userFilter[SearchFilter.searchKeyword.rawValue] as? String, 
+            let sort = userFilter[SearchFilter.searchSort.rawValue] as? String,
+            let category = userFilter[SearchFilter.searchCategory.rawValue] as? String,
+            let language = userFilter[SearchFilter.searchLanguage.rawValue] as? String {
             updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
         }
     }
