@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import NetworkFetcher
 
 final class ScrapManager {
     static var managedContext: NSManagedObjectContext = {

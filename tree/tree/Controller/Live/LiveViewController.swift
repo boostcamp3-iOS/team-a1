@@ -8,6 +8,7 @@
 
 import UIKit
 import Intents
+import NetworkFetcher
 
 class LiveViewController: UIViewController {
     
@@ -128,7 +129,7 @@ class LiveViewController: UIViewController {
     private func fetchDailyTrends(from geo: String) {
         guard let pageByDays = livePagerPages.first else { return }
         setupLoadingView(pageByDays)
-        APIManager.fetchDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
+        BoosterManager.fetchDailyTrends(hl: localizedLanguage, geo: geo) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let trendData):
@@ -147,7 +148,7 @@ class LiveViewController: UIViewController {
      현재는 한 페이지에 데이터 50개를 받아옵니다.
      */
     private func fetchTopRecentEvents(with pageNumber: Int) {
-        APIManager.fetchRecentEvents(
+        BoosterManager.fetchRecentEvents(
             pageNumber: pageNumber
         ) { [weak self] (result) in
             guard let self = self else { return }

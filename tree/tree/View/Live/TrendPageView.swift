@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkFetcher
 
 protocol PushViewControllerDelegate: class {
     func didSelectRow(with rowData: TrendingSearch)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkFetcher
 
 enum CustomUIContextualActionState {
     case scrap
