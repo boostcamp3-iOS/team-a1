@@ -17,6 +17,9 @@ class EventFeedCell: UITableViewCell {
     @IBOutlet weak var eventDataLabel: UILabel!
     @IBOutlet weak var whereDataLabel: UILabel!
     
+    private let defaultLocationText = "No Location"
+    private let localizedLanguage = LocalizedLanguages.english.rawValue
+    
     private var shadowView: UIView {
         let shadowView = UIView(
             frame: CGRect(
@@ -41,11 +44,13 @@ class EventFeedCell: UITableViewCell {
     }
     
     func configure(by event: ResultInfo) {
-        guard
-            let location = event.location?.label.eng,
-            let country = event.location?.country?.label.eng,
-            let title = event.title["eng"] else { return }
+        guard let title = event.title[localizedLanguage] else { return }
+        if let location = event.location?.label.eng,
+           let country = event.location?.country?.label.eng {
+            whereDataLabel.text = location + ", " + country
+        } else {
+            whereDataLabel.text = defaultLocationText
+        }
         eventDataLabel.text = title
-        whereDataLabel.text = location + ", " + country
     }
 }

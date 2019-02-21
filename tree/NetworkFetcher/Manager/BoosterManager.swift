@@ -15,6 +15,7 @@ public final class BoosterManager {
         keywordLoc: String,
         lang: String,
         articlesSortBy: String,
+        categoryUri: String,
         articlesPage: Int,
         completion: @escaping (Result<Articles>) -> Void ) {
         BoosterCenter<EventRegistryAPI>().request(.fetchArticles(
@@ -22,6 +23,7 @@ public final class BoosterManager {
                 keywordLoc: keywordLoc,
                 lang: lang,
                 articlesSortBy: articlesSortBy,
+                categoryUri: categoryUri,
                 articlesPage: articlesPage)) { (data, error) in
                     guard error == nil else {
                         return completion(Result.failure(error!))
@@ -82,11 +84,8 @@ public final class BoosterManager {
     }
     
     public static func fetchRecentEvents(
-        pageNumber: Int,
         completion: @escaping (Result<Events>) -> Void) {
-        BoosterCenter<EventRegistryAPI>().request(.fetchRecentEvents(
-            eventPages: pageNumber
-        )) { (data, error) in
+        BoosterCenter<EventRegistryAPI>().request(.fetchRecentEvents) { (data, error) in
             guard error == nil else {
                 return completion(Result.failure(error!))
             }

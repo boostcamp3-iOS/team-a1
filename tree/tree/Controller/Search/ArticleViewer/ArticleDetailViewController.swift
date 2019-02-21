@@ -33,7 +33,6 @@ class ArticleDetailViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        createFloatingButton()
         self.tabBarController?.tabBar.isHidden = true
         if navigationController?.isNavigationBarHidden == false {
             navigationController?.isNavigationBarHidden.toggle()
@@ -129,7 +128,7 @@ class ArticleDetailViewController: UIViewController {
     }
 
     @objc private func floatingButtonClick() {
-        UIView.animate(withDuration: 0.5, animations: { 
+        UIView.animate(withDuration: 0.2, animations: { 
             self.floatingButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }) { (_) in
             UIView.animate(withDuration: 0.2, animations: { 

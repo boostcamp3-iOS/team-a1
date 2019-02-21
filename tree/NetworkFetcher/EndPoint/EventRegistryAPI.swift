@@ -17,8 +17,10 @@ private enum DefaultParameter {
     case resultType
     case action
     case eventsCount
+    case eventsPage
     case includeEventConcepts
     case language
+    case categoryUri
 }
 
 extension DefaultParameter {
@@ -31,8 +33,10 @@ extension DefaultParameter {
         case .resultType: return "articles"
         case .action: return "getArticles"
         case .eventsCount: return 50
+        case .eventsPage: return 1
         case .includeEventConcepts: return false
         case .language: return "eng"
+        case .categoryUri: return "dmoz"
         }
     }
 }
@@ -43,11 +47,10 @@ public enum EventRegistryAPI {
         keywordLoc: String,
         lang: String,
         articlesSortBy: String,
+        categoryUri: String,
         articlesPage: Int
     )
-    case fetchRecentEvents(
-        eventPages: Int
-    )
+    case fetchRecentEvents
 }
 
 extension EventRegistryAPI: BoosterService {
@@ -82,6 +85,7 @@ extension EventRegistryAPI: BoosterService {
             let keywordLoc,
             let lang,
             let articlesSortBy,
+            let category,
             let articlesPage
             ):
             return [
@@ -90,6 +94,7 @@ extension EventRegistryAPI: BoosterService {
                 "lang": lang,
                 "articlesSortBy": articlesSortBy,
                 "articlesPage": articlesPage,
+                "categoryUri": category,
                 "action": DefaultParameter.action.value,
                 "resultType": DefaultParameter.resultType.value,
                 "articlesCount": DefaultParameter.articlesCount.value,
@@ -98,11 +103,9 @@ extension EventRegistryAPI: BoosterService {
                 "articleBodyLen": DefaultParameter.articleBodyLen.value,
                 "apiKey": APIConstant.eventRegistryKey
             ]
-        case .fetchRecentEvents(
-            let eventPages
-            ):
+        case .fetchRecentEvents:
             return [
-                "eventPages": eventPages,
+                "eventPages": DefaultParameter.eventsPage.value,
                 "includeEventConcepts": DefaultParameter.includeEventConcepts.value,
                 "eventsCount": DefaultParameter.eventsCount.value
             ]

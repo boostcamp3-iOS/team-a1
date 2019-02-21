@@ -28,7 +28,7 @@ class SearchViewController: UIViewController {
     private var transitionManager = PresentationManager()
     private var articles: [Article]?
     private var defaultLabel: UILabel = UILabel()
-    private var searchKeyword: String = ""
+    private var searchKeyword: String?
     private var page: Int = 1
     private var totalPage: Int = 0
     private var isLoading: Bool = false
@@ -46,11 +46,24 @@ class SearchViewController: UIViewController {
         registerArticleCell()
         setupFilterItem()
         userFilter()
-        setDefaultView(message: "Please Search 🔎")
+        setDefaultView(message: "🧐")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         isPresentedCheck = searchBarIsPresented
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.current.orientation {
+        case .portrait, .landscapeLeft, .landscapeRight:
+            isPresentedCheck = searchBarIsPresented 
+        default:
+            return
+        }
     }
     
     private func setLoadingView() {
@@ -75,7 +88,7 @@ class SearchViewController: UIViewController {
         )
         defaultView = DefaultLabelView(frame: defaultViewFrame)
         guard let defaultView = defaultView else { return } 
-        defaultView.defaultMessage.text = message
+        defaultView.defaultMessageLabel.text = message
         defaultView.center = self.view.center
         self.view.addSubview(defaultView)  
     }
@@ -98,16 +111,14 @@ class SearchViewController: UIViewController {
     }
     
     private func setupTableView() {
-        uiTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
+        uiTableView.contentInset = UIEdgeInsets(
+            top: topOffset,
+            left: 0, 
+            bottom: 0,
+            right: 0
+        )
         uiTableView.separatorStyle = .none
         uiTableView?.rowHeight = UITableView.automaticDimension
-    }
-    
-    private func setupNavigationBar() {
-        guard let navigationBar = self.navigationController?.navigationBar else { return }
-        navigationBar.backgroundColor = UIColor.white
-        navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        navigationBar.shadowImage = UIImage()
     }
     
     private func registerArticleCell() {
@@ -124,22 +135,25 @@ class SearchViewController: UIViewController {
     }
     
     private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
-        guard let keyword = searchFilter["keyword"], 
-            let language = searchFilter["language"], 
-            let sort = searchFilter["sort"] 
+        guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
+            let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
+            let sort = searchFilter[SearchFilter.searchSort.rawValue],
+            let category = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
         switch type {
         case .load:
             loadArticles(
                 keyword: keyword,
                 language: language, 
-                sort: sort
+                sort: sort,
+                category: "dmoz/\(category)"
             )
         case .loadMore:
             loadMoreArticles(
                 keyword: keyword, 
                 language: language, 
-                sort: sort
+                sort: sort,
+                category: "dmoz/\(category)"
             )
         }
     }
@@ -147,17 +161,20 @@ class SearchViewController: UIViewController {
     private func loadArticles(
         keyword: String,
         language: String,
-        sort: String
+        sort: String,
+        category: String
     ) {
         articles = nil
+        guard let searchBarText = searchKeyword else { return }
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
         BoosterManager.fetchArticles(
-            keyword: searchKeyword, 
+            keyword: searchBarText,
             keywordLoc: keyword,
             lang: language, 
-            articlesSortBy: sort, 
+            articlesSortBy: sort,
+            categoryUri: category, 
             articlesPage: 1
         ) { (result) in
             switch result {
@@ -169,7 +186,7 @@ class SearchViewController: UIViewController {
                     self.uiTableView.reloadData()
                     self.loadingView?.removeFromSuperview()
                     if self.articles?.count == 0 {
-                        self.setDefaultView(message: "No Results 🔎")
+                        self.setDefaultView(message: "🤷‍♂️")
                     }
                 }
             case .failure(let error):
@@ -181,7 +198,8 @@ class SearchViewController: UIViewController {
     private func loadMoreArticles(
         keyword: String,
         language: String,
-        sort: String
+        sort: String,
+        category: String
     ) {
         if page >= totalPage { return }
         page += 1
@@ -190,6 +208,7 @@ class SearchViewController: UIViewController {
             keywordLoc: keyword, 
             lang: language, 
             articlesSortBy: sort,
+            categoryUri: category,
             articlesPage: page
         ) { (result) in
             switch result {
@@ -269,7 +288,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func shouldLoadAdditionalData(minimumHeightPortionToLoadAdditionalData: CGFloat, contentHeight: CGFloat) -> Bool {
-        if minimumHeightPortionToLoadAdditionalData > 0 &&
+        if minimumHeightPortionToLoadAdditionalData > 0 ,
             minimumHeightPortionToLoadAdditionalData < contentHeight * 0.2 {
             return true
         }
@@ -361,15 +380,15 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let getSearchKeyword = searchBar.text,
-            getSearchKeyword.count > 0,
-            !isLoading {
-            self.navigationItem.title = searchBar.text ?? "Search"
-            isLoading.toggle()
-            searchKeyword = getSearchKeyword
-            checkFilterStatus(using: searchFilter, type: ArticleType.load)
-            defaultLabel.removeFromSuperview()
-        }
+        guard 
+            let searchKeyword = searchBar.text, 
+            searchKeyword.count > 0, 
+            !isLoading else { return }
+        self.navigationItem.title = searchKeyword
+        isLoading.toggle()
+        self.searchKeyword = searchKeyword
+        checkFilterStatus(using: searchFilter, type: ArticleType.load)
+        defaultLabel.removeFromSuperview()
         searchBarHideAndSetting()
     }
     
@@ -424,10 +443,10 @@ extension SearchViewController: FilterSettingDelegate {
         category: String,
         language: String
     ) {
-        searchFilter.updateValue(keyword, forKey: "keyword")
-        searchFilter.updateValue(sort, forKey: "sort")
-        searchFilter.updateValue(category, forKey: "category")
-        searchFilter.updateValue(language.lowercased(), forKey: "language")
+        searchFilter.updateValue(keyword, forKey: SearchFilter.searchKeyword.rawValue)
+        searchFilter.updateValue(sort, forKey: SearchFilter.searchSort.rawValue)
+        searchFilter.updateValue(category, forKey: SearchFilter.searchCategory.rawValue)
+        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.searchLanguage.rawValue)
     }
     
     private func userFilter() {
@@ -435,10 +454,10 @@ extension SearchViewController: FilterSettingDelegate {
             let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else {
                 return
         }
-        if let keyword = userFilter["keyword"] as? String, 
-            let sort = userFilter["sort"] as? String,
-            let category = userFilter["category"] as? String,
-            let language = userFilter["language"] as? String {
+        if let keyword = userFilter[SearchFilter.searchKeyword.rawValue] as? String, 
+            let sort = userFilter[SearchFilter.searchSort.rawValue] as? String,
+            let category = userFilter[SearchFilter.searchCategory.rawValue] as? String,
+            let language = userFilter[SearchFilter.searchLanguage.rawValue] as? String {
             updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
         }
     }

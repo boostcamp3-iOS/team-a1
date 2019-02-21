@@ -52,7 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Scrap" id="unw-3k-txW">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="ffS-yj-iCo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BNf-WT-A8U">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BNf-WT-A8U">
                                 <rect key="frame" x="16" y="0.0" width="56" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -82,7 +82,7 @@
         <!--SCRAP-->
         <scene sceneID="Ljl-B2-vKm">
             <objects>
-                <navigationController storyboardIdentifier="ScrapViewController" automaticallyAdjustsScrollViewInsets="NO" id="cAP-f5-wbb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ScrapViewController" automaticallyAdjustsScrollViewInsets="NO" id="cAP-f5-wbb" customClass="ScrapNavigationController" customModule="tree" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="SCRAP" image="Scrap" id="AlX-rY-hqD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tyc-4E-lvn">

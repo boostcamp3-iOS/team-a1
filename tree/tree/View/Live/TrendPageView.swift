@@ -33,7 +33,7 @@ class TrendPageView: UIView, ExpandableHeaderDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         registerXIB()
-        tableViewSetup()
+        setupTableView()
     }
     
     private func registerXIB() {
@@ -41,11 +41,11 @@ class TrendPageView: UIView, ExpandableHeaderDelegate {
         tableView.register(headerNib, forCellReuseIdentifier: headerCellIdentifier)
         let listNib = UINib(nibName: listCellIdentifier, bundle: nil)
         tableView.register(listNib, forCellReuseIdentifier: listCellIdentifier)
-        let dateHeaderNib = UINib(nibName: listHeaderCellIdentifier, bundle: nil)
-        tableView.register(dateHeaderNib, forCellReuseIdentifier: listHeaderCellIdentifier)
+        let sectionHeaderNib = UINib(nibName: listHeaderCellIdentifier, bundle: nil)
+        tableView.register(sectionHeaderNib, forCellReuseIdentifier: listHeaderCellIdentifier)
     }
     
-    private func tableViewSetup() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(
@@ -56,7 +56,7 @@ class TrendPageView: UIView, ExpandableHeaderDelegate {
         )
     }
     
-    func tappedCountryButton(_ country: String) {
+    func countryButtonDidTapped(_ country: String) {
         guard let headerData = daysKeywordChart else { return }
         headerData.expanded.toggle()
         headerData.country = country
@@ -123,7 +123,6 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         switch TrendSection(section: section) {
         case .header:
             return 10
@@ -132,7 +131,10 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         switch TrendSection(section: indexPath.section) {
         case .header:
             guard let cell = tableView.dequeueReusableCell(
@@ -165,10 +167,13 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
         switch TrendSection(section: indexPath.section) {
-        case .header:
-            break
+        case .header: return
         case .list:
             let animation = AnimationFactory.makeMoveUpWithFade(
                 rowHeight: cell.frame.height,
@@ -190,9 +195,7 @@ extension TrendPageView: UITableViewDelegate, UITableViewDataSource {
             guard
                 let keywordRowData = googleTrendData?.trend
                     .searchesByDays[indexPath.section - 1]
-                    .keywordList[indexPath.row] else {
-                        return
-            }
+                    .keywordList[indexPath.row] else { return }
             pushViewControllerDelegate?.didSelectRow(with: keywordRowData)
         }
     }

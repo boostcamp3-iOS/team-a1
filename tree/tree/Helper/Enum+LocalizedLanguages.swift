@@ -10,5 +10,5 @@ import Foundation
 
 enum LocalizedLanguages: String {
     case korean = "ko"
-    case english = "en"
+    case english = "eng"
 }

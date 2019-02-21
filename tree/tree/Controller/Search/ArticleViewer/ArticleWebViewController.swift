@@ -68,6 +68,10 @@ class ArticleWebViewController: UIViewController {
     @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func scrapButtonDidTap(_ sender: UIBarButtonItem) {
+        //webView scrap
+    }
 }
 
 extension ArticleWebViewController: WKUIDelegate, WKNavigationDelegate {

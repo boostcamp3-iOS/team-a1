@@ -135,9 +135,8 @@ extension EventPageView: UITableViewDataSource, UITableViewDelegate {
                     ) as? EventFeedCell else {
                         fatalError(FatalError.invalidCell.localizedDescription)
             }
-            guard
-                let resultInfoData = recentEventData else {
-                    fatalError(FatalError.nilData.localizedDescription)
+            guard let resultInfoData = recentEventData else {
+                fatalError(FatalError.nilData.localizedDescription)
             }
             let resultInfoRowData = resultInfoData[indexPath.section - 1].events[indexPath.row]
             cell.configure(by: resultInfoRowData)
