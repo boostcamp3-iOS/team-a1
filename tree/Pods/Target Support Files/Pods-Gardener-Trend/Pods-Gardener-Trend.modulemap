@@ -1,0 +1,6 @@
+framework module Pods_Gardener_Trend {
+  umbrella header "Pods-Gardener-Trend-umbrella.h"
+
+  export *
+  module * { export * }
+}
