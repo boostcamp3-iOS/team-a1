@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExpandableHeaderDelegate: class {
-    func tappedCountryButton(_ country: String)
+    func countryButtonDidTapped(_ country: String)
 }
 
 class HeaderCellContent {
@@ -28,6 +28,7 @@ class TrendHeaderCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var expandingStackView: UIStackView!
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var grayLineView: UIView!
@@ -38,12 +39,14 @@ class TrendHeaderCell: UITableViewCell {
     private weak var shadowView: UIView?
     weak var expandableHeaderDelegate: ExpandableHeaderDelegate?
     private let innerMargin: CGFloat = 20.0
+    private let downImage = UIImage(named: "down-arrow")
+    private let upImage = UIImage(named: "up-arrow")
     
     override func awakeFromNib() {
         super.awakeFromNib()
         zeroHeightConstraint = expandingStackView.heightAnchor.constraint(equalToConstant: 0)
         setButtonTagAndAction(at: countryButtons)
-        makeRoundView(for: backgroundContainerView)
+        roundCorners(layer: backgroundContainerView.layer, radius: 14)
         countryButtons.forEach { (button) in
             makeCountryButtonUI(
                 for: button,
@@ -64,6 +67,15 @@ class TrendHeaderCell: UITableViewCell {
         titleLabel.text = content.title
         countryLabel.text = content.country
         hideExpandedViewIf(content.expanded)
+        toggleArrowImageView(by: content.expanded)
+    }
+    
+    private func toggleArrowImageView(by expanded: Bool) {
+        if expanded {
+            arrowImageView.image = upImage
+        } else {
+            arrowImageView.image = downImage
+        }
     }
     
     private func hideExpandedViewIf(_ expanded: Bool) {
@@ -93,10 +105,6 @@ class TrendHeaderCell: UITableViewCell {
         )
     }
     
-    private func makeRoundView(for view: UIView) {
-        view.layer.cornerRadius = 14
-    }
-    
     private func makeCountryButtonUI(
         for button: UIButton,
         radius: CGFloat,
@@ -115,7 +123,7 @@ class TrendHeaderCell: UITableViewCell {
             buttons[index].tag = index
             buttons[index].addTarget(
                 self,
-                action: #selector(didSelectCountry(_:)),
+                action: #selector(didSelectedCountry(_:)),
                 for: .touchUpInside
             )
         }
@@ -128,22 +136,22 @@ class TrendHeaderCell: UITableViewCell {
                     for: $0,
                     radius: 20,
                     borderWidth: 2.0,
-                    borderColor: UIColor.brightBlue.cgColor,
-                    textColor: UIColor.brightBlue
+                    borderColor: UIColor.treeBlue.cgColor,
+                    textColor: UIColor.treeBlue
                 )
             } else {
                 makeCountryButtonUI(
                     for: $0,
                     radius: 20,
                     borderWidth: 1.0,
-                    borderColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1),
-                    textColor: #colorLiteral(red: 0.5921568627, green: 0.5921568627, blue: 0.5921568627, alpha: 1)
+                    borderColor: UIColor.treeGray.cgColor,
+                    textColor: UIColor.treeGray
                 )
             }
         }
     }
     
-    @objc private func didSelectCountry(_ button: UIButton) {
+    @objc private func didSelectedCountry(_ button: UIButton) {
         guard
             let name = Country(rawValue: button.tag)?.info.name,
             let code = Country(rawValue: button.tag)?.info.code
@@ -154,6 +162,6 @@ class TrendHeaderCell: UITableViewCell {
             object: nil,
             userInfo: ["name": name, "code": code]
         )
-        expandableHeaderDelegate?.tappedCountryButton(name)
+        expandableHeaderDelegate?.countryButtonDidTapped(name)
     }
 }

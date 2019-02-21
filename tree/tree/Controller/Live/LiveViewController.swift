@@ -36,7 +36,7 @@ class LiveViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never
         setupTrendPages()
         fetchDailyTrends(from: Country.usa.info.code)
-        fetchTopRecentEvents(with: 1)
+        fetchTopRecentEvents()
         addNotificationObserver()
     }
     
@@ -143,13 +143,9 @@ class LiveViewController: UIViewController {
         }
     }
     
-    /* API 호출을 Page nation 방식으로 변화될 여지가 있어 pageNumber 파라미터를 남겨두었습니다.
-     현재는 한 페이지에 데이터 50개를 받아옵니다.
-     */
-    private func fetchTopRecentEvents(with pageNumber: Int) {
-        APIManager.fetchRecentEvents(
-            pageNumber: pageNumber
-        ) { [weak self] (result) in
+    /// Fetch Top Recent Events from EventRegistry
+    private func fetchTopRecentEvents() {
+        APIManager.fetchRecentEvents { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let eventData):
@@ -175,7 +171,6 @@ class LiveViewController: UIViewController {
      */
     private func resortByCategory(from events: [ResultInfo]) -> [CategoryEvents] {
         var categoryDic: [String: [ResultInfo]] = [:]
-        let categoryETC = ArticleCategory.etc.stringValue.uppercased()
         for event in events {
             if let category = event.categories.first?.uri.components(separatedBy: "/")[1] {
                 if var categoryKey = categoryDic[category] {
@@ -183,13 +178,6 @@ class LiveViewController: UIViewController {
                     categoryDic.updateValue(categoryKey, forKey: category)
                 } else {
                     categoryDic.updateValue([event], forKey: category)
-                }
-            } else {
-                if var etcKey = categoryDic[categoryETC] {
-                    etcKey.append(event)
-                    categoryDic.updateValue(etcKey, forKey: categoryETC)
-                } else {
-                    categoryDic.updateValue([event], forKey: categoryETC)
                 }
             }
         }
