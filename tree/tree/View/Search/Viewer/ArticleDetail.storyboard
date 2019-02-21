@@ -205,10 +205,10 @@
                                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Scrap"/>
+                                                <connections>
+                                                    <action selector="scrapButtonDidTap:" destination="qcW-UM-RW4" eventType="touchUpInside" id="D8Z-fg-eqr"/>
+                                                </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="scrapButtonDidTap:" destination="qcW-UM-RW4" id="lXB-3m-rh6"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>

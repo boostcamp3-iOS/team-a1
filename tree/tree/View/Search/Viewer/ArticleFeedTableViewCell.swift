@@ -76,7 +76,7 @@ class ArticleFeedTableViewCell: UITableViewCell {
             self.authorLabel.text = scrappedArticle.articleAuthor
         }
         self.imageStackView.isHidden = true
-        if let articleImage = scrappedArticle.image {
+        if let articleImage = scrappedArticle.articleData {
             self.imageStackView.isHidden = false
             self.articleImageView.image(from: articleImage as Data)
         }

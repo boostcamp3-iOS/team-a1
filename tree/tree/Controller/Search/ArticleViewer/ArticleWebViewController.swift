@@ -17,12 +17,18 @@ class ArticleWebViewController: UIViewController {
     
     private var loadingView: LoadingView?
     private var article: ExtractArticle?
-    var articleURL: String?
+    private var webData: Data?
+    var articleURL: URL?
+    var articleURLString: String?
+    var articleTitle: String?
+    var press: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        loadWebView()
+        loadWebData(articleURLString)
+//        loadWebView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +52,32 @@ class ArticleWebViewController: UIViewController {
         return nil
     }
     
-    private func loadWebView() {
-        if let url = articleURL, let requestURL = makeURLRequest(urlString: url) {
-            webView.load(requestURL)
+    private func loadWebData(_ articleURLString: String?) {
+        guard let urlString = articleURLString,
+        let url = URL(string: urlString) else {
+            return
+        }
+        articleURL = url
+        requestWebData(url) { [weak self] (responseData) in
+            guard let self = self else { return }
+            self.webData = responseData
+            DispatchQueue.main.async {
+                self.webView.load(
+                    responseData,
+                    mimeType: "text/html",
+                    characterEncodingName: "utf-8",
+                    baseURL: url
+                )
+            }
+            
         }
     }
+    
+//    private func loadWebView() {
+//        if let url = articleURLString, let requestURL = makeURLRequest(urlString: url) {
+//            webView.load(requestURL)
+//        }
+//    }
     
     private func setupLoadingView() {
         let loadingViewFrame = CGRect(
@@ -65,12 +92,42 @@ class ArticleWebViewController: UIViewController {
         self.view.addSubview(loadView)        
     }
     
+    func requestWebData(_ url: URL, completion: @escaping (Data) -> Void ) {
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data: Data? , _ , error: Error? ) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let data = data else {
+                print("data error")
+                return
+            }
+            completion(data)
+        }
+        task.resume()
+    }
+    
+    
     @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func scrapButtonDidTap(_ sender: UIBarButtonItem) {
-        //webView scrap
+        guard let articleTitle = articleTitle,
+            let press = press,
+            let articleURL = articleURL,
+            let webData = webData else {
+                return }
+        ScrapManager.scrapArticle(
+            .web,
+            articleStruct: WebViewArticleStruct(
+                title: articleTitle,
+                press: press,
+                url: articleURL,
+                webData: webData
+            )
+        )
     }
 }
 

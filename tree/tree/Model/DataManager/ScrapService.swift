@@ -14,13 +14,15 @@ enum ScrappedArticleProperty {
     case articleDescription
     case company
     case articleDate
-    case image
+    case articleData
     case isRead
     case language
     case scrappedDate
     case articleTitle
     case articleUri
     case category
+    case articleURL
+    case articleType
     
     var stringValue: String {
         return "\(self)"
@@ -55,7 +57,7 @@ public enum ArticleCategory: Int, CaseIterable{
                 return
             }
         }
-        self = .all
+        self = .etc
     }
     
     var stringValue: String {

@@ -98,7 +98,7 @@ class ArticleDetailViewController: UIViewController {
         if let author = articleData.articleAuthor {
             authorLabel.text = author
         }
-        if let image = articleData.image {
+        if let image = articleData.articleData {
             imageView.image(from: image as Data)
         }
     }

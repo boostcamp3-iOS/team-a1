@@ -22,23 +22,27 @@ final class ScrapManager {
         
         return managedContext
     }()
-
+    
     static func scrapArticle(
-        article: Article,
-        category: ArticleCategory,
-        imageData: Data?
-    ) -> Void {
+        _ type: ScrappedArticleTypeEnum,
+        articleStruct: Any
+    ) {
         guard let entity =
             NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext) else {
                 return
         }
         let newArticle = ScrappedArticle(entity: entity, insertInto: managedContext)
-        newArticle.setValues(
-            newArticle,
-            articleData: article,
-            categoryEnum: category,
-            imageData: imageData
-        )
+        switch type {
+        case .nativeSearch:
+            guard let articleStruct = articleStruct as? NativeSearchedArticleStruct else { return }
+            newArticle.setValues(searhedArticleStruct: articleStruct)
+        case .nativeWeb:
+            guard let articleStruct = articleStruct as? WebNativeViewrArticleStruct else { return }
+        case .web:
+            guard let articleStruct = articleStruct as? WebViewArticleStruct else { return }
+            newArticle.setValues(webStruct: articleStruct)
+        }
+        
         do {
             try managedContext.save()
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -47,6 +51,29 @@ final class ScrapManager {
             print(error.localizedDescription)
         }
     }
+
+//    static func scrapArticle(
+//        article: Article,
+//        category: ArticleCategory,
+//        imageData: Data?
+//    ) -> Void {
+//        guard let entity =
+//            NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext) else {
+//                return
+//        }
+//        let newArticle = ScrappedArticle(entity: entity, insertInto: managedContext)
+//        newArticle.setValues(
+//            articleData: article,
+//            imageData: imageData
+//        )
+//        do {
+//            try managedContext.save()
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//    }
     
     static func fetchArticles() -> [ScrappedArticle] {
         let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
@@ -197,7 +224,7 @@ final class ScrapManager {
     }
 }
 
-private extension NSManagedObject {
+extension NSManagedObject: HTMLDecodable{
     func setValue(_ value: Any?, forKey property: ScrappedArticleProperty) {
         self.setValue(value, forKeyPath: "\(property)")
     }
@@ -206,27 +233,65 @@ private extension NSManagedObject {
         self.setValue(category.stringValue, forKey: .category)
     }
     
-    func setValues(
-        _ newArticle: ScrappedArticle,
-        articleData: Article,
-        categoryEnum: ArticleCategory,
-        imageData: Data?
-    ) {
-        if let imageData: Data = imageData {
-            newArticle.setValue(imageData, forKey: .image)
+    func setupBaseProperty(_ type: ScrappedArticleTypeEnum) {
+        self.setValue(type.stringValue, forKey: .articleType)
+        self.setValue(NSDate(), forKey: .scrappedDate)
+        self.setValue(false, forKey: .isRead)
+    }
+    
+//    func setScrappedArticleValues(withStruct: Any) {
+//        switch withStruct {
+//        }
+//    }
+    
+    func setValues(webStruct: WebViewArticleStruct) {
+        self.setupBaseProperty(.web)
+        self.setValue(webStruct.title, forKey: .articleTitle)
+        self.setValue(webStruct.press, forKey: .articleAuthor)
+        self.setValue(webStruct.webData as NSData, forKey: .articleData)
+        self.setValue("\(webStruct.url)", forKey: .articleURL)
+    }
+    
+    func setValues(searhedArticleStruct: NativeSearchedArticleStruct) {
+        self.setupBaseProperty(.nativeSearch)
+        guard let articleData = searhedArticleStruct.articleData as? Article else {
+            return
+        }
+        if let imageData: Data = searhedArticleStruct.imageData {
+            self.setValue(imageData, forKey: .articleData)
         }
         if let authors = articleData.author,
             authors.count > 0 {
-            newArticle.setValue(authors.first?.name, forKey: .articleAuthor)
+            self.setValue(authors.first?.name, forKey: .articleAuthor)
         }
-        newArticle.setCategory(categoryEnum)
-        newArticle.setValue(articleData.lang, forKey: .language)
-        newArticle.setValue(articleData.date, forKey: .articleDate)
-        newArticle.setValue(articleData.title, forKey: .articleTitle)
-        newArticle.setValue(NSDate(), forKey: .scrappedDate)
-        newArticle.setValue(false, forKey: .isRead)
-        newArticle.setValue(articleData.uri, forKey: .articleUri)
-        newArticle.setValue(articleData.source.title, forKey: .company)
-        newArticle.setValue(articleData.body, forKey: .articleDescription)
+        self.setCategory(ArticleCategory(containString: "\(articleData.categories.first)"))
+        self.setValue(articleData.lang, forKey: .language)
+        self.setValue(articleData.date, forKey: .articleDate)
+        self.setValue(articleData.title, forKey: .articleTitle)
+        self.setValue(articleData.uri, forKey: .articleUri)
+        self.setValue(articleData.source.title, forKey: .company)
+        self.setValue(articleData.body, forKey: .articleDescription)
+        
+        self.setValue(NSDate(), forKey: .scrappedDate)
+        self.setValue(false, forKey: .isRead)
     }
+    
+//    func setValues(articleData: Article, imageData: Data?) {
+//        if let imageData: Data = imageData {
+//            self.setValue(imageData, forKey: .image)
+//        }
+//        if let authors = articleData.author,
+//            authors.count > 0 {
+//            self.setValue(authors.first?.name, forKey: .articleAuthor)
+//        }
+//        self.setCategory(ArticleCategory(containString: "\(articleData.categories.first)"))
+//        self.setValue(articleData.lang, forKey: .language)
+//        self.setValue(articleData.date, forKey: .articleDate)
+//        self.setValue(articleData.title, forKey: .articleTitle)
+//        self.setValue(NSDate(), forKey: .scrappedDate)
+//        self.setValue(false, forKey: .isRead)
+//        self.setValue(articleData.uri, forKey: .articleUri)
+//        self.setValue(articleData.source.title, forKey: .company)
+//        self.setValue(articleData.body, forKey: .articleDescription)
+//    }
 }

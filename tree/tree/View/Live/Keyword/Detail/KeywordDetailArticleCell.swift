@@ -49,4 +49,14 @@ class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
         pressLabel.text = press
         timeAgoLabel.text = article.timeAgo
     }
+    
+    func configure(_ article: ScrappedArticle) {
+        guard
+            let title = decode(article.articleTitle),
+            let press = decode(article.articleAuthor) else {
+                return
+        }
+        titleLabel.text = title
+        pressLabel.text = press
+    }
 }

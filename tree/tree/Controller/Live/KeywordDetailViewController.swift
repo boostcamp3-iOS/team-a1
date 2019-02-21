@@ -244,7 +244,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                                 let articleView = storyboard.instantiateViewController(
                                     withIdentifier: "ArticleWebViewController"
                                     ) as? ArticleWebViewController else { return }
-                            articleView.articleURL = self.articleData?[indexPath.row].url
+                            articleView.articleURLString = "\(self.articleData?[indexPath.row].url)"
                             self.isSelected.toggle()
                             self.loadingView?.removeFromSuperview()
                             self.navigationController?.pushViewController(articleView, animated: true)

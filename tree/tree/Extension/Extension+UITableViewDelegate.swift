@@ -37,10 +37,14 @@ extension UITableViewDelegate {
                 title: nil) { (_, _, success) in
                     if !isScrapped {
                         ScrapManager.scrapArticle(
-                            article: articleData,
-                            category: ArticleCategory(containString: "\(articleData.categories.first)"),
-                            imageData: imageData
+                            .nativeSearch ,
+                            articleStruct:
+                            NativeSearchedArticleStruct(articleData: articleData, imageData: imageData)
                         )
+//                        ScrapManager.scrapArticle(
+//                            article: articleData,
+//                            imageData: imageData
+//                        )
                     } else {
                         if let tempscrppaedArticle = scrppaedArticle {
                             ScrapManager.removeArticle(tempscrppaedArticle)
