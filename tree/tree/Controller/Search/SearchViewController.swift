@@ -144,6 +144,7 @@ class SearchViewController: UIViewController {
             else { return }
         if category.lowercased() == "all" || category == "etc" { 
             category = "dmoz"
+            isCategorySelected = false
         } else {
             category = "dmoz/\(category.capitalized)" 
             isCategorySelected = true
@@ -479,11 +480,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if searchBarTextField?.text == "" {
+            setDefaultView(message: "🧐")
+        } 
         searchBarTextField?.text = ""
         self.navigationItem.title = "Search"
         currentTask.cancel()
         loadingView?.removeFromSuperview()
-        setDefaultView(message: "🧐")
         searchBarHideAndSetting()
     }
     
