@@ -17,8 +17,7 @@ public final class BoosterManager {
         articlesSortBy: String,
         categoryUri: String,
         articlesPage: Int,
-        completion: @escaping (Result<Articles>) -> Void ) {
-        BoosterCenter<EventRegistryAPI>().request(.fetchArticles(
+        completion: @escaping (Result<Articles>) -> Void ) -> URLSessionDataTask { return BoosterCenter<EventRegistryAPI>().request(.fetchArticles(
                 keyword: keyword,
                 keywordLoc: keywordLoc,
                 lang: lang,
@@ -35,7 +34,7 @@ public final class BoosterManager {
                     } catch {
                         completion(Result.failure(BoosterError.decodingFail))
                     }
-                }
+            }
     }
     
     public static func fetchDailyTrends(

@@ -36,6 +36,7 @@ class SearchViewController: UIViewController {
     private var isPresentedCheck: Bool = true
     private var heightAtIndexPath = [IndexPath: Float]()
     private lazy var searchFilter = [String: String]()
+    private var currentTask = URLSessionDataTask()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,22 +139,27 @@ class SearchViewController: UIViewController {
         guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
             let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
             let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            let category = searchFilter[SearchFilter.searchCategory.rawValue]
+            var category = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
+        if category.lowercased() == "all" || category == "etc" { 
+            category = "dmoz"
+        } else {
+            category = "dmoz/\(category.capitalized)" 
+        }
         switch type {
         case .load:
             loadArticles(
                 keyword: keyword,
                 language: language, 
                 sort: sort,
-                category: "dmoz/\(category)"
+                category: category
             )
         case .loadMore:
             loadMoreArticles(
                 keyword: keyword, 
                 language: language, 
                 sort: sort,
-                category: "dmoz/\(category)"
+                category: category
             )
         }
     }
@@ -169,7 +175,7 @@ class SearchViewController: UIViewController {
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
-        BoosterManager.fetchArticles(
+        currentTask = BoosterManager.fetchArticles(
             keyword: searchBarText,
             keywordLoc: keyword,
             lang: language, 
@@ -203,7 +209,7 @@ class SearchViewController: UIViewController {
     ) {
         if page >= totalPage { return }
         page += 1
-        BoosterManager.fetchArticles(
+        currentTask = BoosterManager.fetchArticles(
             keyword: keyword,
             keywordLoc: keyword, 
             lang: language, 
@@ -394,6 +400,10 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBarTextField?.text = ""
+        self.navigationItem.title = "Search"
+        currentTask.cancel()
+        loadingView?.removeFromSuperview()
+        setDefaultView(message: "🧐")
         searchBarHideAndSetting()
     }
     
