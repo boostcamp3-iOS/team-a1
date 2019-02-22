@@ -42,6 +42,14 @@ extension DefaultParameter {
 }
 
 public enum EventRegistryAPI {
+    
+    case fetchDefaultArticles(
+        keyword: String,
+        keywordLoc: String,
+        lang: String,
+        articlesSortBy: String,
+        articlesPage: Int
+    )
     case fetchArticles(
         keyword: String,
         keywordLoc: String,
@@ -62,6 +70,8 @@ extension EventRegistryAPI: BoosterService {
     
     public var path: String? {
         switch self {
+        case .fetchDefaultArticles:
+            return "/api/v1/article"
         case .fetchArticles:
             return "/api/v1/article"
         case .fetchRecentEvents:
@@ -71,6 +81,8 @@ extension EventRegistryAPI: BoosterService {
     
     public var method: HTTPMethod {
         switch self {
+        case .fetchDefaultArticles:
+            return .get
         case .fetchArticles:
             return .get
         case .fetchRecentEvents:
@@ -80,6 +92,27 @@ extension EventRegistryAPI: BoosterService {
     
     public var parameters: Parameters {
         switch self {
+        case .fetchDefaultArticles(
+            let keyword,
+            let keywordLoc,
+            let lang,
+            let articlesSortBy,
+            let articlesPage
+            ):
+            return [
+                "keyword": keyword,
+                "keywordLoc": keywordLoc,
+                "lang": lang,
+                "articlesSortBy": articlesSortBy,
+                "articlesPage": articlesPage,
+                "action": DefaultParameter.action.value,
+                "resultType": DefaultParameter.resultType.value,
+                "articlesCount": DefaultParameter.articlesCount.value,
+                "includeArticleImage": DefaultParameter.includeArticleImage.value,
+                "includeArticleCategories": DefaultParameter.includeArticleCategories.value,
+                "articleBodyLen": DefaultParameter.articleBodyLen.value,
+                "apiKey": APIConstant.eventRegistryKey
+            ]
         case .fetchArticles(
             let keyword,
             let keywordLoc,
@@ -114,6 +147,12 @@ extension EventRegistryAPI: BoosterService {
     
     public var task: HTTPTask {
         switch self {
+        case .fetchDefaultArticles:
+            return .requestWith(
+                url: parameters, 
+                body: nil, 
+                encoding: .query
+            )
         case .fetchArticles:
             return .requestWith(
                 url: parameters,

@@ -21,6 +21,8 @@
 		6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AB2208490E00D46741 /* Extension+PickerView.swift */; };
 		6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */; };
 		6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */; };
+		6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */; };
+		6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B1221EDAC800A0DBAF /* Config.swift */; };
 		6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */; };
 		6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */; };
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
@@ -49,7 +51,6 @@
 		BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07E22129C4700E0833B /* EventHeaderCell.xib */; };
 		BC4B31E5221DCA6400307735 /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
 		BC4B31E7221DCA8200307735 /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
-		BC4B31E9221E5EDC00307735 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B31E8221E5EDB00307735 /* BaseURL.swift */; };
 		BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BC558ED3221943190037C1EF /* Intents.intentdefinition */; };
 		BC558EDD221944890037C1EF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EDC221944890037C1EF /* IntentHandler.swift */; };
 		BC558EE5221944890037C1EF /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC558EE4221944890037C1EF /* IntentsUI.framework */; };
@@ -106,7 +107,6 @@
 		BCF98CA3221DC3E00044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BCF98CA4221DC3E60044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BCF98CA5221DC3EB0044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
-		BCF98CA8221DC4430044A65A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
 		BF308B6F87C2C2E8B8730B9B /* Pods_Gardener_Trend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */; };
 		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBCF221D359100AB47CA /* Extension+Array.swift */; };
@@ -205,6 +205,8 @@
 		6A0957AB2208490E00D46741 /* Extension+PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+PickerView.swift"; sourceTree = "<group>"; };
 		6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterProtocol.swift; sourceTree = "<group>"; };
 		6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Filter.swift"; sourceTree = "<group>"; };
+		6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
+		6A0BF6B1221EDAC800A0DBAF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTypeEnum.swift; sourceTree = "<group>"; };
 		6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+PickerViewType.swift"; sourceTree = "<group>"; };
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
@@ -222,7 +224,6 @@
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		6A65DA442203D242005EB2BC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6A65DA492206190C005EB2BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		6AE2D7AD21FEF30D00444622 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		90AFBC8BB9092C8ACCC4A5FE /* Pods-Gardener-NetworkFetcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-NetworkFetcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-NetworkFetcher/Pods-Gardener-NetworkFetcher.release.xcconfig"; sourceTree = "<group>"; };
 		91E0860E8D668BAF58933746 /* Pods-Gardener-NetworkFetcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-NetworkFetcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-NetworkFetcher/Pods-Gardener-NetworkFetcher.debug.xcconfig"; sourceTree = "<group>"; };
 		ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardener_Trend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,7 +242,6 @@
 		BC42C07E22129C4700E0833B /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		BC42C0812212EE1A00E0833B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		BC42C0892215C78900E0833B /* CategoryEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvents.swift; sourceTree = "<group>"; };
-		BC4B31E8221E5EDB00307735 /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
 		BC558ED3221943190037C1EF /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		BC558ED5221943330037C1EF /* tree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tree.entitlements; sourceTree = "<group>"; };
 		BC558EDA221944890037C1EF /* Trend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Trend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -638,8 +638,8 @@
 		BCF98CA7221DC4210044A65A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				6AE2D7AD21FEF30D00444622 /* Config.swift */,
-				BC4B31E8221E5EDB00307735 /* BaseURL.swift */,
+				6A0BF6B1221EDAC800A0DBAF /* Config.swift */,
+				6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1077,7 +1077,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Booster/Booster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1088,7 +1088,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1199,11 +1199,11 @@
 			files = (
 				BCF98C9F221DC2D50044A65A /* NaverAPI.swift in Sources */,
 				BCF98CA1221DC2DA0044A65A /* BoosterManager.swift in Sources */,
-				BC4B31E9221E5EDC00307735 /* BaseURL.swift in Sources */,
+				6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */,
 				BCF98C9C221DC2D00044A65A /* CategoryEvents.swift in Sources */,
 				BCF98CA0221DC2D50044A65A /* ExtractAPI.swift in Sources */,
 				BCF98C99221DC2D00044A65A /* Graph.swift in Sources */,
-				BCF98CA8221DC4430044A65A /* Config.swift in Sources */,
+				6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */,
 				BCF98C98221DC2D00044A65A /* TrendDays.swift in Sources */,
 				BCF98C9E221DC2D50044A65A /* GoogleTrendAPI.swift in Sources */,
 				BCF98C9A221DC2D00044A65A /* ExtractArticle.swift in Sources */,
