@@ -214,6 +214,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
@@ -241,6 +245,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
@@ -278,6 +286,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
@@ -307,6 +319,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
