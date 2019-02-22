@@ -37,6 +37,7 @@ class SearchViewController: UIViewController {
     private var heightAtIndexPath = [IndexPath: Float]()
     private lazy var searchFilter = [String: String]()
     private var currentTask = URLSessionDataTask()
+    private var isCategorySelected:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,22 +146,101 @@ class SearchViewController: UIViewController {
             category = "dmoz"
         } else {
             category = "dmoz/\(category.capitalized)" 
+            isCategorySelected = true
         }
         switch type {
         case .load:
-            loadArticles(
-                keyword: keyword,
-                language: language, 
-                sort: sort,
-                category: category
-            )
+            if isCategorySelected {
+                loadArticles(
+                    keyword: keyword,
+                    language: language, 
+                    sort: sort,
+                    category: category
+                )
+            } else {
+                loadDefualtArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort
+                )
+            }
         case .loadMore:
-            loadMoreArticles(
-                keyword: keyword, 
-                language: language, 
-                sort: sort,
-                category: category
-            )
+            if isCategorySelected {
+                loadMoreArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort,
+                    category: category
+                )
+            } else {
+                loadMoreDefaultArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort
+                )
+            }
+        }
+    }
+    
+    private func loadDefualtArticles(
+        keyword: String,
+        language: String,
+        sort: String
+        ) {
+        articles = nil
+        guard let searchBarText = searchKeyword else { return }
+        self.defaultView?.removeFromSuperview()
+        self.uiTableView.reloadData()
+        self.setLoadingView()
+        currentTask = BoosterManager.fetchDefaultArticles(
+            keyword: searchBarText,
+            keywordLoc: keyword,
+            lang: language, 
+            articlesSortBy: sort,
+            articlesPage: 1
+        ) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                self.totalPage = articleData.articles.pages
+                DispatchQueue.main.async {
+                    self.isLoading.toggle()
+                    self.uiTableView.reloadData()
+                    self.loadingView?.removeFromSuperview()
+                    if self.articles?.count == 0 {
+                        self.setDefaultView(message: "🤷‍♂️")
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func loadMoreDefaultArticles(
+        keyword: String,
+        language: String,
+        sort: String
+        ) {
+        if page >= totalPage { return }
+        page += 1
+        currentTask = BoosterManager.fetchDefaultArticles(
+            keyword: keyword,
+            keywordLoc: keyword, 
+            lang: language, 
+            articlesSortBy: sort,
+            articlesPage: page
+        ) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles?.append(contentsOf: articleData.articles.results)
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                    self.isMoreLoading = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
