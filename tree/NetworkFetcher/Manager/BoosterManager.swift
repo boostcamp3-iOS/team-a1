@@ -17,7 +17,8 @@ public final class BoosterManager {
         lang: String,
         articlesSortBy: String,
         articlesPage: Int,
-        completion: @escaping (Result<Articles>) -> Void ) -> URLSessionDataTask { return BoosterCenter<EventRegistryAPI>().request(.fetchDefaultArticles(
+        completion: @escaping (Result<Articles>) -> Void ) -> URLSessionDataTask {
+        return BoosterCenter<EventRegistryAPI>().request(.fetchDefaultArticles(
         keyword: keyword,
         keywordLoc: keywordLoc,
         lang: lang,
