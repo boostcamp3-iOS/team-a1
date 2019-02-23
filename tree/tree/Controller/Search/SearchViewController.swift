@@ -138,22 +138,27 @@ class SearchViewController: UIViewController {
         guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
             let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
             let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            let category = searchFilter[SearchFilter.searchCategory.rawValue]
+            var category = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
+        if category == "all" || category == "etc" {
+            category = "dmoz"
+        } else {
+            category = "dmoz/\(category.capitalized)"
+        }
         switch type {
         case .load:
             loadArticles(
                 keyword: keyword,
                 language: language, 
                 sort: sort,
-                category: "dmoz/\(category)"
+                category: category
             )
         case .loadMore:
             loadMoreArticles(
                 keyword: keyword, 
                 language: language, 
                 sort: sort,
-                category: "dmoz/\(category)"
+                category: category
             )
         }
     }
@@ -272,7 +277,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true 
+        return true
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -308,8 +313,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return nil
         }
-        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil) { _ in }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil, nil) { _ in }
         return UISwipeActionsConfiguration(actions: [scrapAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration()
     }
 }
 
