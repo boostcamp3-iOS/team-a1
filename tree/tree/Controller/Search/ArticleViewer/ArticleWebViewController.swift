@@ -14,21 +14,25 @@ class ArticleWebViewController: UIViewController {
 
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var scrapButton: UIButton!
     
     private var loadingView: LoadingView?
     private var article: ExtractArticle?
-    private var webData: Data?
-    var articleURL: URL?
-    var articleURLString: String?
+    private var articleURL: URL?
+    private var isScrappedArticle: Bool = false
+    var webData: Data?
+    var articleURLString: String? {
+        didSet {
+            articleURL = makeURLWithString(urlString: articleURLString)
+        }
+    }
     var articleTitle: String?
     var press: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDelegate()
-        loadWebData(articleURLString)
-//        loadWebView()
-        
+        loadWebView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +41,9 @@ class ArticleWebViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        if isScrappedArticle {
+            navigationController?.isNavigationBarHidden.toggle()
+        }
     }
 
     private func setupDelegate() {
@@ -44,32 +51,51 @@ class ArticleWebViewController: UIViewController {
         webView.navigationDelegate = self
     }
     
-    private func makeURLRequest(urlString: String) -> URLRequest? {
-        if let makeURL = URL(string: urlString) {
-            let urlRequest = URLRequest(url: makeURL)
-            return urlRequest
+    private func loadWebView() {
+        if webData != nil {
+            loadWebData()
+            navigationController?.isNavigationBarHidden = true
+            isScrappedArticle = true
+            scrapButton.isHidden = true
+        } else {
+            loadWebDataWithURL()
         }
-        return nil
     }
     
-    private func loadWebData(_ articleURLString: String?) {
-        guard let urlString = articleURLString,
-        let url = URL(string: urlString) else {
-            return
-        }
-        articleURL = url
+    private func makeURLWithString(urlString: String?) -> URL? {
+        guard let urlString = urlString else { return URL(string: "")}
+        return URL(string: urlString)
+    }
+    
+//    private func makeURLRequest(urlString: String) -> URLRequest? {
+//        if let makeURL = URL(string: urlString) {
+//            let urlRequest = URLRequest(url: makeURL)
+//            return urlRequest
+//        }
+//        return nil
+//    }
+    
+    private func loadWebDataWithURL() {
+        guard let url = articleURL else { return }
         requestWebData(url) { [weak self] (responseData) in
             guard let self = self else { return }
             self.webData = responseData
             DispatchQueue.main.async {
-                self.webView.load(
-                    responseData,
-                    mimeType: "text/html",
-                    characterEncodingName: "utf-8",
-                    baseURL: url
-                )
+                self.loadWebData()
             }
             
+        }
+    }
+    
+    private func loadWebData() {
+        if let url = articleURL,
+            let webData = webData {
+            webView.load(
+                webData,
+                mimeType: "text/html",
+                characterEncodingName: "utf-8",
+                baseURL: url
+            )
         }
     }
     
@@ -116,7 +142,7 @@ class ArticleWebViewController: UIViewController {
     @IBAction func scrapButtonDidTap(_ sender: UIBarButtonItem) {
         guard let articleTitle = articleTitle,
             let press = press,
-            let articleURL = articleURL,
+            let articleURLString = articleURLString,
             let webData = webData else {
                 return }
         ScrapManager.scrapArticle(
@@ -124,7 +150,7 @@ class ArticleWebViewController: UIViewController {
             articleStruct: WebViewArticleStruct(
                 title: articleTitle,
                 press: press,
-                url: articleURL,
+                url: articleURLString,
                 webData: webData
             )
         )
