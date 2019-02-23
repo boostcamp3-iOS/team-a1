@@ -3,14 +3,16 @@
 
 abstract_target 'Gardener' do
     use_frameworks!
-    pod 'SwiftLint'
     pod 'Booster'
     
     target 'tree' do
+        pod 'SwiftLint'
     end
     target 'Trend' do
     end
     target 'TrendUI' do
+    end
+    target 'Widget' do
     end
     target 'NetworkFetcher' do
     end
