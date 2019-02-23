@@ -9,6 +9,7 @@
 import UIKit
 
 open class ImageCache {
+    static let shared = ImageCache()
     let memoryCache = NSCache<AnyObject, AnyObject>()
     let maxCount = 5
     private let ioQueue = DispatchQueue(label: "diskCache")

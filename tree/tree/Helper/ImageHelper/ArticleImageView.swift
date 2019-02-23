@@ -9,7 +9,6 @@
 import UIKit
 
 class ArticleImage: UIImageView {
-    private let imageManager = ImageManager()
     private var task = [URLSessionTask]()
     private var imageUrl: String?
     
@@ -20,10 +19,11 @@ class ArticleImage: UIImageView {
     func loadImage(articleUrl: String) {
         imageUrl = articleUrl
         image = nil
-        if let image = imageManager.loadImageFromCache(articleURL: articleUrl) {
+        if let image = ImageManager.shared.loadImageFromCache(articleURL: articleUrl) {
             self.image = image
             return
         } else {       
+            if task.count > 5 { return }
             loadImageFromServer(articleUrl: articleUrl)
         }
     }
@@ -42,7 +42,7 @@ class ArticleImage: UIImageView {
                     to: self.bounds.size, 
                     scale: self.traitCollection.displayScale
                 )
-                self.imageManager.storeImageToCache(image: image, imageName: articleUrl)
+                ImageManager.shared.storeImageToCache(image: image, imageName: articleUrl)
             }            
         }
         myTask.resume()
