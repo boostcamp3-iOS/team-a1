@@ -1,0 +1,6 @@
+framework module Pods_Gardener_Widget {
+  umbrella header "Pods-Gardener-Widget-umbrella.h"
+
+  export *
+  module * { export * }
+}
