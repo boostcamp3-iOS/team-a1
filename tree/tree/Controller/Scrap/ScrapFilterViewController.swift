@@ -21,20 +21,35 @@ class ScrapFilterViewController: UIViewController {
             return ScrapManager.countArticle(category: $0, nil) != 0
         })
     }()
+    
     weak var filterDelegate: ScrapFilterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewSetup()
+        setupTableView()
+        setupHeaderViewGesture()
     }
     
-    private func tableViewSetup() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(
             UINib(nibName: cellIdentifier, bundle: nil),
             forCellReuseIdentifier: cellIdentifier)
         tableView.separatorStyle = .none
+    }
+    
+    private func setupHeaderViewGesture() {
+        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(headerViewSwipeDownAction)
+        )
+        swipeDownGestureRecognizer.direction = .down
+        headerView.addGestureRecognizer(swipeDownGestureRecognizer)
+    }
+    
+    @objc private func headerViewSwipeDownAction(_ sender: UISwipeGestureRecognizer) {
+       dismiss(animated: true)
     }
 }
 
@@ -58,6 +73,7 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         filterDelegate?.filterArticles(categories[indexPath.row])
         dismiss(animated: true)
     }
