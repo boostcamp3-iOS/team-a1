@@ -40,7 +40,7 @@ extension UITableViewDelegate {
                         ScrapManager.scrapArticle(
                             .search ,
                             articleStruct:
-                            NativeSearchedArticleStruct(articleData: articleData, imageData: imageData)
+                            SearchedArticleStruct(articleData: articleData, imageData: imageData)
                         )
                     } else {
                         if let tempscrppaedArticle = scrppaedArticle {
