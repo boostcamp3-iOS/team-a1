@@ -14,6 +14,7 @@ class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pressLabel: UILabel!
+    @IBOutlet weak var dotLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     
     private var shadowView: UIView {
@@ -58,5 +59,7 @@ class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
         }
         titleLabel.text = title
         pressLabel.text = press
+        dotLabel.isHidden = true
+        timeAgoLabel.isHidden = true
     }
 }
