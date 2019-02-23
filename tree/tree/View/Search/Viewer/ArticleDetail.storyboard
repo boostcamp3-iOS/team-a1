@@ -97,6 +97,13 @@
                                                 <action selector="backButtonItemDidTap:" destination="XeH-nL-Zfx" id="TNf-xf-2UI"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="xR6-nk-mly">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Xf-2h-K0O">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Scrap"/>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -119,6 +126,7 @@
                         <outlet property="contentLabel" destination="t1P-5B-Dcx" id="fse-NM-fQg"/>
                         <outlet property="dateLabel" destination="vXP-hA-2gV" id="bDF-gK-rFa"/>
                         <outlet property="imageView" destination="GSa-pD-2KX" id="Q1H-vW-i55"/>
+                        <outlet property="scrapButton" destination="9Xf-2h-K0O" id="LK3-yS-k9F"/>
                         <outlet property="titleLabel" destination="yA9-Nx-h1T" id="gwa-Lp-MHy"/>
                     </connections>
                 </viewController>
@@ -228,6 +236,7 @@
                     </view>
                     <connections>
                         <outlet property="barButtonItem" destination="eE6-1Q-gFc" id="Ymr-bS-x0T"/>
+                        <outlet property="scrapButton" destination="KEE-zp-XZn" id="eKE-d4-SXm"/>
                         <outlet property="webView" destination="NO9-bh-thx" id="HSk-i4-nWw"/>
                     </connections>
                 </viewController>
