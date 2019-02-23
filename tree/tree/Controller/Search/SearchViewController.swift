@@ -35,9 +35,9 @@ class SearchViewController: UIViewController {
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
     private var heightAtIndexPath = [IndexPath: Float]()
-    private lazy var searchFilter = [String: String]()
     private var currentTask = URLSessionDataTask()
-    private var isCategorySelected:Bool = false
+    private var isCategorySelected: Bool = false
+    private lazy var searchFilter = [String: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -499,9 +499,12 @@ extension SearchViewController: UISearchBarDelegate {
         if searchBarTextField?.text == "" {
             setDefaultView(message: "🧐")
         } 
+        if isLoading {
+            currentTask.cancel()
+            setDefaultView(message: "🧐")
+        }
         searchBarTextField?.text = ""
         self.navigationItem.title = "Search"
-        currentTask.cancel()
         loadingView?.removeFromSuperview()
         searchBarHideAndSetting()
     }
@@ -517,14 +520,14 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.loadImageUrl(articleUrl: articleUrl)
+            articleImage.loadImage(articleUrl: articleUrl)
         })
     }
     
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.cancelLoadingImage(articleUrl)
+            articleImage.cancelImage(articleUrl: articleUrl)
         })    
     }
 }

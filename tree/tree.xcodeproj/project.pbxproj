@@ -23,6 +23,7 @@
 		6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */; };
 		6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */; };
 		6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B1221EDAC800A0DBAF /* Config.swift */; };
+		6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */; };
 		6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */; };
 		6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */; };
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
@@ -207,6 +208,7 @@
 		6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Filter.swift"; sourceTree = "<group>"; };
 		6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
 		6A0BF6B1221EDAC800A0DBAF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTypeEnum.swift; sourceTree = "<group>"; };
 		6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+PickerViewType.swift"; sourceTree = "<group>"; };
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			children = (
 				6A5D282922013FA5009EC8ED /* ArticleImageView.swift */,
 				6A65DA492206190C005EB2BC /* ImageCache.swift */,
+				6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */,
 			);
 			path = ImageHelper;
 			sourceTree = "<group>";
@@ -1156,6 +1159,7 @@
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */,
+				6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,

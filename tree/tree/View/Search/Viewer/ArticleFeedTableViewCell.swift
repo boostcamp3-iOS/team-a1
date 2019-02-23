@@ -59,7 +59,7 @@ class ArticleFeedTableViewCell: UITableViewCell {
         } 
         if let articleImage = article.image { 
             self.imageStackView.isHidden = false
-            self.articleImageView.loadImageUrl(articleUrl: articleImage)
+            self.articleImageView.loadImage(articleUrl: articleImage)
         } else {
             self.imageStackView.isHidden = true
         }

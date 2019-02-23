@@ -53,7 +53,7 @@ class ArticleDetailViewController: UIViewController {
             imageView.isHidden = true
             return 
         }
-        self.imageView.loadImageUrl(articleUrl: imageUrl)
+        self.imageView.loadImage(articleUrl: imageUrl)
     }
     
     private func registerGestureRecognizer() {
