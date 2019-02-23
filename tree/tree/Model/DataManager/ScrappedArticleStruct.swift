@@ -29,12 +29,14 @@ public enum ScrappedArticleType: CaseIterable {
     }
 }
 
-public struct NativeSearchedArticleStruct {
+public protocol Scrappable { }
+
+public struct SearchedArticleStruct: Scrappable {
     let articleData: Article
     let imageData: Data?
 }
 
-public struct WebExtractedArticleStruct {
+public struct WebExtractedArticleStruct: Scrappable {
     let title: String
     let detail: String
     let press: String
@@ -42,7 +44,7 @@ public struct WebExtractedArticleStruct {
     let imageData: Data?
 }
 
-public struct WebViewArticleStruct {
+public struct WebViewArticleStruct: Scrappable {
     let title: String
     let press: String
     let url: String

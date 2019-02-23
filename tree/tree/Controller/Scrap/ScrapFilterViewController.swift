@@ -73,7 +73,7 @@ extension ScrapFilterViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
         filterDelegate?.filterArticles(categories[indexPath.row])
         dismiss(animated: true)
     }
