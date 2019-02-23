@@ -16,7 +16,7 @@ class ArticleImage: UIImageView {
         self.image = UIImage(data: from)
     }
     
-    func loadImage(articleUrl: String) {
+    func loadImageUrl(articleUrl: String) {
         imageUrl = articleUrl
         image = nil
         if let image = ImageManager.shared.loadImageFromCache(articleURL: articleUrl) {

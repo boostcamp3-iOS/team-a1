@@ -46,23 +46,23 @@ public final class BoosterManager {
         articlesPage: Int,
         completion: @escaping (Result<Articles>) -> Void ) -> URLSessionDataTask {
         return BoosterCenter<EventRegistryAPI>().request(.fetchArticles(
-                keyword: keyword,
-                keywordLoc: keywordLoc,
-                lang: lang,
-                articlesSortBy: articlesSortBy,
-                categoryUri: categoryUri,
-                articlesPage: articlesPage)) { (data, error) in
-                    guard error == nil else {
-                        return completion(Result.failure(error!))
-                    }
-                    guard let responseData = data else { return }
-                    do {
-                        let decodeJSON = try JSONDecoder().decode(Articles.self, from: responseData)
-                        completion(Result.success(decodeJSON))
-                    } catch {
-                        completion(Result.failure(BoosterError.decodingFail))
-                    }
-            }
+            keyword: keyword,
+            keywordLoc: keywordLoc,
+            lang: lang,
+            articlesSortBy: articlesSortBy,
+            categoryUri: categoryUri,
+            articlesPage: articlesPage)) { (data, error) in
+                guard error == nil else {
+                    return completion(Result.failure(error!))
+                }
+                guard let responseData = data else { return }
+                do {
+                    let decodeJSON = try JSONDecoder().decode(Articles.self, from: responseData)
+                    completion(Result.success(decodeJSON))
+                } catch {
+                    completion(Result.failure(BoosterError.decodingFail))
+                }
+        }
     }
     
     public static func fetchDailyTrends(

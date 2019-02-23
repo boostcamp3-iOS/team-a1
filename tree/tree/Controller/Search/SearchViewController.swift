@@ -136,19 +136,25 @@ class SearchViewController: UIViewController {
         view.addSubview(defaultLabel)
     }
     
+    private func checkCategoryStatus(_ category: String) -> String {
+        if category.lowercased() == "all" || category == "etc" { 
+            let categoryPram = "dmoz"
+            isCategorySelected = false
+            return categoryPram
+        } else {
+            let categoryPram = "dmoz/\(category.capitalized)" 
+            isCategorySelected = true
+            return categoryPram
+        }
+    }
+    
     private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
         guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
             let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
             let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            var category = searchFilter[SearchFilter.searchCategory.rawValue]
+            let categoryPram = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
-        if category.lowercased() == "all" || category == "etc" { 
-            category = "dmoz"
-            isCategorySelected = false
-        } else {
-            category = "dmoz/\(category.capitalized)" 
-            isCategorySelected = true
-        }
+        let category = checkCategoryStatus(categoryPram)
         switch type {
         case .load:
             if isCategorySelected {
@@ -524,7 +530,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.loadImage(articleUrl: articleUrl)
+            articleImage.loadImageUrl(articleUrl: articleUrl)
         })
     }
     
