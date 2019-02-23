@@ -56,4 +56,16 @@ open class ImageCache {
             try? self.imageStoreToDisk(image: image, name: imageName)
         }
     }
+    
+    func removeAllImages() {
+        let diskCache = (NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
+        if let appId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as? String {
+            let path = String(format:"%@/%@/Cache.db-wal", diskCache, appId)
+            do {
+                try FileManager.default.removeItem(atPath: path)
+            } catch {
+                print("ERROR DESCRIPTION: \(error)")
+            }
+        }
+    }
 }
