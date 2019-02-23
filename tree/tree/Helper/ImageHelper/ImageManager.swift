@@ -8,11 +8,11 @@
 
 import UIKit
 
-open class ImageManager {
+class ImageManager {
     static let shared = ImageManager()
     
     func loadImageFromCache(articleURL: String) -> UIImage? {
-        if let image = ImageCache.shared.getImageFromMemoryCache(articleUrl: articleURL) {
+        if let image = ImageCache.shared.loadImageFromMemoryCache(articleUrl: articleURL) {
             return image
         } else {
             if let path = articleURL.components(separatedBy: "/").last, 

@@ -8,12 +8,12 @@
 
 import UIKit
 
-open class ImageCache {
+class ImageCache {
     static let shared = ImageCache()
     let memoryCache = NSCache<AnyObject, AnyObject>()
     private let ioQueue = DispatchQueue(label: "diskCache")
     
-    func getImageFromMemoryCache(articleUrl: String) -> UIImage? {
+    func loadImageFromMemoryCache(articleUrl: String) -> UIImage? {
         if let memoryImage = memoryCache.object(forKey: articleUrl as AnyObject) as? UIImage {
             return memoryImage
         } 
@@ -39,7 +39,7 @@ open class ImageCache {
         return directory?.appendingPathComponent(imageName)
     }
     
-    func imageStoreToDisk(image: UIImage, name: String) throws {
+    func storeImageToDisk(image: UIImage, name: String) {
         guard let imageData = image.jpegData(compressionQuality: 1.0) else { return }
         guard let imagePath = self.path(for: name) else { return }
         if !FileManager.default.fileExists(atPath: imagePath.path) {
@@ -53,7 +53,7 @@ open class ImageCache {
     
     func serverImageStoreToDisk(image: UIImage, imageName: String) {
         ioQueue.async {
-            try? self.imageStoreToDisk(image: image, name: imageName)
+            try? self.storeImageToDisk(image: image, name: imageName)
         }
     }
 }

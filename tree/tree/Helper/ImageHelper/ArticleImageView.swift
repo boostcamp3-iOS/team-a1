@@ -34,7 +34,7 @@ class ArticleImage: UIImageView {
         self.image = nil
         guard let imageURL = URL(string: articleUrl) else { return }
         guard task.index(where: {$0.originalRequest?.url == imageURL }) == nil else { return }
-        let myTask = URLSession.shared.dataTask(with: imageURL) { [weak self] (data, _, _) in
+        let imageTask = URLSession.shared.dataTask(with: imageURL) { [weak self] (data, _, _) in
             guard let self = self else { return }
             guard let data = data else { return }
             guard let image = UIImage(data: data) else { return } 
@@ -49,8 +49,8 @@ class ArticleImage: UIImageView {
                 ImageManager.shared.storeImageToCache(image: image, imageName: articleUrl)
             }            
         }
-        myTask.resume()
-        task.append(myTask)
+        imageTask.resume()
+        task.append(imageTask)
     }
     
     func cancelImage(articleUrl: String) {
