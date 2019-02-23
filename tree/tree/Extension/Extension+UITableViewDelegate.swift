@@ -20,7 +20,8 @@ extension UITableViewDelegate {
         _ type: CustomUIContextualActionState,
         _ articleData: Article?,
         _ imageData: Data?,
-        _ articleUri: String?,
+        _ articleIdentifier: String?,
+        _ articleType: ScrappedArticleType?,
         completion: @escaping (Bool) -> Void
         ) -> UIContextualAction {
         switch type {
@@ -37,14 +38,10 @@ extension UITableViewDelegate {
                 title: nil) { (_, _, success) in
                     if !isScrapped {
                         ScrapManager.scrapArticle(
-                            .nativeSearch ,
+                            .search ,
                             articleStruct:
                             NativeSearchedArticleStruct(articleData: articleData, imageData: imageData)
                         )
-//                        ScrapManager.scrapArticle(
-//                            article: articleData,
-//                            imageData: imageData
-//                        )
                     } else {
                         if let tempscrppaedArticle = scrppaedArticle {
                             ScrapManager.removeArticle(tempscrppaedArticle)
@@ -56,7 +53,6 @@ extension UITableViewDelegate {
                         let scrapViewController =
                             appDelegate.scrapViewController as? ScrapViewController
                         else { return }
-                    
                     scrapViewController.scrappedArticles = ScrapManager.fetchArticles()
                     scrapViewController.setupScrapBadgeValue()
                     completion(true)
@@ -85,8 +81,9 @@ extension UITableViewDelegate {
             let readAction = UIContextualAction(
                 style: .normal,
                 title: nil) { (_, _, success) in
-                    if let articleUri = articleUri {
-                        ScrapManager.readArticle(articleUri)
+                    if let articleIdentifier = articleIdentifier,
+                        let articleType: ScrappedArticleType = articleType {
+                        ScrapManager.readArticle(articleType ,articleIdentifier)
                         completion(true)
                     } else {
                         completion(false)
