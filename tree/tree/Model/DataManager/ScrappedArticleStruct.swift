@@ -9,10 +9,20 @@
 import UIKit
 import NetworkFetcher
 
-public enum ScrappedArticleTypeEnum {
-    case nativeSearch
-    case nativeWeb
+public enum ScrappedArticleType: CaseIterable {
+    case search
+    case webExtracted
     case web
+    
+    init(type: String) {
+        for item in ScrappedArticleType.allCases {
+            if type == item.stringValue {
+                self = item
+                return
+            }
+        }
+        self = .search
+    }
     
     var stringValue: String {
         return "\(self)"
@@ -24,14 +34,17 @@ public struct NativeSearchedArticleStruct {
     let imageData: Data?
 }
 
-public struct WebNativeViewrArticleStruct {
+public struct WebExtractedArticleStruct {
     let title: String
+    let detail: String
     let press: String
+    let url: String
+    let imageData: Data?
 }
 
 public struct WebViewArticleStruct {
     let title: String
     let press: String
-    let url: URL
+    let url: String
     let webData: Data
 }
