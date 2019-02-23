@@ -9,16 +9,16 @@
 import UIKit
 
 open class ImageManager {
-    let imageCahce = ImageCache()
+    let imageCache = ImageCache()
     
     func loadImageFromCache(articleURL: String) -> UIImage? {
-        if let image = imageCahce.getImageFromMemoryCache(articleUrl: articleURL) {
+        if let image = imageCache.getImageFromMemoryCache(articleUrl: articleURL) {
             return image
         } else {
             if let path = articleURL.components(separatedBy: "/").last, 
-                let imagePath = imageCahce.path(for: path),
+                let imagePath = imageCache.path(for: path),
                 let image = UIImage(contentsOfFile: imagePath.path) {
-                    imageCahce.imageStoreToMemory(image: image, imageName: articleURL)
+                    imageCache.imageStoreToMemory(image: image, imageName: articleURL)
                 return image
             }
         }
@@ -27,7 +27,7 @@ open class ImageManager {
     
     func storeImageToCache(image: UIImage, imageName: String) {
         if let extract = imageName.components(separatedBy: "/").last {
-            imageCahce.serverImageStoreToDisk(image: image, imageName: extract)
+            imageCache.serverImageStoreToDisk(image: image, imageName: extract)
         }
     }
 }
