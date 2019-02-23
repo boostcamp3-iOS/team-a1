@@ -345,7 +345,6 @@ class SearchViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        ImageCache.shared.removeAllImages()
         ImageCache.shared.memoryCache.removeAllObjects()
     }
 }

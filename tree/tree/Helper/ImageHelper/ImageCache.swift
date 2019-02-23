@@ -11,7 +11,6 @@ import UIKit
 open class ImageCache {
     static let shared = ImageCache()
     let memoryCache = NSCache<AnyObject, AnyObject>()
-    let maxCount = 5
     private let ioQueue = DispatchQueue(label: "diskCache")
     
     func getImageFromMemoryCache(articleUrl: String) -> UIImage? {
@@ -55,18 +54,6 @@ open class ImageCache {
     func serverImageStoreToDisk(image: UIImage, imageName: String) {
         ioQueue.async {
             try? self.imageStoreToDisk(image: image, name: imageName)
-        }
-    }
-    
-    func removeAllImages() {
-        let diskCache = (NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
-        if let appId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as? String {
-            let path = String(format:"%@/%@/Cache.db-wal", diskCache, appId)
-            do {
-                try FileManager.default.removeItem(atPath: path)
-            } catch {
-                print("ERROR DESCRIPTION: \(error)")
-            }
         }
     }
 }
