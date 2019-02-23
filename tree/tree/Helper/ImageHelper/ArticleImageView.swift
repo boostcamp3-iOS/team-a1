@@ -20,15 +20,17 @@ class ArticleImage: UIImageView {
         imageUrl = articleUrl
         image = nil
         if let image = ImageManager.shared.loadImageFromCache(articleURL: articleUrl) {
-            self.image = image
+            if imageUrl == articleUrl {
+                self.image = image
+            }
             return
         } else {       
-            if task.count > 5 { return }
             loadImageFromServer(articleUrl: articleUrl)
         }
     }
     
     func loadImageFromServer(articleUrl: String) {
+        imageUrl = articleUrl
         self.image = nil
         guard let imageURL = URL(string: articleUrl) else { return }
         guard task.index(where: {$0.originalRequest?.url == imageURL }) == nil else { return }
@@ -37,11 +39,13 @@ class ArticleImage: UIImageView {
             guard let data = data else { return }
             guard let image = UIImage(data: data) else { return } 
             DispatchQueue.main.async {
-                self.image = self.downsampledImage(
-                    data: data, 
-                    to: self.bounds.size, 
-                    scale: self.traitCollection.displayScale
-                )
+                if self.imageUrl == articleUrl {
+                    self.image = self.downsampledImage(
+                        data: data, 
+                        to: self.bounds.size, 
+                        scale: self.traitCollection.displayScale
+                    )
+                }
                 ImageManager.shared.storeImageToCache(image: image, imageName: articleUrl)
             }            
         }
@@ -51,7 +55,7 @@ class ArticleImage: UIImageView {
     
     func cancelImage(articleUrl: String) {
         guard let imageURL = URL(string: articleUrl) else { return }
-        guard let taskIndex = task.index(where:{ 
+        guard let taskIndex = task.index(where: { 
             $0.originalRequest?.url == imageURL
         }) else { return }
         let myTask = task[taskIndex]
