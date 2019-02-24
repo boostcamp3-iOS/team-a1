@@ -41,6 +41,10 @@
 		BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */; };
 		BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */; };
 		BC19FD17220D9D20006A9C7D /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
+		BC22AB9622212A4900F4EADA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC22AB9522212A4900F4EADA /* NotificationCenter.framework */; };
+		BC22AB9922212A4900F4EADA /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC22AB9822212A4900F4EADA /* TodayViewController.swift */; };
+		BC22AB9C22212A4900F4EADA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC22AB9A22212A4900F4EADA /* MainInterface.storyboard */; };
+		BC22ABA022212A4900F4EADA /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC22AB9422212A4900F4EADA /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2656AF21FD94E000003413 /* Extension+URL.swift */; };
 		BC42C038221138C100E0833B /* Enum+HeaderTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C037221138C100E0833B /* Enum+HeaderTitles.swift */; };
 		BC42C07A22128DEB00E0833B /* EventPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC42C07922128DEB00E0833B /* EventPageView.swift */; };
@@ -84,6 +88,10 @@
 		BC7969C72200AD190003F520 /* TrendPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969C62200AD190003F520 /* TrendPageView.xib */; };
 		BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7969D1220174B40003F520 /* TrendListCell.swift */; };
 		BC7969D4220174B40003F520 /* TrendListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7969D2220174B40003F520 /* TrendListCell.xib */; };
+		BC9AFF8C22212EF500C58A0C /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
+		BC9AFF8E2221335100C58A0C /* RankKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9AFF8D2221335100C58A0C /* RankKeywordCell.swift */; };
+		BC9AFF8F2221428300C58A0C /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
+		BC9AFF902221455A00C58A0C /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
 		BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */; };
 		BC9E02AB2202EBFD00ADD1D5 /* TrendListHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */; };
 		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
@@ -133,9 +141,17 @@
 		D9DFFB47220EEA7F0047E326 /* ScrapFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB44220EEA7F0047E326 /* ScrapFilter.storyboard */; };
 		D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB48220EEA990047E326 /* Scrap.storyboard */; };
 		D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB4A220EEADC0047E326 /* ScrapFilterDelegate.swift */; };
+		FD180142E74F535E060F256D /* Pods_Gardener_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C6F7C2A4AF4CA9EF60A8F5 /* Pods_Gardener_Widget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC22AB9E22212A4900F4EADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35DC0DC321F6F3C700F30416 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC22AB9322212A4900F4EADA;
+			remoteInfo = Widget;
+		};
 		BC558EED221944890037C1EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35DC0DC321F6F3C700F30416 /* Project object */;
@@ -160,6 +176,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				BC558EF2221944890037C1EF /* Trend.appex in Embed App Extensions */,
+				BC22ABA022212A4900F4EADA /* Widget.appex in Embed App Extensions */,
 				BC558EEF221944890037C1EF /* TrendUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -188,7 +205,9 @@
 
 /* Begin PBXFileReference section */
 		257B82A712A3506321E817B6 /* Pods_Gardener_NetworkFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardener_NetworkFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25DE257183B60CFDBCEFEFC3 /* Pods-Gardener-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-Widget/Pods-Gardener-Widget.release.xcconfig"; sourceTree = "<group>"; };
 		2DE435D648E802AB74F4AC77 /* Pods-Gardener-tree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-tree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree.debug.xcconfig"; sourceTree = "<group>"; };
+		34C6F7C2A4AF4CA9EF60A8F5 /* Pods_Gardener_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardener_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CB481C21FAE7C8000D96CF /* ArticleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleImageViewController.swift; sourceTree = "<group>"; };
 		35CB481E21FB6306000D96CF /* ArticleFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleFeedTableViewCell.swift; sourceTree = "<group>"; };
 		35CB481F21FB6306000D96CF /* ArticleFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleFeedTableViewCell.xib; sourceTree = "<group>"; };
@@ -231,6 +250,11 @@
 		BC19FD12220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+TimeIntervalTypes.swift"; sourceTree = "<group>"; };
 		BC19FD14220D965E006A9C7D /* Enum+TimeUnitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+TimeUnitTypes.swift"; sourceTree = "<group>"; };
 		BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+LocalizedLanguages.swift"; sourceTree = "<group>"; };
+		BC22AB9422212A4900F4EADA /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC22AB9522212A4900F4EADA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		BC22AB9822212A4900F4EADA /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		BC22AB9B22212A4900F4EADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		BC22AB9D22212A4900F4EADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC2656AF21FD94E000003413 /* Extension+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+URL.swift"; sourceTree = "<group>"; };
 		BC2656B321FD94EE00003413 /* EventRegistryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRegistryAPI.swift; sourceTree = "<group>"; };
 		BC2656B621FD94EE00003413 /* BoosterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoosterManager.swift; sourceTree = "<group>"; };
@@ -277,6 +301,7 @@
 		BC7969C62200AD190003F520 /* TrendPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendPageView.xib; sourceTree = "<group>"; };
 		BC7969D1220174B40003F520 /* TrendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendListCell.swift; sourceTree = "<group>"; };
 		BC7969D2220174B40003F520 /* TrendListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendListCell.xib; sourceTree = "<group>"; };
+		BC9AFF8D2221335100C58A0C /* RankKeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankKeywordCell.swift; sourceTree = "<group>"; };
 		BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendListHeaderCell.swift; sourceTree = "<group>"; };
 		BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendListHeaderCell.xib; sourceTree = "<group>"; };
 		BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Animator.swift"; sourceTree = "<group>"; };
@@ -286,6 +311,7 @@
 		BCE1B8B72217E43F0098B3B8 /* NibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibName.swift; sourceTree = "<group>"; };
 		BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworkFetcher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C629F6563A956B7370373F18 /* Pods-Gardener-TrendUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-TrendUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-TrendUI/Pods-Gardener-TrendUI.debug.xcconfig"; sourceTree = "<group>"; };
+		C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-Widget/Pods-Gardener-Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		D96DC268221ECC490028EF20 /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		D96DC26A221ECF130028EF20 /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
@@ -324,6 +350,16 @@
 			files = (
 				BCF98CA3221DC3E00044A65A /* libNetworkFetcher.a in Frameworks */,
 				42AF9C957EF0A13CD22B6102 /* Pods_Gardener_tree.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC22AB9122212A4900F4EADA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC9AFF8C22212EF500C58A0C /* libNetworkFetcher.a in Frameworks */,
+				BC22AB9622212A4900F4EADA /* NotificationCenter.framework in Frameworks */,
+				FD180142E74F535E060F256D /* Pods_Gardener_Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +404,8 @@
 				E9EC4F7148FA213C3B480AB4 /* Pods-Gardener-tree.release.xcconfig */,
 				91E0860E8D668BAF58933746 /* Pods-Gardener-NetworkFetcher.debug.xcconfig */,
 				90AFBC8BB9092C8ACCC4A5FE /* Pods-Gardener-NetworkFetcher.release.xcconfig */,
+				C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */,
+				25DE257183B60CFDBCEFEFC3 /* Pods-Gardener-Widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -379,6 +417,7 @@
 				BC558EDB221944890037C1EF /* Trend */,
 				BC558EE6221944890037C1EF /* TrendUI */,
 				BCF98C91221DC2B80044A65A /* NetworkFetcher */,
+				BC22AB9722212A4900F4EADA /* Widget */,
 				35DC0DCC21F6F3C700F30416 /* Products */,
 				2D4B42C94B5BA86EDCCB8E9D /* Pods */,
 				968D39AD37EEED1A9F7CF6F0 /* Frameworks */,
@@ -392,6 +431,7 @@
 				BC558EDA221944890037C1EF /* Trend.appex */,
 				BC558EE3221944890037C1EF /* TrendUI.appex */,
 				BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */,
+				BC22AB9422212A4900F4EADA /* Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,8 +506,21 @@
 				EEEB27F0D5DF06B823695A8D /* Pods_Gardener_TrendUI.framework */,
 				6490B921BE141CA5C1948D9B /* Pods_Gardener_tree.framework */,
 				257B82A712A3506321E817B6 /* Pods_Gardener_NetworkFetcher.framework */,
+				BC22AB9522212A4900F4EADA /* NotificationCenter.framework */,
+				34C6F7C2A4AF4CA9EF60A8F5 /* Pods_Gardener_Widget.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC22AB9722212A4900F4EADA /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				BC22AB9822212A4900F4EADA /* TodayViewController.swift */,
+				BC9AFF8D2221335100C58A0C /* RankKeywordCell.swift */,
+				BC22AB9A22212A4900F4EADA /* MainInterface.storyboard */,
+				BC22AB9D22212A4900F4EADA /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		BC2656B221FD94EE00003413 /* EndPoint */ = {
@@ -808,11 +861,30 @@
 			dependencies = (
 				BC558EEE221944890037C1EF /* PBXTargetDependency */,
 				BC558EF1221944890037C1EF /* PBXTargetDependency */,
+				BC22AB9F22212A4900F4EADA /* PBXTargetDependency */,
 			);
 			name = tree;
 			productName = tree;
 			productReference = 35DC0DCB21F6F3C700F30416 /* tree.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BC22AB9322212A4900F4EADA /* Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC22ABA322212A4900F4EADA /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildPhases = (
+				A1C4896835514741AC434BED /* [CP] Check Pods Manifest.lock */,
+				BC22AB9022212A4900F4EADA /* Sources */,
+				BC22AB9122212A4900F4EADA /* Frameworks */,
+				BC22AB9222212A4900F4EADA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Widget;
+			productName = Widget;
+			productReference = BC22AB9422212A4900F4EADA /* Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		BC558ED9221944890037C1EF /* Trend */ = {
 			isa = PBXNativeTarget;
@@ -886,6 +958,9 @@
 							};
 						};
 					};
+					BC22AB9322212A4900F4EADA = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					BC558ED9221944890037C1EF = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -914,6 +989,7 @@
 				BC558ED9221944890037C1EF /* Trend */,
 				BC558EE2221944890037C1EF /* TrendUI */,
 				BCF98C8F221DC2B80044A65A /* NetworkFetcher */,
+				BC22AB9322212A4900F4EADA /* Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -946,6 +1022,14 @@
 				D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */,
 				D9DFFB49220EEA990047E326 /* Scrap.storyboard in Resources */,
 				BC7969D4220174B40003F520 /* TrendListCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC22AB9222212A4900F4EADA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC22AB9C22212A4900F4EADA /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,6 +1133,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Gardener-tree-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1C4896835514741AC434BED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gardener-Widget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1171,6 +1277,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC22AB9022212A4900F4EADA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC9AFF8F2221428300C58A0C /* Enum+LocalizedLanguages.swift in Sources */,
+				BC22AB9922212A4900F4EADA /* TodayViewController.swift in Sources */,
+				BC9AFF8E2221335100C58A0C /* RankKeywordCell.swift in Sources */,
+				BC9AFF902221455A00C58A0C /* Enum+Countries.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC558ED6221944890037C1EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1220,6 +1337,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC22AB9F22212A4900F4EADA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC22AB9322212A4900F4EADA /* Widget */;
+			targetProxy = BC22AB9E22212A4900F4EADA /* PBXContainerItemProxy */;
+		};
 		BC558EEE221944890037C1EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BC558EE2221944890037C1EF /* TrendUI */;
@@ -1247,6 +1369,14 @@
 				35DC0DD821F6F3CB00F30416 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BC22AB9A22212A4900F4EADA /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC22AB9B22212A4900F4EADA /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		BC558EE9221944890037C1EF /* MainInterface.storyboard */ = {
@@ -1420,6 +1550,46 @@
 			};
 			name = Release;
 		};
+		BC22ABA122212A4900F4EADA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC22ABA222212A4900F4EADA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25DE257183B60CFDBCEFEFC3 /* Pods-Gardener-Widget.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H92U9KV5T2;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		BC558EF4221944890037C1EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C629F6563A956B7370373F18 /* Pods-Gardener-TrendUI.debug.xcconfig */;
@@ -1551,6 +1721,15 @@
 			buildConfigurations = (
 				35DC0DDE21F6F3CB00F30416 /* Debug */,
 				35DC0DDF21F6F3CB00F30416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC22ABA322212A4900F4EADA /* Build configuration list for PBXNativeTarget "Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC22ABA122212A4900F4EADA /* Debug */,
+				BC22ABA222212A4900F4EADA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
