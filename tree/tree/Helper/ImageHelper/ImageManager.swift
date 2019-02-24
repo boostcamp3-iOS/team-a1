@@ -18,7 +18,7 @@ class ImageManager {
             if let path = articleURL.components(separatedBy: "/").last, 
                 let imagePath = ImageCache.shared.path(for: path),
                 let image = UIImage(contentsOfFile: imagePath.path) {
-                    ImageCache.shared.imageStoreToMemory(image: image, imageName: articleURL)
+                    ImageCache.shared.storeImageToMemory(image: image, imageName: articleURL)
                 return image
             }
         }
@@ -27,7 +27,7 @@ class ImageManager {
     
     func storeImageToCache(image: UIImage, imageName: String) {
         if let extract = imageName.components(separatedBy: "/").last {
-            ImageCache.shared.serverImageStoreToDisk(image: image, imageName: extract)
+            ImageCache.shared.storeServerImageToDisk(image: image, imageName: extract)
         }
     }
 }

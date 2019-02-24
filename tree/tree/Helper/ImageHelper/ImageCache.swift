@@ -20,7 +20,7 @@ class ImageCache {
         return nil
     }
     
-    func getImageFromDisckCache(imagePath: String) -> UIImage? {
+    func loadImageFromDisckCache(imagePath: String) -> UIImage? {
         if let imagePath = path(for: imagePath),
             let diskImage = UIImage(contentsOfFile: imagePath.path) {
                 return diskImage
@@ -28,7 +28,7 @@ class ImageCache {
         return nil
     }
     
-    func imageStoreToMemory(image: UIImage, imageName: String) {
+    func storeImageToMemory(image: UIImage, imageName: String) {
         memoryCache.setObject(image, 
                               forKey: imageName as AnyObject
         )
@@ -51,7 +51,7 @@ class ImageCache {
         }
     }
     
-    func serverImageStoreToDisk(image: UIImage, imageName: String) {
+    func storeServerImageToDisk(image: UIImage, imageName: String) {
         ioQueue.async {
             try? self.storeImageToDisk(image: image, name: imageName)
         }

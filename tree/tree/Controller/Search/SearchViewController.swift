@@ -138,9 +138,9 @@ class SearchViewController: UIViewController {
     
     private func checkCategoryStatus(_ category: String) -> String {
         if category.lowercased() == "all" || category == "etc" { 
-            let categoryPram = "dmoz"
+            let categoryPrameter = "dmoz"
             isCategorySelected = false
-            return categoryPram
+            return categoryPrameter
         } else {
             let categoryPram = "dmoz/\(category.capitalized)" 
             isCategorySelected = true
@@ -152,9 +152,9 @@ class SearchViewController: UIViewController {
         guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
             let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
             let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            let categoryPram = searchFilter[SearchFilter.searchCategory.rawValue]
+            let categoryPrameter = searchFilter[SearchFilter.searchCategory.rawValue]
             else { return }
-        let category = checkCategoryStatus(categoryPram)
+        let category = checkCategoryStatus(categoryPrameter)
         switch type {
         case .load:
             if isCategorySelected {
@@ -506,14 +506,14 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        if searchBarTextField?.text == "" {
+        if let searchBarText = searchBarTextField?.text, searchBarText.isEmpty {
             setDefaultView(message: "🧐")
         } 
         if isLoading {
             currentTask.cancel()
             setDefaultView(message: "🧐")
         }
-        searchBarTextField?.text = ""
+        searchBarTextField?.text = nil
         self.navigationItem.title = "Search"
         loadingView?.removeFromSuperview()
         searchBarHideAndSetting()
@@ -584,3 +584,5 @@ extension SearchViewController: FilterSettingDelegate {
         }
     }
 }
+
+
