@@ -6,7 +6,7 @@
 
 ## Team Gardener
 > BoostCamp 3th A-1 Team
-
+- tutor : yagom 
 - [박성준](https://github.com/godpp) 
 - [김혜리](https://github.com/kimhyeri) 
 - [김현태](https://github.com/onemoongit)
