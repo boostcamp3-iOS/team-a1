@@ -16,15 +16,19 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var imageView: ArticleImage!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var scrapButton: UIButton!
     
     private var floatingButton = UIButton()
     private var isNavigationBarHidden = false
+    var articleURLString: String?
+    var articlePress: String?
     var articleData: AnyObject?
     var scrappedArticleDetail: ScrappedArticle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerGestureRecognizer()
+        setupScrapButton()
         if scrappedArticleDetail == nil {
             configure()
         } else {
@@ -61,6 +65,41 @@ class ArticleDetailViewController: UIViewController {
         imageView.addGestureRecognizer(tapGesture)
     }
     
+    private func setupScrapButton() {
+        scrapButton.addTarget(self, action: #selector(scrapButtonDidTapped), for: .touchUpInside)
+    }
+    
+    @objc private func scrapButtonDidTapped(_ sender: UIButton) {
+        guard let article = articleData as? ExtractArticle else { return }
+        var detail: String {
+            if article.body.count == 0 {
+                return article.description
+            } else {
+                return article.body
+            }
+        }
+        var imageData: Data? {
+            if let uiImage = imageView.image {
+                return UIImage.pngData(uiImage)()
+            } else {
+                return nil
+            }
+        }
+        guard let articleURLString = articleURLString,
+        let press = articlePress else {
+            return
+        }
+        
+        let articleStruct = WebExtractedArticleStruct(
+            title: article.title,
+            detail: detail,
+            press: press,
+            url: articleURLString,
+            imageData: imageData
+        )
+        ScrapManager.scrapArticle(.webExtracted, articleStruct: articleStruct)
+    }
+    
     private func configure() {
         switch articleData {
         case is ExtractArticle:
@@ -87,18 +126,20 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func configureWithScrappedArticle() {
+        scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
         if let title = articleData.articleTitle,
-            let date = articleData.articleDate,
             let content = articleData.articleDescription {
             titleLabel.text = title
-            dateLabel.text = date
             contentLabel.text = content
+        }
+        if let date = articleData.articleDate {
+            dateLabel.text = date
         }
         if let author = articleData.articleAuthor {
             authorLabel.text = author
         }
-        if let image = articleData.image {
+        if let image = articleData.articleData {
             imageView.image(from: image as Data)
         }
     }

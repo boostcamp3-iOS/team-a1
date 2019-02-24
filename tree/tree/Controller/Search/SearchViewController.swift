@@ -380,7 +380,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true 
+        return true
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -416,8 +416,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return nil
         }
-        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil) { _ in }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil, nil) { _ in }
         return UISwipeActionsConfiguration(actions: [scrapAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration()
     }
 }
 

@@ -22,27 +22,34 @@ final class ScrapManager {
         
         return managedContext
     }()
-
+    
     static func scrapArticle(
-        article: Article,
-        category: ArticleCategory,
-        imageData: Data?
-    ) -> Void {
+        _ type: ScrappedArticleType,
+        articleStruct: Any
+    ) {
         guard let entity =
             NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext) else {
                 return
         }
         let newArticle = ScrappedArticle(entity: entity, insertInto: managedContext)
-        newArticle.setValues(
-            newArticle,
-            articleData: article,
-            categoryEnum: category,
-            imageData: imageData
-        )
+        switch type {
+        case .search:
+            guard let articleStruct = articleStruct as? SearchedArticleStruct else { return }
+            newArticle.setValues(articleStruct)
+        case .webExtracted:
+            guard let articleStruct = articleStruct as? WebExtractedArticleStruct else { return }
+            newArticle.setValues(articleStruct)
+        case .web:
+            guard let articleStruct = articleStruct as? WebViewArticleStruct else { return }
+            newArticle.setValues(articleStruct)
+        }
+        
         do {
             try managedContext.save()
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+            appDelegate.scrapViewController?.setupScrapBadgeValue()
+            
         } catch {
             print(error.localizedDescription)
         }
@@ -119,13 +126,23 @@ final class ScrapManager {
         }
     }
     
-    static func readArticle(_ articleUri: String) {
+    static func readArticle(
+        _ articleType: ScrappedArticleType,
+        _ articleIdentifier: String
+    ) {
         let request: NSFetchRequest = ScrappedArticle.fetchRequest()
-        request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
+        switch articleType {
+        case .search:
+            request.predicate = NSPredicate(format: "articleUri == %@", articleIdentifier)
+        case .web, .webExtracted:
+            request.predicate = NSPredicate(format: "articleURL == %@", articleIdentifier)
+        }
         do {
             var result = try managedContext.fetch(request)
             result.first?.isRead = true
             try managedContext.save()
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            appDelegate.scrapViewController?.setupScrapBadgeValue()
         } catch {
             print("Could not fetch. \(error)")
         }
@@ -169,7 +186,7 @@ final class ScrapManager {
             }
             try managedContext.save()
         } catch {
-            print("Could not fetch. \(error)")
+            print("Could not delete. \(error)")
         }
         print("all data is Removed")
     }
@@ -206,27 +223,54 @@ private extension NSManagedObject {
         self.setValue(category.stringValue, forKey: .category)
     }
     
-    func setValues(
-        _ newArticle: ScrappedArticle,
-        articleData: Article,
-        categoryEnum: ArticleCategory,
-        imageData: Data?
-    ) {
-        if let imageData: Data = imageData {
-            newArticle.setValue(imageData, forKey: .image)
+    func setupBaseProperty(_ type: ScrappedArticleType) {
+        self.setValue(type.stringValue, forKey: .articleType)
+        self.setValue(NSDate(), forKey: .scrappedDate)
+        self.setValue(false, forKey: .isRead)
+    }
+    
+    func setValues(_ articleStruct: Scrappable) {
+        switch articleStruct {
+        case is WebViewArticleStruct:
+            guard let webViewStruct = articleStruct as? WebViewArticleStruct else { return }
+            self.setupBaseProperty(.web)
+            self.setValue(webViewStruct.title, forKey: .articleTitle)
+            self.setValue(webViewStruct.press, forKey: .articleAuthor)
+            self.setValue(webViewStruct.webData as NSData, forKey: .articleData)
+            self.setValue(webViewStruct.url, forKey: .articleURL)
+            self.setCategory(.live)
+        case is WebExtractedArticleStruct:
+            guard let webExtractedStruct = articleStruct as? WebExtractedArticleStruct else { return }
+            self.setupBaseProperty(.webExtracted)
+            self.setValue(webExtractedStruct.title, forKey: .articleTitle)
+            self.setValue(webExtractedStruct.detail, forKey: .articleDescription)
+            self.setValue(webExtractedStruct.press, forKey: .articleAuthor)
+            self.setValue(webExtractedStruct.url, forKey: .articleURL)
+            self.setValue(webExtractedStruct.imageData, forKey: .articleData)
+            self.setCategory(.live)
+        case is SearchedArticleStruct:
+            self.setupBaseProperty(.search)
+            guard
+                let searhedArticleStruct = articleStruct as? SearchedArticleStruct,
+                let articleData = searhedArticleStruct.articleData as? Article else {
+                return
+            }
+            if let imageData: Data = searhedArticleStruct.imageData {
+                self.setValue(imageData, forKey: .articleData)
+            }
+            if let authors = articleData.author,
+                authors.count > 0 {
+                self.setValue(authors.first?.name, forKey: .articleAuthor)
+            }
+            self.setCategory(ArticleCategory(containString: "\(articleData.categories.first)"))
+            self.setValue(articleData.lang, forKey: .language)
+            self.setValue(articleData.date, forKey: .articleDate)
+            self.setValue(articleData.title, forKey: .articleTitle)
+            self.setValue(articleData.uri, forKey: .articleUri)
+            self.setValue(articleData.source.title, forKey: .company)
+            self.setValue(articleData.body, forKey: .articleDescription)
+        default:
+            print("should check Struct")
         }
-        if let authors = articleData.author,
-            authors.count > 0 {
-            newArticle.setValue(authors.first?.name, forKey: .articleAuthor)
-        }
-        newArticle.setCategory(categoryEnum)
-        newArticle.setValue(articleData.lang, forKey: .language)
-        newArticle.setValue(articleData.date, forKey: .articleDate)
-        newArticle.setValue(articleData.title, forKey: .articleTitle)
-        newArticle.setValue(NSDate(), forKey: .scrappedDate)
-        newArticle.setValue(false, forKey: .isRead)
-        newArticle.setValue(articleData.uri, forKey: .articleUri)
-        newArticle.setValue(articleData.source.title, forKey: .company)
-        newArticle.setValue(articleData.body, forKey: .articleDescription)
     }
 }

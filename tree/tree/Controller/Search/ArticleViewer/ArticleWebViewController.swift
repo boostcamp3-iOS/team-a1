@@ -14,10 +14,20 @@ class ArticleWebViewController: UIViewController {
 
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var scrapButton: UIButton!
     
     private var loadingView: LoadingView?
     private var article: ExtractArticle?
-    var articleURL: String?
+    private var articleURL: URL?
+    private var isScrappedArticle: Bool = false
+    var webData: Data?
+    var articleURLString: String? {
+        didSet {
+            articleURL = makeURLWithString(urlString: articleURLString)
+        }
+    }
+    var articleTitle: String?
+    var press: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +41,9 @@ class ArticleWebViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        if isScrappedArticle {
+            navigationController?.isNavigationBarHidden.toggle()
+        }
     }
 
     private func setupDelegate() {
@@ -38,17 +51,42 @@ class ArticleWebViewController: UIViewController {
         webView.navigationDelegate = self
     }
     
-    private func makeURLRequest(urlString: String) -> URLRequest? {
-        if let makeURL = URL(string: urlString) {
-            let urlRequest = URLRequest(url: makeURL)
-            return urlRequest
+    private func loadWebView() {
+        if webData != nil {
+            loadWebData()
+            navigationController?.isNavigationBarHidden = true
+            isScrappedArticle = true
+            scrapButton.isHidden = true
+        } else {
+            loadWebDataWithURL(articleURL)
         }
-        return nil
     }
     
-    private func loadWebView() {
-        if let url = articleURL, let requestURL = makeURLRequest(urlString: url) {
-            webView.load(requestURL)
+    private func makeURLWithString(urlString: String?) -> URL? {
+        guard let urlString = urlString else { return URL(string: "")}
+        return URL(string: urlString)
+    }
+    
+    private func loadWebDataWithURL(_ url: URL?) {
+        guard let url = url else { return }
+        requestWebData(url) { [weak self] (responseData) in
+            guard let self = self else { return }
+            self.webData = responseData
+            DispatchQueue.main.async {
+                self.loadWebData()
+            }
+        }
+    }
+    
+    private func loadWebData() {
+        if let url = articleURL,
+            let webData = webData {
+            webView.load(
+                webData,
+                mimeType: "text/html",
+                characterEncodingName: "utf-8",
+                baseURL: url
+            )
         }
     }
     
@@ -65,12 +103,42 @@ class ArticleWebViewController: UIViewController {
         self.view.addSubview(loadView)        
     }
     
+    func requestWebData(_ url: URL, completion: @escaping (Data) -> Void ) {
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { [weak self] (data: Data? , _ , error: Error? ) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let data = data else {
+                print("data error")
+                return
+            }
+            completion(data)
+        }
+        task.resume()
+    }
+    
+    
     @IBAction func backButtonItem(_ sender: UIBarButtonItem) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func scrapButtonDidTap(_ sender: UIBarButtonItem) {
-        //webView scrap
+        guard let articleTitle = articleTitle,
+            let press = press,
+            let articleURLString = articleURLString,
+            let webData = webData else {
+                return }
+        ScrapManager.scrapArticle(
+            .web,
+            articleStruct: WebViewArticleStruct(
+                title: articleTitle,
+                press: press,
+                url: articleURLString,
+                webData: webData
+            )
+        )
     }
 }
 
