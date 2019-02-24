@@ -97,9 +97,13 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let scrappedArticles = scrappedArticles else { return UITableViewCell() }
+        guard let scrappedArticles = scrappedArticles else {
+            fatalError(FatalError.invalidCell.localizedDescription)
+        }
         let scrappedArticle = scrappedArticles[indexPath.row]
-        guard let articleTypeString = scrappedArticle.articleType else { return UITableViewCell() }
+        guard let articleTypeString = scrappedArticle.articleType else {
+            fatalError(FatalError.invalidCell.localizedDescription)
+        }
         let articleType = ScrappedArticleType.init(type: articleTypeString)
         
         switch articleType {
@@ -108,17 +112,23 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
                 tableView.dequeueReusableCell(
                     withIdentifier: articleFeedCellIdentifier,
                     for: indexPath
-                    ) as? ArticleFeedTableViewCell else { return UITableViewCell() }
+                    ) as? ArticleFeedTableViewCell else {
+                        fatalError(FatalError.invalidCell.localizedDescription)
+            }
             cell.settingData(scrappedArticle: scrappedArticles[indexPath.row])
             return cell
         case .webExtracted:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: liveCellIdentifier, for: indexPath)
-                as? KeywordDetailArticleCell else { return UITableViewCell() }
+                as? KeywordDetailArticleCell else {
+                    fatalError(FatalError.invalidCell.localizedDescription)
+            }
             cell.configure(scrappedArticles[indexPath.row])
             return cell
         case .web:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: liveCellIdentifier, for: indexPath)
-                as? KeywordDetailArticleCell else { return UITableViewCell() }
+                as? KeywordDetailArticleCell else {
+                    fatalError(FatalError.invalidCell.localizedDescription)
+            }
             cell.configure(scrappedArticles[indexPath.row])
             return cell
         }
