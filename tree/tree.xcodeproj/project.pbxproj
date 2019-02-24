@@ -29,6 +29,8 @@
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
 		6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */; };
 		6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CCB220CAAB5002421AC /* DefautLabelView.swift */; };
+		6A1CCD9B222271A800190FA4 /* ParamterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CCD9A222271A800190FA4 /* ParamterKey.swift */; };
+		6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CCD9A222271A800190FA4 /* ParamterKey.swift */; };
 		6A40D80E22165A9800F06CA6 /* ArticleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */; };
 		6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8132216C56400F06CA6 /* Enum+Languages.swift */; };
 		6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */; };
@@ -233,6 +235,7 @@
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
 		6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultLabelView.xib; sourceTree = "<group>"; };
 		6A198CCB220CAAB5002421AC /* DefautLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefautLabelView.swift; sourceTree = "<group>"; };
+		6A1CCD9A222271A800190FA4 /* ParamterKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamterKey.swift; sourceTree = "<group>"; };
 		6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebViewController.swift; sourceTree = "<group>"; };
 		6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArticle.swift; sourceTree = "<group>"; };
 		6A40D811221693AD00F06CA6 /* ExtractAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAPI.swift; sourceTree = "<group>"; };
@@ -696,6 +699,7 @@
 			children = (
 				6A0BF6B1221EDAC800A0DBAF /* Config.swift */,
 				6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */,
+				6A1CCD9A222271A800190FA4 /* ParamterKey.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1268,6 +1272,7 @@
 				6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
+				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
 				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
@@ -1321,6 +1326,7 @@
 				BCF98C9F221DC2D50044A65A /* NaverAPI.swift in Sources */,
 				BCF98CA1221DC2DA0044A65A /* BoosterManager.swift in Sources */,
 				6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */,
+				6A1CCD9B222271A800190FA4 /* ParamterKey.swift in Sources */,
 				BCF98C9C221DC2D00044A65A /* CategoryEvents.swift in Sources */,
 				BCF98CA0221DC2D50044A65A /* ExtractAPI.swift in Sources */,
 				BCF98C99221DC2D00044A65A /* Graph.swift in Sources */,

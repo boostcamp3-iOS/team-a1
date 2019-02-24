@@ -42,14 +42,14 @@ class SearchFilterViewController: UIViewController {
     
     private func setupFilterValue() {
         guard 
-            let category = filterValue?[SearchFilter.searchCategory.rawValue],
-            let language = filterValue?[SearchFilter.searchLanguage.rawValue] else { return }
+            let category = filterValue?[SearchFilter.category.stringValue],
+            let language = filterValue?[SearchFilter.language.stringValue] else { return }
         categoryLabel.text = category.capitalized
         languageLabel.text = selectPickViewer.extractUserSelectedLanguage(selectedItem: language)
-        if filterValue?[SearchFilter.searchKeyword.rawValue] == "Body" {
+        if filterValue?[SearchFilter.keyword.stringValue] == "Body" {
             keywordSegmentedControl.selectedSegmentIndex = 1
         }
-        if filterValue?[SearchFilter.searchSort.rawValue] == "Relevance" {
+        if filterValue?[SearchFilter.sort.stringValue] == "Relevance" {
             sortSegmentedControl.selectedSegmentIndex = 1
         }
     }

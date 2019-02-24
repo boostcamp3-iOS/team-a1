@@ -8,9 +8,14 @@
 
 import Foundation
 
-enum SearchFilter: String {
-    case searchKeyword = "keyword"
-    case searchSort = "sort"
-    case searchCategory = "category"
-    case searchLanguage = "language"
+enum SearchFilter {
+    case keyword 
+    case sort 
+    case category 
+    case language 
+    
+    var stringValue: String {
+        return "\(self)"
+    }
+
 }

@@ -100,18 +100,18 @@ extension EventRegistryAPI: BoosterService {
             let articlesPage
             ):
             return [
-                "keyword": keyword,
-                "keywordLoc": keywordLoc,
-                "lang": lang,
-                "articlesSortBy": articlesSortBy,
-                "articlesPage": articlesPage,
-                "action": DefaultParameter.action.value,
-                "resultType": DefaultParameter.resultType.value,
-                "articlesCount": DefaultParameter.articlesCount.value,
-                "includeArticleImage": DefaultParameter.includeArticleImage.value,
-                "includeArticleCategories": DefaultParameter.includeArticleCategories.value,
-                "articleBodyLen": DefaultParameter.articleBodyLen.value,
-                "apiKey": APIConstant.eventRegistryKey
+                ParamterKey.keyword.stringValue: keyword,
+                ParamterKey.keywordLoc.stringValue: keywordLoc,
+                ParamterKey.lang.stringValue: lang,
+                ParamterKey.articlesSortBy.stringValue: articlesSortBy,
+                ParamterKey.articlesPage.stringValue: articlesPage,
+                ParamterKey.action.stringValue: DefaultParameter.action.value,
+                ParamterKey.resultType.stringValue: DefaultParameter.resultType.value,
+                ParamterKey.articlesCount.stringValue: DefaultParameter.articlesCount.value,
+                ParamterKey.includeArticleImage.stringValue: DefaultParameter.includeArticleImage.value,
+                ParamterKey.includeArticleCategories.stringValue: DefaultParameter.includeArticleCategories.value,
+                ParamterKey.articleBodyLen.stringValue: DefaultParameter.articleBodyLen.value,
+                ParamterKey.apiKey.stringValue: APIConstant.eventRegistryKey
             ]
         case .fetchArticles(
             let keyword,
@@ -122,19 +122,19 @@ extension EventRegistryAPI: BoosterService {
             let articlesPage
             ):
             return [
-                "keyword": keyword,
-                "keywordLoc": keywordLoc,
-                "lang": lang,
-                "articlesSortBy": articlesSortBy,
-                "articlesPage": articlesPage,
-                "categoryUri": category,
-                "action": DefaultParameter.action.value,
-                "resultType": DefaultParameter.resultType.value,
-                "articlesCount": DefaultParameter.articlesCount.value,
-                "includeArticleImage": DefaultParameter.includeArticleImage.value,
-                "includeArticleCategories": DefaultParameter.includeArticleCategories.value,
-                "articleBodyLen": DefaultParameter.articleBodyLen.value,
-                "apiKey": APIConstant.eventRegistryKey
+                ParamterKey.keyword.stringValue: keyword,
+                ParamterKey.keywordLoc.stringValue: keywordLoc,
+                ParamterKey.lang.stringValue: lang,
+                ParamterKey.articlesSortBy.stringValue: articlesSortBy,
+                ParamterKey.articlesPage.stringValue: articlesPage,
+                ParamterKey.categoryUri.stringValue: category,
+                ParamterKey.action.stringValue: DefaultParameter.action.value,
+                ParamterKey.resultType.stringValue: DefaultParameter.resultType.value,
+                ParamterKey.articlesCount.stringValue: DefaultParameter.articlesCount.value,
+                ParamterKey.includeArticleImage.stringValue: DefaultParameter.includeArticleImage.value,
+                ParamterKey.includeArticleCategories.stringValue: DefaultParameter.includeArticleCategories.value,
+                ParamterKey.articleBodyLen.stringValue: DefaultParameter.articleBodyLen.value,
+                ParamterKey.apiKey.stringValue: APIConstant.eventRegistryKey
             ]
         case .fetchRecentEvents:
             return [

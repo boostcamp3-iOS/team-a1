@@ -149,10 +149,10 @@ class SearchViewController: UIViewController {
     }
     
     private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
-        guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
-            let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
-            let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            let categoryPrameter = searchFilter[SearchFilter.searchCategory.rawValue]
+        guard let keyword = searchFilter[SearchFilter.keyword.stringValue], 
+            let language = searchFilter[SearchFilter.language.stringValue], 
+            let sort = searchFilter[SearchFilter.sort.stringValue],
+            let categoryPrameter = searchFilter[SearchFilter.category.stringValue]
             else { return }
         let category = checkCategoryStatus(categoryPrameter)
         switch type {
@@ -347,11 +347,6 @@ class SearchViewController: UIViewController {
         filterViewController.transitioningDelegate = transitionManager
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        ImageCache.shared.memoryCache.removeAllObjects()
     }
 }
 
@@ -565,10 +560,10 @@ extension SearchViewController: FilterSettingDelegate {
         category: String,
         language: String
     ) {
-        searchFilter.updateValue(keyword, forKey: SearchFilter.searchKeyword.rawValue)
-        searchFilter.updateValue(sort, forKey: SearchFilter.searchSort.rawValue)
-        searchFilter.updateValue(category, forKey: SearchFilter.searchCategory.rawValue)
-        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.searchLanguage.rawValue)
+        searchFilter.updateValue(keyword, forKey: SearchFilter.keyword.stringValue)
+        searchFilter.updateValue(sort, forKey: SearchFilter.sort.stringValue)
+        searchFilter.updateValue(category, forKey: SearchFilter.category.stringValue)
+        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.language.stringValue)
     }
     
     private func userFilter() {
@@ -576,10 +571,10 @@ extension SearchViewController: FilterSettingDelegate {
             let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else {
                 return
         }
-        if let keyword = userFilter[SearchFilter.searchKeyword.rawValue] as? String, 
-            let sort = userFilter[SearchFilter.searchSort.rawValue] as? String,
-            let category = userFilter[SearchFilter.searchCategory.rawValue] as? String,
-            let language = userFilter[SearchFilter.searchLanguage.rawValue] as? String {
+        if let keyword = userFilter[SearchFilter.keyword.stringValue] as? String, 
+            let sort = userFilter[SearchFilter.sort.stringValue] as? String,
+            let category = userFilter[SearchFilter.category.stringValue] as? String,
+            let language = userFilter[SearchFilter.language.stringValue] as? String {
             updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
         }
     }
