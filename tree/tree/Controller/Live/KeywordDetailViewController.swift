@@ -116,7 +116,13 @@ class KeywordDetailViewController: UIViewController {
         BoosterManager.extractArticle(url: urlString) { (result) in
             switch result {
             case .success(let data):
-                completion(.articleViewer, data)
+                if data.title.isEmpty || 
+                    data.body.isEmpty || 
+                    data.description.isEmpty {
+                    completion(.webViewer, nil)
+                } else {
+                    completion(.articleViewer, data)
+                }
             case .failure:
                 completion(.webViewer, nil)
             }
