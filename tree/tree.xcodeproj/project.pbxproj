@@ -21,7 +21,6 @@
 		6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AB2208490E00D46741 /* Extension+PickerView.swift */; };
 		6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */; };
 		6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */; };
-		6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */; };
 		6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B1221EDAC800A0DBAF /* Config.swift */; };
 		6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */; };
 		6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */; };
@@ -97,6 +96,7 @@
 		BC9AFF8E2221335100C58A0C /* RankKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9AFF8D2221335100C58A0C /* RankKeywordCell.swift */; };
 		BC9AFF8F2221428300C58A0C /* Enum+LocalizedLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC19FD16220D9D20006A9C7D /* Enum+LocalizedLanguages.swift */; };
 		BC9AFF902221455A00C58A0C /* Enum+Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC63852B2206CBF200074CF3 /* Enum+Countries.swift */; };
+		BC9AFFC2222278FA00C58A0C /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9AFFC1222278FA00C58A0C /* BaseURL.swift */; };
 		BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */; };
 		BC9E02AB2202EBFD00ADD1D5 /* TrendListHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */; };
 		BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */; };
@@ -120,7 +120,6 @@
 		BCF98CA5221DC3EB0044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BF308B6F87C2C2E8B8730B9B /* Pods_Gardener_Trend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */; };
 		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
-		D96DC269221ECC490028EF20 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC268221ECC490028EF20 /* BaseURL.swift */; };
 		D96DC26B221ECF140028EF20 /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26A221ECF130028EF20 /* ScrapService.swift */; };
 		D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */; };
 		D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBCF221D359100AB47CA /* Extension+Array.swift */; };
@@ -229,7 +228,6 @@
 		6A0957AB2208490E00D46741 /* Extension+PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+PickerView.swift"; sourceTree = "<group>"; };
 		6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterProtocol.swift; sourceTree = "<group>"; };
 		6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Filter.swift"; sourceTree = "<group>"; };
-		6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
 		6A0BF6B1221EDAC800A0DBAF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTypeEnum.swift; sourceTree = "<group>"; };
@@ -309,6 +307,7 @@
 		BC7969D1220174B40003F520 /* TrendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendListCell.swift; sourceTree = "<group>"; };
 		BC7969D2220174B40003F520 /* TrendListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendListCell.xib; sourceTree = "<group>"; };
 		BC9AFF8D2221335100C58A0C /* RankKeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankKeywordCell.swift; sourceTree = "<group>"; };
+		BC9AFFC1222278FA00C58A0C /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		BC9E02A82202EBFD00ADD1D5 /* TrendListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendListHeaderCell.swift; sourceTree = "<group>"; };
 		BC9E02A92202EBFD00ADD1D5 /* TrendListHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendListHeaderCell.xib; sourceTree = "<group>"; };
 		BCD1BB2522057CF800F9C8A8 /* TableViewCell+Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Animator.swift"; sourceTree = "<group>"; };
@@ -320,7 +319,6 @@
 		C629F6563A956B7370373F18 /* Pods-Gardener-TrendUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-TrendUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-TrendUI/Pods-Gardener-TrendUI.debug.xcconfig"; sourceTree = "<group>"; };
 		C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-Widget/Pods-Gardener-Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		D96DC268221ECC490028EF20 /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		D96DC26A221ECF130028EF20 /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrappedArticleStruct.swift; sourceTree = "<group>"; };
 		D97FCBCF221D359100AB47CA /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
@@ -702,7 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				6A0BF6B1221EDAC800A0DBAF /* Config.swift */,
-				6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */,
+				BC9AFFC1222278FA00C58A0C /* BaseURL.swift */,
 				6A1CCD9A222271A800190FA4 /* ParamterKey.swift */,
 			);
 			path = Helper;
@@ -1280,7 +1278,6 @@
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
-				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
@@ -1332,7 +1329,7 @@
 			files = (
 				BCF98C9F221DC2D50044A65A /* NaverAPI.swift in Sources */,
 				BCF98CA1221DC2DA0044A65A /* BoosterManager.swift in Sources */,
-				6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */,
+				BC9AFFC2222278FA00C58A0C /* BaseURL.swift in Sources */,
 				6A1CCD9B222271A800190FA4 /* ParamterKey.swift in Sources */,
 				BCF98C9C221DC2D00044A65A /* CategoryEvents.swift in Sources */,
 				BCF98CA0221DC2D50044A65A /* ExtractAPI.swift in Sources */,
