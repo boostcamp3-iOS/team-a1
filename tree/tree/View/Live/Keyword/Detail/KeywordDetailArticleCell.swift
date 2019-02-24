@@ -14,6 +14,7 @@ class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pressLabel: UILabel!
+    @IBOutlet weak var dotLabel: UILabel!
     @IBOutlet weak var timeAgoLabel: UILabel!
     
     private var shadowView: UIView {
@@ -48,5 +49,17 @@ class KeywordDetailArticleCell: UITableViewCell, HTMLDecodable {
         titleLabel.text = title
         pressLabel.text = press
         timeAgoLabel.text = article.timeAgo
+    }
+    
+    func configure(_ article: ScrappedArticle) {
+        guard
+            let title = decode(article.articleTitle),
+            let press = decode(article.articleAuthor) else {
+                return
+        }
+        titleLabel.text = title
+        pressLabel.text = press
+        dotLabel.isHidden = true
+        timeAgoLabel.isHidden = true
     }
 }

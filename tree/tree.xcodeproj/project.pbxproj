@@ -53,7 +53,6 @@
 		BC42C08022129C4700E0833B /* EventHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC42C07E22129C4700E0833B /* EventHeaderCell.xib */; };
 		BC4B31E5221DCA6400307735 /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
 		BC4B31E7221DCA8200307735 /* TrendIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EFA2219449C0037C1EF /* TrendIntentHandler.swift */; };
-		BC4B31E9221E5EDC00307735 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B31E8221E5EDB00307735 /* BaseURL.swift */; };
 		BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = BC558ED3221943190037C1EF /* Intents.intentdefinition */; };
 		BC558EDD221944890037C1EF /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC558EDC221944890037C1EF /* IntentHandler.swift */; };
 		BC558EE5221944890037C1EF /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC558EE4221944890037C1EF /* IntentsUI.framework */; };
@@ -117,6 +116,9 @@
 		BCF98CA8221DC4430044A65A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
 		BF308B6F87C2C2E8B8730B9B /* Pods_Gardener_Trend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */; };
 		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
+		D96DC269221ECC490028EF20 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC268221ECC490028EF20 /* BaseURL.swift */; };
+		D96DC26B221ECF140028EF20 /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26A221ECF130028EF20 /* ScrapService.swift */; };
+		D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */; };
 		D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBCF221D359100AB47CA /* Extension+Array.swift */; };
 		D97FCBD2221DEE1A00AB47CA /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */; };
 		D97FCBD4221DEE6700AB47CA /* ScrapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */; };
@@ -130,7 +132,6 @@
 		D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */; };
 		D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */; };
 		D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C1220B0B7800CC58DA /* TreeData.xcdatamodeld */; };
-		D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C5220B0B8400CC58DA /* ScrapService.swift */; };
 		D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C6220B0B8400CC58DA /* ScrapManager.swift */; };
 		D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */; };
 		D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */; };
@@ -265,7 +266,6 @@
 		BC42C07E22129C4700E0833B /* EventHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventHeaderCell.xib; sourceTree = "<group>"; };
 		BC42C0812212EE1A00E0833B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		BC42C0892215C78900E0833B /* CategoryEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEvents.swift; sourceTree = "<group>"; };
-		BC4B31E8221E5EDB00307735 /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
 		BC558ED3221943190037C1EF /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		BC558ED5221943330037C1EF /* tree.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tree.entitlements; sourceTree = "<group>"; };
 		BC558EDA221944890037C1EF /* Trend.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Trend.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +313,9 @@
 		C629F6563A956B7370373F18 /* Pods-Gardener-TrendUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-TrendUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-TrendUI/Pods-Gardener-TrendUI.debug.xcconfig"; sourceTree = "<group>"; };
 		C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-Widget/Pods-Gardener-Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		D96DC268221ECC490028EF20 /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		D96DC26A221ECF130028EF20 /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
+		D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrappedArticleStruct.swift; sourceTree = "<group>"; };
 		D97FCBCF221D359100AB47CA /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
 		D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapNavigationController.swift; sourceTree = "<group>"; };
@@ -326,7 +329,6 @@
 		D9C6AB8321FEE6B4001C0AB8 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 		D9D145C2220B0B7800CC58DA /* TreeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeData.xcdatamodel; sourceTree = "<group>"; };
-		D9D145C5220B0B8400CC58DA /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D9D145C6220B0B8400CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
 		D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -692,7 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				6AE2D7AD21FEF30D00444622 /* Config.swift */,
-				BC4B31E8221E5EDB00307735 /* BaseURL.swift */,
+				D96DC268221ECC490028EF20 /* BaseURL.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -811,8 +813,9 @@
 		D9D145C4220B0B8400CC58DA /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				D9D145C5220B0B8400CC58DA /* ScrapService.swift */,
 				D9D145C6220B0B8400CC58DA /* ScrapManager.swift */,
+				D96DC26A221ECF130028EF20 /* ScrapService.swift */,
+				D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 				D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */,
 				D97FCBD2221DEE1A00AB47CA /* ScrapViewController.swift in Sources */,
 				BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */,
+				D96DC26B221ECF140028EF20 /* ScrapService.swift in Sources */,
 				6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */,
@@ -1230,6 +1234,7 @@
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
 				BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */,
 				BC558F49221995D00037C1EF /* Extension+UIViewController.swift in Sources */,
+				D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */,
 				D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
 				6A40D80E22165A9800F06CA6 /* ArticleWebViewController.swift in Sources */,
@@ -1264,7 +1269,6 @@
 				6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
-				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
@@ -1316,7 +1320,7 @@
 			files = (
 				BCF98C9F221DC2D50044A65A /* NaverAPI.swift in Sources */,
 				BCF98CA1221DC2DA0044A65A /* BoosterManager.swift in Sources */,
-				BC4B31E9221E5EDC00307735 /* BaseURL.swift in Sources */,
+				D96DC269221ECC490028EF20 /* BaseURL.swift in Sources */,
 				BCF98C9C221DC2D00044A65A /* CategoryEvents.swift in Sources */,
 				BCF98CA0221DC2D50044A65A /* ExtractAPI.swift in Sources */,
 				BCF98C99221DC2D00044A65A /* Graph.swift in Sources */,

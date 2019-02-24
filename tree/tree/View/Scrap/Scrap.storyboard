@@ -62,10 +62,10 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ngn-ry-vjo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
+                                <rect key="frame" x="276" y="7" width="95" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Category"/>
+                                <state key="normal" image="filter3X"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -101,5 +101,6 @@
     </scenes>
     <resources>
         <image name="Scrap" width="24" height="24"/>
+        <image name="filter3X" width="20" height="14"/>
     </resources>
 </document>

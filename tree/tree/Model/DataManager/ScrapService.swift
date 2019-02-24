@@ -14,13 +14,15 @@ enum ScrappedArticleProperty {
     case articleDescription
     case company
     case articleDate
-    case image
+    case articleData
     case isRead
     case language
     case scrappedDate
     case articleTitle
     case articleUri
     case category
+    case articleURL
+    case articleType
     
     var stringValue: String {
         return "\(self)"
@@ -33,6 +35,7 @@ enum ScrappedArticleProperty {
 
 public enum ArticleCategory: Int, CaseIterable{
     case all = 0
+    case live
     case arts
     case business
     case computers
@@ -55,7 +58,7 @@ public enum ArticleCategory: Int, CaseIterable{
                 return
             }
         }
-        self = .all
+        self = .etc
     }
     
     var stringValue: String {
@@ -67,6 +70,9 @@ public enum ArticleCategory: Int, CaseIterable{
         case .all:
             return [UIColor(hexString: "#f6416c").cgColor,
                     UIColor(hexString: "#fff6b7").cgColor]
+        case .live:
+            return [UIColor(hexString: "#f00000").cgColor,
+                    UIColor(hexString: "#dc281e").cgColor]
         case .arts:
             return [UIColor(hexString: "#7b4397").cgColor,
                     UIColor(hexString: "#dc2430").cgColor]
