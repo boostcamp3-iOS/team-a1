@@ -35,6 +35,8 @@ class SearchViewController: UIViewController {
     private var isMoreLoading: Bool = false
     private var isPresentedCheck: Bool = true
     private var heightAtIndexPath = [IndexPath: Float]()
+    private var currentTask = URLSessionDataTask()
+    private var isCategorySelected: Bool = false
     private lazy var searchFilter = [String: String]()
     
     override func viewDidLoad() {
@@ -134,32 +136,126 @@ class SearchViewController: UIViewController {
         view.addSubview(defaultLabel)
     }
     
-    private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
-        guard let keyword = searchFilter[SearchFilter.searchKeyword.rawValue], 
-            let language = searchFilter[SearchFilter.searchLanguage.rawValue], 
-            let sort = searchFilter[SearchFilter.searchSort.rawValue],
-            var category = searchFilter[SearchFilter.searchCategory.rawValue]
-            else { return }
-        if category == "all" || category == "etc" {
-            category = "dmoz"
+    private func checkCategoryStatus(_ category: String) -> String {
+        if category.lowercased() == "all" || category == "etc" { 
+            let categoryPrameter = "dmoz"
+            isCategorySelected = false
+            return categoryPrameter
         } else {
-            category = "dmoz/\(category.capitalized)"
+            let categoryPram = "dmoz/\(category.capitalized)" 
+            isCategorySelected = true
+            return categoryPram
         }
+    }
+    
+    private func checkFilterStatus(using searchFilter: [String: String], type: ArticleType) {
+        guard let keyword = searchFilter[SearchFilter.keyword.stringValue], 
+            let language = searchFilter[SearchFilter.language.stringValue], 
+            let sort = searchFilter[SearchFilter.sort.stringValue],
+            let categoryPrameter = searchFilter[SearchFilter.category.stringValue]
+            else { return }
+        let category = checkCategoryStatus(categoryPrameter)
         switch type {
         case .load:
-            loadArticles(
-                keyword: keyword,
-                language: language, 
-                sort: sort,
-                category: category
-            )
+            if isCategorySelected {
+                loadArticles(
+                    keyword: keyword,
+                    language: language, 
+                    sort: sort,
+                    category: category
+                )
+            } else {
+                loadDefualtArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort
+                )
+            }
         case .loadMore:
-            loadMoreArticles(
-                keyword: keyword, 
-                language: language, 
-                sort: sort,
-                category: category
-            )
+            if isCategorySelected {
+                loadMoreArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort,
+                    category: category
+                )
+            } else {
+                loadMoreDefaultArticles(
+                    keyword: keyword, 
+                    language: language, 
+                    sort: sort
+                )
+            }
+        }
+    }
+    
+    private func loadDefualtArticles(
+        keyword: String,
+        language: String,
+        sort: String
+        ) {
+        articles = nil
+        guard let searchBarText = searchKeyword else { return }
+        self.defaultView?.removeFromSuperview()
+        self.uiTableView.reloadData()
+        self.setLoadingView()
+        currentTask = BoosterManager.fetchDefaultArticles(
+            keyword: searchBarText,
+            keywordLoc: keyword,
+            lang: language, 
+            articlesSortBy: sort,
+            articlesPage: 1
+        ) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles = articleData.articles.results
+                self.totalPage = articleData.articles.pages
+                DispatchQueue.main.async {
+                    self.isLoading.toggle()
+                    self.uiTableView.reloadData()
+                    self.loadingView?.removeFromSuperview()
+                    if self.articles?.count == 0 {
+                        self.setDefaultView(message: "🤷‍♂️")
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
+            }
+        }
+    }
+    
+    private func loadMoreDefaultArticles(
+        keyword: String,
+        language: String,
+        sort: String
+        ) {
+        if page >= totalPage { return }
+        page += 1
+        currentTask = BoosterManager.fetchDefaultArticles(
+            keyword: keyword,
+            keywordLoc: keyword, 
+            lang: language, 
+            articlesSortBy: sort,
+            articlesPage: page
+        ) { (result) in
+            switch result {
+            case .success(let articleData):
+                self.articles?.append(contentsOf: articleData.articles.results)
+                DispatchQueue.main.async {
+                    self.uiTableView.reloadData()
+                    self.isMoreLoading = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
+            }
         }
     }
     
@@ -174,7 +270,7 @@ class SearchViewController: UIViewController {
         self.defaultView?.removeFromSuperview()
         self.uiTableView.reloadData()
         self.setLoadingView()
-        BoosterManager.fetchArticles(
+        currentTask = BoosterManager.fetchArticles(
             keyword: searchBarText,
             keywordLoc: keyword,
             lang: language, 
@@ -196,6 +292,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
@@ -208,7 +308,7 @@ class SearchViewController: UIViewController {
     ) {
         if page >= totalPage { return }
         page += 1
-        BoosterManager.fetchArticles(
+        currentTask = BoosterManager.fetchArticles(
             keyword: keyword,
             keywordLoc: keyword, 
             lang: language, 
@@ -225,6 +325,10 @@ class SearchViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.loadingView?.removeFromSuperview()
+                    self.isLoading.toggle()
+                }
             }
         }
     }
@@ -244,7 +348,6 @@ class SearchViewController: UIViewController {
         filterViewController.modalPresentationStyle = .custom
         present(filterViewController, animated: true)
     }
-    
 }
 
 // MARK: TableView
@@ -402,7 +505,16 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBarTextField?.text = ""
+        if let searchBarText = searchBarTextField?.text, searchBarText.isEmpty {
+            setDefaultView(message: "🧐")
+        } 
+        if isLoading {
+            currentTask.cancel()
+            setDefaultView(message: "🧐")
+        }
+        searchBarTextField?.text = nil
+        self.navigationItem.title = "Search"
+        loadingView?.removeFromSuperview()
         searchBarHideAndSetting()
     }
     
@@ -424,7 +536,7 @@ extension SearchViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach({
             guard let articleUrl = articles?[$0.row].image else { return }
-            articleImage.cancelLoadingImage(articleUrl)
+            articleImage.cancelImage(articleUrl: articleUrl)
         })    
     }
 }
@@ -452,10 +564,10 @@ extension SearchViewController: FilterSettingDelegate {
         category: String,
         language: String
     ) {
-        searchFilter.updateValue(keyword, forKey: SearchFilter.searchKeyword.rawValue)
-        searchFilter.updateValue(sort, forKey: SearchFilter.searchSort.rawValue)
-        searchFilter.updateValue(category, forKey: SearchFilter.searchCategory.rawValue)
-        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.searchLanguage.rawValue)
+        searchFilter.updateValue(keyword, forKey: SearchFilter.keyword.stringValue)
+        searchFilter.updateValue(sort, forKey: SearchFilter.sort.stringValue)
+        searchFilter.updateValue(category, forKey: SearchFilter.category.stringValue)
+        searchFilter.updateValue(language.lowercased(), forKey: SearchFilter.language.stringValue)
     }
     
     private func userFilter() {
@@ -463,11 +575,13 @@ extension SearchViewController: FilterSettingDelegate {
             let userFilter = UserDefaults.standard.dictionary(forKey: "searchFilter") else {
                 return
         }
-        if let keyword = userFilter[SearchFilter.searchKeyword.rawValue] as? String, 
-            let sort = userFilter[SearchFilter.searchSort.rawValue] as? String,
-            let category = userFilter[SearchFilter.searchCategory.rawValue] as? String,
-            let language = userFilter[SearchFilter.searchLanguage.rawValue] as? String {
+        if let keyword = userFilter[SearchFilter.keyword.stringValue] as? String, 
+            let sort = userFilter[SearchFilter.sort.stringValue] as? String,
+            let category = userFilter[SearchFilter.category.stringValue] as? String,
+            let language = userFilter[SearchFilter.language.stringValue] as? String {
             updateUserFilter(keyword: keyword, sort: sort, category: category, language: language)
         }
     }
 }
+
+

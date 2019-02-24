@@ -9,8 +9,6 @@
 import UIKit
 
 class ArticleImage: UIImageView {
-    private let imageCache = ImageCache()
-    private let ioQueue = DispatchQueue(label: "diskCache")
     private var task = [URLSessionTask]()
     private var imageUrl: String?
     
@@ -18,52 +16,53 @@ class ArticleImage: UIImageView {
         self.image = UIImage(data: from)
     }
     
-    func cancelLoadingImage(_ articleUrl: String) {
-        guard let imageURL = URL(string: articleUrl) else { return }
-        guard let taskIndex = task.index(where: { $0.originalRequest?.url == imageURL}) else { return }
-        let myTask = task[taskIndex]
-        myTask.cancel()
-        task.remove(at: taskIndex)
-    }
-    
     func loadImageUrl(articleUrl: String) {
         imageUrl = articleUrl
         image = nil
-        let extract = self.imageUrl?.components(separatedBy: "/").last
-
-        if let imageFromCache = imageCache.memoryCache.object(forKey: articleUrl as AnyObject) as? UIImage {
-            self.image = imageFromCache
-            return
-        } else {
-            if let path = extract, 
-                let imagePath = imageCache.path(for: path), 
-                let imageToDisk = UIImage(contentsOfFile: imagePath.path) {
-                self.image = imageToDisk
-                self.imageCache.memoryCache.setObject(imageToDisk, forKey: articleUrl as AnyObject)
-                return
+        if let image = ImageManager.shared.loadImageFromCache(articleURL: articleUrl) {
+            if imageUrl == articleUrl {
+                self.image = image
             }
+            return
+        } else {       
+            loadImageFromServer(articleUrl: articleUrl)
         }
+    }
+    
+    func loadImageFromServer(articleUrl: String) {
+        imageUrl = articleUrl
+        self.image = nil
         guard let imageURL = URL(string: articleUrl) else { return }
         guard task.index(where: {$0.originalRequest?.url == imageURL }) == nil else { return }
-        let myTask = URLSession.shared.dataTask(with: imageURL) { [weak self] (data, _, _) in
+        let imageTask = URLSession.shared.dataTask(with: imageURL) { [weak self] (data, _, _) in
+            guard let self = self else { return }
+            guard let data = data else { return }
+            guard let image = UIImage(data: data) else { return } 
             DispatchQueue.main.async {
-                guard let self = self else { return }
-                guard let data = data else { return }
-                guard let imageToCache = UIImage(data: data) else { return }
                 if self.imageUrl == articleUrl {
-                    self.image = self.downsampledImage(data: data, to: self.bounds.size, scale: 1)
+                    self.image = self.downsampledImage(
+                        data: data, 
+                        to: self.bounds.size, 
+                        scale: self.traitCollection.displayScale
+                    )
                 }
-                self.ioQueue.async {
-                    if let path = extract {
-                        try? self.imageCache.store(image: imageToCache, name: path) 
-                    }
-                }
-            }
+                ImageManager.shared.storeImageToCache(image: image, imageName: articleUrl)
+            }            
         }
-        myTask.resume()
-        task.append(myTask)
+        imageTask.resume()
+        task.append(imageTask)
     }
-
+    
+    func cancelImage(articleUrl: String) {
+        guard let imageURL = URL(string: articleUrl) else { return }
+        guard let taskIndex = task.index(where: { 
+            $0.originalRequest?.url == imageURL
+        }) else { return }
+        let myTask = task[taskIndex]
+        myTask.cancel()
+        task.remove(at: taskIndex)        
+    }
+    
     func downsampledImage(data: Data, to pointSize: CGSize, scale: CGFloat) -> UIImage? {
         let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
         guard let imageSource = CGImageSourceCreateWithData(data as CFData, imageSourceOptions) else { return nil }

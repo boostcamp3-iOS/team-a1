@@ -51,7 +51,7 @@ class LoadingView: UIView {
             dots[index].transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             UIView.animate(
                 withDuration: 0.6,
-                delay: Double(index-1) * 0.2,
+                delay: Double(index + 1) * 0.2,
                 options: [.repeat, .autoreverse],
                 animations: {
                 self.dots[index].transform = CGAffineTransform.identity

@@ -42,6 +42,14 @@ extension DefaultParameter {
 }
 
 public enum EventRegistryAPI {
+    
+    case fetchDefaultArticles(
+        keyword: String,
+        keywordLoc: String,
+        lang: String,
+        articlesSortBy: String,
+        articlesPage: Int
+    )
     case fetchArticles(
         keyword: String,
         keywordLoc: String,
@@ -62,6 +70,8 @@ extension EventRegistryAPI: BoosterService {
     
     public var path: String? {
         switch self {
+        case .fetchDefaultArticles:
+            return "/api/v1/article"
         case .fetchArticles:
             return "/api/v1/article"
         case .fetchRecentEvents:
@@ -71,6 +81,8 @@ extension EventRegistryAPI: BoosterService {
     
     public var method: HTTPMethod {
         switch self {
+        case .fetchDefaultArticles:
+            return .get
         case .fetchArticles:
             return .get
         case .fetchRecentEvents:
@@ -80,6 +92,27 @@ extension EventRegistryAPI: BoosterService {
     
     public var parameters: Parameters {
         switch self {
+        case .fetchDefaultArticles(
+            let keyword,
+            let keywordLoc,
+            let lang,
+            let articlesSortBy,
+            let articlesPage
+            ):
+            return [
+                ParamterKey.keyword.stringValue: keyword,
+                ParamterKey.keywordLoc.stringValue: keywordLoc,
+                ParamterKey.lang.stringValue: lang,
+                ParamterKey.articlesSortBy.stringValue: articlesSortBy,
+                ParamterKey.articlesPage.stringValue: articlesPage,
+                ParamterKey.action.stringValue: DefaultParameter.action.value,
+                ParamterKey.resultType.stringValue: DefaultParameter.resultType.value,
+                ParamterKey.articlesCount.stringValue: DefaultParameter.articlesCount.value,
+                ParamterKey.includeArticleImage.stringValue: DefaultParameter.includeArticleImage.value,
+                ParamterKey.includeArticleCategories.stringValue: DefaultParameter.includeArticleCategories.value,
+                ParamterKey.articleBodyLen.stringValue: DefaultParameter.articleBodyLen.value,
+                ParamterKey.apiKey.stringValue: APIConstant.eventRegistryKey
+            ]
         case .fetchArticles(
             let keyword,
             let keywordLoc,
@@ -89,19 +122,19 @@ extension EventRegistryAPI: BoosterService {
             let articlesPage
             ):
             return [
-                "keyword": keyword,
-                "keywordLoc": keywordLoc,
-                "lang": lang,
-                "articlesSortBy": articlesSortBy,
-                "articlesPage": articlesPage,
-                "categoryUri": category,
-                "action": DefaultParameter.action.value,
-                "resultType": DefaultParameter.resultType.value,
-                "articlesCount": DefaultParameter.articlesCount.value,
-                "includeArticleImage": DefaultParameter.includeArticleImage.value,
-                "includeArticleCategories": DefaultParameter.includeArticleCategories.value,
-                "articleBodyLen": DefaultParameter.articleBodyLen.value,
-                "apiKey": APIConstant.eventRegistryKey
+                ParamterKey.keyword.stringValue: keyword,
+                ParamterKey.keywordLoc.stringValue: keywordLoc,
+                ParamterKey.lang.stringValue: lang,
+                ParamterKey.articlesSortBy.stringValue: articlesSortBy,
+                ParamterKey.articlesPage.stringValue: articlesPage,
+                ParamterKey.categoryUri.stringValue: category,
+                ParamterKey.action.stringValue: DefaultParameter.action.value,
+                ParamterKey.resultType.stringValue: DefaultParameter.resultType.value,
+                ParamterKey.articlesCount.stringValue: DefaultParameter.articlesCount.value,
+                ParamterKey.includeArticleImage.stringValue: DefaultParameter.includeArticleImage.value,
+                ParamterKey.includeArticleCategories.stringValue: DefaultParameter.includeArticleCategories.value,
+                ParamterKey.articleBodyLen.stringValue: DefaultParameter.articleBodyLen.value,
+                ParamterKey.apiKey.stringValue: APIConstant.eventRegistryKey
             ]
         case .fetchRecentEvents:
             return [
@@ -114,6 +147,12 @@ extension EventRegistryAPI: BoosterService {
     
     public var task: HTTPTask {
         switch self {
+        case .fetchDefaultArticles:
+            return .requestWith(
+                url: parameters, 
+                body: nil, 
+                encoding: .query
+            )
         case .fetchArticles:
             return .requestWith(
                 url: parameters,

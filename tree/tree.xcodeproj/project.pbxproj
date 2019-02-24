@@ -21,11 +21,16 @@
 		6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AB2208490E00D46741 /* Extension+PickerView.swift */; };
 		6A0957AE220963B300D46741 /* SearchFilterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */; };
 		6A0BF6A2221E359300A0DBAF /* Enum+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */; };
+		6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */; };
+		6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B1221EDAC800A0DBAF /* Config.swift */; };
+		6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */; };
 		6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */; };
 		6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */; };
 		6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */; };
 		6A198CCA220CAA9A002421AC /* DefaultLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */; };
 		6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A198CCB220CAAB5002421AC /* DefautLabelView.swift */; };
+		6A1CCD9B222271A800190FA4 /* ParamterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CCD9A222271A800190FA4 /* ParamterKey.swift */; };
+		6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CCD9A222271A800190FA4 /* ParamterKey.swift */; };
 		6A40D80E22165A9800F06CA6 /* ArticleWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */; };
 		6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D8132216C56400F06CA6 /* Enum+Languages.swift */; };
 		6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A40D816221811B300F06CA6 /* Enum+ArticleViewerType.swift */; };
@@ -113,7 +118,6 @@
 		BCF98CA3221DC3E00044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BCF98CA4221DC3E60044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BCF98CA5221DC3EB0044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
-		BCF98CA8221DC4430044A65A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE2D7AD21FEF30D00444622 /* Config.swift */; };
 		BF308B6F87C2C2E8B8730B9B /* Pods_Gardener_Trend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */; };
 		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
 		D96DC269221ECC490028EF20 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC268221ECC490028EF20 /* BaseURL.swift */; };
@@ -225,11 +229,15 @@
 		6A0957AB2208490E00D46741 /* Extension+PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+PickerView.swift"; sourceTree = "<group>"; };
 		6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterProtocol.swift; sourceTree = "<group>"; };
 		6A0BF6A1221E359300A0DBAF /* Enum+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Filter.swift"; sourceTree = "<group>"; };
+		6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseURL.swift; path = ../../../../../Downloads/BaseURL.swift; sourceTree = "<group>"; };
+		6A0BF6B1221EDAC800A0DBAF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		6A0C232522114CD400C3629B /* ImageCacheTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheTypeEnum.swift; sourceTree = "<group>"; };
 		6A0EB3FB221C679300D521CD /* Enum+PickerViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+PickerViewType.swift"; sourceTree = "<group>"; };
 		6A198CC7220C9F51002421AC /* ArticleTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTypeEnum.swift; sourceTree = "<group>"; };
 		6A198CC9220CAA9A002421AC /* DefaultLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultLabelView.xib; sourceTree = "<group>"; };
 		6A198CCB220CAAB5002421AC /* DefautLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefautLabelView.swift; sourceTree = "<group>"; };
+		6A1CCD9A222271A800190FA4 /* ParamterKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamterKey.swift; sourceTree = "<group>"; };
 		6A40D80D22165A9800F06CA6 /* ArticleWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleWebViewController.swift; sourceTree = "<group>"; };
 		6A40D80F22168F8800F06CA6 /* ExtractArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractArticle.swift; sourceTree = "<group>"; };
 		6A40D811221693AD00F06CA6 /* ExtractAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAPI.swift; sourceTree = "<group>"; };
@@ -242,7 +250,6 @@
 		6A65DA422203D22B005EB2BC /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		6A65DA442203D242005EB2BC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6A65DA492206190C005EB2BC /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		6AE2D7AD21FEF30D00444622 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		90AFBC8BB9092C8ACCC4A5FE /* Pods-Gardener-NetworkFetcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-NetworkFetcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-NetworkFetcher/Pods-Gardener-NetworkFetcher.release.xcconfig"; sourceTree = "<group>"; };
 		91E0860E8D668BAF58933746 /* Pods-Gardener-NetworkFetcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-NetworkFetcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-NetworkFetcher/Pods-Gardener-NetworkFetcher.debug.xcconfig"; sourceTree = "<group>"; };
 		ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gardener_Trend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -494,6 +501,7 @@
 			children = (
 				6A5D282922013FA5009EC8ED /* ArticleImageView.swift */,
 				6A65DA492206190C005EB2BC /* ImageCache.swift */,
+				6A0BF6B3221FFF6900A0DBAF /* ImageManager.swift */,
 			);
 			path = ImageHelper;
 			sourceTree = "<group>";
@@ -693,8 +701,9 @@
 		BCF98CA7221DC4210044A65A /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				6AE2D7AD21FEF30D00444622 /* Config.swift */,
-				D96DC268221ECC490028EF20 /* BaseURL.swift */,
+				6A0BF6B1221EDAC800A0DBAF /* Config.swift */,
+				6A0BF6AF221EDAA000A0DBAF /* BaseURL.swift */,
+				6A1CCD9A222271A800190FA4 /* ParamterKey.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1186,7 +1195,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Booster/Booster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1197,7 +1206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gardener-tree/Pods-Gardener-tree-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1267,8 +1276,11 @@
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
 				35CB481D21FAE7C8000D96CF /* ArticleImageViewController.swift in Sources */,
 				6A5D282A22013FA5009EC8ED /* ArticleImageView.swift in Sources */,
+				6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
+				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
+				D9D145CA220B0B8400CC58DA /* ScrapService.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
@@ -1320,11 +1332,12 @@
 			files = (
 				BCF98C9F221DC2D50044A65A /* NaverAPI.swift in Sources */,
 				BCF98CA1221DC2DA0044A65A /* BoosterManager.swift in Sources */,
-				D96DC269221ECC490028EF20 /* BaseURL.swift in Sources */,
+				6A0BF6B0221EDAA100A0DBAF /* BaseURL.swift in Sources */,
+				6A1CCD9B222271A800190FA4 /* ParamterKey.swift in Sources */,
 				BCF98C9C221DC2D00044A65A /* CategoryEvents.swift in Sources */,
 				BCF98CA0221DC2D50044A65A /* ExtractAPI.swift in Sources */,
 				BCF98C99221DC2D00044A65A /* Graph.swift in Sources */,
-				BCF98CA8221DC4430044A65A /* Config.swift in Sources */,
+				6A0BF6B2221EDAC800A0DBAF /* Config.swift in Sources */,
 				BCF98C98221DC2D00044A65A /* TrendDays.swift in Sources */,
 				BCF98C9E221DC2D50044A65A /* GoogleTrendAPI.swift in Sources */,
 				BCF98C9A221DC2D00044A65A /* ExtractArticle.swift in Sources */,
