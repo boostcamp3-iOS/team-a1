@@ -21,7 +21,7 @@ class ArticleDetailViewController: UIViewController {
     private var floatingButton = UIButton()
     private var isNavigationBarHidden = false
     var articleURLString: String?
-    var press: String?
+    var articlePress: String?
     var articleData: AnyObject?
     var scrappedArticleDetail: ScrappedArticle?
     
@@ -86,7 +86,7 @@ class ArticleDetailViewController: UIViewController {
             }
         }
         guard let articleURLString = articleURLString,
-        let press = press else {
+        let press = articlePress else {
             return
         }
         

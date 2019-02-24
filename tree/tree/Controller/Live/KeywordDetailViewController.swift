@@ -258,7 +258,7 @@ extension KeywordDetailViewController: UITableViewDataSource, UITableViewDelegat
                                     withIdentifier: "ArticleDetailViewController"
                                     )as? ArticleDetailViewController else { return }
                             articleView.articleURLString = self.articleData?[indexPath.row].url
-                            articleView.press = self.articleData?[indexPath.row].source
+                            articleView.articlePress = self.articleData?[indexPath.row].source
                             articleView.articleData = data as AnyObject
                             self.isSelected.toggle()
                             self.loadingView?.removeFromSuperview()
