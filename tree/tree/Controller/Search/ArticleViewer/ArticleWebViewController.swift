@@ -58,7 +58,7 @@ class ArticleWebViewController: UIViewController {
             isScrappedArticle = true
             scrapButton.isHidden = true
         } else {
-            loadWebDataWithURL()
+            loadWebDataWithURL(articleURL)
         }
     }
     
@@ -67,15 +67,14 @@ class ArticleWebViewController: UIViewController {
         return URL(string: urlString)
     }
     
-    private func loadWebDataWithURL() {
-        guard let url = articleURL else { return }
+    private func loadWebDataWithURL(_ url: URL?) {
+        guard let url = url else { return }
         requestWebData(url) { [weak self] (responseData) in
             guard let self = self else { return }
             self.webData = responseData
             DispatchQueue.main.async {
                 self.loadWebData()
             }
-            
         }
     }
     
