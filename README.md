@@ -1,4 +1,4 @@
-# TREE
+# tŕee
 > 전 세계 이슈(급상승 검색어, 뉴스 기사)를 실시간으로 제공하는 애플리케이션
 
 ## 개발 기간
@@ -11,6 +11,25 @@
 - [김혜리](https://github.com/kimhyeri) 
 - [김현태](https://github.com/onemoongit)
 
+## 주요 기술
+- HTTP Networking Library - [Booster](https://github.com/godpp/Booster)
+- Image Caching
+- CoreData
+- Siri Shortcuts
+
+## 👨‍🏫 Tutoring Log
+
+* [Week1](https://github.com/boostcamp3-iOS/team-a1/wiki/Week1)
+* [Week2](https://github.com/boostcamp3-iOS/team-a1/wiki/Week2)
+* [Week3](https://github.com/boostcamp3-iOS/team-a1/wiki/Week3)
+* [Week4](https://github.com/boostcamp3-iOS/team-a1/wiki/Week4)
+
+## 📝 Assignment
+
+* [Week1](https://github.com/boostcamp3-iOS/team-a1/wiki/Week1-Assignment)
+* [Week2](https://github.com/boostcamp3-iOS/team-a1/wiki/Week2-Assignment)
+* [Week3](https://github.com/boostcamp3-iOS/team-a1/wiki/Week3-Assignment)
+
 ## GROUND RULE
 
 * 공통된 코드 컨벤션을 사용합니다.
@@ -21,11 +40,6 @@
 * 대화를 통한 적극적인 피드백을 주고받습니다.
   - 매일 아침 10시부터 데일리 스크럼을 통해 어제 한 작업을 공유하고 오늘 해야할 작업을 명확하게 설정합니다.
 
-## 주요 기술
-- HTTP Networking Library
-- Image Caching
-- CoreData
-
 ## 기능 트리
 
 ![](./image/tree.png)
@@ -35,7 +49,7 @@
 
 > LIVE
 
-- 각 나라별 이슈들이 최신순으로 나열되고 확인할 수 있습니다. 
+- 각 나라별 급상승 검색어가 날짜순으로 나열되고 확인할 수 있습니다.
 
 - 그래프를 통해서 사람들의 관심도가 시간에 따라서 어떻게 달라지는지 확인할 수 있습니다.
 
