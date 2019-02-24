@@ -139,10 +139,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         let scrappedArticle: ScrappedArticle = scrappedArticles[indexPath.row]
         guard let articleTypeString = scrappedArticle.articleType else { return }
         let articleType = ScrappedArticleType.init(type: articleTypeString)
-        
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         switch articleType {
         case .search:
-            let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
             guard
                 let articleView = storyboard.instantiateViewController(
                     withIdentifier: "ArticleDetailViewController"
@@ -153,7 +152,6 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             }
             self.navigationController?.pushViewController(articleView, animated: true)
         case .webExtracted:
-            let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
             guard
                 let articleView = storyboard.instantiateViewController(
                     withIdentifier: "ArticleDetailViewController"
@@ -165,7 +163,6 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             self.navigationController?.pushViewController(articleView, animated: true)
         case .web:
             DispatchQueue.main.async {
-                let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
                 guard
                     let articleView = storyboard.instantiateViewController(
                         withIdentifier: "ArticleWebViewController"
