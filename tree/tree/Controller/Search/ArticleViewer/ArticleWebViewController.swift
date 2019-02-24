@@ -67,14 +67,6 @@ class ArticleWebViewController: UIViewController {
         return URL(string: urlString)
     }
     
-//    private func makeURLRequest(urlString: String) -> URLRequest? {
-//        if let makeURL = URL(string: urlString) {
-//            let urlRequest = URLRequest(url: makeURL)
-//            return urlRequest
-//        }
-//        return nil
-//    }
-    
     private func loadWebDataWithURL() {
         guard let url = articleURL else { return }
         requestWebData(url) { [weak self] (responseData) in
@@ -98,12 +90,6 @@ class ArticleWebViewController: UIViewController {
             )
         }
     }
-    
-//    private func loadWebView() {
-//        if let url = articleURLString, let requestURL = makeURLRequest(urlString: url) {
-//            webView.load(requestURL)
-//        }
-//    }
     
     private func setupLoadingView() {
         let loadingViewFrame = CGRect(
