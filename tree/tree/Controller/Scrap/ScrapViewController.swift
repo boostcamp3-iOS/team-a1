@@ -42,10 +42,12 @@ class ScrapViewController: UIViewController {
             } else if isArticleDeleted {
                 isArticleDeleted = false
             }
-            if scrappedArticles?.count == 0 {
-                placeholderLabel.isHidden = false
-            } else {
-                placeholderLabel.isHidden = true
+            if placeholderLabel != nil {
+                if scrappedArticles?.count == 0 {
+                    placeholderLabel.isHidden = false
+                } else {
+                    placeholderLabel.isHidden = true
+                }
             }
         }
     }
