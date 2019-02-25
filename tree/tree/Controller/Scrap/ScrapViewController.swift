@@ -104,7 +104,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         guard let articleTypeString = scrappedArticle.articleType else {
             return UITableViewCell()
         }
-        let articleType = ScrappedArticleType.init(type: articleTypeString)
+        let articleType = ScrappedArticleType(type: articleTypeString)
         
         switch articleType {
         case .search:
@@ -193,20 +193,23 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         let scrappedArticle = scrappedArticles[indexPath.row]
-        let articleTypeString = scrappedArticle.articleType
-        var articleType: ScrappedArticleType
-        switch articleTypeString {
-        case "nativeSearch":
-            articleType = .search
-        default:
-            articleType = .search
+        guard let articleTypeString = scrappedArticle.articleType else {
+            return nil
         }
-        
+        let articleType = ScrappedArticleType(type: articleTypeString)
+        var articleIdentifier: String? {
+            switch articleType {
+            case .search:
+                return scrappedArticles[indexPath.row].articleUri
+            case .web, .webExtracted:
+                return scrappedArticles[indexPath.row].articleURL
+            }
+        }
         let markAsReadAction = customUIContextualAction(
         .markAsRead,
         nil,
         nil,
-        scrappedArticles[indexPath.row].articleUri,
+        articleIdentifier,
         articleType
     ) { [weak self] _ in
             guard let self = self else { return }
