@@ -102,7 +102,7 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let scrappedArticle = scrappedArticles[indexPath.row]
         guard let articleTypeString = scrappedArticle.articleType else {
-            fatalError(FatalError.invalidCell.localizedDescription)
+            return UITableViewCell()
         }
         let articleType = ScrappedArticleType.init(type: articleTypeString)
         
