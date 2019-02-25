@@ -243,11 +243,15 @@ extension ScrapViewController: ScrapFilterDelegate {
         default:
             scrappedArticles = ScrapManager.fetchArticles(category)
         }
-        tableView.scrollToRow(
-            at: IndexPath(row: 0, section: 0),
-            at: .top,
-            animated: true
-        )
+        if let scrappedArticles = scrappedArticles,
+            scrappedArticles.count > 0 {
+            tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: true
+            )
+        }
+        
     }
 }
 
