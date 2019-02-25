@@ -40,9 +40,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scrap 📰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qra-Iv-XDx">
+                                <rect key="frame" x="131.5" y="315.5" width="112" height="36"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Qra-Iv-XDx" firstAttribute="centerX" secondItem="3s4-GA-p24" secondAttribute="centerX" id="NSD-af-LtL"/>
+                            <constraint firstItem="Qra-Iv-XDx" firstAttribute="centerY" secondItem="3s4-GA-p24" secondAttribute="centerY" id="QHs-0o-31q"/>
                             <constraint firstItem="zb3-AA-joQ" firstAttribute="bottom" secondItem="Fwc-Se-Vc5" secondAttribute="bottom" id="g9s-S7-0mB"/>
                             <constraint firstItem="zb3-AA-joQ" firstAttribute="trailing" secondItem="Fwc-Se-Vc5" secondAttribute="trailing" id="wYk-J9-JBe"/>
                             <constraint firstItem="Fwc-Se-Vc5" firstAttribute="leading" secondItem="zb3-AA-joQ" secondAttribute="leading" id="wx9-F7-j8b"/>
@@ -63,7 +71,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ngn-ry-vjo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jGy-hd-WEj">
-                                <rect key="frame" x="276" y="7" width="95" height="22"/>
+                                <rect key="frame" x="264" y="11" width="95" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="filter3X"/>
                             </button>
@@ -71,6 +79,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="jGy-hd-WEj" id="t6L-5A-UtT"/>
+                        <outlet property="placeholderLabel" destination="Qra-Iv-XDx" id="Ngi-X4-axW"/>
                         <outlet property="readAllButton" destination="BNf-WT-A8U" id="kaz-fm-w7u"/>
                         <outlet property="tableView" destination="Fwc-Se-Vc5" id="hIL-eo-b7q"/>
                     </connections>
