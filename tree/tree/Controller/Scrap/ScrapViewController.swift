@@ -30,6 +30,7 @@ class ScrapViewController: UIViewController {
             )
         }
     }
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     private let articleFeedCellIdentifier = "ScrapTableViewCell"
     private let liveCellIdentifier = "KeywordDetailArticleCell"
@@ -40,6 +41,11 @@ class ScrapViewController: UIViewController {
                 tableView.reloadData()
             } else if isArticleDeleted {
                 isArticleDeleted = false
+            }
+            if scrappedArticles?.count == 0 {
+                placeholderLabel.isHidden = false
+            } else {
+                placeholderLabel.isHidden = true
             }
         }
     }
@@ -102,9 +108,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let scrappedArticle = scrappedArticles[indexPath.row]
         guard let articleTypeString = scrappedArticle.articleType else {
-            fatalError(FatalError.invalidCell.localizedDescription)
+            return UITableViewCell()
         }
-        let articleType = ScrappedArticleType.init(type: articleTypeString)
+        let articleType = ScrappedArticleType(type: articleTypeString)
         
         switch articleType {
         case .search:
@@ -193,20 +199,23 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         let scrappedArticle = scrappedArticles[indexPath.row]
-        let articleTypeString = scrappedArticle.articleType
-        var articleType: ScrappedArticleType
-        switch articleTypeString {
-        case "nativeSearch":
-            articleType = .search
-        default:
-            articleType = .search
+        guard let articleTypeString = scrappedArticle.articleType else {
+            return nil
         }
-        
+        let articleType = ScrappedArticleType(type: articleTypeString)
+        var articleIdentifier: String? {
+            switch articleType {
+            case .search:
+                return scrappedArticles[indexPath.row].articleUri
+            case .web, .webExtracted:
+                return scrappedArticles[indexPath.row].articleURL
+            }
+        }
         let markAsReadAction = customUIContextualAction(
         .markAsRead,
         nil,
         nil,
-        scrappedArticles[indexPath.row].articleUri,
+        articleIdentifier,
         articleType
     ) { [weak self] _ in
             guard let self = self else { return }
@@ -237,8 +246,18 @@ extension ScrapViewController: ScrapFilterDelegate {
         switch category {
         case .all:
             scrappedArticles = ScrapManager.fetchArticles()
+            title = "Scrap"
         default:
+            title = "\(category)".capitalized
             scrappedArticles = ScrapManager.fetchArticles(category)
+        }
+        if let scrappedArticles = scrappedArticles,
+            scrappedArticles.count > 0 {
+            tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: true
+            )
         }
     }
 }

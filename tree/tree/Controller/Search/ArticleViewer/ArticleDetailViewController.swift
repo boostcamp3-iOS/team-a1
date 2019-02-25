@@ -70,34 +70,48 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @objc private func scrapButtonDidTapped(_ sender: UIButton) {
-        guard let article = articleData as? ExtractArticle else { return }
-        var detail: String {
-            if article.body.count == 0 {
-                return article.description
-            } else {
-                return article.body
+        switch articleData {
+        case is ExtractArticle:
+            guard let article = articleData as? ExtractArticle else { return }
+            var detail: String {
+                if article.body.count == 0 {
+                    return article.description
+                } else {
+                    return article.body
+                }
             }
-        }
-        var imageData: Data? {
-            if let uiImage = imageView.image {
-                return UIImage.pngData(uiImage)()
-            } else {
-                return nil
+            var imageData: Data? {
+                if let uiImage = imageView.image {
+                    return UIImage.pngData(uiImage)()
+                } else {
+                    return nil
+                }
             }
+            guard let articleURLString = articleURLString,
+                let press = articlePress else {
+                    return
+            }
+            
+            let articleStruct = WebExtractedArticleStruct(
+                title: article.title,
+                detail: detail,
+                press: press,
+                url: articleURLString,
+                imageData: imageData
+            )
+            ScrapManager.scrapArticle(.webExtracted, articleStruct: articleStruct)
+        default:
+            guard let article = articleData as? Article else { return }
+            var imageData: Data? {
+                if let uiImage = imageView.image {
+                    return UIImage.pngData(uiImage)()
+                } else {
+                    return nil
+                }
+            }
+            let articleStruct = SearchedArticleStruct(articleData: article, imageData: imageData)
+            ScrapManager.scrapArticle(.search, articleStruct: articleStruct)
         }
-        guard let articleURLString = articleURLString,
-        let press = articlePress else {
-            return
-        }
-        
-        let articleStruct = WebExtractedArticleStruct(
-            title: article.title,
-            detail: detail,
-            press: press,
-            url: articleURLString,
-            imageData: imageData
-        )
-        ScrapManager.scrapArticle(.webExtracted, articleStruct: articleStruct)
     }
     
     private func configure() {
