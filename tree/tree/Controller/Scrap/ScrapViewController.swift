@@ -30,6 +30,7 @@ class ScrapViewController: UIViewController {
             )
         }
     }
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     private let articleFeedCellIdentifier = "ScrapTableViewCell"
     private let liveCellIdentifier = "KeywordDetailArticleCell"
@@ -40,6 +41,11 @@ class ScrapViewController: UIViewController {
                 tableView.reloadData()
             } else if isArticleDeleted {
                 isArticleDeleted = false
+            }
+            if scrappedArticles?.count == 0 {
+                placeholderLabel.isHidden = false
+            } else {
+                placeholderLabel.isHidden = true
             }
         }
     }
@@ -240,7 +246,9 @@ extension ScrapViewController: ScrapFilterDelegate {
         switch category {
         case .all:
             scrappedArticles = ScrapManager.fetchArticles()
+            title = "Scrap"
         default:
+            title = "\(category)".capitalized
             scrappedArticles = ScrapManager.fetchArticles(category)
         }
         if let scrappedArticles = scrappedArticles,
@@ -251,7 +259,6 @@ extension ScrapViewController: ScrapFilterDelegate {
                 animated: true
             )
         }
-        
     }
 }
 
