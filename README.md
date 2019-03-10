@@ -12,7 +12,9 @@
     - 사용성 증진
     - 프로토콜 사용
 
-> 2019.03.02 - 진행중
+> 2019.03.07 - 진행중
+>
+> [미니 프로젝트](https://github.com/onemoongit/Practice-iOS/tree/master/PR_CoreData)
 
 
 ## Team Gardener
