@@ -2,6 +2,30 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:tree/Model/CoreDataModel/ArticleBase+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/ArticleBase+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/WebExtracted+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/WebExtracted+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/Web+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/Web+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/Search+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:tree/Model/CoreDataModel/Search+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:tree.xcodeproj">
    </FileRef>
    <FileRef

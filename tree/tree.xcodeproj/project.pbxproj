@@ -137,8 +137,6 @@
 		D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */; };
 		D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C1220B0B7800CC58DA /* TreeData.xcdatamodeld */; };
 		D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C6220B0B8400CC58DA /* ScrapManager.swift */; };
-		D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */; };
-		D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */; };
 		D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */; };
 		D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */; };
 		D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */; };
@@ -337,8 +335,6 @@
 		D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 		D9D145C2220B0B7800CC58DA /* TreeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeData.xcdatamodel; sourceTree = "<group>"; };
 		D9D145C6220B0B8400CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
-		D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterViewController.swift; sourceTree = "<group>"; };
 		D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterTableViewCell.swift; sourceTree = "<group>"; };
 		D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapFilterTableViewCell.xib; sourceTree = "<group>"; };
@@ -546,7 +542,6 @@
 		BC2656C521FD950900003413 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D9D145C7220B0B8400CC58DA /* CoreDataModel */,
 				D9D145C4220B0B8400CC58DA /* DataManager */,
 			);
 			path = Model;
@@ -836,15 +831,6 @@
 				D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */,
 			);
 			path = DataManager;
-			sourceTree = "<group>";
-		};
-		D9D145C7220B0B8400CC58DA /* CoreDataModel */ = {
-			isa = PBXGroup;
-			children = (
-				D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */,
-				D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */,
-			);
-			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		D9D145CE220B0B9300CC58DA /* Scrap */ = {
@@ -1230,7 +1216,6 @@
 				6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */,
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */,
-				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
 				BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
@@ -1291,7 +1276,6 @@
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
-				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				BCE1B8B6221723230098B3B8 /* Enum+FatalError.swift in Sources */,
 				D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */,
