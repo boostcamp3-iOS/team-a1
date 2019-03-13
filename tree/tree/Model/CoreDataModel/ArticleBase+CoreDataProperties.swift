@@ -1,8 +1,9 @@
 //
 //  ArticleBase+CoreDataProperties.swift
-//  
+//  tree
 //
 //  Created by Hyeontae on 13/03/2019.
+//  Copyright © 2019 gardener. All rights reserved.
 //
 //
 
@@ -16,7 +17,7 @@ extension ArticleBase {
         return NSFetchRequest<ArticleBase>(entityName: "ArticleBase")
     }
 
-    @NSManaged public var articleType: ScrappedArticleType
+    @NSManaged public var articleType: Int16
     @NSManaged public var author: String
     @NSManaged public var isRead: Bool
     @NSManaged public var scrappedDate: NSDate
@@ -24,5 +25,12 @@ extension ArticleBase {
     @NSManaged public var searched: Search?
     @NSManaged public var web: Web?
     @NSManaged public var webExtracted: WebExtracted?
+    
+    var articleTypeEnum: ScrappedArticleType {
+        if let articleEnum = ScrappedArticleType(rawValue: articleType) {
+            return articleEnum
+        }
+        return .search
+    }
 
 }

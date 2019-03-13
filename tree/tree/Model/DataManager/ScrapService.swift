@@ -27,10 +27,6 @@ enum ScrappedArticleProperty {
     var stringValue: String {
         return "\(self)"
     }
-    
-    func toString() -> String {
-        return "\(self)"
-    }
 }
 
 public enum ArticleCategory: Int, CaseIterable{

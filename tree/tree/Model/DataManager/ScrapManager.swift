@@ -28,10 +28,10 @@ final class ScrapManager {
         articleStruct: Any
     ) {
         guard let entity =
-            NSEntityDescription.entity(forEntityName: "ScrappedArticle", in: managedContext) else {
+            NSEntityDescription.entity(forEntityName: "ArticleBase", in: managedContext) else {
                 return
         }
-        let newArticle = ScrappedArticle(entity: entity, insertInto: managedContext)
+        let newArticle = ArticleBase(entity: entity, insertInto: managedContext)
         switch type {
         case .search:
             guard let articleStruct = articleStruct as? SearchedArticleStruct else { return }

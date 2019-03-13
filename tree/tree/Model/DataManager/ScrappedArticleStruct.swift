@@ -9,8 +9,8 @@
 import UIKit
 import NetworkFetcher
 
-public enum ScrappedArticleType: CaseIterable {
-    case search
+public enum ScrappedArticleType: Int16,CaseIterable {
+    case search = 0
     case webExtracted
     case web
     
