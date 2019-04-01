@@ -47,35 +47,35 @@ final class ScrapManager {
         do {
             try managedContext.save()
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
-            appDelegate.scrapViewController?.setupScrapBadgeValue()
+//            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
+//            appDelegate.scrapViewController?.setupScrapBadgeValue()
             
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    static func fetchArticles() -> [ScrappedArticle] {
-        let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
+    static func fetchArticles() -> [ArticleBase] {
+        let request: NSFetchRequest = ArticleBase.fetchRequest()
         let sortDescriptor: NSSortDescriptor =
             NSSortDescriptor(
-                key: #keyPath(ScrappedArticle.scrappedDate),
+                key: #keyPath(ArticleBase.scrappedDate),
                 ascending: false
         )
         request.sortDescriptors = [sortDescriptor]
-        var result: [ScrappedArticle] = []
+        var result: [ArticleBase] = []
         result = fetchRequest(request)
         return result
     }
     
-    static func fetchArticles(_ category: ArticleCategory) -> [ScrappedArticle] {
-        var request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
-        var result: [ScrappedArticle] = []
+    static func fetchArticles(_ category: ArticleCategory) -> [ArticleBase] {
+        var request: NSFetchRequest = ArticleBase.fetchRequest()
+        var result: [ArticleBase] = []
         request.predicate =
             NSPredicate(
                 format: "%K == %@",
-                #keyPath(ScrappedArticle.category),
-                category.stringValue
+                #keyPath(ArticleBase.articleType),
+                category.rawValue
         )
         result = fetchRequest(request)
         return result
@@ -94,25 +94,25 @@ final class ScrapManager {
             predicate = NSPredicate(
                 format: "isRead == %@ AND %K == %@",
                 NSNumber(value: isRead),
-                #keyPath(ScrappedArticle.category),
-                category.stringValue
+                #keyPath(ArticleBase.articleType),
+                category.rawValue
             )
         } else {
             predicate = NSPredicate(
                 format: "%K == %@",
-                #keyPath(ScrappedArticle.category),
-                category.stringValue
+                #keyPath(ArticleBase.articleType),
+                category.rawValue
             )
         }
         return countArticleFetch(predicate)
     }
     
-    typealias IsScrappedHandler = (Bool,ScrappedArticle?) -> Void
+    typealias IsScrappedHandler = (Bool,ArticleBase?) -> Void
     static func articleIsScrapped(
         uri articleUri: String,
         completion: @escaping IsScrappedHandler
     ) -> Void {
-        let request: NSFetchRequest = ScrappedArticle.fetchRequest()
+        let request: NSFetchRequest = ArticleBase.fetchRequest()
         request.predicate = NSPredicate(format: "articleUri == %@", articleUri)
         do {
             let result = try managedContext.fetch(request)
@@ -130,7 +130,7 @@ final class ScrapManager {
         _ articleType: ScrappedArticleType,
         _ articleIdentifier: String
     ) {
-        let request: NSFetchRequest = ScrappedArticle.fetchRequest()
+        let request: NSFetchRequest = ArticleBase.fetchRequest()
         switch articleType {
         case .search:
             request.predicate = NSPredicate(format: "articleUri == %@", articleIdentifier)
@@ -167,7 +167,7 @@ final class ScrapManager {
         return 0
     }
     
-    static func removeArticle(_ article: ScrappedArticle) {
+    static func removeArticle(_ article: ArticleBase) {
         managedContext.delete(article)
         do {
             try managedContext.save()
@@ -177,8 +177,8 @@ final class ScrapManager {
     }
     
     static func removeAllScrappedArticle() {
-        let request: NSFetchRequest<ScrappedArticle> = ScrappedArticle.fetchRequest()
-        var results: [ScrappedArticle] = []
+        let request: NSFetchRequest = ArticleBase.fetchRequest()
+        var results: [ArticleBase] = []
         do {
             results = try managedContext.fetch(request)
             for item in results {
@@ -191,8 +191,8 @@ final class ScrapManager {
         print("all data is Removed")
     }
     
-    static func fetchRequest(_ request: NSFetchRequest<ScrappedArticle>) -> [ScrappedArticle] {
-        var result: [ScrappedArticle] = []
+    static func fetchRequest(_ request: NSFetchRequest<ArticleBase>) -> [ArticleBase] {
+        var result: [ArticleBase] = []
         do {
             result = try managedContext.fetch(request)
         } catch {
@@ -203,7 +203,7 @@ final class ScrapManager {
     
     static func markAllAsRead() {
         let batchUpdate = NSBatchUpdateRequest(entityName: "ScrappedArticle")
-        batchUpdate.propertiesToUpdate = [#keyPath(ScrappedArticle.isRead): true]
+        batchUpdate.propertiesToUpdate = [#keyPath(ArticleBase.isRead): true]
         batchUpdate.affectedStores = managedContext.persistentStoreCoordinator?.persistentStores
         batchUpdate.resultType = .updatedObjectsCountResultType
         do {

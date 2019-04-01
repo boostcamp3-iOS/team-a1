@@ -18,7 +18,7 @@ extension ArticleBase {
     }
 
     @NSManaged public var articleType: Int16
-    @NSManaged public var author: String
+    @NSManaged public var author: String?
     @NSManaged public var isRead: Bool
     @NSManaged public var scrappedDate: NSDate
     @NSManaged public var title: String
