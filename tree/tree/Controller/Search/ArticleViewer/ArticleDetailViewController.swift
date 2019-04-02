@@ -23,7 +23,7 @@ class ArticleDetailViewController: UIViewController {
     var articleURLString: String?
     var articlePress: String?
     var articleData: AnyObject?
-    var scrappedArticleDetail: ScrappedArticle?
+    var scrappedArticleDetail: ArticleBase?
     
     override func viewDidLoad() {
         super.viewDidLoad()
