@@ -142,19 +142,25 @@ class ArticleDetailViewController: UIViewController {
     private func configureWithScrappedArticle() {
         scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
-        if let title = articleData.articleTitle,
-            let content = articleData.articleDescription {
-            titleLabel.text = title
-            contentLabel.text = content
-        }
-        if let date = articleData.articleDate {
-            dateLabel.text = date
-        }
-        if let author = articleData.articleAuthor {
+        titleLabel.text = articleData.title
+        contentLabel.text = articleData.description
+        if let author = articleData.author {
             authorLabel.text = author
         }
-        if let image = articleData.articleData {
-            imageView.image(from: image as Data)
+        switch articleData.articleTypeEnum {
+        case .webExtracted:
+            guard let detail = articleData.webExtracted else { return }
+            if let imageData = detail.imageData {
+                imageView.image(from: imageData as Data)
+            }
+        case .search:
+            guard let detail = articleData.searched else { return }
+            dateLabel.text = detail.articleDate
+            if let imageData = detail.imageData {
+                imageView.image(from: imageData as Data)
+            }
+        default:
+            fatalError("exception because of web case")
         }
     }
     
