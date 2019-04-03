@@ -209,11 +209,12 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         let deleteAction = customUIContextualAction(.delete, nil, nil, nil, nil) { [weak self] _ in
             guard let self = self else { return }
-            guard var tempArticles = self.scrappedArticles else { return }
-            ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
-            self.isArticleDeleted = true
-            self.scrappedArticles = tempArticles
+            let deletedArticle = self.resultController.object(at: indexPath)
+            ScrapManager.removeArticle(deletedArticle)
+//            self.isArticleDeleted = true
+//            self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.updateResult()
             self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -224,20 +225,20 @@ extension ScrapViewController: ScrapFilterDelegate {
     func filterArticles(_ category: ArticleCategory) {
         switch category {
         case .all:
-            scrappedArticles = ScrapManager.fetchArticles()
+//            scrappedArticles = ScrapManager.fetchArticles()
             title = "Scrap"
         default:
             title = "\(category)".capitalized
-            scrappedArticles = ScrapManager.fetchArticles(category)
+//            scrappedArticles = ScrapManager.fetchArticles(category)
         }
-        if let scrappedArticles = scrappedArticles,
-            scrappedArticles.count > 0 {
-            tableView.scrollToRow(
-                at: IndexPath(row: 0, section: 0),
-                at: .top,
-                animated: true
-            )
-        }
+//        if let scrappedArticles = scrappedArticles,
+//            scrappedArticles.count > 0 {
+//            tableView.scrollToRow(
+//                at: IndexPath(row: 0, section: 0),
+//                at: .top,
+//                animated: true
+//            )
+//        }
     }
 }
 
