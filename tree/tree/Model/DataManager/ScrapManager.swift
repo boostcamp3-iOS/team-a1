@@ -31,25 +31,46 @@ final class ScrapManager {
             NSEntityDescription.entity(forEntityName: "ArticleBase", in: managedContext) else {
                 return
         }
-        let newArticle = ArticleBase(entity: entity, insertInto: managedContext)
+        let newArticleBase = ArticleBase(entity: entity, insertInto: managedContext)
+//        if let articleStruct = articleStruct as? Scrappable {
+//            newArticleBase.setArticle(articleStruct,)
+//        }
         switch type {
         case .search:
-            guard let articleStruct = articleStruct as? SearchedArticleStruct else { return }
-            newArticle.setValues(articleStruct)
+            guard
+                let articleStruct = articleStruct as? SearchedArticleStruct,
+                let searchDescription =
+                NSEntityDescription.entity(
+                    forEntityName: articleStruct.entityName,
+                    in: managedContext
+                ) else { return }
+            let detailEntity = Search(entity: searchDescription, insertInto: managedContext)
+            newArticleBase.setArticle(articleStruct, detailEntity)
         case .webExtracted:
-            guard let articleStruct = articleStruct as? WebExtractedArticleStruct else { return }
-            newArticle.setValues(articleStruct)
+            guard
+                let articleStruct = articleStruct as? WebExtractedArticleStruct,
+                let webExtractedDescription = NSEntityDescription.entity(
+                    forEntityName: articleStruct.entityName,
+                    in: managedContext
+                ) else { return }
+            let detailEntity = WebExtracted(entity: webExtractedDescription, insertInto: managedContext)
+            newArticleBase.setArticle(articleStruct, detailEntity)
         case .web:
-            guard let articleStruct = articleStruct as? WebViewArticleStruct else { return }
-            newArticle.setValues(articleStruct)
+            guard
+                let articleStruct = articleStruct as? WebViewArticleStruct,
+                let webDescription = NSEntityDescription.entity(
+                    forEntityName: articleStruct.entityName,
+                    in: managedContext
+                ) else { return }
+            let detailEntity = Web(entity: webDescription, insertInto: managedContext)
+            newArticleBase.setArticle(articleStruct, detailEntity)
         }
         
         do {
             try managedContext.save()
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 //            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
 //            appDelegate.scrapViewController?.setupScrapBadgeValue()
-            
         } catch {
             print(error.localizedDescription)
         }
@@ -150,7 +171,7 @@ final class ScrapManager {
     }
     
     static func countArticleFetch(_ predicate: NSPredicate?) -> Int{
-        let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ScrappedArticle")
+        let request: NSFetchRequest = NSFetchRequest<NSNumber>(entityName: "ArticleBase")
         request.resultType = .countResultType
         if let predicate = predicate {
             request.predicate = predicate
@@ -202,7 +223,7 @@ final class ScrapManager {
     }
     
     static func markAllAsRead() {
-        let batchUpdate = NSBatchUpdateRequest(entityName: "ScrappedArticle")
+        let batchUpdate = NSBatchUpdateRequest(entityName: "ArticleBase")
         batchUpdate.propertiesToUpdate = [#keyPath(ArticleBase.isRead): true]
         batchUpdate.affectedStores = managedContext.persistentStoreCoordinator?.persistentStores
         batchUpdate.resultType = .updatedObjectsCountResultType
@@ -215,62 +236,63 @@ final class ScrapManager {
 }
 
 private extension NSManagedObject {
-    func setValue(_ value: Any?, forKey property: ScrappedArticleProperty) {
-        self.setValue(value, forKeyPath: "\(property)")
-    }
+//    func setValue(_ value: Any?, forKey property: ScrappedArticleProperty) {
+//        self.setValue(value, forKeyPath: "\(property)")
+//    }
     
-    func setCategory(_ category: ArticleCategory) {
-        self.setValue(category.stringValue, forKey: .category)
-    }
+//    func setCategory(_ category: ArticleCategory) {
+//        self.setValue(category.stringValue, forKey: .category)
+//    }
     
     func setupBaseProperty(_ type: ScrappedArticleType) {
-        self.setValue(type.stringValue, forKey: .articleType)
-        self.setValue(NSDate(), forKey: .scrappedDate)
-        self.setValue(false, forKey: .isRead)
+        self.setValue(type.rawValue, forKey: "articleType")
+        self.setValue(NSDate(), forKey: "scrappedDate")
+        self.setValue(false, forKey: "isRead")
     }
     
-    func setValues(_ articleStruct: Scrappable) {
-        switch articleStruct {
+    func setArticle(_ baseStruct: Scrappable, _ detailEntity: NSManagedObject) {
+        switch baseStruct {
         case is WebViewArticleStruct:
-            guard let webViewStruct = articleStruct as? WebViewArticleStruct else { return }
+            guard let webViewStruct = baseStruct as? WebViewArticleStruct else { return }
             self.setupBaseProperty(.web)
-            self.setValue(webViewStruct.title, forKey: .articleTitle)
-            self.setValue(webViewStruct.press, forKey: .articleAuthor)
-            self.setValue(webViewStruct.webData as NSData, forKey: .articleData)
-            self.setValue(webViewStruct.url, forKey: .articleURL)
-            self.setCategory(.live)
+//            self.setValue(webViewStruct.title, forKey: .articleTitle)
+//            self.setValue(webViewStruct.press, forKey: .articleAuthor)
+//            self.setValue(webViewStruct.webData as NSData, forKey: .articleData)
+//            self.setValue(webViewStruct.url, forKey: .articleURL)
+//            self.setCategory(.live)
         case is WebExtractedArticleStruct:
-            guard let webExtractedStruct = articleStruct as? WebExtractedArticleStruct else { return }
+            guard let webExtractedStruct = baseStruct as? WebExtractedArticleStruct else { return }
             self.setupBaseProperty(.webExtracted)
-            self.setValue(webExtractedStruct.title, forKey: .articleTitle)
-            self.setValue(webExtractedStruct.detail, forKey: .articleDescription)
-            self.setValue(webExtractedStruct.press, forKey: .articleAuthor)
-            self.setValue(webExtractedStruct.url, forKey: .articleURL)
-            self.setValue(webExtractedStruct.imageData, forKey: .articleData)
-            self.setCategory(.live)
+//            self.setValue(webExtractedStruct.title, forKey: .articleTitle)
+//            self.setValue(webExtractedStruct.detail, forKey: .articleDescription)
+//            self.setValue(webExtractedStruct.press, forKey: .articleAuthor)
+//            self.setValue(webExtractedStruct.url, forKey: .articleURL)
+//            self.setValue(webExtractedStruct.imageData, forKey: .articleData)
+//            self.setCategory(.live)
         case is SearchedArticleStruct:
             self.setupBaseProperty(.search)
             guard
-                let searhedArticleStruct = articleStruct as? SearchedArticleStruct,
-                let articleData = searhedArticleStruct.articleData as? Article else {
-                return
-            }
-            if let imageData: Data = searhedArticleStruct.imageData {
-                self.setValue(imageData, forKey: .articleData)
-            }
+                let searhedArticleStruct = baseStruct as? SearchedArticleStruct,
+                let articleData = searhedArticleStruct.articleData as? Article,
+                let detailEntity = detailEntity as? Search
+                else { return }
             if let authors = articleData.author,
                 authors.count > 0 {
-                self.setValue(authors.first?.name, forKey: .articleAuthor)
+                self.setValue(authors.first?.name, forKey: "author")
             }
-            self.setCategory(ArticleCategory(containString: "\(articleData.categories.first)"))
-            self.setValue(articleData.lang, forKey: .language)
-            self.setValue(articleData.date, forKey: .articleDate)
-            self.setValue(articleData.title, forKey: .articleTitle)
-            self.setValue(articleData.uri, forKey: .articleUri)
-            self.setValue(articleData.source.title, forKey: .company)
-            self.setValue(articleData.body, forKey: .articleDescription)
+            self.setValue(
+                ArticleCategory(containString: "\(articleData.categories.first)").rawValue,
+                forKey: "category" )
+            self.setValue(articleData.title, forKey: "title")
+            detailEntity.setValue(articleData.date, forKey: "articleDate")
+            detailEntity.setValue(articleData.uri, forKey: "webURI")
+            detailEntity.setValue(articleData.body, forKey: "articleDescription")
+            if let imageData: Data = searhedArticleStruct.imageData {
+                detailEntity.imageData = imageData as NSData
+            }
+            self.setValue(detailEntity, forKey: "searched")
         default:
-            print("should check Struct")
+            fatalError("Check ArticleDataStruct Type")
         }
     }
 }

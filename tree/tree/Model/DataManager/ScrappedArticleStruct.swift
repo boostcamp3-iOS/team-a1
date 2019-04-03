@@ -29,11 +29,14 @@ public enum ScrappedArticleType: Int16,CaseIterable {
     }
 }
 
-public protocol Scrappable { }
+public protocol Scrappable {
+    var entityName: String { get }
+}
 
 public struct SearchedArticleStruct: Scrappable {
     let articleData: Article
     let imageData: Data?
+    public let entityName: String = "Search"
 }
 
 public struct WebExtractedArticleStruct: Scrappable {
@@ -42,6 +45,7 @@ public struct WebExtractedArticleStruct: Scrappable {
     let press: String
     let url: String
     let imageData: Data?
+    public let entityName: String = "WebExtracted"
 }
 
 public struct WebViewArticleStruct: Scrappable {
@@ -49,4 +53,5 @@ public struct WebViewArticleStruct: Scrappable {
     let press: String
     let url: String
     let webData: Data
+    public let entityName: String = "Web"
 }

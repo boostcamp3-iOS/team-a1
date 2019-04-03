@@ -22,6 +22,7 @@ extension ArticleBase {
     @NSManaged public var isRead: Bool
     @NSManaged public var scrappedDate: NSDate
     @NSManaged public var title: String
+    @NSManaged public var category: Int16
     @NSManaged public var searched: Search?
     @NSManaged public var web: Web?
     @NSManaged public var webExtracted: WebExtracted?
