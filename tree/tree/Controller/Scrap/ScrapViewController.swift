@@ -49,6 +49,7 @@ class ScrapViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        ScrapManager.removeAllScrappedArticle()
         updateResult()
         setupTableView()
         registerArticleCell()
@@ -243,6 +244,37 @@ extension ScrapViewController: ScrapFilterDelegate {
 }
 
 extension ScrapViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        setupScrapBadgeValue()
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .update:
+            updateResult()
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        tableView.endUpdates()
+    }
     
 }
 

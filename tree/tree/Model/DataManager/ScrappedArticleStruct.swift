@@ -43,6 +43,7 @@ public struct WebExtractedArticleStruct: Scrappable {
     let title: String
     let detail: String
     let press: String
+    let description: String
     let url: String
     let imageData: Data?
     public let entityName: String = "WebExtracted"

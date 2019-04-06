@@ -68,11 +68,10 @@ class ArticleFeedTableViewCell: UITableViewCell {
     func setupData(scrappedArticle: ArticleBase) {
         guard let detailInfo = scrappedArticle.searched else { return }
         titleLabel.text = scrappedArticle.title
-        descriptionLabel.text = detailInfo.description
+        descriptionLabel.text = detailInfo.contents
         dateLabel.text = detailInfo.articleDate
         companyLabel.text = detailInfo.company
         betweenLabel.isHidden = true
-        imageStackView.isHidden = true
         if let author = scrappedArticle.author {
             betweenLabel.isHidden = false
             authorLabel.text = author
@@ -80,6 +79,8 @@ class ArticleFeedTableViewCell: UITableViewCell {
         if let articleImage = detailInfo.imageData {
             imageStackView.isHidden = false
             articleImageView.image(from: articleImage as Data)
+        } else {
+            imageStackView.isHidden = true
         }
     }
 }

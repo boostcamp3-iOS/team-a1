@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D38a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="TreeData">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D38a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="TreeData">
     <entity name="ArticleBase" representedClassName="ArticleBase" syncable="YES">
         <attribute name="articleType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="ScrappedArticleType" syncable="YES"/>
-        <attribute name="author" attributeType="String" syncable="YES"/>
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isRead" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="scrappedDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -13,8 +13,8 @@
     </entity>
     <entity name="Search" representedClassName="Search" syncable="YES">
         <attribute name="articleDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleDescription" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="webURI" attributeType="String" syncable="YES"/>
         <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleBase" inverseName="searched" inverseEntity="ArticleBase" syncable="YES"/>

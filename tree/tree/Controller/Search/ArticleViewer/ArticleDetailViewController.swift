@@ -96,6 +96,7 @@ class ArticleDetailViewController: UIViewController {
                 title: article.title,
                 detail: detail,
                 press: press,
+                description: article.description,
                 url: articleURLString,
                 imageData: imageData
             )
@@ -143,7 +144,7 @@ class ArticleDetailViewController: UIViewController {
         scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
         titleLabel.text = articleData.title
-        contentLabel.text = articleData.description
+        contentLabel.text = articleData.searched?.contents
         if let author = articleData.author {
             authorLabel.text = author
         }
