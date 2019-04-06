@@ -53,8 +53,6 @@ extension UITableViewDelegate {
                         let scrapViewController =
                             appDelegate.scrapViewController as? ScrapViewController
                         else { return }
-//                    scrapViewController.scrappedArticles = ScrapManager.fetchArticles()
-                    scrapViewController.setupScrapBadgeValue()
                     completion(true)
                     success(true)
             }

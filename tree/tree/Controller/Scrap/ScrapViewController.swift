@@ -49,7 +49,6 @@ class ScrapViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        ScrapManager.removeAllScrappedArticle()
         updateResult()
         setupTableView()
         registerArticleCell()
@@ -117,8 +116,9 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
                 tableView.dequeueReusableCell(
                     withIdentifier: articleFeedCellIdentifier,
                     for: indexPath
-                    ) as? ArticleFeedTableViewCell else {
-                        fatalError(FatalError.invalidCell.localizedDescription)
+                    ) as? ArticleFeedTableViewCell else
+            {
+                fatalError(FatalError.invalidCell.localizedDescription)
             }
             cell.setupData(scrappedArticle: scrappedArticle)
             return cell
@@ -212,11 +212,6 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
             guard let self = self else { return }
             let deletedArticle = self.resultController.object(at: indexPath)
             ScrapManager.removeArticle(deletedArticle)
-//            self.isArticleDeleted = true
-//            self.scrappedArticles = tempArticles
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.updateResult()
-            self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
@@ -226,20 +221,25 @@ extension ScrapViewController: ScrapFilterDelegate {
     func filterArticles(_ category: ArticleCategory) {
         switch category {
         case .all:
-//            scrappedArticles = ScrapManager.fetchArticles()
             title = "Scrap"
+            resultController.fetchRequest.predicate = nil
         default:
             title = "\(category)".capitalized
-//            scrappedArticles = ScrapManager.fetchArticles(category)
+            resultController.fetchRequest.predicate =
+                NSPredicate(
+                    format: "%K == %@",
+                    #keyPath(ArticleBase.category),
+                    NSNumber(value: category.rawValue))
         }
-//        if let scrappedArticles = scrappedArticles,
-//            scrappedArticles.count > 0 {
-//            tableView.scrollToRow(
-//                at: IndexPath(row: 0, section: 0),
-//                at: .top,
-//                animated: true
-//            )
-//        }
+        updateResult()
+        if let sectionInfo = resultController.sections?[0] ,
+            sectionInfo.numberOfObjects > 0 {
+            tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: true
+            )
+        }
     }
 }
 
