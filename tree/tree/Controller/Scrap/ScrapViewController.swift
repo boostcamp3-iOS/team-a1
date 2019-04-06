@@ -34,28 +34,24 @@ class ScrapViewController: UIViewController {
     
     private let articleFeedCellIdentifier = "ScrapTableViewCell"
     private let liveCellIdentifier = "KeywordDetailArticleCell"
-    private var isArticleDeleted: Bool = false
-    public var scrappedArticles: [ScrappedArticle]? {
-        didSet {
-            if tableView != nil && !isArticleDeleted {
-                tableView.reloadData()
-            } else if isArticleDeleted {
-                isArticleDeleted = false
-            }
-            if placeholderLabel != nil {
-                if scrappedArticles?.count == 0 {
-                    placeholderLabel.isHidden = false
-                } else {
-                    placeholderLabel.isHidden = true
-                }
-            }
-        }
-    }
+    private lazy var resultController: NSFetchedResultsController<ArticleBase> = {
+        let fetchRequest = NSFetchRequest<ArticleBase>(entityName: "ArticleBase")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "scrappedDate", ascending: false)]
+        
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: ScrapManager.managedContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        ScrapManager.removeAllScrappedArticle()
+        updateResult()
         setupTableView()
-        setupTableViewData()
         registerArticleCell()
         setupScrapBadgeValue()
     }
@@ -65,14 +61,20 @@ class ScrapViewController: UIViewController {
         setupScrapBadgeValue()
     }
     
+    private func updateResult() {
+        do {
+           try resultController.performFetch()
+            tableView.reloadData()
+        } catch let error {
+            print(error)
+        }
+    }
+    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-    }
-    
-    private func setupTableViewData() {
-        scrappedArticles = ScrapManager.fetchArticles()
+        resultController.delegate = self
     }
     
     private func registerArticleCell() {
@@ -100,21 +102,16 @@ class ScrapViewController: UIViewController {
 extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let scrappedArticles = scrappedArticles else { return 0 }
-        return scrappedArticles.count
+        guard let sectionInfo = resultController.sections?[0] else { return 0 }
+        return sectionInfo.numberOfObjects
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let scrappedArticles = scrappedArticles else {
-            fatalError(FatalError.invalidCell.localizedDescription)
-        }
-        let scrappedArticle = scrappedArticles[indexPath.row]
-        guard let articleTypeString = scrappedArticle.articleType else {
-            return UITableViewCell()
-        }
-        let articleType = ScrappedArticleType(type: articleTypeString)
-        
-        switch articleType {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+        ) -> UITableViewCell {
+        let scrappedArticle = resultController.object(at: indexPath)
+        switch scrappedArticle.articleTypeEnum {
         case .search:
             guard let cell =
                 tableView.dequeueReusableCell(
@@ -123,65 +120,50 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
                     ) as? ArticleFeedTableViewCell else {
                         fatalError(FatalError.invalidCell.localizedDescription)
             }
-            cell.settingData(scrappedArticle: scrappedArticles[indexPath.row])
+            cell.setupData(scrappedArticle: scrappedArticle)
             return cell
         case .webExtracted:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: liveCellIdentifier, for: indexPath)
-                as? KeywordDetailArticleCell else {
-                    fatalError(FatalError.invalidCell.localizedDescription)
-            }
-            cell.configure(scrappedArticles[indexPath.row])
-            return cell
+            fallthrough
         case .web:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: liveCellIdentifier, for: indexPath)
                 as? KeywordDetailArticleCell else {
                     fatalError(FatalError.invalidCell.localizedDescription)
             }
-            cell.configure(scrappedArticles[indexPath.row])
+            cell.configure(scrappedArticle)
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let scrappedArticles = scrappedArticles else { return }
-        let scrappedArticle: ScrappedArticle = scrappedArticles[indexPath.row]
-        guard let articleTypeString = scrappedArticle.articleType else { return }
-        let articleType = ScrappedArticleType.init(type: articleTypeString)
+        let scrappedArticle: ArticleBase = resultController.object(at: indexPath)
+        let articleType = scrappedArticle.articleTypeEnum
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         switch articleType {
         case .search:
-            guard
-                let articleView = storyboard.instantiateViewController(
-                    withIdentifier: "ArticleDetailViewController"
-                    ) as? ArticleDetailViewController else { return }
-            articleView.scrappedArticleDetail = scrappedArticle
-            if let articleUri = scrappedArticle.articleUri {
-                ScrapManager.readArticle(.search ,articleUri)
-            }
-            self.navigationController?.pushViewController(articleView, animated: true)
+            fallthrough
         case .webExtracted:
             guard
                 let articleView = storyboard.instantiateViewController(
                     withIdentifier: "ArticleDetailViewController"
                     ) as? ArticleDetailViewController else { return }
             articleView.scrappedArticleDetail = scrappedArticle
-            if let articleURL = scrappedArticle.articleURL {
-                ScrapManager.readArticle(.webExtracted ,articleURL)
+            if let articleURI = scrappedArticle.searched?.webURI {
+                ScrapManager.readArticle(.search, articleURI)
             }
-            self.navigationController?.pushViewController(articleView, animated: true)
+            navigationController?.pushViewController(articleView, animated: true)
         case .web:
-            DispatchQueue.main.async {
+            let scrappedArticle = resultController.object(at: indexPath)
+            DispatchQueue.main.async { [weak self] in
                 guard
+                    let self = self ,
                     let articleView = storyboard.instantiateViewController(
                         withIdentifier: "ArticleWebViewController"
-                        ) as? ArticleWebViewController,
-                    let scrappedArticles = self.scrappedArticles else { return }
-                let scrappedArticle = scrappedArticles[indexPath.row]
-                articleView.articleURLString = scrappedArticle.articleURL
-                if let webData = scrappedArticle.articleData {
+                        ) as? ArticleWebViewController else { return }
+                articleView.articleURLString = scrappedArticle.web?.webURL
+                if let webData = scrappedArticle.web?.webData {
                     articleView.webData = webData as Data
                 }
-                if let urlString = scrappedArticle.articleURL {
+                if let urlString = scrappedArticle.web?.webURL {
                     ScrapManager.readArticle(.web ,urlString)
                 }
                 self.navigationController?.pushViewController(articleView, animated: true)
@@ -197,20 +179,16 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        guard let scrappedArticles = scrappedArticles else {
-            return nil
-        }
-        let scrappedArticle = scrappedArticles[indexPath.row]
-        guard let articleTypeString = scrappedArticle.articleType else {
-            return nil
-        }
-        let articleType = ScrappedArticleType(type: articleTypeString)
+        let scrappedArticle = resultController.object(at: indexPath)
+        let articleType = scrappedArticle.articleTypeEnum
         var articleIdentifier: String? {
             switch articleType {
             case .search:
-                return scrappedArticles[indexPath.row].articleUri
-            case .web, .webExtracted:
-                return scrappedArticles[indexPath.row].articleURL
+                return scrappedArticle.searched?.webURI
+            case .web:
+                return scrappedArticle.web?.webURL
+            case .webExtracted:
+                return scrappedArticle.webExtracted?.webURL
             }
         }
         let markAsReadAction = customUIContextualAction(
@@ -232,11 +210,12 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         let deleteAction = customUIContextualAction(.delete, nil, nil, nil, nil) { [weak self] _ in
             guard let self = self else { return }
-            guard var tempArticles = self.scrappedArticles else { return }
-            ScrapManager.removeArticle(tempArticles.remove(at: indexPath.row))
-            self.isArticleDeleted = true
-            self.scrappedArticles = tempArticles
+            let deletedArticle = self.resultController.object(at: indexPath)
+            ScrapManager.removeArticle(deletedArticle)
+//            self.isArticleDeleted = true
+//            self.scrappedArticles = tempArticles
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.updateResult()
             self.setupScrapBadgeValue()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -247,21 +226,56 @@ extension ScrapViewController: ScrapFilterDelegate {
     func filterArticles(_ category: ArticleCategory) {
         switch category {
         case .all:
-            scrappedArticles = ScrapManager.fetchArticles()
+//            scrappedArticles = ScrapManager.fetchArticles()
             title = "Scrap"
         default:
             title = "\(category)".capitalized
-            scrappedArticles = ScrapManager.fetchArticles(category)
+//            scrappedArticles = ScrapManager.fetchArticles(category)
         }
-        if let scrappedArticles = scrappedArticles,
-            scrappedArticles.count > 0 {
-            tableView.scrollToRow(
-                at: IndexPath(row: 0, section: 0),
-                at: .top,
-                animated: true
-            )
+//        if let scrappedArticles = scrappedArticles,
+//            scrappedArticles.count > 0 {
+//            tableView.scrollToRow(
+//                at: IndexPath(row: 0, section: 0),
+//                at: .top,
+//                animated: true
+//            )
+//        }
+    }
+}
+
+extension ScrapViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        setupScrapBadgeValue()
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .update:
+            updateResult()
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
         }
     }
+    
+    func controllerDidChangeContent(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        tableView.endUpdates()
+    }
+    
 }
 
 extension ScrapViewController {

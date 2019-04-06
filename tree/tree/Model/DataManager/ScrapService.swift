@@ -9,30 +9,6 @@
 import Foundation
 import UIKit
 
-enum ScrappedArticleProperty {
-    case articleAuthor
-    case articleDescription
-    case company
-    case articleDate
-    case articleData
-    case isRead
-    case language
-    case scrappedDate
-    case articleTitle
-    case articleUri
-    case category
-    case articleURL
-    case articleType
-    
-    var stringValue: String {
-        return "\(self)"
-    }
-    
-    func toString() -> String {
-        return "\(self)"
-    }
-}
-
 public enum ArticleCategory: Int, CaseIterable{
     case all = 0
     case live

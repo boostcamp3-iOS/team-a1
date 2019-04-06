@@ -120,11 +120,20 @@
 		BCF98CA5221DC3EB0044A65A /* libNetworkFetcher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF98C90221DC2B80044A65A /* libNetworkFetcher.a */; };
 		BF308B6F87C2C2E8B8730B9B /* Pods_Gardener_Trend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD8BD08B30DD5DEACB98280 /* Pods_Gardener_Trend.framework */; };
 		D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */; };
+		D935E1502238DAF0000D7B65 /* Web+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E1482238DAF0000D7B65 /* Web+CoreDataProperties.swift */; };
+		D935E1512238DAF0000D7B65 /* ArticleBase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E1492238DAF0000D7B65 /* ArticleBase+CoreDataClass.swift */; };
+		D935E1522238DAF0000D7B65 /* WebExtracted+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14A2238DAF0000D7B65 /* WebExtracted+CoreDataClass.swift */; };
+		D935E1532238DAF0000D7B65 /* Search+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14B2238DAF0000D7B65 /* Search+CoreDataClass.swift */; };
+		D935E1542238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14C2238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift */; };
+		D935E1552238DAF0000D7B65 /* Web+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14D2238DAF0000D7B65 /* Web+CoreDataClass.swift */; };
+		D935E1562238DAF0000D7B65 /* WebExtracted+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14E2238DAF0000D7B65 /* WebExtracted+CoreDataProperties.swift */; };
+		D935E1572238DAF0000D7B65 /* Search+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D935E14F2238DAF0000D7B65 /* Search+CoreDataProperties.swift */; };
 		D96DC26B221ECF140028EF20 /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26A221ECF130028EF20 /* ScrapService.swift */; };
 		D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */; };
 		D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBCF221D359100AB47CA /* Extension+Array.swift */; };
 		D97FCBD2221DEE1A00AB47CA /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */; };
 		D97FCBD4221DEE6700AB47CA /* ScrapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */; };
+		D9B8A9FF222B989300A29233 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A9FE222B989300A29233 /* Config.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
 		D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */; };
@@ -136,8 +145,6 @@
 		D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */; };
 		D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C1220B0B7800CC58DA /* TreeData.xcdatamodeld */; };
 		D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C6220B0B8400CC58DA /* ScrapManager.swift */; };
-		D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */; };
-		D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */; };
 		D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */; };
 		D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */; };
 		D9DFFB46220EEA7F0047E326 /* ScrapFilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */; };
@@ -319,11 +326,20 @@
 		C629F6563A956B7370373F18 /* Pods-Gardener-TrendUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-TrendUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-TrendUI/Pods-Gardener-TrendUI.debug.xcconfig"; sourceTree = "<group>"; };
 		C91D1D1BF11F4B524CBAF01B /* Pods-Gardener-Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gardener-Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gardener-Widget/Pods-Gardener-Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		D935E1482238DAF0000D7B65 /* Web+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Web+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D935E1492238DAF0000D7B65 /* ArticleBase+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArticleBase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D935E14A2238DAF0000D7B65 /* WebExtracted+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WebExtracted+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D935E14B2238DAF0000D7B65 /* Search+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D935E14C2238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArticleBase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D935E14D2238DAF0000D7B65 /* Web+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Web+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D935E14E2238DAF0000D7B65 /* WebExtracted+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WebExtracted+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D935E14F2238DAF0000D7B65 /* Search+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D96DC26A221ECF130028EF20 /* ScrapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrappedArticleStruct.swift; sourceTree = "<group>"; };
 		D97FCBCF221D359100AB47CA /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
 		D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapNavigationController.swift; sourceTree = "<group>"; };
+		D9B8A9FE222B989300A29233 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		D9C6AB4A21FAAD09001C0AB8 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -335,8 +351,6 @@
 		D9D145BE220B0B6800CC58DA /* ScrapTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapTabBarController.swift; sourceTree = "<group>"; };
 		D9D145C2220B0B7800CC58DA /* TreeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TreeData.xcdatamodel; sourceTree = "<group>"; };
 		D9D145C6220B0B8400CC58DA /* ScrapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapManager.swift; sourceTree = "<group>"; };
-		D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrappedArticle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D9DFFB40220EEA3E0047E326 /* ScrapFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterViewController.swift; sourceTree = "<group>"; };
 		D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapFilterTableViewCell.swift; sourceTree = "<group>"; };
 		D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapFilterTableViewCell.xib; sourceTree = "<group>"; };
@@ -447,6 +461,7 @@
 				BC558ED5221943330037C1EF /* tree.entitlements */,
 				BC558ED2221943130037C1EF /* Siri */,
 				BC2656C521FD950900003413 /* Model */,
+				D9B8A9FD222B989300A29233 /* Config */,
 				D9C6AB3F21FA9CB4001C0AB8 /* View */,
 				D9C6AB4821FAAD09001C0AB8 /* Controller */,
 				D9C6AB3621FA9B3E001C0AB8 /* Extension */,
@@ -543,7 +558,7 @@
 		BC2656C521FD950900003413 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D9D145C7220B0B8400CC58DA /* CoreDataModel */,
+				D935E1472238DAF0000D7B65 /* CoreDataModel */,
 				D9D145C4220B0B8400CC58DA /* DataManager */,
 			);
 			path = Model;
@@ -706,6 +721,29 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		D935E1472238DAF0000D7B65 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				D935E1492238DAF0000D7B65 /* ArticleBase+CoreDataClass.swift */,
+				D935E14C2238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift */,
+				D935E14B2238DAF0000D7B65 /* Search+CoreDataClass.swift */,
+				D935E14F2238DAF0000D7B65 /* Search+CoreDataProperties.swift */,
+				D935E14A2238DAF0000D7B65 /* WebExtracted+CoreDataClass.swift */,
+				D935E14E2238DAF0000D7B65 /* WebExtracted+CoreDataProperties.swift */,
+				D935E14D2238DAF0000D7B65 /* Web+CoreDataClass.swift */,
+				D935E1482238DAF0000D7B65 /* Web+CoreDataProperties.swift */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
+		D9B8A9FD222B989300A29233 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D9B8A9FE222B989300A29233 /* Config.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		D9C6AB3621FA9B3E001C0AB8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,15 +863,6 @@
 				D96DC26C221ECF290028EF20 /* ScrappedArticleStruct.swift */,
 			);
 			path = DataManager;
-			sourceTree = "<group>";
-		};
-		D9D145C7220B0B8400CC58DA /* CoreDataModel */ = {
-			isa = PBXGroup;
-			children = (
-				D9D145C8220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift */,
-				D9D145C9220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift */,
-			);
-			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		D9D145CE220B0B9300CC58DA /* Scrap */ = {
@@ -1219,18 +1248,21 @@
 				6A198CCC220CAAB5002421AC /* DefautLabelView.swift in Sources */,
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */,
-				D9D145CD220B0B8400CC58DA /* ScrappedArticle+CoreDataProperties.swift in Sources */,
 				BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
+				D935E1542238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift in Sources */,
 				BC649BA8220F68230032ACF2 /* HTMLDecodable.swift in Sources */,
 				6A65DA4A2206190C005EB2BC /* ImageCache.swift in Sources */,
 				BC19FD17220D9D20006A9C7D /* Enum+LocalizedLanguages.swift in Sources */,
+				D935E1512238DAF0000D7B65 /* ArticleBase+CoreDataClass.swift in Sources */,
 				D9C6AB4D21FAAD0A001C0AB8 /* SearchViewController.swift in Sources */,
 				D9D145C0220B0B6A00CC58DA /* ScrapTabBarController.swift in Sources */,
 				D97FCBD2221DEE1A00AB47CA /* ScrapViewController.swift in Sources */,
+				D935E1552238DAF0000D7B65 /* Web+CoreDataClass.swift in Sources */,
 				BC5D4E41220B1D17000465B0 /* KeywordDetailGraphCell.swift in Sources */,
 				D96DC26B221ECF140028EF20 /* ScrapService.swift in Sources */,
+				D9B8A9FF222B989300A29233 /* Config.swift in Sources */,
 				6A40D8142216C56400F06CA6 /* Enum+Languages.swift in Sources */,
 				D9C6AB5D21FC152D001C0AB8 /* SearchScrollEnum.swift in Sources */,
 				6A47BF43220E0638008BEA7A /* EventFeedCell.swift in Sources */,
@@ -1241,6 +1273,7 @@
 				BC7969D3220174B40003F520 /* TrendListCell.swift in Sources */,
 				BC19FD13220D94B5006A9C7D /* Enum+TimeIntervalTypes.swift in Sources */,
 				BC558F49221995D00037C1EF /* Extension+UIViewController.swift in Sources */,
+				D935E1502238DAF0000D7B65 /* Web+CoreDataProperties.swift in Sources */,
 				D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */,
 				D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
@@ -1251,11 +1284,13 @@
 				D9DFFB4B220EEADC0047E326 /* ScrapFilterDelegate.swift in Sources */,
 				D90C6A122214868100196333 /* Extension+UITableViewDelegate.swift in Sources */,
 				BC63852E2207442B00074CF3 /* Extension+Notification.swift in Sources */,
+				D935E1532238DAF0000D7B65 /* Search+CoreDataClass.swift in Sources */,
 				D9DFFB45220EEA7F0047E326 /* ScrapFilterTableViewCell.swift in Sources */,
 				D9DFFB41220EEA3E0047E326 /* ScrapFilterViewController.swift in Sources */,
 				BC2656B021FD94E000003413 /* Extension+URL.swift in Sources */,
 				BC5D4E4E220B730F000465B0 /* GraphView.swift in Sources */,
 				35DC0DCF21F6F3C700F30416 /* AppDelegate.swift in Sources */,
+				D935E1522238DAF0000D7B65 /* WebExtracted+CoreDataClass.swift in Sources */,
 				6A65DA452203D242005EB2BC /* LoadingView.swift in Sources */,
 				6A0EB3FC221C679300D521CD /* Enum+PickerViewType.swift in Sources */,
 				6A40D817221811B300F06CA6 /* Enum+ArticleViewerType.swift in Sources */,
@@ -1263,12 +1298,14 @@
 				BC7969BF22002EC30003F520 /* LiveViewController.swift in Sources */,
 				BC5F08AC221BBA74007C432F /* SplashViewController.swift in Sources */,
 				BC63852C2206CBF200074CF3 /* Enum+Countries.swift in Sources */,
+				D935E1572238DAF0000D7B65 /* Search+CoreDataProperties.swift in Sources */,
 				D9D145C3220B0B7800CC58DA /* TreeData.xcdatamodeld in Sources */,
 				D9C6AB4E21FAAD0A001C0AB8 /* MainViewController.swift in Sources */,
 				BC42C038221138C100E0833B /* Enum+HeaderTitles.swift in Sources */,
 				BCD1BB2622057CF800F9C8A8 /* TableViewCell+Animator.swift in Sources */,
 				BCE1B8B82217E43F0098B3B8 /* NibName.swift in Sources */,
 				BC558F4B221996360037C1EF /* Enum+SiriAuthorization.swift in Sources */,
+				D935E1562238DAF0000D7B65 /* WebExtracted+CoreDataProperties.swift in Sources */,
 				BC4B31E5221DCA6400307735 /* TrendIntentHandler.swift in Sources */,
 				D9D145CB220B0B8400CC58DA /* ScrapManager.swift in Sources */,
 				6A0C232622114CD400C3629B /* ImageCacheTypeEnum.swift in Sources */,
@@ -1279,7 +1316,6 @@
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
 				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
-				D9D145CC220B0B8400CC58DA /* ScrappedArticle+CoreDataClass.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
 				BCE1B8B6221723230098B3B8 /* Enum+FatalError.swift in Sources */,
 				D9C6AB8021FED9F7001C0AB8 /* PresentationController.swift in Sources */,
@@ -1531,6 +1567,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -1552,6 +1592,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.tree;
 				PRODUCT_NAME = "$(TARGET_NAME)";

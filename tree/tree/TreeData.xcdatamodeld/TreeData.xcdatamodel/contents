@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D38a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="TreeData">
-    <entity name="ScrappedArticle" representedClassName="ScrappedArticle" syncable="YES">
-        <attribute name="articleAuthor" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D38a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="TreeData">
+    <entity name="ArticleBase" representedClassName="ArticleBase" syncable="YES">
+        <attribute name="articleType" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" customClassName="ScrappedArticleType" syncable="YES"/>
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRead" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="scrappedDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="searched" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Search" inverseName="base" inverseEntity="Search" syncable="YES"/>
+        <relationship name="web" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Web" inverseName="base" inverseEntity="Web" syncable="YES"/>
+        <relationship name="webExtracted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WebExtracted" inverseName="base" inverseEntity="WebExtracted" syncable="YES"/>
+    </entity>
+    <entity name="Search" representedClassName="Search" syncable="YES">
         <attribute name="articleDate" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleTitle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleUri" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="articleURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="scrappedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="webURI" attributeType="String" syncable="YES"/>
+        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleBase" inverseName="searched" inverseEntity="ArticleBase" syncable="YES"/>
+    </entity>
+    <entity name="Web" representedClassName="Web" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="webData" attributeType="Binary" syncable="YES"/>
+        <attribute name="webURL" attributeType="String" syncable="YES"/>
+        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleBase" inverseName="web" inverseEntity="ArticleBase" syncable="YES"/>
+    </entity>
+    <entity name="WebExtracted" representedClassName="WebExtracted" syncable="YES">
+        <attribute name="contents" attributeType="String" syncable="YES"/>
+        <attribute name="webURL" attributeType="String" syncable="YES"/>
+        <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleBase" inverseName="webExtracted" inverseEntity="ArticleBase" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ScrappedArticle" positionX="-18" positionY="27" width="128" height="240"/>
+        <element name="ArticleBase" positionX="45" positionY="162" width="128" height="180"/>
+        <element name="Search" positionX="27" positionY="153" width="128" height="135"/>
+        <element name="Web" positionX="-9" positionY="135" width="128" height="105"/>
+        <element name="WebExtracted" positionX="9" positionY="144" width="128" height="90"/>
     </elements>
 </model>
