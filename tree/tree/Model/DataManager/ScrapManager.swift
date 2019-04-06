@@ -65,9 +65,6 @@ final class ScrapManager {
         
         do {
             try managedContext.save()
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
-//            appDelegate.scrapViewController?.setupScrapBadgeValue()
         } catch {
             print(error.localizedDescription)
         }
@@ -127,11 +124,15 @@ final class ScrapManager {
     
     typealias IsScrappedHandler = (Bool,ArticleBase?) -> Void
     static func articleIsScrapped(
-        uri articleUri: String,
+        _ articleType: ScrappedArticleType,
+        identifier articleIdentifier: String,
         completion: @escaping IsScrappedHandler
     ) -> Void {
         let request: NSFetchRequest = ArticleBase.fetchRequest()
-        request.predicate = NSPredicate(format: "searched.webURI == %@", articleUri)
+        request.predicate = NSPredicate(
+            format: "%K == %@",
+            #keyPath(ArticleBase.searched.webURI),
+            articleIdentifier)
         do {
             let result = try managedContext.fetch(request)
             if result.isEmpty {
@@ -167,7 +168,7 @@ final class ScrapManager {
                 articleIdentifier)
         }
         do {
-            var result = try managedContext.fetch(request)
+            let result = try managedContext.fetch(request)
             result.first?.isRead = true
             try managedContext.save()
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

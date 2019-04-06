@@ -140,16 +140,19 @@ extension ScrapViewController: UITableViewDataSource, UITableViewDelegate {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
         switch articleType {
         case .search:
+            if let articleURI = scrappedArticle.searched?.webURI {
+                ScrapManager.readArticle(.search, articleURI)
+            }
             fallthrough
         case .webExtracted:
+            if let articleURI = scrappedArticle.webExtracted?.webURL {
+                ScrapManager.readArticle(.webExtracted, articleURI)
+            }
             guard
                 let articleView = storyboard.instantiateViewController(
                     withIdentifier: "ArticleDetailViewController"
                     ) as? ArticleDetailViewController else { return }
             articleView.scrappedArticleDetail = scrappedArticle
-            if let articleURI = scrappedArticle.searched?.webURI {
-                ScrapManager.readArticle(.search, articleURI)
-            }
             navigationController?.pushViewController(articleView, animated: true)
         case .web:
             let scrappedArticle = resultController.object(at: indexPath)
