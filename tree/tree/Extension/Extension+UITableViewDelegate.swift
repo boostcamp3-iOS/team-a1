@@ -29,7 +29,7 @@ extension UITableViewDelegate {
             guard let articleData = articleData else { return UIContextualAction() }
             var isScrapped: Bool = true
             var scrppaedArticle: ArticleBase?
-            ScrapManager.articleIsScrapped(uri: articleData.uri) { (articleScrapped, article) in
+            ScrapManager.articleIsScrapped(.search, identifier: articleData.uri) { (articleScrapped, article) in
                 isScrapped = articleScrapped
                 scrppaedArticle = article
             }
@@ -53,8 +53,6 @@ extension UITableViewDelegate {
                         let scrapViewController =
                             appDelegate.scrapViewController as? ScrapViewController
                         else { return }
-//                    scrapViewController.scrappedArticles = ScrapManager.fetchArticles()
-                    scrapViewController.setupScrapBadgeValue()
                     completion(true)
                     success(true)
             }

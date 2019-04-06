@@ -144,19 +144,20 @@ class ArticleDetailViewController: UIViewController {
         scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
         titleLabel.text = articleData.title
-        contentLabel.text = articleData.searched?.contents
         if let author = articleData.author {
             authorLabel.text = author
         }
         switch articleData.articleTypeEnum {
         case .webExtracted:
             guard let detail = articleData.webExtracted else { return }
+            contentLabel.text = articleData.webExtracted?.contents
             if let imageData = detail.imageData {
                 imageView.image(from: imageData as Data)
             }
         case .search:
             guard let detail = articleData.searched else { return }
             dateLabel.text = detail.articleDate
+            contentLabel.text = articleData.searched?.contents
             if let imageData = detail.imageData {
                 imageView.image(from: imageData as Data)
             }

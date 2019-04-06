@@ -27,6 +27,7 @@
     </entity>
     <entity name="WebExtracted" representedClassName="WebExtracted" syncable="YES">
         <attribute name="contents" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="webURL" attributeType="String" syncable="YES"/>
         <relationship name="base" maxCount="1" deletionRule="Cascade" destinationEntity="ArticleBase" inverseName="webExtracted" inverseEntity="ArticleBase" syncable="YES"/>
     </entity>
@@ -34,6 +35,6 @@
         <element name="ArticleBase" positionX="45" positionY="162" width="128" height="180"/>
         <element name="Search" positionX="27" positionY="153" width="128" height="135"/>
         <element name="Web" positionX="-9" positionY="135" width="128" height="105"/>
-        <element name="WebExtracted" positionX="9" positionY="144" width="128" height="90"/>
+        <element name="WebExtracted" positionX="9" positionY="144" width="128" height="105"/>
     </elements>
 </model>

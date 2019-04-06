@@ -65,9 +65,6 @@ final class ScrapManager {
         
         do {
             try managedContext.save()
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//            appDelegate.scrapViewController?.scrappedArticles = ScrapManager.fetchArticles()
-//            appDelegate.scrapViewController?.setupScrapBadgeValue()
         } catch {
             print(error.localizedDescription)
         }
@@ -112,14 +109,14 @@ final class ScrapManager {
             predicate = NSPredicate(
                 format: "isRead == %@ AND %K == %@",
                 NSNumber(value: isRead),
-                #keyPath(ArticleBase.articleType),
-                category.rawValue
+                #keyPath(ArticleBase.category),
+                NSNumber(value: category.rawValue)
             )
         } else {
             predicate = NSPredicate(
                 format: "%K == %@",
-                #keyPath(ArticleBase.articleType),
-                category.rawValue
+                #keyPath(ArticleBase.category),
+                NSNumber(value: category.rawValue)
             )
         }
         return countArticleFetch(predicate)
@@ -127,11 +124,15 @@ final class ScrapManager {
     
     typealias IsScrappedHandler = (Bool,ArticleBase?) -> Void
     static func articleIsScrapped(
-        uri articleUri: String,
+        _ articleType: ScrappedArticleType,
+        identifier articleIdentifier: String,
         completion: @escaping IsScrappedHandler
     ) -> Void {
         let request: NSFetchRequest = ArticleBase.fetchRequest()
-        request.predicate = NSPredicate(format: "searched.webURI == %@", articleUri)
+        request.predicate = NSPredicate(
+            format: "%K == %@",
+            #keyPath(ArticleBase.searched.webURI),
+            articleIdentifier)
         do {
             let result = try managedContext.fetch(request)
             if result.isEmpty {
@@ -151,13 +152,23 @@ final class ScrapManager {
         let request: NSFetchRequest = ArticleBase.fetchRequest()
         switch articleType {
         case .search:
-//            request.predicate = NSPredicate(format: "articleUri == %@", articleIdentifier)
-            request.predicate = NSPredicate(format: "searched.webURI == %@", articleIdentifier)
-        case .web, .webExtracted:
-            request.predicate = NSPredicate(format: "articleURL == %@", articleIdentifier)
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.searched.webURI),
+                articleIdentifier)
+        case .web:
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.web.webURL),
+                articleIdentifier)
+        case .webExtracted:
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.webExtracted.webURL),
+                articleIdentifier)
         }
         do {
-            var result = try managedContext.fetch(request)
+            let result = try managedContext.fetch(request)
             result.first?.isRead = true
             try managedContext.save()
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -188,6 +199,20 @@ final class ScrapManager {
     
     static func removeArticle(_ article: ArticleBase) {
         managedContext.delete(article)
+        switch article.articleTypeEnum {
+        case .web:
+            if let articleDetail = article.web {
+                managedContext.delete(articleDetail)
+            }
+        case .webExtracted:
+            if let articleDetail = article.webExtracted {
+                managedContext.delete(articleDetail)
+            }
+        case .search:
+            if let articleDetail = article.searched {
+                managedContext.delete(articleDetail)
+            }
+        }
         do {
             try managedContext.save()
         } catch {
@@ -197,21 +222,10 @@ final class ScrapManager {
     
     static func removeAllScrappedArticle() {
         let request: NSFetchRequest = ArticleBase.fetchRequest()
-        var results: [ArticleBase] = []
         do {
-            results = try managedContext.fetch(request)
+            let results = try managedContext.fetch(request)
             for item in results {
-                switch item.articleType {
-                case 0:
-                    managedContext.delete(item.searched!)
-                case 1:
-                    managedContext.delete(item.webExtracted!)
-                case 2:
-                    managedContext.delete(item.web!)
-                default:
-                    print("nop")
-                }
-                managedContext.delete(item)
+                    removeArticle(item)
             }
             try managedContext.save()
         } catch {
@@ -244,10 +258,6 @@ final class ScrapManager {
 }
 
 private extension NSManagedObject {
-//    func setValue(_ value: Any?, forKey property: ScrappedArticleProperty) {
-//        self.setValue(value, forKeyPath: "\(property)")
-//    }
-    
     func setCategory(_ category: ArticleCategory) {
         self.setValue(category.rawValue, forKey: "category")
     }
