@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import NetworkFetcher
 
-class ArticleWebViewController: UIViewController {
+class ArticleWebViewController: UIViewController, HUDViewProtocol {
 
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     @IBOutlet weak var webView: WKWebView!
@@ -59,6 +59,15 @@ class ArticleWebViewController: UIViewController {
             scrapButton.isHidden = true
         } else {
             loadWebDataWithURL(articleURL)
+            guard let articleURLString = articleURLString else { return }
+            var scrapped: Bool = false
+            ScrapManager.articleIsScrapped(.web, identifier: articleURLString) { (flag, _) in
+                scrapped = flag
+                print(scrapped)
+            }
+            if scrapped {
+                scrapButton.isHidden = true
+            }
         }
     }
     
@@ -139,6 +148,8 @@ class ArticleWebViewController: UIViewController {
                 webData: webData
             )
         )
+        hud(inView: view, text: "Scrapped!")
+        scrapButton.isHidden = true
     }
 }
 

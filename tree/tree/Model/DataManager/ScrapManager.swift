@@ -129,10 +129,23 @@ final class ScrapManager {
         completion: @escaping IsScrappedHandler
     ) -> Void {
         let request: NSFetchRequest = ArticleBase.fetchRequest()
-        request.predicate = NSPredicate(
-            format: "%K == %@",
-            #keyPath(ArticleBase.searched.webURI),
-            articleIdentifier)
+        switch articleType {
+        case .web:
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.web.webURL),
+                articleIdentifier)
+        case .webExtracted:
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.webExtracted.webURL),
+                articleIdentifier)
+        case .search:
+            request.predicate = NSPredicate(
+                format: "%K == %@",
+                #keyPath(ArticleBase.searched.webURI),
+                articleIdentifier)
+        }
         do {
             let result = try managedContext.fetch(request)
             if result.isEmpty {

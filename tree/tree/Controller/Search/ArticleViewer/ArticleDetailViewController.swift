@@ -66,17 +66,15 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
     }
     
     private func setupScrapButton() {
-        var scrappped: Bool = {
+        let scrappped: Bool = {
             var tempFlag = false
             switch articleData {
             case is Article:
-                // search
                 guard let articleData = articleData as? Article else { fatalError() }
                 ScrapManager.articleIsScrapped(.search, identifier: articleData.uri, completion: { (flag, _) in
                     tempFlag = flag
                 })
             default:
-//                guard let articleData = articleData as? ExtractArticle else { fatalError() }
                 ScrapManager.articleIsScrapped(.webExtracted, identifier: articleURLString!, completion: { (flag, _) in
                     tempFlag = flag
                 })
