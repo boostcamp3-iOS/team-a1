@@ -60,6 +60,10 @@ class ScrapViewController: UIViewController {
         setupScrapBadgeValue()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     private func updateResult() {
         do {
            try resultController.performFetch()

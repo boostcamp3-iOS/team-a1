@@ -24,6 +24,7 @@ extension UITableViewDelegate {
         _ articleType: ScrappedArticleType?,
         completion: @escaping (Bool) -> Void
         ) -> UIContextualAction {
+        
         switch type {
         case .scrap:
             guard let articleData = articleData else { return UIContextualAction() }
@@ -53,7 +54,7 @@ extension UITableViewDelegate {
                         let scrapViewController =
                             appDelegate.scrapViewController as? ScrapViewController
                         else { return }
-                    completion(true)
+                    completion(!isScrapped)
                     success(true)
             }
             if isScrapped {

@@ -351,7 +351,7 @@ class SearchViewController: UIViewController {
 }
 
 // MARK: TableView
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate, HUDViewProtocol {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles?.count ?? 0
@@ -416,7 +416,16 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return nil
         }
-        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil, nil) { _ in }
+        let scrapAction = customUIContextualAction(.scrap, article, imagaData, nil, nil) {
+            [weak self] (scrap) in
+            guard let self = self else { return }
+            if scrap {
+                self.hud(inView: self.view, text: "Scrapped!")
+            } else {
+                self.hud(inView: self.view, text: "Unscrapped.")
+            }
+        }
+        
         return UISwipeActionsConfiguration(actions: [scrapAction])
     }
     

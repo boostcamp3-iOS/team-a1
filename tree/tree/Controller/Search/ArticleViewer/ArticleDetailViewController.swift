@@ -9,7 +9,7 @@
 import UIKit
 import NetworkFetcher
 
-class ArticleDetailViewController: UIViewController {
+class ArticleDetailViewController: UIViewController, HUDViewProtocol {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -66,7 +66,29 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func setupScrapButton() {
-        scrapButton.addTarget(self, action: #selector(scrapButtonDidTapped), for: .touchUpInside)
+        var scrappped: Bool = {
+            var tempFlag = false
+            switch articleData {
+            case is Article:
+                // search
+                guard let articleData = articleData as? Article else { fatalError() }
+                ScrapManager.articleIsScrapped(.search, identifier: articleData.uri, completion: { (flag, _) in
+                    tempFlag = flag
+                })
+            default:
+//                guard let articleData = articleData as? ExtractArticle else { fatalError() }
+                ScrapManager.articleIsScrapped(.webExtracted, identifier: articleURLString!, completion: { (flag, _) in
+                    tempFlag = flag
+                })
+            }
+            return tempFlag
+        }()
+        
+        if scrappped {
+            scrapButton.isHidden = true
+        } else {
+            scrapButton.addTarget(self, action: #selector(scrapButtonDidTapped), for: .touchUpInside)
+        }
     }
     
     @objc private func scrapButtonDidTapped(_ sender: UIButton) {
@@ -113,6 +135,8 @@ class ArticleDetailViewController: UIViewController {
             let articleStruct = SearchedArticleStruct(articleData: article, imageData: imageData)
             ScrapManager.scrapArticle(.search, articleStruct: articleStruct)
         }
+        hud(inView: view, text: "Scrapped!")
+        scrapButton.isHidden = true
     }
     
     private func configure() {
@@ -141,7 +165,6 @@ class ArticleDetailViewController: UIViewController {
     }
     
     private func configureWithScrappedArticle() {
-        scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
         titleLabel.text = articleData.title
         if let author = articleData.author {
