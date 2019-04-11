@@ -133,6 +133,10 @@
 		D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBCF221D359100AB47CA /* Extension+Array.swift */; };
 		D97FCBD2221DEE1A00AB47CA /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */; };
 		D97FCBD4221DEE6700AB47CA /* ScrapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */; };
+		D9AF1C8E2259C2F900275D49 /* HUDViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF1C8D2259C2F900275D49 /* HUDViewProtocol.swift */; };
+		D9AF1C902259C3F500275D49 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF1C8F2259C3F500275D49 /* HUDView.swift */; };
+		D9AF1C922259CCA200275D49 /* Extension+HUDViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AF1C912259CCA200275D49 /* Extension+HUDViewProtocol.swift */; };
+		D9AF1C94225B076900275D49 /* HUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9AF1C93225B076900275D49 /* HUDView.xib */; };
 		D9B8A9FF222B989300A29233 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B8A9FE222B989300A29233 /* Config.swift */; };
 		D9C6AB3D21FA9B3E001C0AB8 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */; };
 		D9C6AB4421FA9CF8001C0AB8 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */; };
@@ -339,6 +343,10 @@
 		D97FCBCF221D359100AB47CA /* Extension+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Array.swift"; sourceTree = "<group>"; };
 		D97FCBD1221DEE1A00AB47CA /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
 		D97FCBD3221DEE6700AB47CA /* ScrapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapNavigationController.swift; sourceTree = "<group>"; };
+		D9AF1C8D2259C2F900275D49 /* HUDViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDViewProtocol.swift; sourceTree = "<group>"; };
+		D9AF1C8F2259C3F500275D49 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
+		D9AF1C912259CCA200275D49 /* Extension+HUDViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+HUDViewProtocol.swift"; sourceTree = "<group>"; };
+		D9AF1C93225B076900275D49 /* HUDView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HUDView.xib; sourceTree = "<group>"; };
 		D9B8A9FE222B989300A29233 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D9C6AB3721FA9B3E001C0AB8 /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D9C6AB4321FA9CF8001C0AB8 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -651,6 +659,7 @@
 			children = (
 				6A0957AD220963B300D46741 /* SearchFilterProtocol.swift */,
 				BC649BA7220F68230032ACF2 /* HTMLDecodable.swift */,
+				D9AF1C8D2259C2F900275D49 /* HUDViewProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -755,6 +764,7 @@
 				D90C6A112214868100196333 /* Extension+UITableViewDelegate.swift */,
 				BC558F48221995D00037C1EF /* Extension+UIViewController.swift */,
 				D97FCBCF221D359100AB47CA /* Extension+Array.swift */,
+				D9AF1C912259CCA200275D49 /* Extension+HUDViewProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -872,6 +882,8 @@
 				D9DFFB42220EEA7E0047E326 /* ScrapFilterTableViewCell.swift */,
 				D9DFFB43220EEA7E0047E326 /* ScrapFilterTableViewCell.xib */,
 				D9DFFB48220EEA990047E326 /* Scrap.storyboard */,
+				D9AF1C8F2259C3F500275D49 /* HUDView.swift */,
+				D9AF1C93225B076900275D49 /* HUDView.xib */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -1039,6 +1051,7 @@
 				BC5D4E42220B1D17000465B0 /* KeywordDetailGraphCell.xib in Resources */,
 				6A47BF44220E0638008BEA7A /* EventFeedCell.xib in Resources */,
 				35DC0DFF21F6FB3200F30416 /* .swiftlint.yml in Resources */,
+				D9AF1C94225B076900275D49 /* HUDView.xib in Resources */,
 				6A65DA432203D22B005EB2BC /* LoadingView.xib in Resources */,
 				BCDB9E282205A1040095E4E4 /* TrendHeaderCell.xib in Resources */,
 				BC42C07C22128DFE00E0833B /* EventPageView.xib in Resources */,
@@ -1249,6 +1262,7 @@
 				D9C6AB8421FEE6B4001C0AB8 /* SearchFilterViewController.swift in Sources */,
 				BC558ED4221943190037C1EF /* Intents.intentdefinition in Sources */,
 				BC19FD15220D965E006A9C7D /* Enum+TimeUnitTypes.swift in Sources */,
+				D9AF1C902259C3F500275D49 /* HUDView.swift in Sources */,
 				6A5D282C220187F8009EC8ED /* Extension+UIView.swift in Sources */,
 				35CB482021FB6306000D96CF /* ArticleFeedTableViewCell.swift in Sources */,
 				D935E1542238DAF0000D7B65 /* ArticleBase+CoreDataProperties.swift in Sources */,
@@ -1277,6 +1291,7 @@
 				D96DC26D221ECF2A0028EF20 /* ScrappedArticleStruct.swift in Sources */,
 				D97FCBD0221D359100AB47CA /* Extension+Array.swift in Sources */,
 				6A0957AC2208490E00D46741 /* Extension+PickerView.swift in Sources */,
+				D9AF1C8E2259C2F900275D49 /* HUDViewProtocol.swift in Sources */,
 				6A40D80E22165A9800F06CA6 /* ArticleWebViewController.swift in Sources */,
 				BC9E02AA2202EBFD00ADD1D5 /* TrendListHeaderCell.swift in Sources */,
 				BC7969C52200AD0E0003F520 /* TrendPageView.swift in Sources */,
@@ -1314,6 +1329,7 @@
 				6A0BF6B4221FFF6A00A0DBAF /* ImageManager.swift in Sources */,
 				BCDB9E272205A1040095E4E4 /* TrendHeaderCell.swift in Sources */,
 				6A198CC8220C9F51002421AC /* ArticleTypeEnum.swift in Sources */,
+				D9AF1C922259CCA200275D49 /* Extension+HUDViewProtocol.swift in Sources */,
 				6A1CCD9C222271CA00190FA4 /* ParamterKey.swift in Sources */,
 				BC42C07F22129C4700E0833B /* EventHeaderCell.swift in Sources */,
 				35CB481B21FAC610000D96CF /* ArticleDetailViewController.swift in Sources */,
