@@ -50,6 +50,7 @@ class ScrapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateResult()
+        setupNavigationBar()
         setupTableView()
         registerArticleCell()
         setupScrapBadgeValue()

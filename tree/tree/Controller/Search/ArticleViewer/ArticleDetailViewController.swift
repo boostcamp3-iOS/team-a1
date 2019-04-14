@@ -28,7 +28,6 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerGestureRecognizer()
-        setupScrapButton()
         if scrappedArticleDetail == nil {
             configure()
         } else {
@@ -63,30 +62,6 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
     private func registerGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         imageView.addGestureRecognizer(tapGesture)
-    }
-    
-    private func setupScrapButton() {
-        let scrappped: Bool = {
-            var tempFlag = false
-            switch articleData {
-            case is Article:
-                guard let articleData = articleData as? Article else { fatalError() }
-                ScrapManager.articleIsScrapped(.search, identifier: articleData.uri, completion: { (flag, _) in
-                    tempFlag = flag
-                })
-            default:
-                ScrapManager.articleIsScrapped(.webExtracted, identifier: articleURLString!, completion: { (flag, _) in
-                    tempFlag = flag
-                })
-            }
-            return tempFlag
-        }()
-        
-        if scrappped {
-            scrapButton.isHidden = true
-        } else {
-            scrapButton.addTarget(self, action: #selector(scrapButtonDidTapped), for: .touchUpInside)
-        }
     }
     
     @objc private func scrapButtonDidTapped(_ sender: UIButton) {
@@ -138,6 +113,7 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
     }
     
     private func configure() {
+        setupScrapButton()
         switch articleData {
         case is ExtractArticle:
             let articleDetail = self.articleData as? ExtractArticle
@@ -163,6 +139,7 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
     }
     
     private func configureWithScrappedArticle() {
+        scrapButton.isHidden = true
         guard let articleData = scrappedArticleDetail else { return }
         titleLabel.text = articleData.title
         if let author = articleData.author {
@@ -184,6 +161,32 @@ class ArticleDetailViewController: UIViewController, HUDViewProtocol {
             }
         default:
             fatalError("exception because of web case")
+        }
+    }
+    
+    private func setupScrapButton() {
+        let scrappped: Bool = {
+            var tempFlag = false
+            switch articleData {
+            case is Article:
+                guard let articleData = articleData as? Article else { fatalError() }
+                ScrapManager.articleIsScrapped(.search, identifier: articleData.uri, completion: { (flag, _) in
+                    tempFlag = flag
+                })
+            default:
+                if let articleURLString = articleURLString {
+                    ScrapManager.articleIsScrapped(.webExtracted, identifier: articleURLString, completion: { (flag, _) in
+                        tempFlag = flag
+                    })
+                }
+            }
+            return tempFlag
+        }()
+        
+        if scrappped {
+            scrapButton.isHidden = true
+        } else {
+            scrapButton.addTarget(self, action: #selector(scrapButtonDidTapped), for: .touchUpInside)
         }
     }
     

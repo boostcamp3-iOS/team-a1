@@ -1,8 +1,8 @@
 //
-//  ScrappedArticleStruct.swift
+//  Struct+ScrappedArticle.swift
 //  tree
 //
-//  Created by Hyeontae on 21/02/2019.
+//  Created by Hyeontae on 11/04/2019.
 //  Copyright © 2019 gardener. All rights reserved.
 //
 
@@ -56,3 +56,4 @@ public struct WebViewArticleStruct: Scrappable {
     let webData: Data
     public let entityName: String = "Web"
 }
+

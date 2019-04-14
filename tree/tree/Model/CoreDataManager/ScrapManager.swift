@@ -14,12 +14,8 @@ import NetworkFetcher
 final class ScrapManager {
     static var managedContext: NSManagedObjectContext = {
         guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return NSManagedObjectContext()
-        }
-        let managedContext: NSManagedObjectContext =
-            appDelegate.persistentContainer.viewContext
-        
+            UIApplication.shared.delegate as? AppDelegate else { return NSManagedObjectContext() }
+        let managedContext: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
         return managedContext
     }()
     
@@ -62,7 +58,6 @@ final class ScrapManager {
             let detailEntity = Web(entity: webDescription, insertInto: managedContext)
             newArticleBase.setArticle(articleStruct, detailEntity)
         }
-        
         do {
             try managedContext.save()
         } catch {
@@ -84,7 +79,7 @@ final class ScrapManager {
     }
     
     static func fetchArticles(_ category: ArticleCategory) -> [ArticleBase] {
-        var request: NSFetchRequest = ArticleBase.fetchRequest()
+        let request: NSFetchRequest = ArticleBase.fetchRequest()
         var result: [ArticleBase] = []
         request.predicate =
             NSPredicate(
@@ -122,7 +117,8 @@ final class ScrapManager {
         return countArticleFetch(predicate)
     }
     
-    typealias IsScrappedHandler = (Bool,ArticleBase?) -> Void
+    typealias IsScrappedHandler = (Bool, ArticleBase?) -> Void
+    
     static func articleIsScrapped(
         _ articleType: ScrappedArticleType,
         identifier articleIdentifier: String,
@@ -149,9 +145,9 @@ final class ScrapManager {
         do {
             let result = try managedContext.fetch(request)
             if result.isEmpty {
-                completion(false,nil)
+                completion(false, nil)
             } else {
-                completion(true,result.first)
+                completion(true, result.first)
             }
         } catch {
             print("Could not fetch. \(error)")
@@ -272,13 +268,13 @@ final class ScrapManager {
 
 private extension NSManagedObject {
     func setCategory(_ category: ArticleCategory) {
-        self.setValue(category.rawValue, forKey: "category")
+        self.setValue(category.rawValue, forKey: #keyPath(ArticleBase.category))
     }
     
     func setupBaseProperty(_ type: ScrappedArticleType) {
-        self.setValue(type.rawValue, forKey: "articleType")
-        self.setValue(NSDate(), forKey: "scrappedDate")
-        self.setValue(false, forKey: "isRead")
+        self.setValue(type.rawValue, forKey: #keyPath(ArticleBase.articleType))
+        self.setValue(NSDate(), forKey: #keyPath(ArticleBase.scrappedDate))
+        self.setValue(false, forKey: #keyPath(ArticleBase.isRead))
     }
     
     func setArticle(_ baseStruct: Scrappable, _ detailEntity: NSManagedObject) {
@@ -290,11 +286,11 @@ private extension NSManagedObject {
                 else { return }
             self.setupBaseProperty(.web)
             self.setCategory(.live)
-            self.setValue(webViewStruct.title, forKey: "title")
-            self.setValue(webViewStruct.press, forKey: "author")
+            self.setValue(webViewStruct.title, forKey: #keyPath(ArticleBase.title))
+            self.setValue(webViewStruct.press, forKey: #keyPath(ArticleBase.author))
             detailEntity.webData = webViewStruct.webData as NSData
             detailEntity.webURL = webViewStruct.url
-            self.setValue(detailEntity, forKey: "web")
+            self.setValue(detailEntity, forKey: #keyPath(ArticleBase.web))
         case is WebExtractedArticleStruct:
             guard
                 let webExtractedStruct = baseStruct as? WebExtractedArticleStruct,
@@ -302,14 +298,14 @@ private extension NSManagedObject {
                 else { return }
             self.setupBaseProperty(.webExtracted)
             self.setCategory(.live)
-            self.setValue(webExtractedStruct.title, forKey: "title")
-            self.setValue(webExtractedStruct.press, forKey: "author")
+            self.setValue(webExtractedStruct.title, forKey: #keyPath(ArticleBase.title))
+            self.setValue(webExtractedStruct.press, forKey: #keyPath(ArticleBase.author))
             detailEntity.contents = webExtractedStruct.detail
             detailEntity.webURL = webExtractedStruct.url
             if let imageData = webExtractedStruct.imageData {
                  detailEntity.imageData = imageData as NSData
             }
-            self.setValue(detailEntity, forKey: "webExtracted")
+            self.setValue(detailEntity, forKey: #keyPath(ArticleBase.webExtracted))
         case is SearchedArticleStruct:
             self.setupBaseProperty(.search)
             guard
@@ -319,19 +315,19 @@ private extension NSManagedObject {
                 else { return }
             if articleData.author?.isEmpty == false {
                 if let author = articleData.author?[0].name {
-                    self.setValue(author, forKey: "author")
+                    self.setValue(author, forKey: #keyPath(ArticleBase.author))
                 }
             }
             self.setCategory(ArticleCategory(containString: "\(articleData.categories.first)"))
-            self.setValue(articleData.title, forKey: "title")
-            detailEntity.setValue(articleData.date, forKey: "articleDate")
-            detailEntity.setValue(articleData.uri, forKey: "webURI")
-            detailEntity.setValue(articleData.body, forKey: "contents")
-            detailEntity.setValue(articleData.source.title, forKey: "company")
+            self.setValue(articleData.title, forKey: #keyPath(ArticleBase.title))
+            detailEntity.articleDate = articleData.date
+            detailEntity.webURI = articleData.uri
+            detailEntity.contents = articleData.body
+            detailEntity.company = articleData.source.title
             if let imageData: Data = searhedArticleStruct.imageData {
                 detailEntity.imageData = imageData as NSData
             }
-            self.setValue(detailEntity, forKey: "searched")
+            self.setValue(detailEntity, forKey: #keyPath(ArticleBase.searched))
         default:
             fatalError("Check ArticleDataStruct Type")
         }

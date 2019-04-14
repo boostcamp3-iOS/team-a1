@@ -1,12 +1,11 @@
 //
-//  ScrapService.swift
+//  Enum+ArticleCategory.swift
 //  tree
 //
-//  Created by Hyeontae on 03/02/2019.
+//  Created by Hyeontae on 11/04/2019.
 //  Copyright © 2019 gardener. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public enum ArticleCategory: Int, CaseIterable{
@@ -26,7 +25,7 @@ public enum ArticleCategory: Int, CaseIterable{
     case society
     case sports
     case etc
-
+    
     init(containString: String) {
         for item in ArticleCategory.allCases {
             if containString.contains("\(item)".capitalized) {
@@ -94,3 +93,4 @@ public enum ArticleCategory: Int, CaseIterable{
         }
     }
 }
+
